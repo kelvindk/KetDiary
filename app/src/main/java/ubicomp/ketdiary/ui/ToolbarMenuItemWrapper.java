@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.ui;
 
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -112,6 +113,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     public void onClick(View v) {
                         Log.d("Ket", "action_add_event");
                         // Listener of action Add button
+                        Intent createEventIntent = new Intent (mainActivity, CreateEventActivity.class);
+                        mainActivity.startActivity(createEventIntent);
 
                     }
                 });
