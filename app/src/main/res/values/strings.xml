@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">恢復日記</string>
+    <string name="action_settings">設定與資訊</string>
+    <string name="action_add_event">新增</string>
+    <string name="action_remind">提醒</string>
+
+    <string name="tab_test">檢測</string>
+    <string name="tab_result">記錄</string>
+    <string name="tab_event">記事</string>
+    <string name="tab_ranking">排行</string>
+
+
+    <string-array name="spinner_array">
+        <item>@string/tab_test</item>
+        <item>@string/tab_result</item>
+        <item>@string/tab_event</item>
+        <item>@string/tab_ranking</item>
+    </string-array>
+</resources>

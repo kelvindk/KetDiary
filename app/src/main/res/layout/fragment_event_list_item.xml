@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:text="5/30 (五) 午"
+        android:id="@+id/fragment_event_list_date"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="5dp"
+        android:text="按此填寫"
+        android:id="@+id/fragment_event_list_click"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:paddingRight="10dp"
+        android:id="@+id/fragment_event_list_category_icon"
+        android:layout_below="@+id/fragment_event_list_date"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/type_icon3"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:id="@+id/fragment_event_list_danger"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="thinking, scenario ..."
+        android:id="@+id/fragment_event_list_description"
+        android:layout_below="@+id/fragment_event_list_danger"
+        android:layout_alignBottom="@+id/fragment_event_list_category_icon"
+        android:layout_alignEnd="@+id/fragment_event_list_danger"
+        android:layout_toEndOf="@+id/fragment_event_list_category_icon" />
+
+</RelativeLayout>
