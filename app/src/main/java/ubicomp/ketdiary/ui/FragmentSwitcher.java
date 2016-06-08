@@ -75,9 +75,6 @@ public class FragmentSwitcher {
         if(fragmentToSwitch == this.currentFragment)
             return;
 
-        if(this.mainActivity.isFragmentSwitchLock())
-            return;
-
         /*
         * Bind tab and downdrop selection,
         * i.e., they will change together when one of them is selected.

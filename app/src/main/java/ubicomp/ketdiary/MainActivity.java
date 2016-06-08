@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
     // The class to manipulate fragment switch, all switching should use this class.
     private FragmentSwitcher fragmentSwitcher = null;
 
-    // A sync lock to avoid crash while fast switching between tab selecting.
-    private static boolean fragmentSwitchLock = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +69,5 @@ public class MainActivity extends AppCompatActivity {
         this.fragmentSwitcher.setFragment(fragmentToSwitch);
     }
 
-    synchronized public boolean isFragmentSwitchLock() {
-        return fragmentSwitchLock;
-    }
-
-    synchronized public void getFragmentSwitchLock() {
-        fragmentSwitchLock = true;
-    }
-
-    synchronized public void releaseFragmentSwitchLock() {
-        fragmentSwitchLock = false;
-    }
 
 }
