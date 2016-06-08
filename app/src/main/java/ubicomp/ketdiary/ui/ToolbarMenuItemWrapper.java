@@ -79,7 +79,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     }
 
     // Inflate the icon on the top right of toolbar according to user's selection on dropdown menu
-    // on the top left.
+    // on the top left. Also handle button click of each icon.
     public void inflate(final MainActivity mainActivity, int menuID) {
 
         if(menu == null)
