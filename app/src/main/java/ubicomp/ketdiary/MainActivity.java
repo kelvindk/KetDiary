@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.WindowManager;
 
 import ubicomp.ketdiary.ui.FragmentSwitcher;
 import ubicomp.ketdiary.ui.TabLayoutWrapper;
@@ -21,14 +22,18 @@ public class MainActivity extends AppCompatActivity {
     // The class to manipulate fragment switch, all switching should use this class.
     private FragmentSwitcher fragmentSwitcher = null;
 
+    // A sync lock to avoid crash while fast switching between tab selecting.
+    private static boolean fragmentSwitchLock = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Lock screen to portrait.
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        // Set full screen.
+        getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN );
 
         // New the wrapper of toolbar UI.
         toolbarMenuItemWrapper = new ToolbarMenuItemWrapper(this);
@@ -42,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        /*** Bug-fix 1 ****/
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        Log.d("Ket", "  "+fragmentManager.getBackStackEntryCount()+" "+getFragmentManager().getBackStackEntryCount());
-        if (fragmentManager.getBackStackEntryCount() > 0 ){
-            fragmentManager.popBackStack();
-        } else {
-            super.onBackPressed();
-        }
+//        /*** Bug-fix 1 ****/
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//
+//        Log.d("Ket", "  "+fragmentManager.getBackStackEntryCount()+" "+getFragmentManager().getBackStackEntryCount());
+//        if (fragmentManager.getBackStackEntryCount() > 0 ){
+//            fragmentManager.popBackStack();
+//        } else {
+//            super.onBackPressed();
+//        }
     }
 
 
@@ -62,9 +67,21 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // To pass the call for fragment switch to FragmentSwitcher.
+    // Pass the method call to FragmentSwitcher.
     public void setFragment(int fragmentToSwitch) {
         this.fragmentSwitcher.setFragment(fragmentToSwitch);
+    }
+
+    synchronized public boolean isFragmentSwitchLock() {
+        return fragmentSwitchLock;
+    }
+
+    synchronized public void getFragmentSwitchLock() {
+        fragmentSwitchLock = true;
+    }
+
+    synchronized public void releaseFragmentSwitchLock() {
+        fragmentSwitchLock = false;
     }
 
 }

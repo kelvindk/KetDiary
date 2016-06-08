@@ -47,7 +47,10 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
     // Switch fragment when select another tab.
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        if(this.mainActivity.isFragmentSwitchLock())
+            return;
         Log.d("Ket", "onTabSelected " + tab.getPosition());
+        this.mainActivity.getFragmentSwitchLock();
         this.mainActivity.setFragment(tab.getPosition());
     }
 

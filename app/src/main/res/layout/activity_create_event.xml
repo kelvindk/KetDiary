@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/create_event_toolbar"
+            android:id="@+id/activity_create_event_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -22,18 +22,29 @@
         </android.support.v7.widget.Toolbar>
 
 
+        <include android:id="@+id/activity_create_event_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/activity_create_event_progress"/>
+
+
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/action_add_event"/>
 
-    <!--<android.support.v4.widget.NestedScrollView-->
-        <!--android:id="@+id/fragment_container"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/activity_create_event_nestedscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include android:id="@+id/activity_create_event_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/activity_create_event_content"/>
+
+    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>

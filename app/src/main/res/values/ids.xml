@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menu_item_addevent_linearlayout" type="id" />
+    <item name="activity_create_event_time" type="id" />
+</resources>

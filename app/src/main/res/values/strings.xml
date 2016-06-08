@@ -3,13 +3,18 @@
     <string name="action_settings">設定與資訊</string>
     <string name="action_add_event">新增</string>
     <string name="action_remind">提醒</string>
+    <string name="action_save">儲存</string>
+    <string name="action_cancel">取消</string>
 
     <string name="tab_test">檢測</string>
     <string name="tab_result">記錄</string>
     <string name="tab_event">記事</string>
     <string name="tab_ranking">排行</string>
 
-    <string name="event_list_click_continue_fill">繼續填寫</string>
+    <string name="event_list_click_continue_fill">繼續填寫</string>\
+
+    <string name="create_event_name">新增活動</string>
+    <string name="create_event_progress">填寫進度</string>
 
 
     <string-array name="spinner_array">

@@ -36,10 +36,10 @@ public class EventListAdapter extends BaseAdapter {
         this.eventListView = eventListView;
         Context context = mainActivity;
 
-        eventListItems.add(new EventListItem());
-        eventListItems.add(new EventListItem());
-        eventListItems.add(new EventListItem());
-        eventListItems.add(new EventListItem());
+        for(int i=0; i<100; i++) {
+            eventListItems.add(new EventListItem());
+        }
+
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -98,6 +98,12 @@ public class EventListAdapter extends BaseAdapter {
                 R.dimen.list_view_item_height);
         this.notifyDataSetChanged();
 
+    }
+
+    // Set height of ListView to 0, this is a trick to avoid crash while switch fragment.
+    public void invisibleList() {
+        eventListView.getLayoutParams().height = 0;
+        this.notifyDataSetChanged();
     }
 
 }

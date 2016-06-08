@@ -39,7 +39,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
         this.mainActivity = mainActivity;
 
         // Enable toolbar on main activity
-        Toolbar toolbar = (Toolbar) this.mainActivity.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) this.mainActivity.findViewById(R.id.activity_main_toolbar);
         this.mainActivity.setSupportActionBar(toolbar);
         // Get the spinner on the toolbar
         this.spinner_toolbar = (Spinner) this.mainActivity.findViewById(R.id.spinner_toolbar);
@@ -55,8 +55,12 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
 
     }
 
-    // Receive the Menu objecg when it is ready, the received Menu object is used to swtich the icon
-    // when dropbown list is selected.
+
+
+    /*
+     Receive the Menu object when it is ready, the received Menu object is used to switch the icon
+     when dropbown list is selected.
+     */
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
@@ -79,8 +83,9 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
         remindBadgeText.setText(""+remindBadgeCount);
     }
 
-    // Inflate the icon on the top right of toolbar according to user's selection on dropdown menu
-    // on the top left. Also handle button click of each icon.
+    /* Inflate the icon on the top right of toolbar according to user's selection on dropdown menu
+     on the top left. Also handle button click of each icon.
+     */
     public void inflate(final MainActivity mainActivity, int menuID) {
 
         if(menu == null)
@@ -139,29 +144,34 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
 
     }
 
-    // The selected listener of the downdrop list of toolbar (on the top left)
+    /*
+        The selected listener of the downdrop list of toolbar (on the top left)
+    */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        switch(pos) {
-            // Inflate the menu; this adds items to the action bar according to the selection.
-            case SPINNER_TEST:
-                Log.d("Ket", "pos 0");
-                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_TEST);
 
-                break;
-            case SPINNER_RESULT:
-                Log.d("Ket", "pos 1");
-                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_RESULT);
-                break;
-            case SPINNER_EVENT:
-                Log.d("Ket", "pos 2");
-                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_EVENT);
-                break;
-            case SPINNER_RANKING:
-                Log.d("Ket", "pos 3");
-                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_RANKING);
-                break;
-        }
+        // Inflate the menu; this adds items to the action bar according to the selection.
+        mainActivity.setFragment(pos);
+
+//        switch(pos) {
+//            // Inflate the menu; this adds items to the action bar according to the selection.
+//            case SPINNER_TEST:
+//                Log.d("Ket", "pos 0");
+//                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_TEST);
+//                break;
+//            case SPINNER_RESULT:
+//                Log.d("Ket", "pos 1");
+//                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_RESULT);
+//                break;
+//            case SPINNER_EVENT:
+//                Log.d("Ket", "pos 2");
+//                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_EVENT);
+//                break;
+//            case SPINNER_RANKING:
+//                Log.d("Ket", "pos 3");
+//                mainActivity.setFragment(FragmentSwitcher.FRAGMENT_RANKING);
+//                break;
+//        }
 
     }
 

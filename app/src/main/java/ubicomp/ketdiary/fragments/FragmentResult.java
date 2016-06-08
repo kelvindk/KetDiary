@@ -31,7 +31,10 @@ public class FragmentResult extends Fragment {
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_result");
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_RESULT);
-        return inflater.inflate(R.layout.fragment_result, container, false);
+
+        View fragmentResultView = inflater.inflate(R.layout.fragment_result, container, false);
+
+        return fragmentResultView;
     }
 
 }

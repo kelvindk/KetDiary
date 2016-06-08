@@ -40,7 +40,7 @@ public class FragmentSwitcher {
         this.tabLayoutWrapper = tabLayoutWrapper;
         this.toolbarMenuItemWrapper = toolbarMenuItemWrapper;
 
-        // Create four fragment.
+        // Create four fragments.
         fragments[0] = new FragmentTest(this);
         fragments[1] = new FragmentResult(this);
         fragments[2] = new FragmentEvent(this, this.mainActivity);
@@ -49,6 +49,7 @@ public class FragmentSwitcher {
         fragmentManager = this.mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        // Add four fragments to view.
         fragmentTransaction.add(R.id.fragment_container, fragments[0], ""+FRAGMENT_TEST);
         fragmentTransaction.add(R.id.fragment_container, fragments[1], ""+FRAGMENT_RESULT);
         fragmentTransaction.add(R.id.fragment_container, fragments[2], ""+FRAGMENT_EVENT);
@@ -74,23 +75,17 @@ public class FragmentSwitcher {
         if(fragmentToSwitch == this.currentFragment)
             return;
 
-        // Switch fragment to selected page.
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragments[fragmentToSwitch]);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        if(this.mainActivity.isFragmentSwitchLock())
+            return;
 
-        // Bind tab and downdrop selection,
-        // i.e., they will change together when one of them is selected.
+        /*
+        * Bind tab and downdrop selection,
+        * i.e., they will change together when one of them is selected.
+        * */
         tabLayoutWrapper.setTabSelected(fragmentToSwitch);
         toolbarMenuItemWrapper.setSpinnerSelection(fragmentToSwitch);
 
-
-//        for(int i=0; i<fragments.length; i++) {
-//            Log.d("Ket", i+" "+fragments[i].isAdded()+" "+fragments[i].isHidden()+" "+fragments[i].isInLayout());
-//        }
-
+        // Switch toolbar according to selected fragment.
         switch (fragmentToSwitch) {
             case FRAGMENT_TEST:
                 toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
@@ -102,16 +97,32 @@ public class FragmentSwitcher {
                 toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_event);
                 // Refresh badge count of menu item on toolbar.
                 toolbarMenuItemWrapper.refreshRemindBadgeCount();
-
                 break;
             case FRAGMENT_RANKING:
                 toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_ranking);
                 break;
         }
 
+        // Switch fragment to selected page.
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragments[fragmentToSwitch]);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+//        for(int i=0; i<fragments.length; i++) {
+//            Log.d("Ket", i+" "+fragments[i].isAdded()+" "+fragments[i].isHidden()+" "+fragments[i].isInLayout());
+//        }
+
+
+        // When switch out from FragmentEvent, do this trick to avoid crash.
+        if(this.currentFragment == FRAGMENT_EVENT)
+            ((FragmentEvent)fragments[FRAGMENT_EVENT]).invisibleList();
 
         // Update which fragment we stay.
         this.currentFragment = fragmentToSwitch;
 
     }
+
+
 }

@@ -65,4 +65,10 @@ public class FragmentEvent extends Fragment {
 
         return fragmentEventView;
     }
+
+    // Set height of ListView to 0, this is a trick to avoid crash while switch fragment.
+    public void invisibleList() {
+        eventListAdapter.invisibleList();
+    }
+
 }
