@@ -19,6 +19,8 @@ import ubicomp.ketdiary.R;
 
 /**
  * A custom adapter for event list.
+ *
+ * Created by kelvindk on 16/6/7.
  */
 public class EventListAdapter extends BaseAdapter {
 

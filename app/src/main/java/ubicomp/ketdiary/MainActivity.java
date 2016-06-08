@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        /*** Bug-fix B1 ****/
+        /*** Bug-fix 1 ****/
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         Log.d("Ket", "  "+fragmentManager.getBackStackEntryCount()+" "+getFragmentManager().getBackStackEntryCount());

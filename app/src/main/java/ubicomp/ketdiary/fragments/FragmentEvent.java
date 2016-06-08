@@ -15,7 +15,7 @@ import ubicomp.ketdiary.fragments.event.EventListAdapter;
 import ubicomp.ketdiary.ui.FragmentSwitcher;
 
 /**
- * A placeholder fragment containing a simple view.
+ * A placeholder fragment containing a simple view for Event fragment.
  */
 public class FragmentEvent extends Fragment {
 

@@ -12,9 +12,11 @@ import ubicomp.ketdiary.fragments.FragmentResult;
 import ubicomp.ketdiary.fragments.FragmentTest;
 
 /**
- * This class aggregate all manipulation of fragment switch.
+ * This class aggregates all manipulation of fragment switch.
+ *
  * Created by kelvindk on 16/6/6.
  */
+
 public class FragmentSwitcher {
     public final static int FRAGMENT_TEST = 0;
     public final static int FRAGMENT_RESULT = 1;

@@ -11,7 +11,7 @@ import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.ui.FragmentSwitcher;
 
 /**
- * A placeholder fragment containing a simple view.
+ * A placeholder fragment containing a simple view for Result fragment.
  */
 public class FragmentResult extends Fragment {
     FragmentSwitcher fragmentSwitcher = null;
