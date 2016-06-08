@@ -112,6 +112,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     public void onClick(View v) {
                         Log.d("Ket", "action_add_event");
                         // Listener of action Add button
+
                     }
                 });
 

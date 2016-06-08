@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginTop="5dp"
-        android:text="按此填寫"
+        android:text="@string/event_list_click_to_fill"
         android:id="@+id/fragment_event_list_click"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

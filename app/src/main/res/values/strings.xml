@@ -9,6 +9,8 @@
     <string name="tab_event">記事</string>
     <string name="tab_ranking">排行</string>
 
+    <string name="event_list_click_to_fill">按此填寫</string>
+
 
     <string-array name="spinner_array">
         <item>@string/tab_test</item>
