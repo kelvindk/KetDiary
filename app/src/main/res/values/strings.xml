@@ -22,16 +22,17 @@
 
     <string name="create_event_name">新增活動</string>
     <string name="create_event_progress">填寫進度</string>
-
+    <string name="night">晚上</string>
+    <string name="midnight">半夜</string>
     <string name="time_colon">時間：</string>
-
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="before_yesterday">前天</string>
     <string name="morning">早上</string>
     <string name="afternoon">下午</string>
-    <string name="night">晚上</string>
-    <string name="midnight">半夜</string>
+    <string name="previous_step">上一步</string>
+    <string name="next_step">下一步</string>
+
 
     <string-array name="spinner_day">
         <item>@string/today</item>

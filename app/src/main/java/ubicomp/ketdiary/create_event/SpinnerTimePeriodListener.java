@@ -87,22 +87,23 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
     * */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.d("Ket", "spinner_time_period click");
 
         // Set default to current time period when the spinner is initialized.
         if(!isInit) {
             int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-            setTimePeriodText(hour);
             setSpinnerTimePeriod(hour);
             isInit = true;
             return;
         }
 
+
+
+
         // Set time period to selected one.
         TextView timePeriodText = (TextView) this.createEventActivity.findViewById(R.id.create_event_time_period);
         timePeriodText.setText(parent.getItemAtPosition(position).toString());
 
-
+        Log.d("Ket", "spinner_time_period click");
     }
 
     @Override

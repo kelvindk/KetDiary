@@ -1,5 +1,7 @@
 package ubicomp.ketdiary.create_event;
 
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,8 +26,11 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
 
     private CreateEventActivity createEventActivity = null;
 
+    Snackbar snackbar = null;
+
     public SpinnerDayListener(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+
     }
 
     /*
@@ -35,6 +40,7 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.d("Ket", "spinner_day click");
         Calendar calendar = Calendar.getInstance();
+
 
 
         switch(position) {
@@ -50,7 +56,7 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
         }
 
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         // Set time period to selected one.

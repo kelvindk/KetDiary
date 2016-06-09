@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:id="@+id/create_event_coordinatorLayout"
     tools:context="ubicomp.ketdiary.ui.CreateEventActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -40,10 +41,29 @@
 
         <include android:id="@+id/activity_create_event_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             layout="@layout/activity_create_event_content"/>
 
     </android.support.v4.widget.NestedScrollView>
+
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/previous_step"/>-->
+
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/next_step"/>-->
+
+    <!--</LinearLayout>-->
 
 
 </android.support.design.widget.CoordinatorLayout>
