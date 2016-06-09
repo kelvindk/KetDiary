@@ -11,16 +11,40 @@
     <string name="tab_event">記事</string>
     <string name="tab_ranking">排行</string>
 
-    <string name="event_list_click_continue_fill">繼續填寫</string>\
-
-    <string name="create_event_name">新增活動</string>
-    <string name="create_event_progress">填寫進度</string>
-
-
-    <string-array name="spinner_array">
+    <string-array name="toolbar_spinner_array">
         <item>@string/tab_test</item>
         <item>@string/tab_result</item>
         <item>@string/tab_event</item>
         <item>@string/tab_ranking</item>
     </string-array>
+
+    <string name="event_list_click_continue_fill">繼續填寫</string>\
+
+    <string name="create_event_name">新增活動</string>
+    <string name="create_event_progress">填寫進度</string>
+
+    <string name="time_colon">時間：</string>
+
+    <string name="today">今天</string>
+    <string name="yesterday">昨天</string>
+    <string name="before_yesterday">前天</string>
+    <string name="morning">早上</string>
+    <string name="afternoon">下午</string>
+    <string name="night">晚上</string>
+    <string name="midnight">半夜</string>
+
+    <string-array name="spinner_day">
+        <item>@string/today</item>
+        <item>@string/yesterday</item>
+        <item>@string/before_yesterday</item>
+    </string-array>
+
+    <string-array name="spinner_time_period">
+        <item>@string/morning</item>
+        <item>@string/afternoon</item>
+        <item>@string/night</item>
+        <item>@string/midnight</item>
+    </string-array>
+
+
 </resources>

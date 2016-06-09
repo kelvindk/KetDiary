@@ -9,8 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.create_event.SpinnerDayListener;
+import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
 
 /**
  * A standalone activity for create(add) new event.
@@ -19,6 +23,10 @@ import ubicomp.ketdiary.R;
  */
 
 public class CreateEventActivity extends AppCompatActivity {
+
+
+    private Spinner spinner_day = null;
+    private Spinner spinner_time_period = null;
 
 
     @Override
@@ -41,6 +49,28 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
 
+
+        // Setup spinner for step 1: day.
+        this.spinner_day = (Spinner) this.findViewById(R.id.spinner_day);
+        // Set click listener.
+        this.spinner_day.setOnItemSelectedListener(new SpinnerDayListener(this));
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> spinner_day_adapter = ArrayAdapter.createFromResource(
+                this, R.array.spinner_day, android.R.layout.simple_spinner_item);
+        spinner_day_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        this.spinner_day.setAdapter(spinner_day_adapter);
+
+        // Setup spinner for step 1: time period.
+        this.spinner_time_period = (Spinner) this.findViewById(R.id.spinner_time_period);
+        // Set click listener.
+        this.spinner_time_period.setOnItemSelectedListener(new SpinnerTimePeriodListener(this));
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> spinner_time_period_adapter = ArrayAdapter.createFromResource(
+                this, R.array.spinner_time_period, android.R.layout.simple_spinner_item);
+        spinner_time_period_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        this.spinner_time_period.setAdapter(spinner_time_period_adapter);
 
     }
 
@@ -65,12 +95,11 @@ public class CreateEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Ket", "actionCancelEvent");
-                // Listener of action Cancel button
+                // Listener of action Cancel button, back previous page after click.
                 onBackPressed();
             }
         });
 
         return true;
     }
-
 }

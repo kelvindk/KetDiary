@@ -7,7 +7,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:textColor="@color/colorWhiteText"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorWhite"
         android:text="@string/create_event_progress"
         android:layout_alignParentTop="true"
         android:id="@+id/create_event_text_left" />
@@ -15,7 +16,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:textColor="@color/colorWhiteText"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorWhite"
         android:text="1/10"
         android:layout_alignParentEnd="true"
         android:id="@+id/create_event_text_right"/>

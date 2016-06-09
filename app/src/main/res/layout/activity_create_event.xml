@@ -32,7 +32,6 @@
 
 
 
-
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/activity_create_event_nestedscrollview"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package ubicomp.ketdiary;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.WindowManager;
 
+import ubicomp.ketdiary.ui.CreateEventActivity;
 import ubicomp.ketdiary.ui.FragmentSwitcher;
 import ubicomp.ketdiary.ui.TabLayoutWrapper;
 import ubicomp.ketdiary.ui.ToolbarMenuItemWrapper;
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         // New the object of handling fragment switch.
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
+        // F
+        Intent createEventIntent = new Intent (this, CreateEventActivity.class);
+        this.startActivity(createEventIntent);
 
     }
 
