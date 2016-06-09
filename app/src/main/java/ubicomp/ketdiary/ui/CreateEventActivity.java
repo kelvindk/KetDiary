@@ -2,17 +2,22 @@ package ubicomp.ketdiary.ui;
 
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.create_event.ScrollViewAdapter;
 import ubicomp.ketdiary.create_event.SpinnerDayListener;
 import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
 
@@ -27,6 +32,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
     private Spinner spinner_day = null;
     private Spinner spinner_time_period = null;
+    private ScrollViewAdapter scrollViewAdapter = null;
 
 
     @Override
@@ -51,26 +57,38 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         // Setup spinner for step 1: day.
-        this.spinner_day = (Spinner) this.findViewById(R.id.spinner_day);
+        spinner_day = (Spinner) findViewById(R.id.spinner_day);
         // Set click listener.
-        this.spinner_day.setOnItemSelectedListener(new SpinnerDayListener(this));
+        spinner_day.setOnItemSelectedListener(new SpinnerDayListener(this));
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinner_day_adapter = ArrayAdapter.createFromResource(
                 this, R.array.spinner_day, android.R.layout.simple_spinner_item);
         spinner_day_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        this.spinner_day.setAdapter(spinner_day_adapter);
+        spinner_day.setAdapter(spinner_day_adapter);
 
         // Setup spinner for step 1: time period.
-        this.spinner_time_period = (Spinner) this.findViewById(R.id.spinner_time_period);
+        spinner_time_period = (Spinner) findViewById(R.id.spinner_time_period);
         // Set click listener.
-        this.spinner_time_period.setOnItemSelectedListener(new SpinnerTimePeriodListener(this));
+        spinner_time_period.setOnItemSelectedListener(new SpinnerTimePeriodListener(this));
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinner_time_period_adapter = ArrayAdapter.createFromResource(
                 this, R.array.spinner_time_period, android.R.layout.simple_spinner_item);
         spinner_time_period_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        this.spinner_time_period.setAdapter(spinner_time_period_adapter);
+        spinner_time_period.setAdapter(spinner_time_period_adapter);
+
+
+        // New ScrollViewAdapter to handle scrolling in this acitivy.
+        scrollViewAdapter = new ScrollViewAdapter(this);
+
+//        ScrollView scrollView = (ScrollView) findViewById(R.id.activity_create_event_scrollview);
+//
+//        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+
+
+
+
 
     }
 
@@ -85,7 +103,8 @@ public class CreateEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Ket", "actionSaveEvent");
-                // Listener of action Save button
+//                // Listener of action Save button
+                scrollViewAdapter.setScrollDisable(true);
 
             }
         });
@@ -96,7 +115,9 @@ public class CreateEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Ket", "actionCancelEvent");
                 // Listener of action Cancel button, back previous page after click.
-                onBackPressed();
+//                onBackPressed();
+                scrollViewAdapter.setScrollDisable(false);
+                scrollViewAdapter.scrollToBottom();
             }
         });
 

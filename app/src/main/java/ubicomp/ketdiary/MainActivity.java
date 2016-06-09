@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         // New the object of handling fragment switch.
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
-        // F
-        Intent createEventIntent = new Intent (this, CreateEventActivity.class);
-        this.startActivity(createEventIntent);
+        // For developing
+//        Intent createEventIntent = new Intent (this, CreateEventActivity.class);
+//        startActivity(createEventIntent);
 
     }
 
@@ -65,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Pass the reference of Menu object to ToolbarMenuItemWrapper when ready
-        this.toolbarMenuItemWrapper.setMenu(menu);
+        toolbarMenuItemWrapper.setMenu(menu);
 
         return true;
     }
 
     // Pass the method call to FragmentSwitcher.
     public void setFragment(int fragmentToSwitch) {
-        this.fragmentSwitcher.setFragment(fragmentToSwitch);
+        fragmentSwitcher.setFragment(fragmentToSwitch);
     }
 
 

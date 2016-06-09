@@ -39,21 +39,21 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
         this.mainActivity = mainActivity;
 
         // Enable toolbar on main activity
-        Toolbar toolbar = (Toolbar) this.mainActivity.findViewById(R.id.activity_main_toolbar);
-        this.mainActivity.setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) mainActivity.findViewById(R.id.activity_main_toolbar);
+        mainActivity.setSupportActionBar(toolbar);
 
         // Get the spinner on the toolbar
-        this.spinner_toolbar = (Spinner) this.mainActivity.findViewById(R.id.spinner_toolbar);
-        this.spinner_toolbar.setOnItemSelectedListener(this);
+        spinner_toolbar = (Spinner) mainActivity.findViewById(R.id.spinner_toolbar);
+        spinner_toolbar.setOnItemSelectedListener(this);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinner_content_adapter = ArrayAdapter.createFromResource(
-                this.mainActivity, R.array.toolbar_spinner_array, R.layout.toolbar_spinner_layout);
+                mainActivity, R.array.toolbar_spinner_array, R.layout.toolbar_spinner_layout);
         spinner_content_adapter.setDropDownViewResource(R.layout.toolbar_spinner_layout);
         // Apply the adapter to the spinner
-        this.spinner_toolbar.setAdapter(spinner_content_adapter);
+        spinner_toolbar.setAdapter(spinner_content_adapter);
 
         // Disable the App title on toolbar
-        this.mainActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        mainActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     }
 
@@ -76,7 +76,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     }
 
     public int getRemindBadgeCount() {
-        return this.remindBadgeCount;
+        return remindBadgeCount;
     }
 
     public void refreshRemindBadgeCount() {

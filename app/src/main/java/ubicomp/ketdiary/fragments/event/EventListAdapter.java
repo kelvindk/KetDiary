@@ -86,7 +86,7 @@ public class EventListAdapter extends BaseAdapter {
 
         // Rescale the height of ListView.
         eventListView.getLayoutParams().height = (int) mainActivity.getResources().getDimension(
-                R.dimen.list_view_item_height) * this.getCount();
+                R.dimen.list_view_item_height) * getCount();
 
         return eventItemView;
     }
@@ -96,14 +96,14 @@ public class EventListAdapter extends BaseAdapter {
         eventListItems.add(new EventListItem());
         eventListView.getLayoutParams().height += (int) mainActivity.getResources().getDimension(
                 R.dimen.list_view_item_height);
-        this.notifyDataSetChanged();
+        notifyDataSetChanged();
 
     }
 
     // Set height of ListView to 0, this is a trick to avoid crash while switch fragment.
     public void invisibleList() {
         eventListView.getLayoutParams().height = 0;
-        this.notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
 }

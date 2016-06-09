@@ -51,7 +51,7 @@ public class FragmentEvent extends Fragment {
         // Set adapter of custom ListView to this fragment
         eventListView = (ListView) fragmentEventView.findViewById(R.id.fragment_event_list_view);
 
-        eventListAdapter = new EventListAdapter(this.mainActivity, eventListView);
+        eventListAdapter = new EventListAdapter(mainActivity, eventListView);
         eventListView.setAdapter(eventListAdapter);
 
         eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

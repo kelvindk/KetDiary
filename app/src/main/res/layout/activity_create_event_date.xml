@@ -1,9 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:paddingTop="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
     <TextView
@@ -14,13 +19,13 @@
         android:text="@string/time_colon"/>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/create_even_spinner_date_time_width"
         android:layout_height="match_parent"
         android:paddingLeft="10dp"
         android:id="@+id/spinner_day"/>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/create_even_spinner_date_time_width"
         android:layout_height="match_parent"
         android:paddingLeft="10dp"
         android:id="@+id/spinner_time_period"/>
@@ -30,7 +35,6 @@
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="2016.5.14"
         android:id="@+id/create_event_day"/>
 
     <TextView
@@ -38,7 +42,16 @@
         android:layout_height="wrap_content"
         android:paddingLeft="7dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="上午"
         android:id="@+id/create_event_time_period"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Description..."
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

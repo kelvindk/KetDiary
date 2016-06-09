@@ -38,7 +38,7 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
     * Set time period to the TextView.
     * */
     private void setTimePeriodText(int time) {
-        TextView timePeriod = (TextView) this.createEventActivity.findViewById(R.id.create_event_time_period);
+        TextView timePeriod = (TextView) createEventActivity.findViewById(R.id.create_event_time_period);
         switch(time/6) {
             case MIDNIGHT:
                 timePeriod.setText(R.string.midnight);
@@ -60,7 +60,7 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
     * Set time period to the spinner timer period.
     * */
     private void setSpinnerTimePeriod(int time) {
-        Spinner spinnerTimerPeriod = (Spinner) this.createEventActivity.findViewById(R.id.spinner_time_period);
+        Spinner spinnerTimerPeriod = (Spinner) createEventActivity.findViewById(R.id.spinner_time_period);
 
         /* Set default to current time period.
            NOTE: The time period's order is different between define in this class and on spinner.
@@ -100,7 +100,7 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
 
 
         // Set time period to selected one.
-        TextView timePeriodText = (TextView) this.createEventActivity.findViewById(R.id.create_event_time_period);
+        TextView timePeriodText = (TextView) createEventActivity.findViewById(R.id.create_event_time_period);
         timePeriodText.setText(parent.getItemAtPosition(position).toString());
 
         Log.d("Ket", "spinner_time_period click");

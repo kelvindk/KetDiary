@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorSpinnerText">#F4F4F4</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightGray">#EEEEEE</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBadgeBackground">#FF0000</color>
 </resources>

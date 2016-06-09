@@ -24,7 +24,7 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
     public TabLayoutWrapper(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         // Create a TabLayout
-        TabLayout tabLayout = (TabLayout) this.mainActivity.findViewById(R.id.activity_main_tabs);
+        TabLayout tabLayout = (TabLayout) mainActivity.findViewById(R.id.activity_main_tabs);
 
         // Create four tabs.
         tabLayoutTabs[0] = tabLayout.newTab().setCustomView(R.layout.tab_icon_text_test);
@@ -48,7 +48,7 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         Log.d("Ket", "onTabSelected " + tab.getPosition());
-        this.mainActivity.setFragment(tab.getPosition());
+        mainActivity.setFragment(tab.getPosition());
     }
 
     @Override
