@@ -4,25 +4,54 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <requestFocus />
 
     <include android:id="@+id/activity_create_event_step1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/activity_create_event_date" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#BBBBBB" />
+
+    <include android:id="@+id/activity_create_event_step1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_create_event_scenario" />
+
 
     <Space
         android:layout_width="fill_parent"
         android:layout_height="800dp" />
 
-    <TextureView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textureView"
+        android:id="@+id/bottomTextView1"
+        android:text="AAAAAA"
         android:layout_gravity="center_horizontal"
         android:focusable="true"
         android:focusableInTouchMode="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomTextView2"
+        android:text="BBBBBB"
+        android:layout_gravity="center_horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomTextView3"
+        android:text="CCCCC"
+        android:layout_gravity="center_horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone"/>
 
 
 

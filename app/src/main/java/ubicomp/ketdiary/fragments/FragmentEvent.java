@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventListAdapter;
+import ubicomp.ketdiary.ui.CreateEventActivity;
+import ubicomp.ketdiary.ui.EventContentActivity;
 import ubicomp.ketdiary.ui.FragmentSwitcher;
 
 /**
@@ -58,6 +61,9 @@ public class FragmentEvent extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("Ket", "eventListView onItemClick " + i);
+                // For developing
+                Intent eventContentIntent = new Intent (mainActivity, EventContentActivity.class);
+                startActivity(eventContentIntent);
                 eventListAdapter.addItem();
 
             }

@@ -13,8 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
@@ -79,18 +79,14 @@ public class CreateEventActivity extends AppCompatActivity {
         spinner_time_period.setAdapter(spinner_time_period_adapter);
 
 
-        // New ScrollViewAdapter to handle scrolling in this acitivy.
+        // New ScrollViewAdapter to handle scrolling in this activity.
         scrollViewAdapter = new ScrollViewAdapter(this);
-
-//        ScrollView scrollView = (ScrollView) findViewById(R.id.activity_create_event_scrollview);
-//
-//        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-
-
-
+        // Disable scrolling on ScrollView.
+        scrollViewAdapter.setScrollDisable(true);
 
 
     }
+
 
 
     @Override

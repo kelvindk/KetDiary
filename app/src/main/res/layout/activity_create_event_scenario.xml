@@ -1,0 +1,114 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/scenario_type_colon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="25dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/self_state"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        >
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/type_icon1"
+            android:id="@+id/scenario_button1" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/type_icon2"
+            android:id="@+id/scenario_button2" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/type_icon3"
+            android:id="@+id/scenario_button3" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/type_icon4"
+            android:id="@+id/scenario_button4" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/type_icon5"
+            android:id="@+id/scenario_button5" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Description..."
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

@@ -24,7 +24,13 @@
             android:label="@string/create_event_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
+        <activity
+            android:name=".ui.EventContentActivity"
+            android:label="@string/event_content_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

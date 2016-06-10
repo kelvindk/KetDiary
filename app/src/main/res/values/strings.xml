@@ -32,7 +32,11 @@
     <string name="afternoon">下午</string>
     <string name="previous_step">上一步</string>
     <string name="next_step">下一步</string>
+    <string name="scenario_type_colon">情境類型：</string>
+    <string name="self_state">自我狀態</string>
+    <string name="social_interaction">社交互動</string>
 
+    <string name="event_content_name">詳細事件</string>
 
     <string-array name="spinner_day">
         <item>@string/today</item>

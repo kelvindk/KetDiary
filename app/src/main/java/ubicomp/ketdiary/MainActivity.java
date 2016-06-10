@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.WindowManager;
 
 import ubicomp.ketdiary.ui.CreateEventActivity;
+import ubicomp.ketdiary.ui.EventContentActivity;
 import ubicomp.ketdiary.ui.FragmentSwitcher;
 import ubicomp.ketdiary.ui.TabLayoutWrapper;
 import ubicomp.ketdiary.ui.ToolbarMenuItemWrapper;
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
         // For developing
-//        Intent createEventIntent = new Intent (this, CreateEventActivity.class);
-//        startActivity(createEventIntent);
+        Intent createEventIntent = new Intent (this, EventContentActivity.class);
+        startActivity(createEventIntent);
 
     }
 
