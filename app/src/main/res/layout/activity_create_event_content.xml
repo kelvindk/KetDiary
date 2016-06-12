@@ -1,59 +1,95 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <include android:id="@+id/activity_create_event_step1"
+    <!--Step1-->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/activity_create_event_date" />
+        android:visibility="visible"
+        android:id="@+id/create_event_step1">
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#BBBBBB" />
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/activity_create_event_date" />
 
-    <include android:id="@+id/activity_create_event_step1"
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="@color/colorWhite"
+            android:id="@+id/create_event_cover_step1"
+            android:alpha="0.7"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+
+    <!--Step2-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/activity_create_event_scenario" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/create_event_step1"
+        android:id="@+id/create_event_step2"
+        android:visibility="gone"
+        android:layout_alignParentStart="true">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/activity_create_event_scenario" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/colorWhite"
+            android:id="@+id/create_event_cover_step2"
+            android:alpha="0.7"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <!--Step3-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/create_event_step2"-->
+        <!--android:id="@+id/create_event_step3"-->
+        <!--android:layout_alignParentStart="true">-->
+
+        <!--<include-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--layout="@layout/activity_create_event_scenario" />-->
+
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="300dp"-->
+            <!--android:background="@color/colorWhite"-->
+            <!--android:id="@+id/create_event_cover_step3"-->
+            <!--android:alpha="0.7"-->
+            <!--android:visibility="visible"/>-->
+
+    <!--</RelativeLayout>-->
 
 
-    <Space
-        android:layout_width="fill_parent"
-        android:layout_height="800dp" />
+    <!--<Space-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="800dp" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottomTextView1"
-        android:text="AAAAAA"
-        android:layout_gravity="center_horizontal"
-        android:focusable="true"
-        android:focusableInTouchMode="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottomTextView2"
-        android:text="BBBBBB"
-        android:layout_gravity="center_horizontal"
-        android:focusable="true"
-        android:focusableInTouchMode="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottomTextView3"
-        android:text="CCCCC"
-        android:layout_gravity="center_horizontal"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:visibility="gone"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/bottomTextView1"-->
+        <!--android:text="AAAAAA"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true" />-->
 
 
 
 
-</LinearLayout>
+</RelativeLayout>

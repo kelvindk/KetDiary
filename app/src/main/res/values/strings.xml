@@ -24,7 +24,8 @@
     <string name="create_event_progress">填寫進度</string>
     <string name="night">晚上</string>
     <string name="midnight">半夜</string>
-    <string name="time_colon">時間：</string>
+    <string name="time">時間</string>
+    <string name="event_time">活動時間</string>
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="before_yesterday">前天</string>
@@ -32,9 +33,18 @@
     <string name="afternoon">下午</string>
     <string name="previous_step">上一步</string>
     <string name="next_step">下一步</string>
-    <string name="scenario_type_colon">情境類型：</string>
+    <string name="scenario_type">情境類型</string>
     <string name="self_state">自我狀態</string>
     <string name="social_interaction">社交互動</string>
+    <string name="slackness">鬆懈</string>
+    <string name="body">身體</string>
+    <string name="control">控制</string>
+    <string name="impulse">衝動</string>
+    <string name="emotion">情緒</string>
+    <string name="get_along">相處</string>
+    <string name="social">社交</string>
+    <string name="entertain">同樂</string>
+    <string name="step2_question">」類型之中，以下哪個情境會讓你想用K?</string>
 
     <string name="event_content_name">詳細事件</string>
 
@@ -49,6 +59,19 @@
         <item>@string/afternoon</item>
         <item>@string/night</item>
         <item>@string/midnight</item>
+    </string-array>
+
+    <string-array name="spinner_step2">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
 

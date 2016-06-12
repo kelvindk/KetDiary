@@ -5,7 +5,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="spinner_width">100dp</dimen>
     <dimen name="list_view_item_height">110dp</dimen>
-    <dimen name="create_even_spinner_date_time_width">85dp</dimen>
+    <dimen name="create_even_spinner_date_time_height">35dp</dimen>
+    <dimen name="create_even_spinner_date_time_width">120dp</dimen>
+    <dimen name="create_even_step_bottom_height">55dp</dimen>
     <dimen name="create_even_step_bottom_width">180dp</dimen>
     <dimen name="create_even_scenario_height">60dp</dimen>
     <dimen name="create_even_scenario_width">60dp</dimen>

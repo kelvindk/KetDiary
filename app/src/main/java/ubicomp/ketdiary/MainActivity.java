@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
         // For developing
-        Intent createEventIntent = new Intent (this, EventContentActivity.class);
+        Intent createEventIntent = new Intent (this, CreateEventActivity.class);
         startActivity(createEventIntent);
 
     }

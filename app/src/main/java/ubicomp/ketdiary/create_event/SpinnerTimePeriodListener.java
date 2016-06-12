@@ -97,8 +97,6 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
         }
 
 
-
-
         // Set time period to selected one.
         TextView timePeriodText = (TextView) createEventActivity.findViewById(R.id.create_event_time_period);
         timePeriodText.setText(parent.getItemAtPosition(position).toString());

@@ -13,10 +13,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.List;
+
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.create_event.ScenarioIconClickListener;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
 import ubicomp.ketdiary.create_event.SpinnerDayListener;
 import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
@@ -33,6 +37,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private Spinner spinner_day = null;
     private Spinner spinner_time_period = null;
     private ScrollViewAdapter scrollViewAdapter = null;
+    private ScenarioIconClickListener scenarioIconClickListener = null;
 
 
     @Override
@@ -55,7 +60,13 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
 
+        // New ScrollViewAdapter to handle scrolling in this activity.
+        scrollViewAdapter = new ScrollViewAdapter(this);
+        // Disable scrolling on ScrollView.
+        scrollViewAdapter.setScrollDisable(true);
 
+
+        /*** Step1 ***/
         // Setup spinner for step 1: day.
         spinner_day = (Spinner) findViewById(R.id.spinner_day);
         // Set click listener.
@@ -79,11 +90,14 @@ public class CreateEventActivity extends AppCompatActivity {
         spinner_time_period.setAdapter(spinner_time_period_adapter);
 
 
-        // New ScrollViewAdapter to handle scrolling in this activity.
-        scrollViewAdapter = new ScrollViewAdapter(this);
-        // Disable scrolling on ScrollView.
-        scrollViewAdapter.setScrollDisable(true);
+        /*** Step2 ***/
+        scenarioIconClickListener = new ScenarioIconClickListener(this);
 
+//        ListView listview_question_step1 = (ListView) findViewById(R.id.listview_question_step1);
+//        ArrayAdapter<String> listview_question_step1_adapter =
+//                new ArrayAdapter(this,android.R.layout.simple_list_item_1,
+//                        getResources().getStringArray(R.array.spinner_step1));;
+//        listview_question_step1.setAdapter(listview_question_step1_adapter);
 
     }
 
@@ -101,6 +115,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 Log.d("Ket", "actionSaveEvent");
 //                // Listener of action Save button
                 scrollViewAdapter.setScrollDisable(true);
+                scrollViewAdapter.scrollToTop();
 
             }
         });
@@ -114,6 +129,8 @@ public class CreateEventActivity extends AppCompatActivity {
 //                onBackPressed();
                 scrollViewAdapter.setScrollDisable(false);
                 scrollViewAdapter.scrollToBottom();
+
+
             }
         });
 

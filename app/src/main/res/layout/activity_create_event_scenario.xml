@@ -1,22 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:paddingTop="10dp"
+    android:paddingTop="1dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/scenario_type_colon"/>
+        android:text="@string/scenario_type"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="25dp"
+        android:paddingLeft="15dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/self_state"/>
 
@@ -24,7 +25,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp"
+        android:paddingTop="1dp"
         >
 
         <View
@@ -36,7 +37,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/type_icon1"
+            android:background="@drawable/create_event_step2_selector_icon1"
             android:id="@+id/scenario_button1" />
 
         <View
@@ -48,7 +49,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/type_icon2"
+            android:background="@drawable/create_event_step2_selector_icon2"
             android:id="@+id/scenario_button2" />
 
         <View
@@ -60,7 +61,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/type_icon3"
+            android:background="@drawable/create_event_step2_selector_icon3"
             android:id="@+id/scenario_button3" />
 
         <View
@@ -72,7 +73,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/type_icon4"
+            android:background="@drawable/create_event_step2_selector_icon4"
             android:id="@+id/scenario_button4" />
 
         <View
@@ -84,8 +85,169 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/type_icon5"
+            android:background="@drawable/create_event_step2_selector_icon5"
             android:id="@+id/scenario_button5" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/slackness"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/body"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/control"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/impulse"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/emotion"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/social_interaction"/>
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="1dp"
+        >
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/create_event_step2_selector_icon6"
+            android:id="@+id/scenario_button6" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/create_event_step2_selector_icon7"
+            android:id="@+id/scenario_button7" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:background="@drawable/create_event_step2_selector_icon8"
+            android:id="@+id/scenario_button8" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:visibility="invisible"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="@dimen/create_even_scenario_height"
+            android:layout_weight="1"
+            android:visibility="invisible"/>
 
         <View
             android:layout_width="10dp"
@@ -97,18 +259,108 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        >
 
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/get_along"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/social"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/entertain"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="@dimen/create_even_scenario_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Description..."
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:id="@+id/layout_step2_question"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_step2_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/step2_question"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:entries="@array/spinner_step2"
+            android:id="@+id/spinner_step2_question"/>
+
+
+
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorAccent"-->
+            <!--android:id="@+id/list_question_step1"/>-->
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
