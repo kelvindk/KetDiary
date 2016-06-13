@@ -2,7 +2,6 @@ package ubicomp.ketdiary.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,14 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.create_event.StepBehaviorAdapter;
-import ubicomp.ketdiary.create_event.StepRelapseProbabilityAdapter;
-import ubicomp.ketdiary.create_event.StepScenarioAdapter;
+import ubicomp.ketdiary.create_event.steps.StepBehaviorAdapter;
+import ubicomp.ketdiary.create_event.steps.StepEmotionAdapter;
+import ubicomp.ketdiary.create_event.steps.StepRelapseProbabilityAdapter;
+import ubicomp.ketdiary.create_event.steps.StepScenarioAdapter;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
-import ubicomp.ketdiary.create_event.StepTimeAdapter;
+import ubicomp.ketdiary.create_event.steps.StepTimeAdapter;
 
 /**
  * A standalone activity for create(add) new event.
@@ -34,6 +32,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private StepScenarioAdapter step2Adapter = null;
     private StepRelapseProbabilityAdapter step3Adapter = null;
     private StepBehaviorAdapter step4Adapter = null;
+    private StepEmotionAdapter stepEmotionAdapter = null;
 
 
     @Override
@@ -74,6 +73,8 @@ public class CreateEventActivity extends AppCompatActivity {
         /*** Step 4 ***/
         step4Adapter = new StepBehaviorAdapter(this);
 
+        /*** Step 5 ***/
+        stepEmotionAdapter = new StepEmotionAdapter(this);
     }
 
 

@@ -18,7 +18,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  */
 public class ScrollViewAdapter implements View.OnTouchListener {
 
-    public static final int NUMBER_OF_TOTAL_STEPS = 4;
+    public static final int NUMBER_OF_TOTAL_STEPS = 5;
 
     private CreateEventActivity createEventActivity = null;
     private ScrollView scrollView = null;
@@ -41,11 +41,13 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         stepRelativeLayouts[1] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step2);
         stepRelativeLayouts[2] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step3);
         stepRelativeLayouts[3] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step4);
+        stepRelativeLayouts[4] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step5);
 
         stepCoverButtons[0] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step1);
         stepCoverButtons[1] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step2);
         stepCoverButtons[2] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step3);
         stepCoverButtons[3] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step4);
+        stepCoverButtons[4] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step5);
 
         // Get ScrollView of create event page and set a touch listener.
         scrollView = (ScrollView) createEventActivity.

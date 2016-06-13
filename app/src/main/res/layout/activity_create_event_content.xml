@@ -94,9 +94,34 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:background="@color/colorWhite"
             android:id="@+id/create_event_cover_step4"
+            android:alpha="0.7"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <!--Step5-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/create_event_step4"
+        android:id="@+id/create_event_step5"
+        android:visibility="gone"
+        android:layout_alignParentStart="true">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/activity_create_event_emotion" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorWhite"
+            android:id="@+id/create_event_cover_step5"
             android:alpha="0.7"
             android:visibility="gone"/>
 

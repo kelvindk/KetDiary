@@ -85,7 +85,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon5"
+            android:background="@drawable/type_icon5"
             android:id="@+id/scenario_button5" />
 
         <View
@@ -200,7 +200,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon6"
+            android:background="@drawable/type_icon6"
             android:id="@+id/scenario_button6" />
 
         <View
@@ -212,7 +212,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon7"
+            android:background="@drawable/type_icon7"
             android:id="@+id/scenario_button7" />
 
         <View
@@ -224,7 +224,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon8"
+            android:background="@drawable/type_icon8"
             android:id="@+id/scenario_button8" />
 
         <View
@@ -341,8 +341,7 @@
             android:id="@+id/textview_step2_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/step2_question"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <Spinner
             android:layout_width="match_parent"
