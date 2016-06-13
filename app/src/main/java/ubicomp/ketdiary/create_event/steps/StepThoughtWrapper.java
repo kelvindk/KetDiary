@@ -29,7 +29,7 @@ public class StepThoughtWrapper {
 
     private CreateEventActivity createEventActivity = null;
 
-    EditText editText = null;
+    private EditText editText = null;
 
     public StepThoughtWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
@@ -101,8 +101,8 @@ public class StepThoughtWrapper {
 
         @Override
         public void afterTextChanged(Editable input) {
-            Log.d("Ket", "afterTextChanged "+input.toString());
-            createEventActivity.scrollViewScrollToBottom();
+            Log.d("Ket", "step6 afterTextChanged "+input.toString());
+//            createEventActivity.scrollViewScrollToBottom();
         }
 
         @Override

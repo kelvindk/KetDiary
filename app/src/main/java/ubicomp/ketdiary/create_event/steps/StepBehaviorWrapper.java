@@ -29,7 +29,7 @@ public class StepBehaviorWrapper {
 
     private CreateEventActivity createEventActivity = null;
 
-    EditText editText = null;
+    private EditText editText = null;
 
     public StepBehaviorWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
@@ -102,7 +102,7 @@ public class StepBehaviorWrapper {
         @Override
         public void afterTextChanged(Editable input) {
             Log.d("Ket", "afterTextChanged "+input.toString());
-            createEventActivity.scrollViewScrollToBottom();
+//            createEventActivity.scrollViewScrollToBottom();
         }
 
         @Override

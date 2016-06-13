@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -65,6 +66,39 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
 
     /*
+    *  Set specific UI actions for particular steps.
+    * */
+    private void setUiActions() {
+        switch (currentStep) {
+            case 0:
+                break;
+            case 3:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep4 = new Handler();
+                handlerStep4.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step4)).requestFocus();
+                    }
+                }, 50);
+                break;
+            case 5:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep6 = new Handler();
+                handlerStep6.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_thought_step6)).requestFocus();
+                    }
+                }, 50);
+                break;
+        }
+    }
+
+
+    /*
     *   Click listener of previous step button.
     * */
     View.OnClickListener previousButtonOnClickListener = new View.OnClickListener() {
@@ -104,6 +138,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                     scrollToBottom();
                 }
             }, 50);
+
+            // Do specific UI actions for particular step.
+            setUiActions();
 
         }
     };
@@ -148,10 +185,8 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                 }
             }, 50);
 
-
-
-
-
+            // Do specific UI actions for particular step.
+            setUiActions();
         }
     };
 
