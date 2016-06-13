@@ -25,10 +25,13 @@ public class MainActivity extends AppCompatActivity {
     // The class to manipulate fragment switch, all switching should use this class.
     private FragmentSwitcher fragmentSwitcher = null;
 
+    private static MainActivity mainActivity = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity = this;
         setContentView(R.layout.activity_main);
 
         // Set full screen.
@@ -60,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
 //            super.onBackPressed();
 //        }
         super.onBackPressed();
+    }
+
+    public static MainActivity getMainActivity() {
+        return mainActivity;
     }
 
 
