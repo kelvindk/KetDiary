@@ -12,11 +12,11 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepRelapseTempAdapter {
+public class StepRelapseTempWrapper {
 
     private CreateEventActivity createEventActivity = null;
 
-    public StepRelapseTempAdapter(CreateEventActivity createEventActivity) {
+    public StepRelapseTempWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
 

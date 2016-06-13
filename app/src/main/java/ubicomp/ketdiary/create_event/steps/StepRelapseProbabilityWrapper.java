@@ -12,11 +12,11 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepRelapseProbabilityAdapter implements RadioGroup.OnCheckedChangeListener {
+public class StepRelapseProbabilityWrapper implements RadioGroup.OnCheckedChangeListener {
 
     private CreateEventActivity createEventActivity = null;
 
-    public StepRelapseProbabilityAdapter(CreateEventActivity createEventActivity) {
+    public StepRelapseProbabilityWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
         RadioGroup radioGroup = (RadioGroup) createEventActivity.findViewById(R.id.radioGroupStep3);

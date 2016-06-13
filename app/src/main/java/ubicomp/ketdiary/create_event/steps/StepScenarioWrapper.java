@@ -16,7 +16,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  *
  * Created by kelvindk on 16/6/11.
  */
-public class StepScenarioAdapter implements View.OnClickListener {
+public class StepScenarioWrapper implements View.OnClickListener {
 
     private CreateEventActivity createEventActivity = null;
 
@@ -26,7 +26,7 @@ public class StepScenarioAdapter implements View.OnClickListener {
     private int previousSelectedIcon = 0;
 
 
-    public StepScenarioAdapter(CreateEventActivity createEventActivity) {
+    public StepScenarioWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
         spinner_step2_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);
@@ -130,49 +130,49 @@ public class StepScenarioAdapter implements View.OnClickListener {
         int iconSelectedDrawableId = 0;
         switch(view.getId()) {
             case R.id.scenario_button1:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 1");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 1");
                 iconSelectedStringId = R.string.slackness;
                 iconSelectedDrawableId = R.drawable.type_icon1_pressed;
                 previousSelectedIcon = 0;
                 break;
             case R.id.scenario_button2:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 2");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 2");
                 iconSelectedStringId = R.string.body;
                 iconSelectedDrawableId = R.drawable.type_icon2_pressed;
                 previousSelectedIcon = 1;
                 break;
             case R.id.scenario_button3:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 3");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 3");
                 iconSelectedStringId = R.string.control;
                 iconSelectedDrawableId = R.drawable.type_icon3_pressed;
                 previousSelectedIcon = 2;
                 break;
             case R.id.scenario_button4:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 4");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 4");
                 iconSelectedStringId = R.string.impulse;
                 iconSelectedDrawableId = R.drawable.type_icon4_pressed;
                 previousSelectedIcon = 3;
                 break;
             case R.id.scenario_button5:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 5");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 5");
                 iconSelectedStringId = R.string.emotion;
                 iconSelectedDrawableId = R.drawable.type_icon5_pressed;
                 previousSelectedIcon = 4;
                 break;
             case R.id.scenario_button6:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 6");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 6");
                 iconSelectedStringId = R.string.get_along;
                 iconSelectedDrawableId = R.drawable.type_icon6_pressed;
                 previousSelectedIcon = 5;
                 break;
             case R.id.scenario_button7:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 7");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 7");
                 iconSelectedStringId = R.string.social;
                 iconSelectedDrawableId = R.drawable.type_icon7_pressed;
                 previousSelectedIcon = 6;
                 break;
             case R.id.scenario_button8:
-                Log.d("Ket", "StepScenarioAdapter "+view.getId()+" 8");
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 8");
                 iconSelectedStringId = R.string.entertain;
                 iconSelectedDrawableId = R.drawable.type_icon8_pressed;
                 previousSelectedIcon = 7;

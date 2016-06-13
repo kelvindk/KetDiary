@@ -13,14 +13,14 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepTimeAdapter {
+public class StepTimeWrapper {
 
     private CreateEventActivity createEventActivity = null;
 
     private Spinner spinner_day = null;
     private Spinner spinner_time_period = null;
 
-    public StepTimeAdapter(CreateEventActivity createEventActivity) {
+    public StepTimeWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
         // Setup spinner for step 1: day.

@@ -14,13 +14,13 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepEmotionAdapter {
+public class StepEmotionWrapper {
 
     private CreateEventActivity createEventActivity = null;
 
     Spinner spinner_step5_question = null;
 
-    public StepEmotionAdapter(CreateEventActivity createEventActivity) {
+    public StepEmotionWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
         spinner_step5_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);

@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.steps.*;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
-import ubicomp.ketdiary.create_event.steps.StepTimeAdapter;
+import ubicomp.ketdiary.create_event.steps.StepTimeWrapper;
 
 /**
  * A standalone activity for create(add) new event.
@@ -25,12 +25,12 @@ import ubicomp.ketdiary.create_event.steps.StepTimeAdapter;
 public class CreateEventActivity extends AppCompatActivity {
 
     private ScrollViewAdapter scrollViewAdapter = null;
-    private StepTimeAdapter step1Adapter = null;
-    private StepScenarioAdapter step2Adapter = null;
-    private StepRelapseProbabilityAdapter step3Adapter = null;
-    private StepBehaviorAdapter step4Adapter = null;
-    private StepEmotionAdapter step5Adapter = null;
-    private StepThoughtAdapter step6Adapter = null;
+    private StepTimeWrapper step1Adapter = null;
+    private StepScenarioWrapper step2Adapter = null;
+    private StepRelapseProbabilityWrapper step3Adapter = null;
+    private StepBehaviorWrapper step4Adapter = null;
+    private StepEmotionWrapper step5Adapter = null;
+    private StepThoughtWrapper step6Adapter = null;
 
 
     @Override
@@ -60,22 +60,22 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         /*** Step 1 ***/
-        step1Adapter = new StepTimeAdapter(this);
+        step1Adapter = new StepTimeWrapper(this);
 
         /*** Step 2 ***/
-        step2Adapter = new StepScenarioAdapter(this);
+        step2Adapter = new StepScenarioWrapper(this);
 
         /*** Step 3 ***/
-        step3Adapter = new StepRelapseProbabilityAdapter(this);
+        step3Adapter = new StepRelapseProbabilityWrapper(this);
 
         /*** Step 4 ***/
-        step4Adapter = new StepBehaviorAdapter(this);
+        step4Adapter = new StepBehaviorWrapper(this);
 
         /*** Step 5 ***/
-        step5Adapter = new StepEmotionAdapter(this);
+        step5Adapter = new StepEmotionWrapper(this);
 
         /*** Step 6 ***/
-        step6Adapter = new StepThoughtAdapter(this);
+        step6Adapter = new StepThoughtWrapper(this);
     }
 
 
@@ -131,10 +131,10 @@ public class CreateEventActivity extends AppCompatActivity {
         }
 
         switch (requestCode) {
-            case StepBehaviorAdapter.INTENT_SPEECH_INPUT_RESULT:
+            case StepBehaviorWrapper.INTENT_SPEECH_INPUT_RESULT:
                 step4Adapter.onSpeechToTextActivityResult(result);
                 break;
-            case StepThoughtAdapter.INTENT_SPEECH_INPUT_RESULT:
+            case StepThoughtWrapper.INTENT_SPEECH_INPUT_RESULT:
                 step6Adapter.onSpeechToTextActivityResult(result);
                 break;
         }

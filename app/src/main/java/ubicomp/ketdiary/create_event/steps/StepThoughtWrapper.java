@@ -23,7 +23,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepThoughtAdapter {
+public class StepThoughtWrapper {
 
     public static final int INTENT_SPEECH_INPUT_RESULT = 200;
 
@@ -31,7 +31,7 @@ public class StepThoughtAdapter {
 
     EditText editText = null;
 
-    public StepThoughtAdapter(CreateEventActivity createEventActivity) {
+    public StepThoughtWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
 
