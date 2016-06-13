@@ -1,29 +1,25 @@
 package ubicomp.ketdiary.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.create_event.ScenarioIconClickListener;
+import ubicomp.ketdiary.create_event.StepBehaviorAdapter;
+import ubicomp.ketdiary.create_event.StepRelapseProbabilityAdapter;
+import ubicomp.ketdiary.create_event.StepScenarioAdapter;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
-import ubicomp.ketdiary.create_event.SpinnerDayListener;
-import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
+import ubicomp.ketdiary.create_event.StepTimeAdapter;
 
 /**
  * A standalone activity for create(add) new event.
@@ -33,11 +29,11 @@ import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-
-    private Spinner spinner_day = null;
-    private Spinner spinner_time_period = null;
     private ScrollViewAdapter scrollViewAdapter = null;
-    private ScenarioIconClickListener scenarioIconClickListener = null;
+    private StepTimeAdapter step1Adapter = null;
+    private StepScenarioAdapter step2Adapter = null;
+    private StepRelapseProbabilityAdapter step3Adapter = null;
+    private StepBehaviorAdapter step4Adapter = null;
 
 
     @Override
@@ -66,41 +62,19 @@ public class CreateEventActivity extends AppCompatActivity {
         scrollViewAdapter.setScrollDisable(true);
 
 
-        /*** Step1 ***/
-        // Setup spinner for step 1: day.
-        spinner_day = (Spinner) findViewById(R.id.spinner_day);
-        // Set click listener.
-        spinner_day.setOnItemSelectedListener(new SpinnerDayListener(this));
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> spinner_day_adapter = ArrayAdapter.createFromResource(
-                this, R.array.spinner_day, android.R.layout.simple_spinner_item);
-        spinner_day_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner_day.setAdapter(spinner_day_adapter);
+        /*** Step 1 ***/
+        step1Adapter = new StepTimeAdapter(this);
 
-        // Setup spinner for step 1: time period.
-        spinner_time_period = (Spinner) findViewById(R.id.spinner_time_period);
-        // Set click listener.
-        spinner_time_period.setOnItemSelectedListener(new SpinnerTimePeriodListener(this));
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> spinner_time_period_adapter = ArrayAdapter.createFromResource(
-                this, R.array.spinner_time_period, android.R.layout.simple_spinner_item);
-        spinner_time_period_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner_time_period.setAdapter(spinner_time_period_adapter);
+        /*** Step 2 ***/
+        step2Adapter = new StepScenarioAdapter(this);
 
+        /*** Step 3 ***/
+        step3Adapter = new StepRelapseProbabilityAdapter(this);
 
-        /*** Step2 ***/
-        scenarioIconClickListener = new ScenarioIconClickListener(this);
-
-//        ListView listview_question_step1 = (ListView) findViewById(R.id.listview_question_step1);
-//        ArrayAdapter<String> listview_question_step1_adapter =
-//                new ArrayAdapter(this,android.R.layout.simple_list_item_1,
-//                        getResources().getStringArray(R.array.spinner_step1));;
-//        listview_question_step1.setAdapter(listview_question_step1_adapter);
+        /*** Step 4 ***/
+        step4Adapter = new StepBehaviorAdapter(this);
 
     }
-
 
 
     @Override
@@ -114,7 +88,6 @@ public class CreateEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Ket", "actionSaveEvent");
 //                // Listener of action Save button
-                scrollViewAdapter.setScrollDisable(true);
                 scrollViewAdapter.scrollToTop();
 
             }
@@ -127,7 +100,6 @@ public class CreateEventActivity extends AppCompatActivity {
                 Log.d("Ket", "actionCancelEvent");
                 // Listener of action Cancel button, back previous page after click.
 //                onBackPressed();
-                scrollViewAdapter.setScrollDisable(false);
                 scrollViewAdapter.scrollToBottom();
 
 
@@ -135,5 +107,33 @@ public class CreateEventActivity extends AppCompatActivity {
         });
 
         return true;
+    }
+
+    /*
+    *  Pass method call to ScrollViewAdapter.
+    * */
+    public void scrollViewScrollToBottom() {
+        scrollViewAdapter.scrollToBottom();
+    }
+
+
+    /*
+    *  onActivityResult, to receive message from other Activity.
+    * */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent result) {
+        super.onActivityResult(requestCode, resultCode, result);
+
+        if (resultCode != RESULT_OK || result == null) {
+            return;
+        }
+
+        switch (requestCode) {
+            case StepBehaviorAdapter.INTENT_SPEECH_INPUT_RESULT: {
+                step4Adapter.onSpeechToTextActivityResult(result);
+                break;
+            }
+
+        }
     }
 }

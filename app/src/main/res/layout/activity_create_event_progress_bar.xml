@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorWhite"
+        android:text="@string/create_event_progress"
+        android:layout_alignParentTop="true"
+        android:id="@+id/create_event_text_left" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorWhite"
+        android:text="1/10"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/create_event_text_right"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/create_event_text_left"
+        android:layout_toStartOf="@+id/create_event_text_right">
+
+        <!--place the progress bar-->
+
+    </LinearLayout>
+
+</RelativeLayout>

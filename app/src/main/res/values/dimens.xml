@@ -11,4 +11,8 @@
     <dimen name="create_even_step_bottom_width">180dp</dimen>
     <dimen name="create_even_scenario_height">60dp</dimen>
     <dimen name="create_even_scenario_width">60dp</dimen>
+
+    <dimen name="voice_input_height">40dp</dimen>
+    <dimen name="voice_input_width">35dp</dimen>
+    <dimen name="text_input_width">300dp</dimen>
 </resources>

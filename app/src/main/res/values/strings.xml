@@ -75,4 +75,19 @@
     </string-array>
 
 
+    <string name="relapse_probability">使用機率</string>
+    <string name="step3_question">這個事件會讓你想要使用K的機率?</string>
+    <string name="very_small">很小</string>
+    <string name="small">小</string>
+    <string name="medium">中</string>
+    <string name="large">大</string>
+    <string name="very_large">很大</string>
+    
+    <string name="then_behavior">當時行為</string>
+    <string name="step4_question_1">在「</string>
+    <string name="step4_question_2">」的時候，我作了什麼?</string>
+    <string name="frequent_input_step4">當用行為</string>
+
+
+
 </resources>
