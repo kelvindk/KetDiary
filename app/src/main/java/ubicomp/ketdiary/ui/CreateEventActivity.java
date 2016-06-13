@@ -12,10 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.create_event.steps.StepBehaviorAdapter;
-import ubicomp.ketdiary.create_event.steps.StepEmotionAdapter;
-import ubicomp.ketdiary.create_event.steps.StepRelapseProbabilityAdapter;
-import ubicomp.ketdiary.create_event.steps.StepScenarioAdapter;
+import ubicomp.ketdiary.create_event.steps.*;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
 import ubicomp.ketdiary.create_event.steps.StepTimeAdapter;
 
@@ -32,7 +29,8 @@ public class CreateEventActivity extends AppCompatActivity {
     private StepScenarioAdapter step2Adapter = null;
     private StepRelapseProbabilityAdapter step3Adapter = null;
     private StepBehaviorAdapter step4Adapter = null;
-    private StepEmotionAdapter stepEmotionAdapter = null;
+    private StepEmotionAdapter step5Adapter = null;
+    private StepThoughtAdapter step6Adapter = null;
 
 
     @Override
@@ -74,7 +72,10 @@ public class CreateEventActivity extends AppCompatActivity {
         step4Adapter = new StepBehaviorAdapter(this);
 
         /*** Step 5 ***/
-        stepEmotionAdapter = new StepEmotionAdapter(this);
+        step5Adapter = new StepEmotionAdapter(this);
+
+        /*** Step 6 ***/
+        step6Adapter = new StepThoughtAdapter(this);
     }
 
 
@@ -130,11 +131,12 @@ public class CreateEventActivity extends AppCompatActivity {
         }
 
         switch (requestCode) {
-            case StepBehaviorAdapter.INTENT_SPEECH_INPUT_RESULT: {
+            case StepBehaviorAdapter.INTENT_SPEECH_INPUT_RESULT:
                 step4Adapter.onSpeechToTextActivityResult(result);
                 break;
-            }
-
+            case StepThoughtAdapter.INTENT_SPEECH_INPUT_RESULT:
+                step6Adapter.onSpeechToTextActivityResult(result);
+                break;
         }
     }
 }

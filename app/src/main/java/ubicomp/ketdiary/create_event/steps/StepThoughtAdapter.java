@@ -19,28 +19,28 @@ import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
- * Related actions in step 4 of create event.
+ * Related actions in step 6 of create event.
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepBehaviorAdapter{
+public class StepThoughtAdapter {
 
-    public static final int INTENT_SPEECH_INPUT_RESULT = 100;
+    public static final int INTENT_SPEECH_INPUT_RESULT = 200;
 
     private CreateEventActivity createEventActivity = null;
 
     EditText editText = null;
 
-    public StepBehaviorAdapter(CreateEventActivity createEventActivity) {
+    public StepThoughtAdapter(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
 
 
         // Set text changed listener.
-        editText = (EditText) createEventActivity.findViewById(R.id.editText_behavior_step4);
+        editText = (EditText) createEventActivity.findViewById(R.id.editText_thought_step6);
         editText.addTextChangedListener(textWatcher);
 
-        ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step4)).setOnClickListener(voice_input_step4);
-        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step4)).setOnClickListener(recent_behavior_step4);
+        ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step6)).setOnClickListener(voice_input_listener);
+        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step6)).setOnClickListener(recent_behavior_listener);
 
 
     }
@@ -57,7 +57,7 @@ public class StepBehaviorAdapter{
     }
 
     // Enable voice input.
-    View.OnClickListener voice_input_step4 = new View.OnClickListener() {
+    View.OnClickListener voice_input_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "voice_input_step4");
@@ -73,15 +73,15 @@ public class StepBehaviorAdapter{
     };
 
     // Popup dialog to show recently use behavior.
-    View.OnClickListener recent_behavior_step4 = new View.OnClickListener() {
+    View.OnClickListener recent_behavior_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("Ket", "recent_behavior_step4");
+            Log.d("Ket", "recent_behavior_step6");
 
             final String[] frequentInputString = {"1","2","3","4","5","6"};
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
-            dialog.setTitle(R.string.frequent_input_step4);
+            dialog.setTitle(R.string.frequent_input_step6);
             dialog.setItems(frequentInputString, new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int pos) {
