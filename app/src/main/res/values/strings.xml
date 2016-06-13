@@ -94,4 +94,20 @@
     <string name="step5_question_left">「</string>
     <string name="step5_question_right">」的時候，當時的情緒是?</string>
 
+    <string-array name="spinner_step5">
+        <item>生氣</item>
+        <item>難過</item>
+        <item>緊張</item>
+        <item>厭惡</item>
+        <item>開心</item>
+        <item>驚恐</item>
+        <item>無聊</item>
+        <item>渴望</item>
+    </string-array>
+
+    <string name="then_thought">當時想法</string>
+    <string name="step6_question_left">當「</string>
+    <string name="step6_question_mid">」，是什麼原因讓我感到「?</string>
+    <string name="step6_question_right">」?</string>
+
 </resources>

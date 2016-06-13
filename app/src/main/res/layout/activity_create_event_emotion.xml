@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:spinnerMode="dialog"
-        android:entries="@array/spinner_step2"
+        android:entries="@array/spinner_step5"
         android:id="@+id/spinner_step5_question"/>
 
 </LinearLayout>
