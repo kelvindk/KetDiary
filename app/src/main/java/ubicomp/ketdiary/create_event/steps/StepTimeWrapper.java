@@ -6,6 +6,7 @@ import android.widget.Spinner;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.SpinnerDayListener;
 import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -16,12 +17,15 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class StepTimeWrapper {
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     private Spinner spinner_day = null;
     private Spinner spinner_time_period = null;
 
     public StepTimeWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+        // Get the EvenLogStructure for filling the field.
+        eventLogStructure = createEventActivity.geteventLogStructure();
 
         // Setup spinner for step 1: day.
         spinner_day = (Spinner) createEventActivity.findViewById(R.id.spinner_day);

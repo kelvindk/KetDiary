@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -17,11 +18,14 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class StepEmotionWrapper {
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     Spinner spinner_step5_question = null;
 
     public StepEmotionWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+        this.eventLogStructure = createEventActivity.geteventLogStructure();
+
 
         spinner_step5_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);
         spinner_step5_question.setOnItemSelectedListener(spinnerListener);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.steps.*;
 import ubicomp.ketdiary.create_event.ScrollViewAdapter;
 import ubicomp.ketdiary.create_event.steps.StepTimeWrapper;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 
 /**
  * A standalone activity for create(add) new event.
@@ -23,6 +25,8 @@ import ubicomp.ketdiary.create_event.steps.StepTimeWrapper;
  */
 
 public class CreateEventActivity extends AppCompatActivity {
+
+    private EventLogStructure eventLogStructure = null;
 
     private ScrollViewAdapter scrollViewAdapter = null;
     private StepTimeWrapper step1Adapter = null;
@@ -58,6 +62,9 @@ public class CreateEventActivity extends AppCompatActivity {
         // Disable scrolling on ScrollView.
         scrollViewAdapter.setScrollDisable(true);
 
+        /*** Handle filling content of event ***/
+        // New a event data structure.
+        EventLogStructure eventLogStructure = new EventLogStructure();
 
         /*** Step 1 ***/
         step1Adapter = new StepTimeWrapper(this);
@@ -110,6 +117,12 @@ public class CreateEventActivity extends AppCompatActivity {
 
         return true;
     }
+
+
+    public EventLogStructure geteventLogStructure() {
+        return eventLogStructure;
+    }
+
 
     /*
     *  Pass method call to ScrollViewAdapter.

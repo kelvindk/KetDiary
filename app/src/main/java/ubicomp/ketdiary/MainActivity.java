@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.WindowManager;
 
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 import ubicomp.ketdiary.ui.EventContentActivity;
 import ubicomp.ketdiary.ui.FragmentSwitcher;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentSwitcher fragmentSwitcher = null;
 
     private static MainActivity mainActivity = null;
+
 
 
     @Override
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
         // For developing
+        EventLogStructure event = new EventLogStructure();
+        event.eventTime
         Intent createEventIntent = new Intent (this, CreateEventActivity.class);
         startActivity(createEventIntent);
 

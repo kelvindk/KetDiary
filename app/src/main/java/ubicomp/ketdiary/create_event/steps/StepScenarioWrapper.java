@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -19,6 +20,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class StepScenarioWrapper implements View.OnClickListener {
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     Spinner spinner_step2_question = null;
 
@@ -28,6 +30,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
     public StepScenarioWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+        this.eventLogStructure = createEventActivity.geteventLogStructure();
 
         spinner_step2_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);
         spinner_step2_question.setOnItemSelectedListener(spinnerListener);

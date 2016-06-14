@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.RadioGroup;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -15,9 +16,11 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class StepRelapseProbabilityWrapper implements RadioGroup.OnCheckedChangeListener {
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     public StepRelapseProbabilityWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+        this.eventLogStructure = createEventActivity.geteventLogStructure();
 
         RadioGroup radioGroup = (RadioGroup) createEventActivity.findViewById(R.id.radioGroupStep3);
         radioGroup.setOnCheckedChangeListener(this);
