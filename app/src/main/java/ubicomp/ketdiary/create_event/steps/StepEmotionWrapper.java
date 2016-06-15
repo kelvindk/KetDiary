@@ -1,12 +1,15 @@
 package ubicomp.ketdiary.create_event.steps;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -17,34 +20,46 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class StepEmotionWrapper {
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
-    Spinner spinner_step5_question = null;
+
+    private EditText editText_emotion_step5 = null;
 
     public StepEmotionWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+        this.eventLogStructure = createEventActivity.getEventLogStructure();
 
-        spinner_step5_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);
-        spinner_step5_question.setOnItemSelectedListener(spinnerListener);
+
+        ((ImageButton) createEventActivity.findViewById(R.id.recent_emotion_step5)).setOnClickListener(behavior_step5);
+        editText_emotion_step5 = ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5));
+        editText_emotion_step5.setOnClickListener(behavior_step5);
+
 
     }
 
-    /*
-    *  Select listener for spinner of scenario.
-    * */
-    AdapterView.OnItemSelectedListener spinnerListener = new AdapterView.OnItemSelectedListener() {
-
+    // Popup dialog to show recently use behavior.
+    View.OnClickListener behavior_step5 = new View.OnClickListener() {
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Log.d("Ket", " "+position);
+        public void onClick(View v) {
+            Log.d("Ket", "recent_behavior_step4");
 
-            // Forward fill up to next step.
-            /* No yet implement*/
-        }
+            final String[] emotionStrings =
+                    createEventActivity.getApplicationContext().getResources().getStringArray(R.array.then_emotions);
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
+            dialog.setTitle(R.string.then_emotion);
+            dialog.setItems(emotionStrings, new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int pos) {
+                    // TODO Auto-generated method stub
+                    Log.d("Ket", emotionStrings[pos]);
+                    editText_emotion_step5.setText(emotionStrings[pos]);
+                }
+            });
 
+            dialog.show();
         }
     };
+
 
 }

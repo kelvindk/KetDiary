@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="10dp"
-    android:paddingBottom="30dp"
+    android:paddingBottom="20dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="1dp"
+        android:paddingLeft="5dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -33,12 +33,33 @@
 
     </LinearLayout>
 
-    <Spinner
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:spinnerMode="dialog"
-        android:entries="@array/spinner_step5"
-        android:id="@+id/spinner_step5_question"/>
+        android:weightSum="1">
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_emotion_step5"
+            android:editable="false"
+            android:layout_weight="0.95" />
+
+
+        <ImageButton
+            android:layout_width="@dimen/voice_input_width"
+            android:layout_height="@dimen/voice_input_height"
+            android:alpha="0.6"
+            android:background="@drawable/ic_arrow_drop_down_black_48dp"
+            android:id="@+id/recent_emotion_step5"
+            android:layout_weight="0.05"/>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -28,12 +29,13 @@ public class StepBehaviorWrapper {
     public static final int INTENT_SPEECH_INPUT_RESULT = 100;
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     private EditText editText = null;
 
     public StepBehaviorWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
-
+        this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         // Set text changed listener.
         editText = (EditText) createEventActivity.findViewById(R.id.editText_behavior_step4);
@@ -52,7 +54,7 @@ public class StepBehaviorWrapper {
         ArrayList<String> resultStrings = result
                 .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
         Log.d("Ket", resultStrings.get(0));
-        editText.append(resultStrings.get(0));
+        editText.append(resultStrings.get(0)+" ");
         editText.requestFocus();
     }
 

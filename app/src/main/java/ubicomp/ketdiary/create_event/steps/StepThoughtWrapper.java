@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -28,19 +29,20 @@ public class StepThoughtWrapper {
     public static final int INTENT_SPEECH_INPUT_RESULT = 200;
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     private EditText editText = null;
 
     public StepThoughtWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
-
+        this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         // Set text changed listener.
         editText = (EditText) createEventActivity.findViewById(R.id.editText_thought_step6);
         editText.addTextChangedListener(textWatcher);
 
         ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step6)).setOnClickListener(voice_input_listener);
-        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step6)).setOnClickListener(recent_behavior_listener);
+        ((ImageButton) createEventActivity.findViewById(R.id.recent_thought_step6)).setOnClickListener(recent_behavior_listener);
 
 
     }
@@ -60,7 +62,7 @@ public class StepThoughtWrapper {
     View.OnClickListener voice_input_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("Ket", "voice_input_step4");
+            Log.d("Ket", "voice_input_step6");
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "zh-TW");
             try {

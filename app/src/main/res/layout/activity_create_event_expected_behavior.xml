@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/expected_behavior"/>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Temp to show text, will remove!-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step4_question_left"
+            android:paddingLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textview_step7_question_scenario"/>
+
+        <!--Temp to show text, will remove!-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step7_question"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_behavior_step7"
+            android:layout_weight="0.9" />
+
+        <ImageButton
+            android:layout_width="@dimen/voice_input_width"
+            android:layout_height="@dimen/voice_input_height"
+            android:alpha="0.6"
+            android:background="@drawable/ic_mic_black_48dp"
+            android:id="@+id/voice_input_step7"
+            android:layout_weight="0.05"/>
+
+        <ImageButton
+            android:layout_width="@dimen/voice_input_width"
+            android:layout_height="@dimen/voice_input_height"
+            android:alpha="0.6"
+            android:background="@drawable/ic_arrow_drop_down_black_48dp"
+            android:id="@+id/recent_behavior_step7"
+            android:layout_weight="0.05"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

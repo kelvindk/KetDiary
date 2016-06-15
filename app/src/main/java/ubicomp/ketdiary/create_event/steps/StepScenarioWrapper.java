@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -19,6 +20,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class StepScenarioWrapper implements View.OnClickListener {
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
     Spinner spinner_step2_question = null;
 
@@ -28,6 +30,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
     public StepScenarioWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
+        this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         spinner_step2_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);
         spinner_step2_question.setOnItemSelectedListener(spinnerListener);
@@ -58,7 +61,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Log.d("Ket", " "+position);
+            Log.d("Ket", " "+view);
 
             // Forward fill up to next step.
             /* No yet implement*/
@@ -128,54 +131,65 @@ public class StepScenarioWrapper implements View.OnClickListener {
         // Acquire the string and pressed icon ID along with selected icons.
         int iconSelectedStringId = 0;
         int iconSelectedDrawableId = 0;
+
+        EventLogStructure.ScenarioTypeEnum selectedScenarioTypeEnum = null;
+
         switch(view.getId()) {
             case R.id.scenario_button1:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 1");
                 iconSelectedStringId = R.string.slackness;
                 iconSelectedDrawableId = R.drawable.type_icon1_pressed;
                 previousSelectedIcon = 0;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.SLACKNESS;
                 break;
             case R.id.scenario_button2:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 2");
                 iconSelectedStringId = R.string.body;
                 iconSelectedDrawableId = R.drawable.type_icon2_pressed;
                 previousSelectedIcon = 1;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.BODY;
                 break;
             case R.id.scenario_button3:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 3");
                 iconSelectedStringId = R.string.control;
                 iconSelectedDrawableId = R.drawable.type_icon3_pressed;
                 previousSelectedIcon = 2;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.CONTROL;
                 break;
             case R.id.scenario_button4:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 4");
                 iconSelectedStringId = R.string.impulse;
                 iconSelectedDrawableId = R.drawable.type_icon4_pressed;
                 previousSelectedIcon = 3;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.IMPULSE;
                 break;
             case R.id.scenario_button5:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 5");
                 iconSelectedStringId = R.string.emotion;
                 iconSelectedDrawableId = R.drawable.type_icon5_pressed;
                 previousSelectedIcon = 4;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.EMOTION;
                 break;
             case R.id.scenario_button6:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 6");
                 iconSelectedStringId = R.string.get_along;
                 iconSelectedDrawableId = R.drawable.type_icon6_pressed;
                 previousSelectedIcon = 5;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.GET_ALONG;
                 break;
             case R.id.scenario_button7:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 7");
                 iconSelectedStringId = R.string.social;
                 iconSelectedDrawableId = R.drawable.type_icon7_pressed;
                 previousSelectedIcon = 6;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.SOCIAL;
                 break;
             case R.id.scenario_button8:
                 Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 8");
                 iconSelectedStringId = R.string.entertain;
                 iconSelectedDrawableId = R.drawable.type_icon8_pressed;
                 previousSelectedIcon = 7;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.ENTERTAIN;
                 break;
         }
 
@@ -192,6 +206,10 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
         ((LinearLayout) createEventActivity.findViewById(R.id.layout_step2_question)).setVisibility(View.VISIBLE);
 
+        // Switch clicked icon to "selected" icon.
         view.setBackgroundResource(iconSelectedDrawableId);
+
+        /*** Log event scenario type inputted by user. ***/
+        eventLogStructure.scenarioType = selectedScenarioTypeEnum;
     }
 }

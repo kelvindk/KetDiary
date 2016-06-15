@@ -1,5 +1,9 @@
 package ubicomp.ketdiary.fragments.event;
 
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> test_page
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -8,10 +12,21 @@ import java.util.Calendar;
  *
  * Created by kelvindk on 16/6/13.
  */
+<<<<<<< HEAD
 public class EventLogStructure {
 
     // Eight scenario type enum.
     public enum ScenarioEnum {
+=======
+public class EventLogStructure implements Serializable {
+
+    // Key of this object for deliver between activities through Intent.
+    public static final String EVENT_LOG_STRUCUTRE_KEY = "EventLogStructure";
+
+
+    // Eight scenario type enum.
+    public enum ScenarioTypeEnum {
+>>>>>>> test_page
         SLACKNESS, //鬆懈
         BODY, //身體
         CONTROL, //控制
@@ -49,6 +64,7 @@ public class EventLogStructure {
     public Calendar eventTime = null;
 
     // Scenario type
+<<<<<<< HEAD
     ScenarioEnum scnearioType = null;
 
     // Selected scenario.
@@ -76,5 +92,34 @@ public class EventLogStructure {
 
     // Whether this event is completely filled.
     boolean isComplete = false;
+=======
+    public ScenarioTypeEnum scenarioType = null;
+
+    // Selected scenario.
+    public String scenario = null;
+
+    // Risk level of drug use. 1~5. 0: not yet to set.
+    public int drugUseRiskLevel = 0;
+
+    public String originalBehavior = null;
+
+    public EmotionEnum originalEmotion = null;
+
+    public String originalThought = null;
+
+    public String expectedlBehavior = null;
+
+    public EmotionEnum expectedEmotion = null;
+
+    public String expectedThought = null;
+
+    public TherapyStatusEnum therapyStatus = null;
+
+    // Whether this event is filled just after routine test.
+    public boolean isAfterTest = false;
+
+    // Whether this event is completely filled.
+    public boolean isComplete = false;
+>>>>>>> test_page
 
 }
