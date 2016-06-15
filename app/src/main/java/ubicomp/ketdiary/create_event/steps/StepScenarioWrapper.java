@@ -61,10 +61,10 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Log.d("Ket", " "+view);
+            Log.d("Ket", " "+parent.getSelectedItem().toString());
 
-            // Forward fill up to next step.
-            /* No yet implement*/
+            /*** Log event scenario type inputted by user. ***/
+            eventLogStructure.scenario = parent.getSelectedItem().toString();
         }
 
         @Override

@@ -104,7 +104,7 @@ public class StepBehaviorWrapper {
         @Override
         public void afterTextChanged(Editable input) {
             Log.d("Ket", "afterTextChanged "+input.toString());
-//            createEventActivity.scrollViewScrollToBottom();
+
         }
 
         @Override
