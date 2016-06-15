@@ -6,7 +6,7 @@ import android.widget.RadioGroup;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
+import ubicomp.ketdiary.create_event.CreateEventActivity;
 
 /**
  * Related actions in step 3 of create event.

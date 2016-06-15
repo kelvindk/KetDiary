@@ -1,4 +1,4 @@
-package ubicomp.ketdiary.ui;
+package ubicomp.ketdiary.main_activity;
 
 import android.support.design.widget.TabLayout;
 import android.util.Log;

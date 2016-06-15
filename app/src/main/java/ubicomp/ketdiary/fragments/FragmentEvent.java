@@ -13,9 +13,8 @@ import android.widget.ListView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventListAdapter;
-import ubicomp.ketdiary.ui.CreateEventActivity;
-import ubicomp.ketdiary.ui.EventContentActivity;
-import ubicomp.ketdiary.ui.FragmentSwitcher;
+import ubicomp.ketdiary.main_activity.EventContentActivity;
+import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
 /**
  * A placeholder fragment containing a simple view for Event fragment.

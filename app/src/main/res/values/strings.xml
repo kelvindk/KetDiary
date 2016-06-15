@@ -22,6 +22,11 @@
 
     <string name="create_event_name">新增活動</string>
     <string name="create_event_progress">填寫進度</string>
+
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
+
+
     <string name="night">晚上</string>
     <string name="midnight">半夜</string>
     <string name="time">時間</string>
@@ -31,6 +36,7 @@
     <string name="before_yesterday">前天</string>
     <string name="morning">早上</string>
     <string name="afternoon">下午</string>
+
     <string name="previous_step">上一步</string>
     <string name="next_step">下一步</string>
     <string name="scenario_type">情境類型</string>
@@ -129,5 +135,7 @@
     <string name="expected_thought">期待想法</string>
     <string name="step9_question">當時的情況怎麼樣的想法比較好?</string>
     <string name="frequent_input_step9">常用想法</string>
+
+    <string name="confirm_cancel_click">確定要離開本頁面?</string>
 
 </resources>

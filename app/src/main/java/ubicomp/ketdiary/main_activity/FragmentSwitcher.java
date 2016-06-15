@@ -1,4 +1,4 @@
-package ubicomp.ketdiary.ui;
+package ubicomp.ketdiary.main_activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

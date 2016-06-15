@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
+import ubicomp.ketdiary.create_event.CreateEventActivity;
 
 /**
  * Click listener of scenario icons in step2 of create event.

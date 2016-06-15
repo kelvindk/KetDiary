@@ -7,7 +7,7 @@ import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.SpinnerDayListener;
 import ubicomp.ketdiary.create_event.SpinnerTimePeriodListener;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
+import ubicomp.ketdiary.create_event.CreateEventActivity;
 
 /**
  * Related actions in step 1 of create event.

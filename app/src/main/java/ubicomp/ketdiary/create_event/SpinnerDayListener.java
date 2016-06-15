@@ -1,7 +1,5 @@
 package ubicomp.ketdiary.create_event;
 
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,7 +9,6 @@ import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
  * On create event page, the click listener of spinner day.

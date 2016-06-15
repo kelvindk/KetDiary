@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.ui.FragmentSwitcher;
+import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
 /**
  * A placeholder fragment containing a simple view for Test fragment.

@@ -1,7 +1,11 @@
-package ubicomp.ketdiary.ui;
+package ubicomp.ketdiary.create_event;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,12 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.steps.*;
-import ubicomp.ketdiary.create_event.ScrollViewAdapter;
 import ubicomp.ketdiary.create_event.steps.StepTimeWrapper;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 
@@ -28,7 +30,9 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
 
 public class CreateEventActivity extends AppCompatActivity {
 
+    private CreateEventActivity createEventActivity = null;
     private EventLogStructure eventLogStructure = null;
+    private CoordinatorLayout coordinatorLayout = null;
 
     private ScrollViewAdapter scrollViewAdapter = null;
     private StepTimeWrapper step1Adapter = null;
@@ -48,19 +52,24 @@ public class CreateEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
+        createEventActivity = this;
+
+        // Get CoordinatorLayout for showing Snackbar.
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.create_event_coordinatorLayout);
+
         // Get event data structure through Intent.
         Intent intent = this.getIntent();
-        EventLogStructure recievedEventLogStructrue =
+        EventLogStructure receivedEventLogStructure =
                 (EventLogStructure) intent.getSerializableExtra(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);
 
         // For creating a new event, eventLogStructure will be null. Then new an object here.
-        if(recievedEventLogStructrue == null) {
+        if(receivedEventLogStructure == null) {
             Log.d("CreateEvent", "eventLogStructure null");
             eventLogStructure = new EventLogStructure();
         }
         else {
             Log.d("CreateEvent", "existed eventLogStructure, for editing with this page");
-            eventLogStructure = recievedEventLogStructrue;
+            eventLogStructure = receivedEventLogStructure;
         }
 
         // Set full screen.
@@ -74,7 +83,7 @@ public class CreateEventActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                showConfirmDialog();
             }
         });
 
@@ -131,9 +140,10 @@ public class CreateEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Ket", "actionSaveEvent");
-//                // Listener of action Save button
-                scrollViewAdapter.scrollToTop();
-
+                // Listener of action Save button
+                Snackbar.make(coordinatorLayout, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null)
+                        .show();
             }
         });
 
@@ -142,15 +152,28 @@ public class CreateEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Ket", "actionCancelEvent");
-                // Listener of action Cancel button, back previous page after click.
-//                onBackPressed();
-                scrollViewAdapter.scrollToBottom();
-
+                // Listener of action Cancel button, back previous page after confirm.
+                showConfirmDialog();
 
             }
         });
 
         return true;
+    }
+
+    private void showConfirmDialog() {
+        // New dialog.
+        AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
+        dialog.setTitle(R.string.confirm_cancel_click);
+        dialog.setPositiveButton(R.string.confirm,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        /* User clicked "Confirm"*/
+                        onBackPressed();
+                    }
+                });
+        dialog.setNegativeButton(R.string.cancel, null);
+        dialog.show();
     }
 
 

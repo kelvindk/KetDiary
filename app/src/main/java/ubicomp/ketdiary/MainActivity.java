@@ -6,13 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.WindowManager;
 
-import java.util.Calendar;
-
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
-import ubicomp.ketdiary.ui.FragmentSwitcher;
-import ubicomp.ketdiary.ui.TabLayoutWrapper;
-import ubicomp.ketdiary.ui.ToolbarMenuItemWrapper;
+import ubicomp.ketdiary.create_event.CreateEventActivity;
+import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
+import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
 
 public class MainActivity extends AppCompatActivity {
 

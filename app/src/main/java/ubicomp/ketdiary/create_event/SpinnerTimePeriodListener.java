@@ -6,13 +6,10 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
  * On create event page, the click listener of spinner time period.

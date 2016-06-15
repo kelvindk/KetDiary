@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:id="@+id/event_content_coordinatorLayout"
-    tools:context="ubicomp.ketdiary.ui.EventContentActivity">
+    tools:context="ubicomp.ketdiary.main_activity.EventContentActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

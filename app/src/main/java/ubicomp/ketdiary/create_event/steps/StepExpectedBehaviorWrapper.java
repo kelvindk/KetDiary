@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.ui.CreateEventActivity;
+import ubicomp.ketdiary.create_event.CreateEventActivity;
 
 /**
  * Related actions in step 7 of create event.

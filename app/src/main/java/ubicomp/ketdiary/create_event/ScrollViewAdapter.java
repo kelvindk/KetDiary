@@ -2,15 +2,16 @@ package ubicomp.ketdiary.create_event;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
  * This class handle ScrollView's access in create event pgg.
@@ -20,6 +21,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
 public class ScrollViewAdapter implements View.OnTouchListener {
 
     public static final int NUMBER_OF_TOTAL_STEPS = 9;
+    public static final int STEPS_ALLOW_SAVE = 3;
 
     private CreateEventActivity createEventActivity = null;
     private ScrollView scrollView = null;
@@ -29,6 +31,12 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
     // Current step of create event.
     private int currentStep = 0;
+    public int getCurrentStep() {
+        return currentStep;
+    }
+
+    // Current most advanced step had reach. Will only be added.
+    private int currentMaxStep = 0;
     // RelativeLayouts of steps, this array is used to set visibility of step's content.
     private RelativeLayout[] stepRelativeLayouts = new RelativeLayout[NUMBER_OF_TOTAL_STEPS];
     // Buttons of steps as a trick for setting clickable and transparent of of each step
@@ -74,6 +82,7 @@ public class ScrollViewAdapter implements View.OnTouchListener {
     /*
     *  Set specific UI actions for particular steps.
     * */
+    /*** If no extra specific action for each step, can rewrite this function to more simple. ***/
     private void setUiActions() {
         switch (currentStep) {
             case 0:
@@ -189,6 +198,12 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                 }
             }, 50);
 
+            // Disable "Save" action button, if currentStep < 2.
+            if(currentMaxStep < STEPS_ALLOW_SAVE) {
+                ((LinearLayout) createEventActivity.
+                        findViewById(R.id.menu_item_add_event)).setAlpha((float)0.1);
+            }
+
             // Do specific UI actions for particular step.
             setUiActions();
 
@@ -214,6 +229,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
             // Advance the count to next step.
             currentStep++;
+            // Keep most advanced step had reach.
+            if(currentStep > currentMaxStep)
+                currentMaxStep = currentStep;
 
             // Invisible the "next step" button if reach the last step.
             if(currentStep >= (NUMBER_OF_TOTAL_STEPS-1)) {
@@ -234,6 +252,12 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                     scrollToBottom();
                 }
             }, 50);
+
+            // Enable "Save" action button, if currentStep >= 2.
+            if(currentMaxStep >= STEPS_ALLOW_SAVE) {
+                ((LinearLayout) createEventActivity.
+                        findViewById(R.id.menu_item_add_event)).setAlpha(1);
+            }
 
             // Do specific UI actions for particular step.
             setUiActions();

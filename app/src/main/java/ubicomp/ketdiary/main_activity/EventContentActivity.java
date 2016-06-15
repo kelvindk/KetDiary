@@ -1,4 +1,4 @@
-package ubicomp.ketdiary.ui;
+package ubicomp.ketdiary.main_activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

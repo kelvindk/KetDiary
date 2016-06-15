@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@id/menu_item_addevent_linearlayout"
+    android:id="@+id/menu_item_add_event"
     android:orientation="vertical"
+    android:alpha="0.1"
     android:paddingRight="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
