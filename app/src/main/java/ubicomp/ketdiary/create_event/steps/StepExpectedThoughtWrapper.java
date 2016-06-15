@@ -20,29 +20,29 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
- * Related actions in step 4 of create event.
+ * Related actions in step 9 of create event.
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepBehaviorWrapper {
+public class StepExpectedThoughtWrapper {
 
-    public static final int INTENT_SPEECH_INPUT_RESULT = 100;
+    public static final int INTENT_SPEECH_INPUT_RESULT = 400;
 
     private CreateEventActivity createEventActivity = null;
     private EventLogStructure eventLogStructure = null;
 
     private EditText editText = null;
 
-    public StepBehaviorWrapper(CreateEventActivity createEventActivity) {
+    public StepExpectedThoughtWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
         this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         // Set text changed listener.
-        editText = (EditText) createEventActivity.findViewById(R.id.editText_behavior_step4);
+        editText = (EditText) createEventActivity.findViewById(R.id.editText_thought_step9);
         editText.addTextChangedListener(textWatcher);
 
-        ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step4)).setOnClickListener(voice_input_step4);
-        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step4)).setOnClickListener(recent_behavior_step4);
+        ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step9)).setOnClickListener(voice_input_listener);
+        ((ImageButton) createEventActivity.findViewById(R.id.recent_thought_step9)).setOnClickListener(recent_behavior_listener);
 
 
     }
@@ -54,15 +54,15 @@ public class StepBehaviorWrapper {
         ArrayList<String> resultStrings = result
                 .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
         Log.d("Ket", resultStrings.get(0));
-        editText.append(resultStrings.get(0)+" ");
+        editText.append(resultStrings.get(0));
         editText.requestFocus();
     }
 
     // Enable voice input.
-    View.OnClickListener voice_input_step4 = new View.OnClickListener() {
+    View.OnClickListener voice_input_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("Ket", "voice_input_step4");
+            Log.d("Ket", "voice_input_step9");
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "zh-TW");
             try {
@@ -75,15 +75,15 @@ public class StepBehaviorWrapper {
     };
 
     // Popup dialog to show recently use behavior.
-    View.OnClickListener recent_behavior_step4 = new View.OnClickListener() {
+    View.OnClickListener recent_behavior_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("Ket", "recent_behavior_step4");
+            Log.d("Ket", "recent_behavior_step9");
 
             final String[] frequentInputString = {"1","2","3","4","5","6"};
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
-            dialog.setTitle(R.string.frequent_input_step4);
+            dialog.setTitle(R.string.frequent_input_step9);
             dialog.setItems(frequentInputString, new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int pos) {
@@ -103,7 +103,7 @@ public class StepBehaviorWrapper {
 
         @Override
         public void afterTextChanged(Editable input) {
-            Log.d("Ket", "afterTextChanged "+input.toString());
+            Log.d("Ket", "step9 afterTextChanged "+input.toString());
 //            createEventActivity.scrollViewScrollToBottom();
         }
 

@@ -11,36 +11,40 @@ import java.util.Calendar;
  */
 public class EventLogStructure implements Serializable {
 
-//    // Eight scenario type enum.
-//    public enum ScenarioEnum {
-//        SLACKNESS, //鬆懈
-//        BODY, //身體
-//        CONTROL, //控制
-//        IMPULSE, //衝動
-//        EMOTION, //情緒
-//        GET_ALONG, //相處
-//        SOCIAL, //社交
-//        ENTERTAIN, //同樂
-//    };
-//
-//    // Eight emotion type enum.
-//    public enum EmotionEnum {
-//        ENGRY, //生氣
-//        SAD, //難過
-//        NERVOUS, //緊張
-//        HATE, //厭惡
-//        HAPPY, //開心
-//        SCARED, //驚恐
-//        BORING, //無聊
-//        DESIRE, //渴望
-//    };
-//
-//
-//    public enum TherapyStatusEnum {
-//        NOT_YET, //未審核
-//        GOOD,
-//        BAD,
-//    };
+    // Key of this object for deliver between activities through Intent.
+    public static final String EVENT_LOG_STRUCUTRE_KEY = "EventLogStructure";
+
+
+    // Eight scenario type enum.
+    public enum ScenarioTypeEnum {
+        SLACKNESS, //鬆懈
+        BODY, //身體
+        CONTROL, //控制
+        IMPULSE, //衝動
+        EMOTION, //情緒
+        GET_ALONG, //相處
+        SOCIAL, //社交
+        ENTERTAIN, //同樂
+    };
+
+    // Eight emotion type enum.
+    public enum EmotionEnum {
+        ENGRY, //生氣
+        SAD, //難過
+        NERVOUS, //緊張
+        HATE, //厭惡
+        HAPPY, //開心
+        SCARED, //驚恐
+        BORING, //無聊
+        DESIRE, //渴望
+    };
+
+
+    public enum TherapyStatusEnum {
+        NOT_YET, //未審核
+        GOOD,
+        BAD,
+    };
 
 
     // A list contains timestamps of edit action.
@@ -50,7 +54,7 @@ public class EventLogStructure implements Serializable {
     public Calendar eventTime = null;
 
     // Scenario type
-    public String scnearioType = null;
+    public ScenarioTypeEnum scenarioType = null;
 
     // Selected scenario.
     public String scenario = null;
@@ -60,17 +64,17 @@ public class EventLogStructure implements Serializable {
 
     public String originalBehavior = null;
 
-    public String originalEmotion = null;
+    public EmotionEnum originalEmotion = null;
 
     public String originalThought = null;
 
     public String expectedlBehavior = null;
 
-    public String expectedEmotion = null;
+    public EmotionEnum expectedEmotion = null;
 
     public String expectedThought = null;
 
-    public String therapyStatus = null;
+    public TherapyStatusEnum therapyStatus = null;
 
     // Whether this event is filled just after routine test.
     public boolean isAfterTest = false;

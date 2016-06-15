@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -25,11 +26,12 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
 
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
 
-    Snackbar snackbar = null;
 
-    public SpinnerDayListener(CreateEventActivity createEventActivity) {
+    public SpinnerDayListener(CreateEventActivity createEventActivity, EventLogStructure eventLogStructure) {
         this.createEventActivity = createEventActivity;
+        this.eventLogStructure = eventLogStructure;
 
     }
 
@@ -40,8 +42,6 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.d("Ket", "spinner_day click");
         Calendar calendar = Calendar.getInstance();
-
-
 
         switch(position) {
             case TODAY:
@@ -59,9 +59,12 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
         int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Set time period to selected one.
+        // Set time period on the screen to selected one.
         TextView dayText = (TextView) this.createEventActivity.findViewById(R.id.create_event_day);
         dayText.setText(year+"."+month+"."+day);
+
+        /*** Log event day selected by user. ***/
+        eventLogStructure.eventTime.set(Calendar.DAY_OF_MONTH, day);
     }
 
     @Override

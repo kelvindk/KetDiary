@@ -20,29 +20,29 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
- * Related actions in step 4 of create event.
+ * Related actions in step 7 of create event.
  *
  * Created by kelvindk on 16/6/13.
  */
-public class StepBehaviorWrapper {
+public class StepExpectedBehaviorWrapper {
 
-    public static final int INTENT_SPEECH_INPUT_RESULT = 100;
+    public static final int INTENT_SPEECH_INPUT_RESULT = 300;
 
     private CreateEventActivity createEventActivity = null;
     private EventLogStructure eventLogStructure = null;
 
     private EditText editText = null;
 
-    public StepBehaviorWrapper(CreateEventActivity createEventActivity) {
+    public StepExpectedBehaviorWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
         this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         // Set text changed listener.
-        editText = (EditText) createEventActivity.findViewById(R.id.editText_behavior_step4);
+        editText = (EditText) createEventActivity.findViewById(R.id.editText_behavior_step7);
         editText.addTextChangedListener(textWatcher);
 
-        ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step4)).setOnClickListener(voice_input_step4);
-        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step4)).setOnClickListener(recent_behavior_step4);
+        ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step7)).setOnClickListener(voice_input_step7);
+        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step7)).setOnClickListener(recent_behavior_step7);
 
 
     }
@@ -59,7 +59,7 @@ public class StepBehaviorWrapper {
     }
 
     // Enable voice input.
-    View.OnClickListener voice_input_step4 = new View.OnClickListener() {
+    View.OnClickListener voice_input_step7 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "voice_input_step4");
@@ -75,7 +75,7 @@ public class StepBehaviorWrapper {
     };
 
     // Popup dialog to show recently use behavior.
-    View.OnClickListener recent_behavior_step4 = new View.OnClickListener() {
+    View.OnClickListener recent_behavior_step7 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "recent_behavior_step4");

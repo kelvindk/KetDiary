@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="10dp"
-    android:paddingBottom="20dp"
+    android:paddingBottom="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,22 +14,35 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/then_emotion"/>
+        android:text="@string/expected_thought"/>
+
+
 
     <LinearLayout
         android:orientation="horizontal"
-        android:paddingTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <!--Temp to show text, will remove!-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/step6_question_left"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:textAppearance="?android:attr/textAppearanceMedium"/>-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/step5_question_right"
-            android:id="@+id/step5_question"/>
+            android:id="@+id/textview_step9_question"/>
 
+        <!--Temp to show text, will remove!-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step9_question"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     </LinearLayout>
 
@@ -45,21 +58,28 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText_emotion_step5"
-            android:editable="false"
-            android:layout_weight="0.95" />
+            android:id="@+id/editText_thought_step9"
+            android:layout_weight="0.9" />
 
+        <ImageButton
+            android:layout_width="@dimen/voice_input_width"
+            android:layout_height="@dimen/voice_input_height"
+            android:alpha="0.6"
+            android:background="@drawable/ic_mic_black_48dp"
+            android:id="@+id/voice_input_step9"
+            android:layout_weight="0.05"/>
 
         <ImageButton
             android:layout_width="@dimen/voice_input_width"
             android:layout_height="@dimen/voice_input_height"
             android:alpha="0.6"
             android:background="@drawable/ic_arrow_drop_down_black_48dp"
-            android:id="@+id/recent_emotion_step5"
+            android:id="@+id/recent_thought_step9"
             android:layout_weight="0.05"/>
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>

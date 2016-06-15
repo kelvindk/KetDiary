@@ -11,6 +11,7 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.ui.CreateEventActivity;
 
 /**
@@ -26,11 +27,12 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
     public final static int NIGHT = 3;
 
     private CreateEventActivity createEventActivity = null;
+    private EventLogStructure eventLogStructure = null;
     private boolean isInit = false;
 
-    public SpinnerTimePeriodListener(CreateEventActivity createEventActivity) {
+    public SpinnerTimePeriodListener(CreateEventActivity createEventActivity, EventLogStructure eventLogStructure) {
         this.createEventActivity = createEventActivity;
-
+        this.eventLogStructure = eventLogStructure;
 
     }
 
@@ -81,6 +83,28 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
         }
     }
 
+    /*
+    * Get time period in hour along to spinner select.
+    * */
+    private int getHourBySelect(int pos) {
+
+        /* Set default to current time period.
+        */
+        switch(pos) {
+            case 0:
+                return MORNING*6;
+            case 1:
+                return AFTERNOON*6;
+            case 2:
+                return NIGHT*6;
+            case 3:
+                return MIDNIGHT*6;
+        }
+
+        return 0;
+    }
+
+
 
     /*
     * Spinner time period click listener.
@@ -92,6 +116,7 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
         if(!isInit) {
             int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
             setSpinnerTimePeriod(hour);
+
             isInit = true;
             return;
         }
@@ -100,6 +125,9 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
         // Set time period to selected one.
         TextView timePeriodText = (TextView) createEventActivity.findViewById(R.id.create_event_time_period);
         timePeriodText.setText(parent.getItemAtPosition(position).toString());
+
+        /*** Log hour to eventTime in eventLogStructure. ***/
+        eventLogStructure.eventTime.set(Calendar.HOUR, getHourBySelect(position));
 
         Log.d("Ket", "spinner_time_period click");
     }

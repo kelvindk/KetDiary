@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.EventLog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.create_event.steps.*;
@@ -35,12 +37,31 @@ public class CreateEventActivity extends AppCompatActivity {
     private StepBehaviorWrapper step4Adapter = null;
     private StepEmotionWrapper step5Adapter = null;
     private StepThoughtWrapper step6Adapter = null;
+    private StepExpectedBehaviorWrapper step7Adapter = null;
+    private StepExpectedEmotionWrapper step8Adapter = null;
+    private StepExpectedThoughtWrapper step9Adapter = null;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
+
+        // Get event data structure through Intent.
+        Intent intent = this.getIntent();
+        EventLogStructure recievedEventLogStructrue =
+                (EventLogStructure) intent.getSerializableExtra(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);
+
+        // For creating a new event, eventLogStructure will be null. Then new an object here.
+        if(recievedEventLogStructrue == null) {
+            Log.d("CreateEvent", "eventLogStructure null");
+            eventLogStructure = new EventLogStructure();
+        }
+        else {
+            Log.d("CreateEvent", "existed eventLogStructure, for editing with this page");
+            eventLogStructure = recievedEventLogStructrue;
+        }
 
         // Set full screen.
         getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -63,8 +84,12 @@ public class CreateEventActivity extends AppCompatActivity {
         scrollViewAdapter.setScrollDisable(true);
 
         /*** Handle filling content of event ***/
-        // New a event data structure.
-        EventLogStructure eventLogStructure = new EventLogStructure();
+
+
+        /*** Step 0, add a edit timestamp to eventLogStructure ***/
+        // Add current time to ediTime & eventTime.
+        eventLogStructure.editTime.add((Calendar)Calendar.getInstance().clone());
+        eventLogStructure.eventTime = (Calendar)Calendar.getInstance().clone();
 
         /*** Step 1 ***/
         step1Adapter = new StepTimeWrapper(this);
@@ -83,6 +108,16 @@ public class CreateEventActivity extends AppCompatActivity {
 
         /*** Step 6 ***/
         step6Adapter = new StepThoughtWrapper(this);
+
+        /*** Step 7 ***/
+        step7Adapter = new StepExpectedBehaviorWrapper(this);
+
+        /*** Step 8 ***/
+        step8Adapter = new StepExpectedEmotionWrapper(this);
+
+        /*** Step 9 ***/
+        step9Adapter = new StepExpectedThoughtWrapper(this);
+
     }
 
 
@@ -119,7 +154,7 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
 
-    public EventLogStructure geteventLogStructure() {
+    public EventLogStructure getEventLogStructure() {
         return eventLogStructure;
     }
 
@@ -149,6 +184,12 @@ public class CreateEventActivity extends AppCompatActivity {
                 break;
             case StepThoughtWrapper.INTENT_SPEECH_INPUT_RESULT:
                 step6Adapter.onSpeechToTextActivityResult(result);
+                break;
+            case StepExpectedBehaviorWrapper.INTENT_SPEECH_INPUT_RESULT:
+                step7Adapter.onSpeechToTextActivityResult(result);
+                break;
+            case StepExpectedThoughtWrapper.INTENT_SPEECH_INPUT_RESULT:
+                step9Adapter.onSpeechToTextActivityResult(result);
                 break;
         }
     }

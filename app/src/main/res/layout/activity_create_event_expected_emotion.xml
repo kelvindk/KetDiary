@@ -14,7 +14,7 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/then_emotion"/>
+        android:text="@string/expected_emotion"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/step5_question_right"
-            android:id="@+id/step5_question"/>
+            android:text="@string/step8_question"
+            android:id="@+id/step8_question"/>
 
 
     </LinearLayout>
@@ -45,7 +45,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText_emotion_step5"
+            android:id="@+id/editText_emotion_step8"
             android:editable="false"
             android:layout_weight="0.95" />
 
@@ -55,7 +55,7 @@
             android:layout_height="@dimen/voice_input_height"
             android:alpha="0.6"
             android:background="@drawable/ic_arrow_drop_down_black_48dp"
-            android:id="@+id/recent_emotion_step5"
+            android:id="@+id/recent_emotion_step8"
             android:layout_weight="0.05"/>
 
 

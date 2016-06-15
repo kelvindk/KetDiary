@@ -35,14 +35,14 @@ public class StepThoughtWrapper {
 
     public StepThoughtWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
-        this.eventLogStructure = createEventActivity.geteventLogStructure();
+        this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         // Set text changed listener.
         editText = (EditText) createEventActivity.findViewById(R.id.editText_thought_step6);
         editText.addTextChangedListener(textWatcher);
 
         ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step6)).setOnClickListener(voice_input_listener);
-        ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step6)).setOnClickListener(recent_behavior_listener);
+        ((ImageButton) createEventActivity.findViewById(R.id.recent_thought_step6)).setOnClickListener(recent_behavior_listener);
 
 
     }
@@ -62,7 +62,7 @@ public class StepThoughtWrapper {
     View.OnClickListener voice_input_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("Ket", "voice_input_step4");
+            Log.d("Ket", "voice_input_step6");
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "zh-TW");
             try {

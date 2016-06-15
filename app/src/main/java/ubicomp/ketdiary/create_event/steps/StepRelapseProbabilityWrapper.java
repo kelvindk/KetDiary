@@ -20,7 +20,7 @@ public class StepRelapseProbabilityWrapper implements RadioGroup.OnCheckedChange
 
     public StepRelapseProbabilityWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
-        this.eventLogStructure = createEventActivity.geteventLogStructure();
+        this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         RadioGroup radioGroup = (RadioGroup) createEventActivity.findViewById(R.id.radioGroupStep3);
         radioGroup.setOnCheckedChangeListener(this);

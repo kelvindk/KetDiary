@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="1dp"
+        android:paddingLeft="5dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -74,7 +74,7 @@
             android:layout_height="@dimen/voice_input_height"
             android:alpha="0.6"
             android:background="@drawable/ic_arrow_drop_down_black_48dp"
-            android:id="@+id/recent_behavior_step6"
+            android:id="@+id/recent_thought_step6"
             android:layout_weight="0.05"/>
 
 

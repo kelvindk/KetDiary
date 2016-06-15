@@ -19,7 +19,7 @@ import ubicomp.ketdiary.ui.CreateEventActivity;
  */
 public class ScrollViewAdapter implements View.OnTouchListener {
 
-    public static final int NUMBER_OF_TOTAL_STEPS = 6;
+    public static final int NUMBER_OF_TOTAL_STEPS = 9;
 
     private CreateEventActivity createEventActivity = null;
     private ScrollView scrollView = null;
@@ -44,6 +44,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         stepRelativeLayouts[3] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step4);
         stepRelativeLayouts[4] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step5);
         stepRelativeLayouts[5] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step6);
+        stepRelativeLayouts[6] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step7);
+        stepRelativeLayouts[7] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step8);
+        stepRelativeLayouts[8] = (RelativeLayout) createEventActivity.findViewById(R.id.create_event_step9);
 
         stepCoverButtons[0] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step1);
         stepCoverButtons[1] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step2);
@@ -51,6 +54,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         stepCoverButtons[3] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step4);
         stepCoverButtons[4] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step5);
         stepCoverButtons[5] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step6);
+        stepCoverButtons[6] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step7);
+        stepCoverButtons[7] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step8);
+        stepCoverButtons[8] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step9);
 
         // Get ScrollView of create event page and set a touch listener.
         scrollView = (ScrollView) createEventActivity.
@@ -83,6 +89,17 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                     }
                 }, 50);
                 break;
+            case 4:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep5 = new Handler();
+                handlerStep5.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5)).requestFocus();
+                    }
+                }, 50);
+                break;
             case 5:
                 // Set focus to EditText after a micro delay.
                 final Handler handlerStep6 = new Handler();
@@ -91,6 +108,39 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                     public void run() {
                         // Scroll screen to button.
                         ((EditText) createEventActivity.findViewById(R.id.editText_thought_step6)).requestFocus();
+                    }
+                }, 50);
+                break;
+            case 6:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep7 = new Handler();
+                handlerStep7.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step7)).requestFocus();
+                    }
+                }, 50);
+                break;
+            case 7:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep8 = new Handler();
+                handlerStep8.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step8)).requestFocus();
+                    }
+                }, 50);
+                break;
+            case 8:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep9 = new Handler();
+                handlerStep9.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_thought_step9)).requestFocus();
                     }
                 }, 50);
                 break;
