@@ -137,5 +137,6 @@
     <string name="frequent_input_step9">常用想法</string>
 
     <string name="confirm_cancel_click">確定要離開本頁面?</string>
+    <string name="create_event_saved">新增的活動己儲存</string>
 
 </resources>

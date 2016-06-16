@@ -89,6 +89,9 @@ public class StepThoughtWrapper {
                 public void onClick(DialogInterface dialog, int pos) {
                     // TODO Auto-generated method stub
                     Log.d("Ket", frequentInputString[pos]);
+                    logToEventLogStructure(frequentInputString[pos]);
+                    editText.setText(frequentInputString[pos]);
+                    editText.setSelection(editText.getText().length());
                 }
             });
 
@@ -104,7 +107,7 @@ public class StepThoughtWrapper {
         @Override
         public void afterTextChanged(Editable input) {
             Log.d("Ket", "step6 afterTextChanged "+input.toString());
-//            createEventActivity.scrollViewScrollToBottom();
+            logToEventLogStructure(input.toString());
         }
 
         @Override
@@ -120,6 +123,9 @@ public class StepThoughtWrapper {
         }
     };
 
-
+    /*** Log event originalThought. ***/
+    private void logToEventLogStructure(String input) {
+        eventLogStructure.originalThought = input;
+    }
 
 }

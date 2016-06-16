@@ -1,8 +1,10 @@
 package ubicomp.ketdiary.create_event;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -10,10 +12,13 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -31,6 +36,7 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
 public class CreateEventActivity extends AppCompatActivity {
 
     private CreateEventActivity createEventActivity = null;
+    private Activity superActivity = null;
     private EventLogStructure eventLogStructure = null;
     private CoordinatorLayout coordinatorLayout = null;
 
@@ -53,6 +59,7 @@ public class CreateEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_event);
 
         createEventActivity = this;
+        superActivity = (Activity) this.getParent();
 
         // Get CoordinatorLayout for showing Snackbar.
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.create_event_coordinatorLayout);
@@ -83,7 +90,7 @@ public class CreateEventActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showConfirmDialog();
+                onBackPressed();
             }
         });
 
@@ -141,9 +148,17 @@ public class CreateEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Ket", "actionSaveEvent");
                 // Listener of action Save button
-                Snackbar.make(coordinatorLayout, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
+//                Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.create_event_saved,  Snackbar.LENGTH_LONG);
+//                TextView textViewSnackbar = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+//                textViewSnackbar.setTextColor(getResources().getColor(R.color.colorAccent));
+//                snackbar.setAction("Action", null);
+//                snackbar.show();
+
+                Toast toast = Toast.makeText(CreateEventActivity.this, R.string.create_event_saved, Toast.LENGTH_LONG);
+                toast.show();
+
+                /*** Need save event data to storage ***/
+
             }
         });
 
@@ -153,7 +168,7 @@ public class CreateEventActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Ket", "actionCancelEvent");
                 // Listener of action Cancel button, back previous page after confirm.
-                showConfirmDialog();
+                onBackPressed();
 
             }
         });
@@ -161,20 +176,30 @@ public class CreateEventActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showConfirmDialog() {
+    /*
+    *  Handle back pressed.
+    * */
+    @Override
+    public void onBackPressed() {
         // New dialog.
         AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
         dialog.setTitle(R.string.confirm_cancel_click);
-        dialog.setPositiveButton(R.string.confirm,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int item) {
-                        /* User clicked "Confirm"*/
-                        onBackPressed();
-                    }
-                });
-        dialog.setNegativeButton(R.string.cancel, null);
+        dialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                /* User clicked "Confirm"*/
+                // Finish activity.
+                createEventActivity.finish();
+            }
+        });
+        dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                /* User clicked "Confirm"*/
+                // no op.
+            }
+        });
         dialog.show();
     }
+
 
 
     public EventLogStructure getEventLogStructure() {

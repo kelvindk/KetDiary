@@ -89,6 +89,9 @@ public class StepExpectedBehaviorWrapper {
                 public void onClick(DialogInterface dialog, int pos) {
                     // TODO Auto-generated method stub
                     Log.d("Ket", frequentInputString[pos]);
+                    logToEventLogStructure(frequentInputString[pos]);
+                    editText.setText(frequentInputString[pos]);
+                    editText.setSelection(editText.getText().length());
                 }
             });
 
@@ -104,7 +107,7 @@ public class StepExpectedBehaviorWrapper {
         @Override
         public void afterTextChanged(Editable input) {
             Log.d("Ket", "afterTextChanged "+input.toString());
-//            createEventActivity.scrollViewScrollToBottom();
+            logToEventLogStructure(input.toString());
         }
 
         @Override
@@ -120,6 +123,10 @@ public class StepExpectedBehaviorWrapper {
         }
     };
 
+    /*** Log event expectedlBehavior. ***/
+    private void logToEventLogStructure(String input) {
+        eventLogStructure.expectedlBehavior = input;
+    }
 
 
 }
