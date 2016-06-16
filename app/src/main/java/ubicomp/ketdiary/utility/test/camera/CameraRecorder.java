@@ -20,7 +20,7 @@ import ubicomp.ketdiary.utility.data.file.ImageFileHandler;
 import java.util.Iterator;
 import java.util.List;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 
 
 @SuppressWarnings("deprecation")

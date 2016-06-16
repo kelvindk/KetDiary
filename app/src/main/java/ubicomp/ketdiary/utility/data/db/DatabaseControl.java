@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.utility.data.structure.AddScore;
 import ubicomp.ketdiary.utility.data.structure.Appeal;
 import ubicomp.ketdiary.utility.data.structure.Cassette;

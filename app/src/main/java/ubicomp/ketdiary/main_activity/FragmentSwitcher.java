@@ -41,7 +41,7 @@ public class FragmentSwitcher {
         this.toolbarMenuItemWrapper = toolbarMenuItemWrapper;
 
         // Create four fragments.
-        fragments[0] = new FragmentTest(this);
+        fragments[0] = new FragmentTest(this, this.mainActivity);
         fragments[1] = new FragmentResult(this);
         fragments[2] = new FragmentEvent(this, this.mainActivity);
         fragments[3] = new FragmentRanking(this);
@@ -50,13 +50,13 @@ public class FragmentSwitcher {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         // Add four fragments to view.
-        fragmentTransaction.add(R.id.fragment_container, fragments[0], ""+FRAGMENT_TEST);
-        fragmentTransaction.add(R.id.fragment_container, fragments[1], ""+FRAGMENT_RESULT);
-        fragmentTransaction.add(R.id.fragment_container, fragments[2], ""+FRAGMENT_EVENT);
-        fragmentTransaction.add(R.id.fragment_container, fragments[3], ""+FRAGMENT_RANKING);
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[0], ""+FRAGMENT_TEST);
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[1], ""+FRAGMENT_RESULT);
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[2], ""+FRAGMENT_EVENT);
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[3], ""+FRAGMENT_RANKING);
 
         // Show FragmentTest a first page.
-        fragmentTransaction.replace(R.id.fragment_container, fragments[0]);
+        fragmentTransaction.replace(R.id.fragment_main_container, fragments[0]);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 //        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -102,7 +102,7 @@ public class FragmentSwitcher {
 
         // Switch fragment to selected page.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragments[fragmentToSwitch]);
+        fragmentTransaction.replace(R.id.fragment_main_container, fragments[fragmentToSwitch]);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 //        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 
 public class NetworkCheck {
 

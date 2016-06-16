@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.create_event.CreateEventActivity;
+import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
 
 /**
  *  ToolbarMenuItemAdapter is used to handle the page switching between test, result, event and

@@ -2,7 +2,7 @@ package ubicomp.ketdiary.utility.data.structure;
 
 import android.app.AlarmManager;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.utility.system.check.WeekNumCheck;
 
 import java.util.Calendar;

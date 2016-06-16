@@ -5,7 +5,7 @@ import android.os.Environment;
 
 import java.io.File;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 
 /**
  * This class is used for getting mainStorage path

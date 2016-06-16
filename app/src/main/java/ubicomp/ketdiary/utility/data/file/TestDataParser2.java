@@ -3,7 +3,7 @@ package ubicomp.ketdiary.utility.data.file;
 import android.content.Context;
 import android.util.Log;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.structure.NoteAdd;
 import ubicomp.ketdiary.utility.data.structure.Reflection;

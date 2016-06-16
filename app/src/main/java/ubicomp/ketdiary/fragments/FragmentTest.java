@@ -6,18 +6,30 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
+import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 /**
  * A placeholder fragment containing a simple view for Test fragment.
  */
 public class FragmentTest extends Fragment {
-    FragmentSwitcher fragmentSwitcher = null;
+    private MainActivity mainActivity = null;
+    private FragmentSwitcher fragmentSwitcher = null;
 
-    public FragmentTest(FragmentSwitcher fragmentSwitcher) {
+    private SalivaTestAdapter salivaTestAdapter = null;
+
+    public FragmentTest(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
         this.fragmentSwitcher = fragmentSwitcher;
+
+
+
     }
 
     @Override
@@ -36,4 +48,14 @@ public class FragmentTest extends Fragment {
 
         return fragmentTestView;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // New SalivaTestAdapter for handling the saliva test process.
+        salivaTestAdapter = new SalivaTestAdapter(mainActivity);
+    }
+
+
 }

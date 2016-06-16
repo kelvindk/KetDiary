@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.utility.data.structure.CopingSkill;
 import ubicomp.ketdiary.utility.data.structure.NoteAdd;
 import ubicomp.ketdiary.utility.data.structure.QuestionTest;

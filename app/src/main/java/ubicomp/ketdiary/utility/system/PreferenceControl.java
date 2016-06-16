@@ -11,7 +11,7 @@ import ubicomp.ketdiary.utility.data.structure.TimeValue;
 
 import java.util.Calendar;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 
 /**
  * Class for controlling Android Preference

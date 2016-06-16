@@ -1,5 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/colorWhite">
+
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -7,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_event_list_view"
-        android:transitionGroup="true"
-        />
+        android:transitionGroup="true" />
 
 </RelativeLayout>
+
+</FrameLayout>

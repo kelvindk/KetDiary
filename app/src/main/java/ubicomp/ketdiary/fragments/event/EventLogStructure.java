@@ -28,19 +28,6 @@ public class EventLogStructure implements Serializable {
     };
 
 
-//    // Eight emotion type enum.
-//    public enum EmotionEnum {
-//        ENGRY, //生氣
-//        SAD, //難過
-//        NERVOUS, //緊張
-//        HATE, //厭惡
-//        HAPPY, //開心
-//        SCARED, //驚恐
-//        BORING, //無聊
-//        DESIRE, //渴望
-//    };
-
-
     public enum TherapyStatusEnum {
         NOT_YET, //未審核
         GOOD,
@@ -69,7 +56,7 @@ public class EventLogStructure implements Serializable {
 
     public String originalThought = null;
 
-    public String expectedlBehavior = null;
+    public String expectedBehavior = null;
 
     public String expectedEmotion = null;
 

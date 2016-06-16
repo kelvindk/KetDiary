@@ -18,6 +18,8 @@
         <item>@string/tab_ranking</item>
     </string-array>
 
+    <string name="start_test">開始</string>
+
     <string name="event_list_click_continue_fill">繼續填寫</string>\
 
     <string name="create_event_name">新增活動</string>

@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import ubicomp.ketdiary.KetdiaryApplication;
+import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.MainActivity;
 
 @SuppressLint("NewApi")
@@ -265,7 +265,7 @@ public class BluetoothLE {
                                 int battVolt = ((data[3] & 0xFF) << 8) + (data[4] & 0xFF);
 
                                 if(cassetteId == 0xFFFF){
-                                	Log.d("GG", "ble : no plug");
+                                	Log.d(TAG, "ble : no plug");
                                     ((BluetoothListener) bluetoothListener).bleNoPlugDetected();
                                 }
                                 else{
@@ -425,14 +425,14 @@ public class BluetoothLE {
     }
 
     public void bleRequestCassetteInfo(){
-    	Log.d("GG", "Request Cassette command");
+    	Log.d(TAG, "Request Cassette command");
         byte[] command = new byte[]{BluetoothLE.BLE_TURNON_MONITORING};
         mAppStateTypeDef = BluetoothLE.AppStateTypeDef.APP_FETCH_INFO;
         bleWriteCharacteristic1(command);
     }
 
     public void bleCancelCassetteInfo(){
-    	Log.d("GG", "Request Cassette command");
+    	Log.d(TAG, "Request Cassette command");
         byte[] command = new byte[]{BluetoothLE.BLE_CLOSE_MONITORING};
         mAppStateTypeDef = BluetoothLE.AppStateTypeDef.APP_FETCH_INFO;
         bleWriteCharacteristic1(command);
@@ -621,7 +621,7 @@ public class BluetoothLE {
 //        	if(!ResultService3.savePic)
 //        		return (double) -87;
             imageDetection = new ImageDetection(activity, bytes[0], timestamp);
-            Log.d("GG", "start execute");
+            Log.d(TAG, "start execute");
             double result = Double.MIN_VALUE;
             try {
                 result = imageDetection.detectImageResult();

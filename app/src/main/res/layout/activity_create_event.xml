@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:id="@+id/create_event_coordinatorLayout"
-    tools:context=".create_event.CreateEventActivity">
+    tools:context=".fragments.create_event.CreateEventActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

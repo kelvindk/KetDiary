@@ -1,13 +1,11 @@
 package ubicomp.ketdiary;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.WindowManager;
 
-import ubicomp.ketdiary.fragments.event.EventLogStructure;
-import ubicomp.ketdiary.create_event.CreateEventActivity;
+import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
@@ -43,20 +41,25 @@ public class MainActivity extends AppCompatActivity {
         // New the object of handling fragment switch.
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
-        // For developing
-        EventLogStructure event = new EventLogStructure();
-//        Calendar yesterday = (Calendar) Calendar.getInstance().clone();
-//        Calendar now = (Calendar) Calendar.getInstance().clone();
-//        yesterday.add(Calendar.DATE, -1);
-//        event.editTime.add(yesterday);
-//        event.editTime.add(now);
-        event.scenarioType = EventLogStructure.ScenarioTypeEnum.BODY;
-        Intent createEventIntent = new Intent (this, CreateEventActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, event);
+//        // For developing
 
-        createEventIntent.putExtras(bundle);
-        startActivity(createEventIntent);
+////        Calendar yesterday = (Calendar) Calendar.getInstance().clone();
+////        Calendar now = (Calendar) Calendar.getInstance().clone();
+////        yesterday.add(Calendar.DATE, -1);
+////        event.editTime.add(yesterday);
+////        event.editTime.add(now);
+//        event.scenarioType = EventLogStructure.ScenarioTypeEnum.BODY;
+         //Data structure to store event.
+//        EventLogStructure event = new EventLogStructure();
+//        // Set one field as example. scenarioType is an enum.
+//        event.scenarioType = EventLogStructure.ScenarioTypeEnum.BODY;
+//        Intent eventContentActivityIntent = new Intent CreateEventActivityctivity.class);
+//        // Put the serializable object into eventContentActivityIntent through a Bundle.
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, event);
+//        eventContentActivityIntent.putExtras(bundle);
+//        // Start the activity.
+//        startActivity(eventContentActivityIntent);
 
     }
 

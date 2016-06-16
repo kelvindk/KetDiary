@@ -84,9 +84,6 @@ public class EventListAdapter extends BaseAdapter {
                 = (TextView) eventItemView.findViewById(R.id.fragment_event_list_description);
         eventListItemHolder.fragment_event_list_description.setText(" --- "+i+" ---");
 
-        // Rescale the height of ListView.
-        eventListView.getLayoutParams().height = (int) mainActivity.getResources().getDimension(
-                R.dimen.list_view_item_height) * getCount();
 
         return eventItemView;
     }
@@ -94,8 +91,6 @@ public class EventListAdapter extends BaseAdapter {
     // Add item to ListView in FragmentEvent.
     public void addItem() {
         eventListItems.add(new EventListItem());
-        eventListView.getLayoutParams().height += (int) mainActivity.getResources().getDimension(
-                R.dimen.list_view_item_height);
         notifyDataSetChanged();
 
     }
