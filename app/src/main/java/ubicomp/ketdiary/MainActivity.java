@@ -1,14 +1,18 @@
 package ubicomp.ketdiary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.WindowManager;
 
+import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
+import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentSwitcher fragmentSwitcher = null;
 
     private static MainActivity mainActivity = null;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static MainActivity getMainActivity() {
         return mainActivity;
+    }
+
+
+    public FragmentTest getFragmentTest() {
+        return fragmentSwitcher.getFragmentTest();
     }
 
 

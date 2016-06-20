@@ -121,5 +121,10 @@ public class FragmentSwitcher {
 
     }
 
-
+    /*
+    *  Getter of FragmentTest
+    * */
+    public FragmentTest getFragmentTest() {
+        return (FragmentTest) fragments[FRAGMENT_TEST];
+    }
 }

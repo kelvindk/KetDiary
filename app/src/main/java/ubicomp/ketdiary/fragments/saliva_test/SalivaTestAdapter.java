@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.utility.system.PreferenceControl;
+import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateIdle;
+import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateTransition;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
 
@@ -26,18 +28,11 @@ public class SalivaTestAdapter implements BluetoothListener {
 
     private TextView textviewTestButton = null;
     private ImageButton testButton = null;
+    private TextView textviewTestInstructionTop = null;
+    private TextView textviewTestInstructionDown = null;
+    private ProgressBar progressbar = null;
 
-    public enum TestStateEnum {
-        IDLE,
-        CONNECTING,
-        CONNECT_FAIL,
-    };
-
-    interface StateTransition {
-        void transit;
-    }
-
-    private TestStateEnum currentState = TestStateEnum.IDLE;
+    private TestStateTransition currentState = null;
 
     public SalivaTestAdapter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -47,15 +42,22 @@ public class SalivaTestAdapter implements BluetoothListener {
         // Get related UI components in FragmentTest.
         textviewTestButton = (TextView) mainActivity.findViewById(R.id.textview_test_button);
         testButton = (ImageButton) mainActivity.findViewById(R.id.button_test);
+        textviewTestInstructionTop =
+                (TextView) mainActivity.findViewById(R.id.textview_test_instruction_top);
+        textviewTestInstructionDown =
+                (TextView) mainActivity.findViewById(R.id.textview_test_instruction_down);
+        progressbar = (ProgressBar) mainActivity.findViewById(R.id.progress_bar_test);
+
+
 
         // Set listener to image button: testButton.
         testButton.setOnClickListener(test_button_click);
 
+        // Init the currentState as TestStateIdle.
+        currentState = new TestStateIdle(this);
+
     }
 
-    private void stateTransition() {
-
-    }
 
     /*
     * Click listener of the button on the center of FragmentTest.
@@ -64,27 +66,72 @@ public class SalivaTestAdapter implements BluetoothListener {
 
         @Override
         public void onClick(View v) {
-            switch (currentState) {
-                case IDLE:
-                    if(ble == null) {
-//                ble = new BluetoothLE(salivaTestAdapter , PreferenceControl.getDeviceId(), 0);
-                        ble = new BluetoothLE(salivaTestAdapter , "ket_49", 0); //
-                    }
-                    // Try to connect saliva device.
-                    ble.bleConnect();
-
-                    // Set nothing to the text on this button.
-                    textviewTestButton.setText("");
-
-                    currentState = TestStateEnum.CONNECTING;
-                    break;
-                case CONNECTING:
-
-                    break;
-            }
+            currentState = currentState.transit(TestStateTransition.TEST_BUTTON_CLICK);
+//            switch (currentState) {
+//                case IDLE:
+//                    if(ble == null) {
+////                ble = new BluetoothLE(salivaTestAdapter , PreferenceControl.getDeviceId(), 0);
+//                        ble = new BluetoothLE(salivaTestAdapter , "ket_49", 0); //
+//                    }
+//                    // Try to connect saliva device.
+//                    ble.bleConnect();
+//
+//                    // Set nothing to the text on this button.
+//                    textviewTestButton.setText("");
+//
+//                    currentState = CONNECTING;
+//                    break;
+//                case CONNECTING:
+//
+//                    break;
+//            }
 
         }
     };
+
+    public MainActivity getMainActivity() {
+        return mainActivity;
+    }
+
+    public BluetoothLE getBle() {
+        return ble;
+    }
+
+    public void setBle(BluetoothLE ble) {
+        this.ble = ble;
+    }
+
+
+    public TextView getTextviewTestButton() {
+        return textviewTestButton;
+    }
+
+    public ImageButton getImagebuttonTestButton() {
+        return testButton;
+    }
+
+    public TextView getTextviewTestInstructionTop() {
+        return textviewTestInstructionTop;
+    }
+
+    public TextView getTextviewTestInstructionDown() {
+        return textviewTestInstructionDown;
+    }
+
+    public ProgressBar getProgressbar() {
+        return progressbar;
+    }
+
+
+    public void bleEnableUserPressConfirm() {
+        Log.d("Ket", "User press confirm in enabling");
+        currentState = currentState.transit(TestStateTransition.BLE_ENABLE_USER_PRESS_CONFIRM);
+    }
+
+    public void bleEnableUserPressCancel() {
+        Log.d("Ket", "User press cancel in enabling");
+        currentState = currentState.transit(TestStateTransition.BLE_ENABLE_USER_PRESS_CANCEL);
+    }
 
     @Override
     public Context getContext() {
@@ -93,12 +140,13 @@ public class SalivaTestAdapter implements BluetoothListener {
 
     @Override
     public void bleNotSupported() {
-
+        Log.d("BLE", "bleNotSupported");
     }
 
     @Override
     public void bleConnectionTimeout() {
         Log.d("BLE", "bleConnectionTimeout");
+        currentState = currentState.transit(TestStateTransition.BLE_CONNECTION_TIMEOUT);
     }
 
     @Override
@@ -113,56 +161,58 @@ public class SalivaTestAdapter implements BluetoothListener {
 
     @Override
     public void bleWriteCharacteristic1Success() {
-
+        Log.d("BLE", "bleWriteCharacteristic1Success");
     }
 
     @Override
     public void bleWriteStateFail() {
-
+        Log.d("BLE", "bleWriteStateFail");
     }
 
     @Override
     public void bleNoPlugDetected() {
-
+        Log.d("BLE", "bleNoPlugDetected");
     }
 
     @Override
     public void blePlugInserted(int cassetteId) {
-
+        Log.d("BLE", "blePlugInserted "+cassetteId);
     }
 
     @Override
     public void bleUpdateBattLevel(int battVolt) {
-
+        Log.d("BLE", "bleUpdateBattLevel "+battVolt);
     }
 
     @Override
     public void notifyDeviceVersion(int version) {
-
+        Log.d("BLE", "notifyDeviceVersion "+version);
     }
 
     @Override
     public void bleUpdateSalivaVolt(int salivaVolt) {
-
+        Log.d("BLE", "bleUpdateSalivaVolt "+salivaVolt);
     }
 
     @Override
     public void bleGetImageSuccess(Bitmap bitmap) {
-
+        Log.d("BLE", "bleGetImageSuccess");
     }
 
     @Override
     public void bleGetImageFailure(float dropoutRate) {
-
+        Log.d("BLE", "bleGetImageFailure "+dropoutRate);
     }
 
     @Override
     public void bleNotifyDetectionResult(double score) {
-
+        Log.d("BLE", "bleNotifyDetectionResult "+score);
     }
 
     @Override
     public void bleReturnDeviceVersion(int version) {
-
+        Log.d("BLE", "bleReturnDeviceVersion");
     }
+
+
 }

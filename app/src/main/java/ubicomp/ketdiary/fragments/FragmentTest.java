@@ -1,5 +1,7 @@
 package ubicomp.ketdiary.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -29,7 +31,6 @@ public class FragmentTest extends Fragment {
         this.fragmentSwitcher = fragmentSwitcher;
 
 
-
     }
 
     @Override
@@ -57,5 +58,21 @@ public class FragmentTest extends Fragment {
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {
+            case BluetoothLE.REQUEST_ENABLE_BT:
+                if (resultCode == Activity.RESULT_OK) {
+                    Log.d("Ket", "FragmentTest onActivityResult RESULT_OK "+requestCode+" "+resultCode);
+                    salivaTestAdapter.bleEnableUserPressConfirm();
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    Log.d("Ket", "FragmentTest onActivityResult RESULT_CANCELED "+requestCode+" "+resultCode);
+                    // Forward the result of BLE enabling.
+                    salivaTestAdapter.bleEnableUserPressCancel();
+                }
+        }
+
+    }
 
 }

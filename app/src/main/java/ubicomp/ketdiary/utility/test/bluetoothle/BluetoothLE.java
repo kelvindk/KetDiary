@@ -35,7 +35,6 @@ import java.util.UUID;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.MainActivity;
 
-@SuppressLint("NewApi")
 public class BluetoothLE {
 	private static final String TAG = "BluetoothLE";
 
@@ -71,7 +70,7 @@ public class BluetoothLE {
     };
 
 	// Intent request codes
-    private static final int REQUEST_ENABLE_BT = 2;
+    public static final int REQUEST_ENABLE_BT = 243;
 	
 	private Activity activity = null;
     private String mDeviceName = null;
@@ -356,7 +355,8 @@ public class BluetoothLE {
         if (!mBluetoothAdapter.isEnabled()) {
             if (!mBluetoothAdapter.isEnabled()) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                MainActivity.getMainActivity().startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                MainActivity.getMainActivity().getFragmentTest().
+                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
         }
         else {

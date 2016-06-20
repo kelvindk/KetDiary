@@ -8,14 +8,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/textview_test_instruction_top"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="40dp"/>
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/space_test"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="40dp"/>
+
         <FrameLayout
             android:id="@+id/test_start_layout"
-            android:layout_width="250dp"
-            android:layout_height="375dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:paddingBottom="125dp"
-            android:layout_gravity="center" >
+            android:layout_gravity="center"
+            android:layout_below="@id/space_test"
+            android:layout_marginTop="40dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -34,13 +55,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/start_test"
-                android:textSize="60dp"
+                android:text="@string/test_start"
+                android:textSize="40dp"
                 android:id="@+id/textview_test_button"
                 android:textColor="@color/colorWhite"
                 android:layout_gravity="center"/>
 
+            <ProgressBar
+                android:layout_width="235dp"
+                android:layout_height="235dp"
+                android:id="@+id/progress_bar_test"
+                android:visibility="gone"
+                android:layout_gravity="center" />
+
         </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/test_instruction_down1"
+            android:id="@+id/textview_test_instruction_down"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/test_start_layout"
+            android:layout_centerHorizontal="true" />
+
+
+
+
     </RelativeLayout>
 
 </FrameLayout>
