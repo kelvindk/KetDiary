@@ -8,11 +8,9 @@ import android.view.Menu;
 import android.view.WindowManager;
 
 import ubicomp.ketdiary.fragments.FragmentTest;
-import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
-import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,8 +82,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Getter of FragmentTest.
     public FragmentTest getFragmentTest() {
         return fragmentSwitcher.getFragmentTest();
+    }
+
+    // Getter of TabLayoutWrapper.
+    public TabLayoutWrapper getTabLayoutWrapper() {
+        return tabLayoutWrapper;
+    }
+
+    // Getter of ToolbarMenuItemWrapper.
+    public ToolbarMenuItemWrapper getToolbarMenuItemWrapper() {
+        return toolbarMenuItemWrapper;
     }
 
 
@@ -101,6 +110,4 @@ public class MainActivity extends AppCompatActivity {
     public void setFragment(int fragmentToSwitch) {
         fragmentSwitcher.setFragment(fragmentToSwitch);
     }
-
-
 }

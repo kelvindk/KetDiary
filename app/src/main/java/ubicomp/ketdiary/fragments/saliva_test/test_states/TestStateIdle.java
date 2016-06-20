@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments.saliva_test.test_states;
 
+import android.util.Log;
 import android.view.View;
 
 import ubicomp.ketdiary.R;
@@ -20,7 +21,7 @@ public class TestStateIdle extends TestStateTransition {
         TestStateTransition newState = null;
         switch (trigger) {
             case TEST_BUTTON_CLICK:
-                BluetoothLE ble = new BluetoothLE(getSalivaTestAdapter(), "ket_49", 0);
+                BluetoothLE ble = new BluetoothLE(getSalivaTestAdapter(), "ket_049", 0);
                 getSalivaTestAdapter().setBle(ble);
                 // Try to connect saliva device.
                 ble.bleConnect();
@@ -34,8 +35,24 @@ public class TestStateIdle extends TestStateTransition {
                 // Disable center button.
                 getSalivaTestAdapter().getImagebuttonTestButton().setClickable(false);
 
+                // Enable corresponding component to store test results.
+                getSalivaTestAdapter().initTestLogComponents();
+
                 // Transit to TestStateConnecting.
                 newState = new TestStateConnecting(getSalivaTestAdapter());
+                break;
+            case BLE_NO_CASSETTE_PLUGGED:
+                Log.d("TestState", "BLE_NO_CASSETTE_PLUGGED Idle");
+                // Do nothing.
+                newState = this;
+                break;
+            case BLE_DEVICE_CONNECTED:
+                // Transit to TestStateConnecting.
+                newState = new TestStateConnecting(getSalivaTestAdapter());
+                newState.transit(BLE_DEVICE_CONNECTED);
+                break;
+            default:
+                newState = this;
                 break;
         }
         return newState;

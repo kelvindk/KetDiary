@@ -355,8 +355,7 @@ public class BluetoothLE {
         if (!mBluetoothAdapter.isEnabled()) {
             if (!mBluetoothAdapter.isEnabled()) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                MainActivity.getMainActivity().getFragmentTest().
-                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                MainActivity.getMainActivity().getFragmentTest().startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
         }
         else {
@@ -425,14 +424,14 @@ public class BluetoothLE {
     }
 
     public void bleRequestCassetteInfo(){
-    	Log.d(TAG, "Request Cassette command");
+//    	Log.d(TAG, "bleRequestCassetteInfo");
         byte[] command = new byte[]{BluetoothLE.BLE_TURNON_MONITORING};
         mAppStateTypeDef = BluetoothLE.AppStateTypeDef.APP_FETCH_INFO;
         bleWriteCharacteristic1(command);
     }
 
     public void bleCancelCassetteInfo(){
-    	Log.d(TAG, "Request Cassette command");
+//    	Log.d(TAG, "bleCancelCassetteInfo");
         byte[] command = new byte[]{BluetoothLE.BLE_CLOSE_MONITORING};
         mAppStateTypeDef = BluetoothLE.AppStateTypeDef.APP_FETCH_INFO;
         bleWriteCharacteristic1(command);

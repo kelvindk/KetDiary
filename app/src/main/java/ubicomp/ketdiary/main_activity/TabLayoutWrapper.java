@@ -2,6 +2,8 @@ package ubicomp.ketdiary.main_activity;
 
 import android.support.design.widget.TabLayout;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
@@ -17,14 +19,15 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
 
     private MainActivity mainActivity = null;
 
-    // Four tabs' object.
+    // TabLayout and four tabs' object.
+    private TabLayout tabLayout = null;
     private TabLayout.Tab[] tabLayoutTabs = new TabLayout.Tab[NUMBER_OF_TABS];
 
 
     public TabLayoutWrapper(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         // Create a TabLayout
-        TabLayout tabLayout = (TabLayout) mainActivity.findViewById(R.id.activity_main_tabs);
+        tabLayout = (TabLayout) mainActivity.findViewById(R.id.activity_main_tabs);
 
         // Create four tabs.
         tabLayoutTabs[0] = tabLayout.newTab().setCustomView(R.layout.tab_icon_text_test);
@@ -38,6 +41,7 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
 
         // Set the tab selected listener.
         tabLayout.setOnTabSelectedListener(this);
+
     }
 
     public void setTabSelected(int targetTab) {
@@ -61,5 +65,29 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
     public void onTabReselected(TabLayout.Tab tab) {
         // no op
 //        Log.d("Ket", "onTabReselected " + tab.getPosition());
+    }
+
+
+    /*** Enable/Disable Tabs ***/
+    public void enableTabs(Boolean enable){
+        ViewGroup viewGroup = getTabViewGroup(tabLayout);
+        if (viewGroup != null)
+            for (int childIndex = 0; childIndex < viewGroup.getChildCount(); childIndex++)
+            {
+                View tabView = viewGroup.getChildAt(childIndex);
+                if ( tabView != null)
+                    tabView.setEnabled(enable);
+            }
+    }
+
+    private ViewGroup getTabViewGroup(TabLayout tabLayout){
+        ViewGroup viewGroup = null;
+
+        if (tabLayout != null && tabLayout.getChildCount() > 0 ) {
+            View view = tabLayout.getChildAt(0);
+            if (view != null && view instanceof ViewGroup)
+                viewGroup = (ViewGroup) view;
+        }
+        return viewGroup;
     }
 }

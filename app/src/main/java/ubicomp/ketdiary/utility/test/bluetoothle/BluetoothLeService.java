@@ -41,7 +41,6 @@ import java.util.UUID;
  * given Bluetooth LE device.
  */
 
-@SuppressLint("NewApi")
 public class BluetoothLeService extends Service {
     private final static String TAG = "BluetoothLeService";
 

@@ -8,13 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
-import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 /**
@@ -71,6 +69,23 @@ public class FragmentTest extends Fragment {
                     // Forward the result of BLE enabling.
                     salivaTestAdapter.bleEnableUserPressCancel();
                 }
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("Ket", "FragmentTest onDestroy");
+        // Enable related phone components that can affect saliva test.
+        salivaTestAdapter.setEnableBlockedForTest(true);
+
+        // Request disconnect to device.
+        BluetoothLE ble = salivaTestAdapter.getBle();
+        if(ble != null) {
+            ble.bleUnlockDevice();
+            ble.bleCancelCassetteInfo();
+            ble.bleSelfDisconnection();
         }
 
     }

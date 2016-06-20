@@ -7,14 +7,17 @@ import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
  */
 public abstract class TestStateTransition {
 
-//    public static final int IDLE = 0;
-//    public static final int CONNECTING = 1;
-//    public static final int CONNECT_FAIL = 2;
-
+    /*** Various types of trigger ***/
     public static final int TEST_BUTTON_CLICK = 0;
     public static final int BLE_ENABLE_USER_PRESS_CANCEL = 1;
     public static final int BLE_ENABLE_USER_PRESS_CONFIRM = 2;
     public static final int BLE_CONNECTION_TIMEOUT = 3;
+    public static final int BLE_DEVICE_CONNECTED = 4;
+    public static final int BLE_DEVICE_DISCONNECTED = 5;
+    public static final int BLE_NO_CASSETTE_PLUGGED = 6;
+    public static final int BLE_CASSETTE_PLUGGED = 7;
+    public static final int BLE_WRITE_CHAR_FAIL = 8;
+    public static final int BLE_UPDATE_SALIVA_VOLTAGE = 9;
 
     private SalivaTestAdapter salivaTestAdapter = null;
 
@@ -24,10 +27,14 @@ public abstract class TestStateTransition {
 
 
     /*
-    *
+    * transit() is an abstract method with parameter "trigger" to be implemented by child classes.
     * */
     public abstract TestStateTransition transit(int trigger);
 
+
+    /*
+    *  Get salivaTestAdapter to access UI resource.
+    * */
     public SalivaTestAdapter getSalivaTestAdapter() {
         return salivaTestAdapter;
     }

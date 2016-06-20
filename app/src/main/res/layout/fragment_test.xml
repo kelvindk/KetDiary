@@ -11,13 +11,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text=""
+            android:textColor="@color/color6Gray"
             android:id="@+id/textview_test_instruction_top"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="30dp"/>
 
         <Space
             android:layout_width="40dp"
@@ -28,6 +29,7 @@
             android:gravity="center"
             android:layout_marginTop="40dp"/>
 
+
         <FrameLayout
             android:id="@+id/test_start_layout"
             android:layout_width="wrap_content"
@@ -36,7 +38,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_below="@id/space_test"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="20dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -68,6 +70,41 @@
                 android:visibility="gone"
                 android:layout_gravity="center" />
 
+            <FrameLayout
+                android:id="@+id/camera_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/camera_mask"
+                android:visibility="visible" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" >
+
+                <ImageView
+                    android:id="@+id/test_face_anchor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="center"
+                    android:src="@drawable/test_face"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
+
         </FrameLayout>
 
         <TextView
@@ -75,6 +112,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/test_instruction_down1"
+            android:textColor="@color/color6Gray"
+            android:textSize="24dp"
             android:id="@+id/textview_test_instruction_down"
             android:layout_marginTop="50dp"
             android:layout_below="@+id/test_start_layout"

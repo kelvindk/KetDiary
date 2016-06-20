@@ -56,9 +56,17 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
         // Disable the App title on toolbar
         mainActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+
+
     }
 
 
+    /*
+    *  Enable/Disable clickable of Toolbar spinner.
+    * */
+    public void enableToolbarSpinner(boolean enable) {
+        spinner_toolbar.setEnabled(enable);
+    }
 
     /*
      Receive the Menu object when it is ready, the received Menu object is used to switch the icon
