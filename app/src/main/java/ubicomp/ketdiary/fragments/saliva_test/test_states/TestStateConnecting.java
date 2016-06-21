@@ -73,7 +73,13 @@ public class TestStateConnecting extends TestStateTransition {
 
                 // Transit to TestStateConnected.
                 newState = new TestStateConnected(getSalivaTestAdapter());
-
+                break;
+            case BLE_UPDATE_SALIVA_VOLTAGE:
+                newState = this;
+                break;
+            case BLE_NO_CASSETTE_PLUGGED:
+                newState = this;
+                break;
         }
         return newState;
     }

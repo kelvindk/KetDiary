@@ -33,6 +33,9 @@ public class TestStateWaitSaliva extends TestStateTransition {
 
                 // Disable progress bar.
                 getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
+                // Invisible getImageDrawCassette.
+                getSalivaTestAdapter().getImageDrawCassette().setVisibility(View.GONE);
+
                 // Enable center button after 2.5s.
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -69,14 +72,38 @@ public class TestStateWaitSaliva extends TestStateTransition {
                 break;
             case BLE_UPDATE_SALIVA_VOLTAGE:
                 Log.d("TestState", "TestStateWaitSaliva BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltage());
-                // If first cassette electrode is conducted.
+                // If first cassette electrode is conducted, transit to TestStateSalivaPropagating.
                 if(getSalivaTestAdapter().getSalivaVoltage()
                         > SalivaTestAdapter.FIRST_VOLTAGE_THRESHOLD) {
                     Log.d("TestState", "FIRST_VOLTAGE_THRESHOLD");
+
+                    // Set corresponding text on test screen.
+                    getSalivaTestAdapter().getTextviewTestInstructionTop().setText("");
+                    getSalivaTestAdapter().getTextviewTestInstructionDown().setText(R.string.test_instruction_down3);
+
+                    // Visible getImageDrawCassette.
+                    getSalivaTestAdapter().getImageDrawCassette().setVisibility(View.VISIBLE);
+
+                    // Invisible progress bar.
+                    getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
+
+                    // Cancel stage1 countdown timer.
+                    getSalivaTestAdapter().getStage1TestCountdown().cancel();
+
+                    // Start CameraRecorder
+                    getSalivaTestAdapter().getCameraRecorder().start();
+
+                    // Enable stage2 countdown timer.
+                    getSalivaTestAdapter().startStage2Countdown();
+
+                    /*** Should label this cassette ID as used ***/
+
+                    // Transit to TestStateSalivaPropagating (stage2).
                     newState = new TestStateSalivaPropagating(getSalivaTestAdapter());
                 }
-                else
+                else // Stay in current state.
                     newState = this;
+                break;
 
             default:
                 Log.d("TestState", "TestStateWaitSaliva default "+trigger);

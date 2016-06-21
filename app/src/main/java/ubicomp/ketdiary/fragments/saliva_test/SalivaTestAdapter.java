@@ -1,11 +1,13 @@
 package ubicomp.ketdiary.fragments.saliva_test;
 
-import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Message;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +26,6 @@ import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateTransition;
 import ubicomp.ketdiary.utility.data.file.ImageFileHandler;
 import ubicomp.ketdiary.utility.data.file.MainStorage;
 import ubicomp.ketdiary.utility.data.file.VoltageFileHandler;
-import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
 import ubicomp.ketdiary.utility.test.camera.CameraCaller;
@@ -42,6 +43,11 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public static int FIRST_VOLTAGE_THRESHOLD = 200;//PreferenceControl.getVoltag1();
     public static int SECOND_VOLTAGE_THRESHOLD= 100;//PreferenceControl.getVoltag2();
 
+    public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
+    public static final int STAGE1_COUNTDOWN_PERIOD = 3000;
+    public static final int STAGE2_COUNTDOWN = 160000; // Should be 160000
+    public static final int STAGE2_COUNTDOWN_PERIOD = 1000;
+
     private MainActivity mainActivity = null;
     private SalivaTestAdapter salivaTestAdapter = null;
     private BluetoothLE ble = null;
@@ -53,6 +59,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     private TextView textviewTestInstructionDown = null;
     private ProgressBar progressbar = null;
     private ImageView imageFaceAnchor = null;
+    private ImageView imageDrawCassette = null;
 
     // Current test state.
     private TestStateTransition currentState = null;
@@ -81,6 +88,12 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     // Wakelock avoid phone to sleep.
     private PowerManager.WakeLock wakeLock = null;
 
+    // Countdown timer for stage1 saliva test.
+    private CountDownTimer stage1TestCountdown = null;
+    // Countdown timer for stage2 saliva test.
+    private CountDownTimer stage2TestCountdown = null;
+
+
     public SalivaTestAdapter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
 
@@ -95,6 +108,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
                 (TextView) mainActivity.findViewById(R.id.textview_test_instruction_down);
         progressbar = (ProgressBar) mainActivity.findViewById(R.id.progress_bar_test);
         imageFaceAnchor = (ImageView) mainActivity.findViewById(R.id.test_face_anchor);
+        imageDrawCassette = (ImageView) mainActivity.findViewById(R.id.image_draw_cassette);
 
 
         // Set listener to image button: testButton.
@@ -125,9 +139,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     };
 
 
-    public MainActivity getMainActivity() {
-        return mainActivity;
-    }
+//    public MainActivity getMainActivity() {
+//        return mainActivity;
+//    }
 
     public BluetoothLE getBle() {
         return ble;
@@ -163,6 +177,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return imageFaceAnchor;
     }
 
+    public ImageView getImageDrawCassette() {
+        return imageDrawCassette;
+    }
+
 
     // Getter of plugged cassette ID.
     public int getPluggedCassetteId() {
@@ -192,6 +210,86 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return cameraRecorder;
     }
 
+    // Getter of getStage1TestCountdown.
+    public CountDownTimer getStage1TestCountdown() {
+        return stage1TestCountdown;
+    }
+
+    // Start countdown for stage1 test and taking photos periodically every 10 seconds.
+    public void startStage1CountdownAndPeriodPhotoShot() {
+        stage1TestCountdown = new CountDownTimer(STAGE1_COUNTDOWN, STAGE1_COUNTDOWN_PERIOD){
+            @Override
+            public void onFinish() {
+                // Take photo!
+                cameraRunHandler.sendEmptyMessage(0);
+                setToIdleState(R.string.test_instruction_top7);
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // Take photo!
+                cameraRunHandler.sendEmptyMessage(0);
+            }
+        }.start();
+    }
+
+    // Getter of getStage2TestCountdown.
+    public CountDownTimer getStage2TestCountdown() {
+        return stage2TestCountdown;
+    }
+
+    // Start countdown for stage2 test.
+    public void startStage2Countdown() {
+        stage2TestCountdown = new CountDownTimer(STAGE2_COUNTDOWN, STAGE2_COUNTDOWN_PERIOD){
+            @Override
+            public void onFinish() {
+                // Take photo!
+                cameraRunHandler.sendEmptyMessage(0);
+
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // Take photo!
+//                cameraRunHandler.sendEmptyMessage(0);
+
+                getTextviewTestInstructionTop().
+                        setText("請稍等"+(millisUntilFinished/STAGE2_COUNTDOWN_PERIOD)+"秒");
+            }
+        }.start();
+    }
+
+    // Transit to Idle state.
+    public void setToIdleState(int failMessage) {
+        // Set corresponding text on test screen.
+        getTextviewTestButton().setText(R.string.test_start);
+        getTextviewTestInstructionTop().setText(failMessage);
+        getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
+        setEnableBlockedForTest(true);
+
+        // Transit to TestStateIdle.
+        currentState = new TestStateIdle(this);
+
+        // Disconnect BLE connection with device.
+        getBle().bleSelfDisconnection();
+
+        // Close voltage recording and pause cameraRecorder.
+        voltageFileHandler.close();
+        cameraRecorder.pause();
+
+        // Invisible progress bar.
+        getProgressbar().setVisibility(View.GONE);
+
+        // Invisible getImageDrawCassette.
+        getImageDrawCassette().setVisibility(View.GONE);
+
+        // Enable center button.
+        getImagebuttonTestButton().setClickable(true);
+
+        // Enable related phone components that can affect saliva test.
+        setEnableBlockedForTest(true);
+    }
+
     // When start saliva test process, block all related components that can affect testing.
     public void setEnableBlockedForTest(boolean enable) {
         // Enable clickable of Toolbar Spinner & Tabs.
@@ -200,7 +298,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         // Release WakeLock to enable phone sleep and other resources.
         if(enable) {
-            /*** Will crash if do not close CameraRecorder. *Legacy codes, need rewrite.... ***/
+            /*** Will crash if do not close CameraRecorder. ***/
             imageFaceAnchor.setVisibility(View.INVISIBLE);
             if(cameraRecorder != null) {
                 cameraRecorder.pause();
@@ -353,6 +451,13 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         Log.d("BLE", currentState.getClass().getSimpleName()+" bleUpdateSalivaVolt "+salivaVolt);
         salivaVoltage = salivaVolt;
         currentState = currentState.transit(TestStateTransition.BLE_UPDATE_SALIVA_VOLTAGE);
+
+        Message msg = new Message();
+        Bundle data = new Bundle();
+        data.putString("VOLTAGE", System.currentTimeMillis()+" v="+salivaVolt+"\n");
+        msg.setData(data);
+        if(voltageFileHandler!=null)
+            voltageFileHandler.sendMessage(msg);
     }
 
     @Override

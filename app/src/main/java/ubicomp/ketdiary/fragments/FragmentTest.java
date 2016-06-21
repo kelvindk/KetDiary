@@ -3,6 +3,7 @@ package ubicomp.ketdiary.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,19 +76,17 @@ public class FragmentTest extends Fragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         Log.d("Ket", "FragmentTest onDestroy");
+
+        // Request disconnect and disable notification to device.
+        BluetoothLE ble = salivaTestAdapter.getBle();
+        if(ble != null)
+            ble.bleSelfDisconnection();
+
         // Enable related phone components that can affect saliva test.
         salivaTestAdapter.setEnableBlockedForTest(true);
 
-        // Request disconnect to device.
-        BluetoothLE ble = salivaTestAdapter.getBle();
-        if(ble != null) {
-            ble.bleUnlockDevice();
-            ble.bleCancelCassetteInfo();
-            ble.bleSelfDisconnection();
-        }
-
+        super.onDestroy();
     }
 
 }

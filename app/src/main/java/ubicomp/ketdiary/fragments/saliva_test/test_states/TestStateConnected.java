@@ -14,6 +14,9 @@ import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
  */
 public class TestStateConnected extends TestStateTransition {
 
+    public static final int PREPARE_TO_TEST_COUNTDOWN = 1320; // Should be 13200, 1320 for developing.
+    public static final int PREPARE_TO_TEST_COUNTDOWN_PERIOD = 1200;
+
     // Declare newSate here to allow accessing by CountDownTimer.
     private TestStateTransition newState = null;
     private CountDownTimer prepareSalivaCountdown = null;
@@ -82,7 +85,7 @@ public class TestStateConnected extends TestStateTransition {
                     getSalivaTestAdapter().setEnableBlockedForTest(false);
 
                     /*** Start ten second countdown. The period is slightly longer than 1 second. ***/
-                    prepareSalivaCountdown = new CountDownTimer(1320,1200){
+                    prepareSalivaCountdown = new CountDownTimer(PREPARE_TO_TEST_COUNTDOWN, PREPARE_TO_TEST_COUNTDOWN_PERIOD){
                         @Override
                         public void onFinish() {
                             // Play sound feedback ding ding.
@@ -91,14 +94,17 @@ public class TestStateConnected extends TestStateTransition {
                             getSalivaTestAdapter().getTextviewTestButton().setText("");
                             getSalivaTestAdapter().getTextviewTestInstructionTop().setText(R.string.test_instruction_top6);
                             getSalivaTestAdapter().getTextviewTestInstructionDown().setText("");
+                            // Visible progress_bar_test on the screen.
+                            getSalivaTestAdapter().getProgressbar().setVisibility(View.VISIBLE);
                             // Visible face anchor on test screen.
                             getSalivaTestAdapter().getImageFaceAnchor().setVisibility(View.VISIBLE);
 
                             // Send request saliva voltage to device.
                             getSalivaTestAdapter().sendRequestSalivaVoltage();
 
-                            // Start CameraRecorder.
+                            // Start CameraRecorder, stage1Countdown and taking photos periodically.
                             getSalivaTestAdapter().getCameraRecorder().start();
+                            getSalivaTestAdapter().startStage1CountdownAndPeriodPhotoShot();
 
                             // Transit TestStateWaitSaliva through setNewState().
                             setNewState(new TestStateWaitSaliva(getSalivaTestAdapter()));
@@ -108,7 +114,8 @@ public class TestStateConnected extends TestStateTransition {
                         public void onTick(long millisUntilFinished) {
                             // Play sound feedback short beep every second.
                             getSalivaTestAdapter().playShortBeepAudio();
-                            getSalivaTestAdapter().getTextviewTestButton().setText(""+(millisUntilFinished/1200));
+                            getSalivaTestAdapter().getTextviewTestButton().
+                                    setText(""+(millisUntilFinished/PREPARE_TO_TEST_COUNTDOWN_PERIOD));
                         }
                     }.start();
 

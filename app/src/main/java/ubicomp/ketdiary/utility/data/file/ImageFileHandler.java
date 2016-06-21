@@ -54,7 +54,7 @@
         public void handleMessage(Message msg) {
 
             int count = msg.what;
-            String file_name = "IMG_" + timestamp + "_" + count + ".sob";
+            String file_name = "IMG_" + timestamp + "_" + count + ".jpg";
 
             file = new File(directory, file_name);
             byte[] img = msg.getData().getByteArray("Img");

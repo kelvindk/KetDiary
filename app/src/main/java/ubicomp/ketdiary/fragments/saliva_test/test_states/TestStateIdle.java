@@ -51,6 +51,11 @@ public class TestStateIdle extends TestStateTransition {
                 newState = new TestStateConnecting(getSalivaTestAdapter());
                 newState.transit(BLE_DEVICE_CONNECTED);
                 break;
+            case BLE_UPDATE_SALIVA_VOLTAGE:
+                getSalivaTestAdapter().setToIdleState(R.string.test_null);
+
+                newState = this;
+                break;
             default:
                 newState = this;
                 break;
