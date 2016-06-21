@@ -44,9 +44,13 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public static int SECOND_VOLTAGE_THRESHOLD= 100;//PreferenceControl.getVoltag2();
 
     public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
-    public static final int STAGE1_COUNTDOWN_PERIOD = 3000;
-    public static final int STAGE2_COUNTDOWN = 160000; // Should be 160000
-    public static final int STAGE2_COUNTDOWN_PERIOD = 1000;
+    public static final int STAGE1_PERIOD = 3000;
+    public static final int STAGE2_COUNTDOWN = 10000; // Should be 60000
+    public static final int STAGE2_PERIOD = 1000;
+    public static final int STAGE3_COUNTDOWN = 10000; // Should be 180000
+    public static final int STAGE3_PERIOD = 1000;
+    public static final int STAGE3_RESPIT_COUNTDOWN = 10000; // Should be 120000
+    public static final int STAGE3_RESPIT_PERIOD = 1000;
 
     private MainActivity mainActivity = null;
     private SalivaTestAdapter salivaTestAdapter = null;
@@ -59,7 +63,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     private TextView textviewTestInstructionDown = null;
     private ProgressBar progressbar = null;
     private ImageView imageFaceAnchor = null;
-    private ImageView imageDrawCassette = null;
+    private ImageView imageGuideCassette = null;
 
     // Current test state.
     private TestStateTransition currentState = null;
@@ -88,10 +92,11 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     // Wakelock avoid phone to sleep.
     private PowerManager.WakeLock wakeLock = null;
 
-    // Countdown timer for stage1 saliva test.
+    // Countdown timer for stages of saliva test.
     private CountDownTimer stage1TestCountdown = null;
-    // Countdown timer for stage2 saliva test.
     private CountDownTimer stage2TestCountdown = null;
+    private CountDownTimer stage3TestCountdown = null;
+    private CountDownTimer stage3RespitTestCountdown = null;
 
 
     public SalivaTestAdapter(MainActivity mainActivity) {
@@ -108,7 +113,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
                 (TextView) mainActivity.findViewById(R.id.textview_test_instruction_down);
         progressbar = (ProgressBar) mainActivity.findViewById(R.id.progress_bar_test);
         imageFaceAnchor = (ImageView) mainActivity.findViewById(R.id.test_face_anchor);
-        imageDrawCassette = (ImageView) mainActivity.findViewById(R.id.image_draw_cassette);
+        imageGuideCassette = (ImageView) mainActivity.findViewById(R.id.image_cassette_guide);
 
 
         // Set listener to image button: testButton.
@@ -177,8 +182,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return imageFaceAnchor;
     }
 
-    public ImageView getImageDrawCassette() {
-        return imageDrawCassette;
+    public ImageView getImageGuideCassette() {
+        return imageGuideCassette;
     }
 
 
@@ -199,10 +204,13 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public void playShortBeepAudio() {
         soundPool.play(shortBeepAudioId, 0.6f, 0.6f, 0, 0, 1.0F);
     }
-
     // Play ding_ding sound feedback.
     public void playDingDingAudio() {
         soundPool.play(dinDingAudioId, 1.0F, 1.0F, 0, 0, 1.0F);
+    }
+    // Play supply sound feedback.
+    public void playSupplyAudio() {
+        soundPool.play(supplyAudioId, 1.5F, 1.5F, 0, 0, 1.0F);
     }
 
     // Getter of cameraRecorder.
@@ -217,7 +225,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     // Start countdown for stage1 test and taking photos periodically every 10 seconds.
     public void startStage1CountdownAndPeriodPhotoShot() {
-        stage1TestCountdown = new CountDownTimer(STAGE1_COUNTDOWN, STAGE1_COUNTDOWN_PERIOD){
+        stage1TestCountdown = new CountDownTimer(STAGE1_COUNTDOWN, STAGE1_PERIOD){
             @Override
             public void onFinish() {
                 // Take photo!
@@ -240,21 +248,85 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     // Start countdown for stage2 test.
     public void startStage2Countdown() {
-        stage2TestCountdown = new CountDownTimer(STAGE2_COUNTDOWN, STAGE2_COUNTDOWN_PERIOD){
+        stage2TestCountdown = new CountDownTimer(STAGE2_COUNTDOWN, STAGE2_PERIOD){
+            @Override
+            public void onFinish() {
+
+                // Start Stage3Countdown and transit to stage3 to wait saliva propagating.
+                currentState = currentState.transit(TestStateTransition.TEST_TRANSIT_STAGE3);
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                String countdownString =
+                        mainActivity.getResources().getString(R.string.test_instruction_top8) + " " +
+                                (millisUntilFinished/ STAGE2_PERIOD) + " " +
+                                mainActivity.getResources().getString(R.string.test_second);
+                getTextviewTestInstructionTop().setText(countdownString);
+            }
+        }.start();
+    }
+
+    // Getter of getStage3TestCountdown.
+    public CountDownTimer getStage3TestCountdown() {
+        return stage3TestCountdown;
+    }
+
+    // Start countdown for stage3 test.
+    public void startStage3Countdown() {
+        stage3TestCountdown = new CountDownTimer(STAGE3_COUNTDOWN, STAGE3_PERIOD){
+            @Override
+            public void onFinish() {
+                // If saliva voltage doesn't drop to low threshold. Ask user spit again.
+                if(salivaVoltage > SECOND_VOLTAGE_THRESHOLD) {
+                    // Start Stage3Countdown and transit to stage3respit to wait saliva propagating.
+                    currentState = currentState.transit(TestStateTransition.TEST_TRANSIT_STAGE3_RESPIT);
+                }
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                String countdownString =
+                        mainActivity.getResources().getString(R.string.test_instruction_top8) + " " +
+                                (millisUntilFinished/ STAGE3_PERIOD) + " " +
+                                mainActivity.getResources().getString(R.string.test_second);
+                getTextviewTestInstructionTop().setText(countdownString);
+            }
+        }.start();
+    }
+
+    // Getter of getStage3RespitTestCountdown.
+    public CountDownTimer getStage3RespitTestCountdown() {
+        return stage3RespitTestCountdown;
+    }
+
+    // Start countdown for stage3 test.
+    public void startStage3RespitCountdown() {
+        stage3RespitTestCountdown = new CountDownTimer(STAGE3_RESPIT_COUNTDOWN, STAGE3_RESPIT_PERIOD){
+            int secondToShot = 0;
+
             @Override
             public void onFinish() {
                 // Take photo!
                 cameraRunHandler.sendEmptyMessage(0);
 
+                // Finish saliva spit process, transit to TestStateFinish.
+
             }
 
             @Override
             public void onTick(long millisUntilFinished) {
-                // Take photo!
-//                cameraRunHandler.sendEmptyMessage(0);
+                // Take photo every three seconds.
+                if(++secondToShot >= 3) {
+                    cameraRunHandler.sendEmptyMessage(0);
+                    secondToShot = 0;
+                }
 
-                getTextviewTestInstructionTop().
-                        setText("請稍等"+(millisUntilFinished/STAGE2_COUNTDOWN_PERIOD)+"秒");
+                String countdownString =
+                        mainActivity.getResources().getString(R.string.test_instruction_down5_left) + " " +
+                                (millisUntilFinished/ STAGE3_PERIOD) + " " +
+                                mainActivity.getResources().getString(R.string.test_instruction_down5_right);
+                getTextviewTestInstructionDown().setText(countdownString);
             }
         }.start();
     }
@@ -280,8 +352,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         // Invisible progress bar.
         getProgressbar().setVisibility(View.GONE);
 
-        // Invisible getImageDrawCassette.
-        getImageDrawCassette().setVisibility(View.GONE);
+        // Invisible getImageGuideCassette.
+        getImageGuideCassette().setVisibility(View.GONE);
 
         // Enable center button.
         getImagebuttonTestButton().setClickable(true);

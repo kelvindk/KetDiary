@@ -18,6 +18,9 @@ public abstract class TestStateTransition {
     public static final int BLE_CASSETTE_PLUGGED = 7;
     public static final int BLE_WRITE_CHAR_FAIL = 8;
     public static final int BLE_UPDATE_SALIVA_VOLTAGE = 9;
+    public static final int TEST_TRANSIT_STAGE3 = 10;
+    public static final int TEST_TRANSIT_STAGE3_RESPIT = 11;
+    public static final int TEST_FINISH = 12;
 
     private SalivaTestAdapter salivaTestAdapter = null;
 

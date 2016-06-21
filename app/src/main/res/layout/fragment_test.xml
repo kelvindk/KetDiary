@@ -117,17 +117,19 @@
             android:textColor="@color/color6Gray"
             android:textSize="24dp"
             android:id="@+id/textview_test_instruction_down"
-            android:layout_marginTop="50dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
             android:layout_below="@+id/test_start_layout"
             android:layout_centerHorizontal="true" />
 
         <ImageView
-            android:id="@+id/image_draw_cassette"
+            android:id="@+id/image_cassette_guide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-            android:background="@drawable/draw_cassette"
             android:layout_below="@+id/textview_test_instruction_down"
             android:layout_centerHorizontal="true" />
 

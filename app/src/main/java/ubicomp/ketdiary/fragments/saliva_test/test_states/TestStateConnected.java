@@ -106,8 +106,8 @@ public class TestStateConnected extends TestStateTransition {
                             getSalivaTestAdapter().getCameraRecorder().start();
                             getSalivaTestAdapter().startStage1CountdownAndPeriodPhotoShot();
 
-                            // Transit TestStateWaitSaliva through setNewState().
-                            setNewState(new TestStateWaitSaliva(getSalivaTestAdapter()));
+                            // Transit TestStateSalivaStage1 through setNewState().
+                            setNewState(new TestStateSalivaStage1(getSalivaTestAdapter()));
                         }
 
                         @Override

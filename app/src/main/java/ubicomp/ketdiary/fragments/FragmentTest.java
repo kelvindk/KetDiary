@@ -80,8 +80,11 @@ public class FragmentTest extends Fragment {
 
         // Request disconnect and disable notification to device.
         BluetoothLE ble = salivaTestAdapter.getBle();
-        if(ble != null)
+        if(ble != null) {
+            ble.bleUnlockDevice();
+            ble.bleCancelCassetteInfo();
             ble.bleSelfDisconnection();
+        }
 
         // Enable related phone components that can affect saliva test.
         salivaTestAdapter.setEnableBlockedForTest(true);

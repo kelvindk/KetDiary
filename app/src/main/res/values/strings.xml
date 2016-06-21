@@ -20,11 +20,15 @@
 
     <!-- Fragment Test-->
     <string name="test_null"></string>
+    <string name="test_second"> 秒</string>
     <string name="test_start">開始</string>
     <string name="test_confirm">確認</string>
     <string name="test_instruction_down1">請按上方「開始」進行口水檢測</string>
     <string name="test_instruction_down2">與檢測器連線成功!</string>
-    <string name="test_instruction_down3">請抽出口水匣後方擋片</string>
+    <string name="test_instruction_down3">吐完足量口水於管中後，請抽出口水匣後方擋片</string>
+    <string name="test_instruction_down4">正在確認口水量</string>
+    <string name="test_instruction_down5_left">請在 </string>
+    <string name="test_instruction_down5_right"> 秒內再吐一口口水</string>
     <string name="test_instruction_top1">請於開啟藍芽功能頁面按「允許」來開啟藍牙</string>
     <string name="test_instruction_top2">檢測器連線中，請稍等</string>
     <string name="test_instruction_top3">無法連接檢測器，請確認檢測器己開啟並重試</string>
@@ -32,6 +36,8 @@
     <string name="test_instruction_top5">請積蓄口水準備檢測</string>
     <string name="test_instruction_top6">請將臉對準中央，並吐口水於管中</string>
     <string name="test_instruction_top7">偵測不到足夠的口水量，請重新開始檢測</string>
+    <string name="test_instruction_top8">檢測進行中，請稍等</string>
+    <string name="test_instruction_top9">口水量不足</string>
 
     <string name="event_list_click_continue_fill">繼續填寫</string>\
 
