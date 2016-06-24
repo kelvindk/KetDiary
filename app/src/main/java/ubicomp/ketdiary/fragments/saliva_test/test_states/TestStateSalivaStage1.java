@@ -33,6 +33,7 @@ public class TestStateSalivaStage1 extends TestStateTransition {
 
                 // Disable progress bar.
                 getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
+
                 // Invisible getImageGuideCassette.
                 getSalivaTestAdapter().getImageGuideCassette().setVisibility(View.GONE);
 
@@ -88,6 +89,7 @@ public class TestStateSalivaStage1 extends TestStateTransition {
 
                     // Invisible progress bar.
                     getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
+
 
                     // Cancel stage1 countdown timer.
                     getSalivaTestAdapter().getStage1TestCountdown().cancel();

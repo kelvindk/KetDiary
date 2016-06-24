@@ -34,9 +34,9 @@
     <string name="test_instruction_top1">請於開啟藍芽功能頁面按「允許」來開啟藍牙</string>
     <string name="test_instruction_top2">檢測器連線中，請稍等</string>
     <string name="test_instruction_top3">無法連接檢測器，請確認檢測器己開啟並重試</string>
-    <string name="test_instruction_top4">試紙夾未插入，請插入試紙匣並重試</string>
+    <string name="test_instruction_top4">試紙夾未插入\n請插入試紙匣並重試</string>
     <string name="test_instruction_top5">請積蓄口水準備檢測</string>
-    <string name="test_instruction_top6">請將臉對準中央，並吐口水於管中</string>
+    <string name="test_instruction_top6">請將臉對準中央\n並吐口水於管中</string>
     <string name="test_instruction_top7">偵測不到足夠的口水量，請重新開始檢測</string>
     <string name="test_instruction_top8">檢測進行中，請稍等</string>
     <string name="test_instruction_top9">口水量不足</string>

@@ -92,10 +92,15 @@ public class TestStateConnected extends TestStateTransition {
                             getSalivaTestAdapter().playDingDingAudio();
                             // Set corresponding text on test screen.
                             getSalivaTestAdapter().getTextviewTestButton().setText("");
-                            getSalivaTestAdapter().getTextviewTestInstructionTop().setText(R.string.test_instruction_top6);
-                            getSalivaTestAdapter().getTextviewTestInstructionDown().setText("");
+                            getSalivaTestAdapter().getTextviewTestInstructionTop().setText("");
+                            getSalivaTestAdapter().getTextviewTestInstructionDown().setText(R.string.test_instruction_top6);
                             // Visible progress_bar_test on the screen.
                             getSalivaTestAdapter().getProgressbar().setVisibility(View.VISIBLE);
+
+                            // Visible getImageGuideCassette.
+                            getSalivaTestAdapter().getImageGuideCassette().setBackgroundResource(R.drawable.spit_to_cassette);
+                            getSalivaTestAdapter().getImageGuideCassette().setVisibility(View.VISIBLE);
+
                             // Visible face anchor on test screen.
                             getSalivaTestAdapter().getImageFaceAnchor().setVisibility(View.VISIBLE);
 
