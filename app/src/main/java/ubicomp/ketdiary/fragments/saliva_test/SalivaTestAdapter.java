@@ -18,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
@@ -42,14 +44,15 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     public static int FIRST_VOLTAGE_THRESHOLD = 200;//PreferenceControl.getVoltag1();
     public static int SECOND_VOLTAGE_THRESHOLD= 100;//PreferenceControl.getVoltag2();
+    public static int SALIVA_VOLTAGE_QUEUE_SIZE= 3;
 
     public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
-    public static final int STAGE2_COUNTDOWN = 10000; // Should be 60000
+    public static final int STAGE2_COUNTDOWN = 5000; // Should be 60000
     public static final int STAGE2_PERIOD = 1000;
     public static final int STAGE3_COUNTDOWN = 10000; // Should be 180000
     public static final int STAGE3_PERIOD = 1000;
-    public static final int STAGE3_RESPIT_COUNTDOWN = 10000; // Should be 120000
+    public static final int STAGE3_RESPIT_COUNTDOWN = 120000; // Should be 120000
     public static final int STAGE3_RESPIT_PERIOD = 1000;
 
     private MainActivity mainActivity = null;
@@ -86,8 +89,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     private ImageFileHandler imgFileHandler;
     private VoltageFileHandler voltageFileHandler;
 
-    // Cassette saliva voltage.
-    private int salivaVoltage;
+    // Cassette saliva voltage, maintain a size tree queue to calculate moving average.
+    private Queue salivaVoltageQueue = new LinkedList();
+    private int salivaVoltageQueueSum = 0;
 
     // Wakelock avoid phone to sleep.
     private PowerManager.WakeLock wakeLock = null;
@@ -144,9 +148,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     };
 
 
-//    public MainActivity getMainActivity() {
-//        return mainActivity;
-//    }
+    public MainActivity getMainActivity() {
+        return mainActivity;
+    }
 
     public BluetoothLE getBle() {
         return ble;
@@ -186,15 +190,23 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return imageGuideCassette;
     }
 
+    public ImageFileHandler getImgFileHandler() {
+        return imgFileHandler;
+    }
+
+    public VoltageFileHandler getVoltageFileHandler() {
+        return voltageFileHandler;
+    }
+
 
     // Getter of plugged cassette ID.
     public int getPluggedCassetteId() {
         return pluggedCassetteId;
     }
 
-    // Getter of salivaVoltage.
-    public int getSalivaVoltage() {
-        return salivaVoltage;
+    // Getter of moving average of salivaVoltage.
+    public int getSalivaVoltageQueueSum() {
+        return salivaVoltageQueueSum/SALIVA_VOLTAGE_QUEUE_SIZE;
     }
 
 
@@ -278,7 +290,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
             @Override
             public void onFinish() {
                 // If saliva voltage doesn't drop to low threshold. Ask user spit again.
-                if(salivaVoltage > SECOND_VOLTAGE_THRESHOLD) {
+                if(salivaVoltageQueueSum > SECOND_VOLTAGE_THRESHOLD) {
                     // Start Stage3Countdown and transit to stage3respit to wait saliva propagating.
                     currentState = currentState.transit(TestStateTransition.TEST_TRANSIT_STAGE3_RESPIT);
                 }
@@ -311,6 +323,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
                 cameraRunHandler.sendEmptyMessage(0);
 
                 // Finish saliva spit process, transit to TestStateFinish.
+                currentState = currentState.transit(TestStateTransition.TEST_FINISH);
 
             }
 
@@ -334,6 +347,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     // Transit to Idle state.
     public void setToIdleState(int failMessage) {
         // Set corresponding text on test screen.
+        getTextviewTestButton().setBackgroundResource(0);
         getTextviewTestButton().setText(R.string.test_start);
         getTextviewTestInstructionTop().setText(failMessage);
         getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
@@ -344,6 +358,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         // Disconnect BLE connection with device.
         getBle().bleSelfDisconnection();
+
+        // Clear salivaVoltageQueue & salivaVoltageQueueSum.
+        salivaVoltageQueue.clear();
+        salivaVoltageQueueSum = 0;
 
         // Close voltage recording and pause cameraRecorder.
         voltageFileHandler.close();
@@ -521,9 +539,16 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void bleUpdateSalivaVolt(int salivaVolt) {
         Log.d("BLE", currentState.getClass().getSimpleName()+" bleUpdateSalivaVolt "+salivaVolt);
-        salivaVoltage = salivaVolt;
+
+        salivaVoltageQueueSum += salivaVolt;
+        salivaVoltageQueue.add(salivaVolt);
+        if(salivaVoltageQueue.size() > SALIVA_VOLTAGE_QUEUE_SIZE) {
+            salivaVoltageQueueSum -= (int) salivaVoltageQueue.poll();
+        }
+
         currentState = currentState.transit(TestStateTransition.BLE_UPDATE_SALIVA_VOLTAGE);
 
+        // Write saliva voltage values to file.
         Message msg = new Message();
         Bundle data = new Bundle();
         data.putString("VOLTAGE", System.currentTimeMillis()+" v="+salivaVolt+"\n");

@@ -76,8 +76,8 @@ public class TestStateSalivaStage2 extends TestStateTransition {
                 newState = this;
                 break;
             case BLE_UPDATE_SALIVA_VOLTAGE:
-                Log.d("TestState", "TestStateSalivaStage2 BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltage());
-//                if(getSalivaTestAdapter().getSalivaVoltage()
+                Log.d("TestState", "TestStateSalivaStage2 BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltageQueueSum());
+//                if(getSalivaTestAdapter().getSalivaVoltageQueueSum()
 //                        < SalivaTestAdapter.SECOND_VOLTAGE_THRESHOLD) {
 //                    Log.d("TestState", "SECOND_VOLTAGE_THRESHOLD");
 //

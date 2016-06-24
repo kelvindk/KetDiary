@@ -72,9 +72,9 @@ public class TestStateSalivaStage1 extends TestStateTransition {
                 newState = this;
                 break;
             case BLE_UPDATE_SALIVA_VOLTAGE:
-                Log.d("TestState", "TestStateSalivaStage1 BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltage());
+                Log.d("TestState", "TestStateSalivaStage1 BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltageQueueSum());
                 // If first cassette electrode is conducted, transit to TestStateSalivaStage2.
-                if(getSalivaTestAdapter().getSalivaVoltage()
+                if(getSalivaTestAdapter().getSalivaVoltageQueueSum()
                         > SalivaTestAdapter.FIRST_VOLTAGE_THRESHOLD) {
                     Log.d("TestState", "FIRST_VOLTAGE_THRESHOLD");
 

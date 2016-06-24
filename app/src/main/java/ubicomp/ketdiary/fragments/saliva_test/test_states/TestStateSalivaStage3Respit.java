@@ -82,16 +82,21 @@ public class TestStateSalivaStage3Respit extends TestStateTransition {
                 newState = this;
                 break;
             case BLE_UPDATE_SALIVA_VOLTAGE:
-                Log.d("TestState", "TestStateSalivaStage3Respit BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltage());
-//                if(getSalivaTestAdapter().getSalivaVoltage()
-//                        < SalivaTestAdapter.SECOND_VOLTAGE_THRESHOLD) {
-//                    Log.d("TestState", "SECOND_VOLTAGE_THRESHOLD");
-//
-//                    // Transit to
-//                    newState = this;
-//                }
-//                else
+                Log.d("TestState", "TestStateSalivaStage3Respit BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltageQueueSum());
+                // Determine saliva voltage whether dropping to low threshold.
+                if(getSalivaTestAdapter().getSalivaVoltageQueueSum()
+                        < SalivaTestAdapter.SECOND_VOLTAGE_THRESHOLD) {
+                    Log.d("TestState", "TestStateSalivaStage3Respit SECOND_VOLTAGE_THRESHOLD");
+
+                    // Finish saliva spit process, transit to TestStateFinish.
+                    newState = new TestStateFinish(getSalivaTestAdapter());
+                }
+                else
                     newState = this;
+                break;
+            case TEST_FINISH:
+                // Transit to TestStateFinish.
+                newState = new TestStateFinish(getSalivaTestAdapter());
                 break;
             default:
                 Log.d("TestState", "TestStateSalivaStage3Respit default "+trigger);

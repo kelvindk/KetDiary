@@ -171,66 +171,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SalivaTestAdapter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SalivaTestAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/SalivaTestAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44869566">
-              <caret line="312" column="74" selection-start-line="312" selection-start-column="74" selection-end-line="312" selection-end-column="74" />
+            <state vertical-scroll-proportion="-2.5185184">
+              <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5683#5684#0" expanded="true" />
-                <element signature="e#5709#5710#0" expanded="true" />
-                <element signature="e#6328#6329#0" expanded="true" />
-                <element signature="e#6366#6367#0" expanded="true" />
-                <element signature="e#6414#6415#0" expanded="true" />
-                <element signature="e#6455#6456#0" expanded="true" />
-                <element signature="e#6644#6645#0" expanded="true" />
-                <element signature="e#6680#6681#0" expanded="true" />
-                <element signature="e#7146#7147#0" expanded="true" />
-                <element signature="e#7215#7216#0" expanded="true" />
-                <element signature="e#7297#7298#0" expanded="true" />
-                <element signature="e#7334#7335#0" expanded="true" />
-                <element signature="e#7429#7430#0" expanded="true" />
-                <element signature="e#7471#7472#0" expanded="true" />
-                <element signature="e#7879#7909#0" expanded="true" />
-                <element signature="e#8225#8226#0" expanded="true" />
-                <element signature="e#8267#8268#0" expanded="true" />
-                <element signature="e#8840#8909#0" expanded="true" />
-                <element signature="e#9027#9086#0" expanded="true" />
-                <element signature="e#9294#9295#0" expanded="true" />
-                <element signature="e#9336#9337#0" expanded="true" />
-                <element signature="e#10099#10168#0" expanded="true" />
-                <element signature="e#10286#10345#0" expanded="true" />
-                <element signature="e#10565#10566#0" expanded="true" />
-                <element signature="e#10613#10614#0" expanded="true" />
-                <element signature="e#11431#11506#0" expanded="true" />
-                <element signature="e#11624#11700#0" expanded="true" />
-                <element signature="e#11987#12006#0" expanded="true" />
-                <element signature="e#12120#12151#0" expanded="true" />
-                <element signature="e#16375#16376#0" expanded="true" />
-                <element signature="e#16402#16403#0" expanded="true" />
-                <element signature="e#16453#16454#0" expanded="true" />
-                <element signature="e#16500#16501#0" expanded="true" />
-                <element signature="e#17171#17172#0" expanded="true" />
-                <element signature="e#17233#17234#0" expanded="true" />
-                <element signature="e#18012#18013#0" expanded="true" />
-                <element signature="e#18072#18073#0" expanded="true" />
-                <element signature="e#18138#18139#0" expanded="true" />
-                <element signature="e#18198#18199#0" expanded="true" />
-                <element signature="e#18838#18839#0" expanded="true" />
-                <element signature="e#18888#18889#0" expanded="true" />
-                <element signature="e#19226#19227#0" expanded="true" />
-                <element signature="e#19280#19281#0" expanded="true" />
+                <element signature="e#5837#5838#0" expanded="true" />
+                <element signature="e#5872#5873#0" expanded="true" />
+                <element signature="e#5907#5908#0" expanded="true" />
+                <element signature="e#5933#5934#0" expanded="true" />
+                <element signature="e#6552#6553#0" expanded="true" />
+                <element signature="e#6590#6591#0" expanded="true" />
+                <element signature="e#6638#6639#0" expanded="true" />
+                <element signature="e#6679#6680#0" expanded="true" />
+                <element signature="e#6730#6731#0" expanded="true" />
+                <element signature="e#6767#6768#0" expanded="true" />
+                <element signature="e#6824#6825#0" expanded="true" />
+                <element signature="e#6865#6866#0" expanded="true" />
+                <element signature="e#7616#7617#0" expanded="true" />
+                <element signature="e#7685#7686#0" expanded="true" />
+                <element signature="e#7767#7768#0" expanded="true" />
+                <element signature="e#7804#7805#0" expanded="true" />
+                <element signature="e#7899#7900#0" expanded="true" />
+                <element signature="e#7941#7942#0" expanded="true" />
+                <element signature="e#8349#8379#0" expanded="true" />
+                <element signature="e#8695#8696#0" expanded="true" />
+                <element signature="e#8737#8738#0" expanded="true" />
+                <element signature="e#9310#9379#0" expanded="true" />
+                <element signature="e#9497#9556#0" expanded="true" />
+                <element signature="e#9764#9765#0" expanded="true" />
+                <element signature="e#9806#9807#0" expanded="true" />
+                <element signature="e#10577#10646#0" expanded="true" />
+                <element signature="e#10764#10823#0" expanded="true" />
+                <element signature="e#11043#11044#0" expanded="true" />
+                <element signature="e#11091#11092#0" expanded="true" />
+                <element signature="e#11995#12070#0" expanded="true" />
+                <element signature="e#12188#12264#0" expanded="true" />
+                <element signature="e#12609#12628#0" expanded="true" />
+                <element signature="e#12742#12773#0" expanded="true" />
+                <element signature="e#17130#17131#0" expanded="true" />
+                <element signature="e#17157#17158#0" expanded="true" />
+                <element signature="e#17208#17209#0" expanded="true" />
+                <element signature="e#17255#17256#0" expanded="true" />
+                <element signature="e#17926#17927#0" expanded="true" />
+                <element signature="e#17988#17989#0" expanded="true" />
+                <element signature="e#18767#18768#0" expanded="true" />
+                <element signature="e#18827#18828#0" expanded="true" />
+                <element signature="e#18893#18894#0" expanded="true" />
+                <element signature="e#18953#18954#0" expanded="true" />
+                <element signature="e#19844#19845#0" expanded="true" />
+                <element signature="e#19894#19895#0" expanded="true" />
+                <element signature="e#20232#20233#0" expanded="true" />
+                <element signature="e#20286#20287#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestStateFinish.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateFinish.java">
+      <file leaf-file-name="TestStateSalivaStage2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="47" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="63" />
+              <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestStateFinish.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateFinish.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5565217">
+              <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+              <folding>
+                <element signature="e#1332#1363#0" expanded="true" />
+                <element signature="e#2878#2953#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.0392158">
+              <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -2670,7 +2697,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/CustomToastCassette.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/toast_cassette.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/TabLayoutWrapper.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateDeviceConnected.java" />
@@ -2685,15 +2711,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaPropagating.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateTransition.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_test.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v23/values-v23.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/ResultService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateFinish.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage1.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage2.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage3.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage3Respit.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/SalivaTestAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateFinish.java" />
       </list>
     </option>
   </component>
@@ -2836,84 +2863,6 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KetDiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ketdiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KetDiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ketdiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="file" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KetDiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ketdiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="main_activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2993,32 +2942,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test_states" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KetDiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ketdiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="create_event" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3391,7 +3314,7 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2734289" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30540243" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30540243" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28445426" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893" sideWeight="0.5028612" order="8" side_tool="true" content_ui="tabs" />
@@ -3440,27 +3363,11 @@
           <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="83" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/KetdiaryApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29900333">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/test/bluetoothle/BluetoothDataParserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20930232">
-          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.222222">
@@ -3588,25 +3495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72259134">
-          <caret line="64" column="51" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
-          <folding>
-            <element signature="e#2428#2429#0" expanded="false" />
-            <element signature="e#2478#2479#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/TabLayoutWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5930435">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -3652,20 +3540,6 @@
           <folding>
             <element signature="e#247#248#0" expanded="false" />
             <element signature="e#290#291#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6611296">
-          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3471#3472#0" expanded="false" />
-            <element signature="e#3510#3511#0" expanded="false" />
-            <element signature="e#3616#3617#0" expanded="false" />
-            <element signature="e#3661#3662#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3742,14 +3616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_test.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3768,25 +3634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4551495">
           <caret line="33" column="84" selection-start-line="31" selection-start-column="16" selection-end-line="33" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateTransition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72591364">
-          <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
-          <folding>
-            <element signature="e#1468#1469#0" expanded="false" />
-            <element signature="e#1508#1509#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3629764">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -3815,48 +3662,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5631399">
-          <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1015#1034#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37542662">
-          <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
-          <folding>
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage3Respit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4675768">
-          <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateConnecting.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6302817">
           <caret line="69" column="66" selection-start-line="69" selection-start-column="59" selection-end-line="69" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateFinish.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="47" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -3871,63 +3680,165 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/check_test.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0392158">
+          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/TabLayoutWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4452174">
+          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9356522">
+          <caret line="61" column="23" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6956522">
+          <caret line="115" column="56" selection-start-line="115" selection-start-column="56" selection-end-line="115" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32392028">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/event/EventLogStructure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48006645">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77408636">
+          <caret line="81" column="42" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateTransition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.034129694">
+          <caret line="2" column="64" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2173913">
+          <caret line="92" column="57" selection-start-line="92" selection-start-column="57" selection-end-line="92" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage3Respit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68347824">
+          <caret line="86" column="68" selection-start-line="86" selection-start-column="68" selection-end-line="86" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateSalivaStage2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4095563">
-          <caret line="74" column="63" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/SalivaTestAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44869566">
-          <caret line="312" column="74" selection-start-line="312" selection-start-column="74" selection-end-line="312" selection-end-column="74" />
+        <state vertical-scroll-proportion="-2.5185184">
+          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#5709#5710#0" expanded="true" />
-            <element signature="e#6328#6329#0" expanded="true" />
-            <element signature="e#6366#6367#0" expanded="true" />
-            <element signature="e#6414#6415#0" expanded="true" />
-            <element signature="e#6455#6456#0" expanded="true" />
-            <element signature="e#6644#6645#0" expanded="true" />
-            <element signature="e#6680#6681#0" expanded="true" />
-            <element signature="e#7146#7147#0" expanded="true" />
-            <element signature="e#7215#7216#0" expanded="true" />
-            <element signature="e#7297#7298#0" expanded="true" />
-            <element signature="e#7334#7335#0" expanded="true" />
-            <element signature="e#7429#7430#0" expanded="true" />
-            <element signature="e#7471#7472#0" expanded="true" />
-            <element signature="e#7879#7909#0" expanded="true" />
-            <element signature="e#8225#8226#0" expanded="true" />
-            <element signature="e#8267#8268#0" expanded="true" />
-            <element signature="e#8840#8909#0" expanded="true" />
-            <element signature="e#9027#9086#0" expanded="true" />
-            <element signature="e#9294#9295#0" expanded="true" />
-            <element signature="e#9336#9337#0" expanded="true" />
-            <element signature="e#10099#10168#0" expanded="true" />
-            <element signature="e#10286#10345#0" expanded="true" />
-            <element signature="e#10565#10566#0" expanded="true" />
-            <element signature="e#10613#10614#0" expanded="true" />
-            <element signature="e#11431#11506#0" expanded="true" />
-            <element signature="e#11624#11700#0" expanded="true" />
-            <element signature="e#11987#12006#0" expanded="true" />
-            <element signature="e#12120#12151#0" expanded="true" />
-            <element signature="e#16375#16376#0" expanded="true" />
-            <element signature="e#16402#16403#0" expanded="true" />
-            <element signature="e#16453#16454#0" expanded="true" />
-            <element signature="e#16500#16501#0" expanded="true" />
-            <element signature="e#17171#17172#0" expanded="true" />
-            <element signature="e#17233#17234#0" expanded="true" />
-            <element signature="e#18012#18013#0" expanded="true" />
-            <element signature="e#18072#18073#0" expanded="true" />
-            <element signature="e#18138#18139#0" expanded="true" />
-            <element signature="e#18198#18199#0" expanded="true" />
-            <element signature="e#18838#18839#0" expanded="true" />
-            <element signature="e#18888#18889#0" expanded="true" />
-            <element signature="e#19226#19227#0" expanded="true" />
-            <element signature="e#19280#19281#0" expanded="true" />
+            <element signature="e#5837#5838#0" expanded="true" />
+            <element signature="e#5872#5873#0" expanded="true" />
+            <element signature="e#5907#5908#0" expanded="true" />
+            <element signature="e#5933#5934#0" expanded="true" />
+            <element signature="e#6552#6553#0" expanded="true" />
+            <element signature="e#6590#6591#0" expanded="true" />
+            <element signature="e#6638#6639#0" expanded="true" />
+            <element signature="e#6679#6680#0" expanded="true" />
+            <element signature="e#6730#6731#0" expanded="true" />
+            <element signature="e#6767#6768#0" expanded="true" />
+            <element signature="e#6824#6825#0" expanded="true" />
+            <element signature="e#6865#6866#0" expanded="true" />
+            <element signature="e#7616#7617#0" expanded="true" />
+            <element signature="e#7685#7686#0" expanded="true" />
+            <element signature="e#7767#7768#0" expanded="true" />
+            <element signature="e#7804#7805#0" expanded="true" />
+            <element signature="e#7899#7900#0" expanded="true" />
+            <element signature="e#7941#7942#0" expanded="true" />
+            <element signature="e#8349#8379#0" expanded="true" />
+            <element signature="e#8695#8696#0" expanded="true" />
+            <element signature="e#8737#8738#0" expanded="true" />
+            <element signature="e#9310#9379#0" expanded="true" />
+            <element signature="e#9497#9556#0" expanded="true" />
+            <element signature="e#9764#9765#0" expanded="true" />
+            <element signature="e#9806#9807#0" expanded="true" />
+            <element signature="e#10577#10646#0" expanded="true" />
+            <element signature="e#10764#10823#0" expanded="true" />
+            <element signature="e#11043#11044#0" expanded="true" />
+            <element signature="e#11091#11092#0" expanded="true" />
+            <element signature="e#11995#12070#0" expanded="true" />
+            <element signature="e#12188#12264#0" expanded="true" />
+            <element signature="e#12609#12628#0" expanded="true" />
+            <element signature="e#12742#12773#0" expanded="true" />
+            <element signature="e#17130#17131#0" expanded="true" />
+            <element signature="e#17157#17158#0" expanded="true" />
+            <element signature="e#17208#17209#0" expanded="true" />
+            <element signature="e#17255#17256#0" expanded="true" />
+            <element signature="e#17926#17927#0" expanded="true" />
+            <element signature="e#17988#17989#0" expanded="true" />
+            <element signature="e#18767#18768#0" expanded="true" />
+            <element signature="e#18827#18828#0" expanded="true" />
+            <element signature="e#18893#18894#0" expanded="true" />
+            <element signature="e#18953#18954#0" expanded="true" />
+            <element signature="e#19844#19845#0" expanded="true" />
+            <element signature="e#19894#19895#0" expanded="true" />
+            <element signature="e#20232#20233#0" expanded="true" />
+            <element signature="e#20286#20287#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateFinish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5565217">
+          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+          <folding>
+            <element signature="e#1332#1363#0" expanded="true" />
+            <element signature="e#2878#2953#0" expanded="true" />
           </folding>
         </state>
       </provider>
