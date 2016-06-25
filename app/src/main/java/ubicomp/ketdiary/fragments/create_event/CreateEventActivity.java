@@ -37,6 +37,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout = null;
 
     private ScrollViewAdapter scrollViewAdapter = null;
+
     private StepTimeWrapper step1Adapter = null;
     private StepScenarioWrapper step2Adapter = null;
     private StepRelapseProbabilityWrapper step3Adapter = null;
@@ -99,9 +100,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         /*** Step 0, add a edit timestamp to eventLogStructure ***/
-        // Add current time to ediTime & eventTime.
-        eventLogStructure.editTime.add((Calendar)Calendar.getInstance().clone());
-        eventLogStructure.eventTime = (Calendar)Calendar.getInstance().clone();
+        // Add current time to ediTime, eventTime & createTime.
+        eventLogStructure.editTime = (Calendar) Calendar.getInstance().clone();
+        eventLogStructure.eventTime = (Calendar) Calendar.getInstance().clone();
+        eventLogStructure.createTime = (Calendar) Calendar.getInstance().clone();
 
         /*** Step 1 ***/
         step1Adapter = new StepTimeWrapper(this);

@@ -53,6 +53,11 @@
             android:name=".utility.test.bluetoothle.BluetoothLeService"
             android:enabled="true" >
         </service>
+
+        <service android:name=".fragments.saliva_test.ResultService"
+            android:enabled="true"
+            android:process=":remote" />
+
     </application>
 
 </manifest>

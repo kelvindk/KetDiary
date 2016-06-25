@@ -34,9 +34,11 @@ public class EventLogStructure implements Serializable {
         BAD,
     };
 
+    // A timestamps of event create time.
+    public Calendar createTime = null;
 
-    // A list contains timestamps of edit action.
-    public ArrayList<Calendar> editTime = new ArrayList<Calendar>();
+    // A timestamps of edit action.
+    public Calendar editTime = null;
 
     // Event timestamp.
     public Calendar eventTime = null;

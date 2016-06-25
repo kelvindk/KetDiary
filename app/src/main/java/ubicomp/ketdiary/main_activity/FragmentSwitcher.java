@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.main_activity;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,7 +26,12 @@ public class FragmentSwitcher {
 
     private MainActivity mainActivity = null;
     private TabLayoutWrapper tabLayoutWrapper = null;
-    ToolbarMenuItemWrapper toolbarMenuItemWrapper = null;
+
+    public ToolbarMenuItemWrapper getToolbarMenuItemWrapper() {
+        return toolbarMenuItemWrapper;
+    }
+
+    private ToolbarMenuItemWrapper toolbarMenuItemWrapper = null;
 
     // FragmentManager is used to manage fragment.
     private FragmentManager fragmentManager = null;
@@ -55,11 +61,13 @@ public class FragmentSwitcher {
         fragmentTransaction.add(R.id.fragment_main_container, fragments[2], ""+FRAGMENT_EVENT);
         fragmentTransaction.add(R.id.fragment_main_container, fragments[3], ""+FRAGMENT_RANKING);
 
-        // Show FragmentTest a first page.
+
+        // Show FragmentTest as first page.
         fragmentTransaction.replace(R.id.fragment_main_container, fragments[0]);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 //        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
     }
 
     public void setFragmentOnlyDowndropTab(int fragmentToSwitch) {

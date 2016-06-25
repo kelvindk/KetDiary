@@ -11,6 +11,9 @@
     <string name="tab_event">記事</string>
     <string name="tab_ranking">排行</string>
 
+    <string name="remote_service_started">remote_service_started</string>
+    <string name="remote_service_connected">remote_service_connected</string>
+
     <string-array name="toolbar_spinner_array">
         <item>@string/tab_test</item>
         <item>@string/tab_result</item>
