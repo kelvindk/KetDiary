@@ -50,11 +50,11 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
-    public static final int STAGE2_COUNTDOWN = 5000; // Should be 60000
+    public static final int STAGE2_COUNTDOWN = 3000; // Should be 60000
     public static final int STAGE2_PERIOD = 1000;
-    public static final int STAGE3_COUNTDOWN = 6000; // Should be 180000
+    public static final int STAGE3_COUNTDOWN = 3000; // Should be 180000
     public static final int STAGE3_PERIOD = 1000;
-    public static final int STAGE3_RESPIT_COUNTDOWN = 6000; // Should be 120000
+    public static final int STAGE3_RESPIT_COUNTDOWN = 3000; // Should be 120000
     public static final int STAGE3_RESPIT_PERIOD = 1000;
 
     private MainActivity mainActivity = null;
@@ -217,10 +217,12 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return salivaVoltageQueueSum/SALIVA_VOLTAGE_QUEUE_SIZE;
     }
 
+
     /*** Start ResultService through ResultServiceAdapter. ***/
     public void startResultService() {
         resultServiceAdapter = new ResultServiceAdapter(mainActivity, this);
         resultServiceAdapter.doBindService();
+        resultServiceAdapter.startResultService();
 
     }
 

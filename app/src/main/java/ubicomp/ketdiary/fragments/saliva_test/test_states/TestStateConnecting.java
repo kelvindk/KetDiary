@@ -81,6 +81,9 @@ public class TestStateConnecting extends TestStateTransition {
             case BLE_NO_CASSETTE_PLUGGED:
                 newState = this;
                 break;
+            default:
+                newState = this;
+                break;
         }
         return newState;
     }

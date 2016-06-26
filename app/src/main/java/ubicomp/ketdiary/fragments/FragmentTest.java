@@ -8,9 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
@@ -24,23 +28,31 @@ public class FragmentTest extends Fragment {
 
     private SalivaTestAdapter salivaTestAdapter = null;
 
+
+    private TextView textviewToolbar = null;
+
     public FragmentTest(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         this.fragmentSwitcher = fragmentSwitcher;
 
+        textviewToolbar = (TextView) mainActivity.findViewById(R.id.textview_toolbar);
 
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("Ket", "onCreate fragment_test");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_test");
+
+
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
         View fragmentTestView = inflater.inflate(R.layout.fragment_test, container, false);
@@ -51,6 +63,9 @@ public class FragmentTest extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        /*** Check whether a ResultService is working ***/
+
 
         // New SalivaTestAdapter for handling the saliva test process.
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);

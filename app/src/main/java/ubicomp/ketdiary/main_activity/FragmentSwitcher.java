@@ -20,6 +20,7 @@ import ubicomp.ketdiary.fragments.FragmentTest;
 
 public class FragmentSwitcher {
     public final static int FRAGMENT_TEST = 0;
+    public final static int FRAGMENT_TEST_WAIT_RESULT = 10;
     public final static int FRAGMENT_RESULT = 1;
     public final static int FRAGMENT_EVENT = 2;
     public final static int FRAGMENT_RANKING = 3;
@@ -108,12 +109,6 @@ public class FragmentSwitcher {
                 break;
         }
 
-        // Switch fragment to selected page.
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_main_container, fragments[fragmentToSwitch]);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
 
 //        for(int i=0; i<fragments.length; i++) {
 //            Log.d("Ket", i+" "+fragments[i].isAdded()+" "+fragments[i].isHidden()+" "+fragments[i].isInLayout());
@@ -126,6 +121,13 @@ public class FragmentSwitcher {
 
         // Update which fragment we stay.
         this.currentFragment = fragmentToSwitch;
+
+        // Switch fragment to selected page.
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_main_container, fragments[fragmentToSwitch]);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
     }
 

@@ -48,7 +48,7 @@
     <string name="test_instruction_top11">裝置電量不足!\n請先將裝置充電</string>
     <string name="test_instruction_top12">無法與裝置連線\n請重試</string>
 
-    <string name="test_notification_countdown">距離檢測判斷完成還有：</string>
+    <string name="test_notification_countdown">檢測分析完成還有：</string>
 
     <string name="event_list_click_continue_fill">繼續填寫</string>\
 

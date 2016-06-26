@@ -6,7 +6,9 @@ import android.view.View;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.FragmentEvent;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
 /**
  * Created by kelvindk on 16/6/19.
@@ -59,11 +61,11 @@ public class TestStateWaitResult extends TestStateTransition {
             @Override
             public void onFinish() {
                 Log.d("TestState", "TestStateWaitResult countdown onFinish");
-//                // Reset to Idle state.
-//                getSalivaTestAdapter().setToIdleState(R.string.test_null);
+                // Reset to Idle state.
+                getSalivaTestAdapter().setToIdleState(R.string.test_null);
 
                 /*** Go to coping skill fragment ***/
-
+//                getSalivaTestAdapter().getMainActivity().setFragment(FragmentSwitcher.FRAGMENT_TEST_WAIT_RESULT);
             }
 
             @Override

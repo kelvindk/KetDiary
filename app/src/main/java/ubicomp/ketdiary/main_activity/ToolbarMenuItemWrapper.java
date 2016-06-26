@@ -65,7 +65,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     public void enableToolbarClickable(boolean enable) {
         spinner_toolbar.setEnabled(enable);
         MenuItem itemActionSettings = menu.findItem(R.id.action_settings);
-        MenuItemCompat.getActionView(itemActionSettings).setEnabled(enable);
+        if(itemActionSettings != null)
+            MenuItemCompat.getActionView(itemActionSettings).setEnabled(enable);
     }
 
     /*

@@ -12,6 +12,7 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import ubicomp.ketdiary.MainActivity;
+import ubicomp.ketdiary.fragments.FragmentTest;
 
 /**
  * Created by kelvindk on 16/6/25.
@@ -33,17 +34,23 @@ public class ResultServiceAdapter {
 
     }
 
+    public ResultServiceAdapter(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
+
     /**
      * Handler of incoming messages from service.
      */
     class IncomingHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            Log.d("Ket", "IncomingHandler handleMessage");
 
             switch (msg.what) {
                 case ResultService.MSG_CURRENT_COUNTDOWN:
-                    Log.d("Ket", "resultServiceCountdown received from ResultService: " + (int) msg.arg1);
+                    Log.d("Ket", "resultServiceCountdown received from ResultService: " + msg.arg1);
+                    int receivedMsg = msg.arg1;
+                    mainActivity.resultServiceRunning(receivedMsg);
+                    break;
                 default:
                     super.handleMessage(msg);
             }
@@ -77,10 +84,6 @@ public class ResultServiceAdapter {
                 msg.replyTo = mMessenger;
                 mService.send(msg);
 
-//                // Give it some value as an example.
-//                msg = Message.obtain(null,
-//                        ResultService.MSG_SET_VALUE, 54088, 0);
-//                mService.send(msg);
             } catch (RemoteException e) {
                 // In this case the service has crashed before we could even
                 // do anything with it; we can count on soon being
@@ -88,6 +91,12 @@ public class ResultServiceAdapter {
                 // so there is no need to do anything here.
             }
 
+            // Send message according which class new this class.
+            // if new by MainActivity, is to
+            if(salivaTestAdapter == null)
+                isResultServiceRunning();
+            else // if new by SalivaTestAdapter
+                startResultService();
             Log.d("Ket", "ServiceConnection onServiceConnected remote_service_connected");
         }
 
@@ -100,7 +109,7 @@ public class ResultServiceAdapter {
         }
     };
 
-    void doBindService() {
+    public void doBindService() {
         // Establish a connection with the service.
         Intent intent = new Intent(mainActivity, ResultService.class);
         // With a trick to keep service alive after MainActivity is done.
@@ -111,7 +120,7 @@ public class ResultServiceAdapter {
         Log.d("Ket", "doBindService Binding");
     }
 
-    void doUnbindService() {
+    public void doUnbindService() {
         if (mIsBound) {
             // If we have received the service, and hence registered with
             // it, then now is the time to unregister.
@@ -131,6 +140,42 @@ public class ResultServiceAdapter {
             mainActivity.unbindService(mConnection);
             mIsBound = false;
             Log.d("Ket", "doUnbindService Unbinding");
+        }
+    }
+
+    public void isResultServiceRunning() {
+        if (mService != null) {
+            try {
+                Message msg = Message.obtain(null,
+                        ResultService.MSG_IS_RUNNING);
+                msg.replyTo = mMessenger;
+                mService.send(msg);
+            } catch (RemoteException e) {
+            }
+        }
+    }
+
+    public void startResultService() {
+        if (mService != null) {
+            try {
+                Message msg = Message.obtain(null,
+                        ResultService.MSG_START_RESULT_SERVICE_COUNTDOWN);
+                msg.replyTo = mMessenger;
+                mService.send(msg);
+            } catch (RemoteException e) {
+            }
+        }
+    }
+
+    public void stopResultService() {
+        if (mService != null) {
+            try {
+                Message msg = Message.obtain(null,
+                        ResultService.MSG_REQUEST_SERVICE_FINISH);
+                msg.replyTo = mMessenger;
+                mService.send(msg);
+            } catch (RemoteException e) {
+            }
         }
     }
 }
