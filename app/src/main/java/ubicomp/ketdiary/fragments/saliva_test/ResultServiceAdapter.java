@@ -95,8 +95,10 @@ public class ResultServiceAdapter {
             // if new by MainActivity, is to
             if(salivaTestAdapter == null)
                 isResultServiceRunning();
-            else // if new by SalivaTestAdapter
+            else { // if new by SalivaTestAdapter
+                startBleConnection();
                 startResultService();
+            }
             Log.d("Ket", "ServiceConnection onServiceConnected remote_service_connected");
         }
 
@@ -172,6 +174,18 @@ public class ResultServiceAdapter {
             try {
                 Message msg = Message.obtain(null,
                         ResultService.MSG_REQUEST_SERVICE_FINISH);
+                msg.replyTo = mMessenger;
+                mService.send(msg);
+            } catch (RemoteException e) {
+            }
+        }
+    }
+
+    public void startBleConnection() {
+        if (mService != null) {
+            try {
+                Message msg = Message.obtain(null,
+                        ResultService.MSG_BLE_CONNECT);
                 msg.replyTo = mMessenger;
                 mService.send(msg);
             } catch (RemoteException e) {

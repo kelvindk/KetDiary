@@ -25,18 +25,23 @@ import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
  */
 public class ResultService extends Service implements BluetoothListener{
 
+    public static final String TAG = "ResultService BLE";
+
     public static final int MSG_REGISTER_CLIENT = 1;
     public static final int MSG_UNREGISTER_CLIENT = 2;
     public static final int MSG_CURRENT_COUNTDOWN = 3;
     public static final int MSG_START_RESULT_SERVICE_COUNTDOWN = 4;
     public static final int MSG_REQUEST_SERVICE_FINISH = 5;
     public static final int MSG_IS_RUNNING = 6;
+    public static final int MSG_BLE_CONNECT = 7;
 
     public static final int WAIT_RESULT_COUNTDOWN = 300000;
     public static final int WAIT_RESULT_PERIOD = 1000;
 
     public static final int LAST_TWO_MINUTES = 120000;
 
+
+    private ResultService resultService = null;
 
     private BluetoothLE ble = null;
 
@@ -54,6 +59,32 @@ public class ResultService extends Service implements BluetoothListener{
     private CountDownTimer resultServiceCountdown = null;
     // Current value of countdown.
     private int currentCountdown = 0;
+
+    @Override
+    public void onCreate() {
+        Log.d("ResultService", "onCreate");
+        this.resultService = this;
+        mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+    }
+
+
+    @Override
+    public void onDestroy() {
+        Log.d("ResultService", "onDestroy");
+
+        // Cancel the persistent notification.
+        mNM.cancel(R.string.remote_service_started);
+
+        if(resultServiceCountdown != null)
+            resultServiceCountdown.cancel();
+
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mMessenger.getBinder();
+    }
 
 
     /**
@@ -86,6 +117,18 @@ public class ResultService extends Service implements BluetoothListener{
                             e.printStackTrace();
                         }
                     }
+                    break;
+                case MSG_BLE_CONNECT:
+//                    ble = new BluetoothLE(resultService, "ket_049", System.currentTimeMillis());
+//                    ble.bleConnect();
+//                    Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            ble.bleConnect();
+//                        }
+//                    }, 5000);
+
                     break;
                 case MSG_REQUEST_SERVICE_FINISH:
 //                    onDestroy();
@@ -144,33 +187,7 @@ public class ResultService extends Service implements BluetoothListener{
         }.start();
     }
 
-    @Override
-    public void onCreate() {
-        Log.d("ResultService", "onCreate");
-        mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
-        ble = new BluetoothLE(this, "ket_049", System.currentTimeMillis());
-        ble.bleConnect();
-
-    }
-
-
-    @Override
-    public void onDestroy() {
-        Log.d("ResultService", "onDestroy");
-
-        // Cancel the persistent notification.
-        mNM.cancel(R.string.remote_service_started);
-
-        if(resultServiceCountdown != null)
-            resultServiceCountdown.cancel();
-
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return mMessenger.getBinder();
-    }
 
 
     /**
@@ -212,67 +229,67 @@ public class ResultService extends Service implements BluetoothListener{
 
     @Override
     public void bleConnectionTimeout() {
-        Log.d("BLE", "bleConnectionTimeout");
+        Log.d(TAG, "bleConnectionTimeout");
     }
 
     @Override
     public void bleConnected() {
-
+        Log.d(TAG, "bleConnected");
     }
 
     @Override
     public void bleDisconnected() {
-
+        Log.d(TAG, "bleDisconnected");
     }
 
     @Override
     public void bleWriteCharacteristic1Success() {
-
+        Log.d(TAG, "bleWriteCharacteristic1Success");
     }
 
     @Override
     public void bleWriteStateFail() {
-
+        Log.d(TAG, "bleWriteStateFail");
     }
 
     @Override
     public void bleNoPlugDetected() {
-
+        Log.d(TAG, "bleNoPlugDetected");
     }
 
     @Override
     public void blePlugInserted(int cassetteId) {
-
+        Log.d(TAG, "blePlugInserted "+cassetteId);
     }
 
     @Override
     public void bleUpdateBattLevel(int battVolt) {
-
+        Log.d(TAG, "bleUpdateBattLevel "+battVolt);
     }
 
     @Override
     public void notifyDeviceVersion(int version) {
-
+        Log.d(TAG, "notifyDeviceVersion "+version);
     }
 
     @Override
     public void bleUpdateSalivaVolt(int salivaVolt) {
-
+        Log.d(TAG, "bleUpdateSalivaVolt "+salivaVolt);
     }
 
     @Override
     public void bleGetImageSuccess(Bitmap bitmap) {
-
+        Log.d(TAG, "bleGetImageSuccess");
     }
 
     @Override
     public void bleGetImageFailure(float dropoutRate) {
-
+        Log.d(TAG, "bleGetImageFailure "+dropoutRate);
     }
 
     @Override
     public void bleNotifyDetectionResult(double score) {
-
+        Log.d(TAG, "bleNotifyDetectionResult "+score);
     }
 
     @Override

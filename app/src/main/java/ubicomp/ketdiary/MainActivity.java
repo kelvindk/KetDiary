@@ -23,6 +23,7 @@ import org.opencv.android.LoaderCallbackInterface;
 import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
 import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
+import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private FragmentSwitcher fragmentSwitcher = null;
 
     private static MainActivity mainActivity = null;
+
+    public ResultServiceAdapter getResultServiceAdapter(SalivaTestAdapter salivaTestAdapter) {
+        resultServiceAdapter = new ResultServiceAdapter(this, salivaTestAdapter);
+        return resultServiceAdapter;
+    }
 
     // Handle ResultService message.
     private ResultServiceAdapter resultServiceAdapter = null;

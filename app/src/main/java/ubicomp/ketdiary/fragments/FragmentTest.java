@@ -110,8 +110,8 @@ public class FragmentTest extends Fragment {
         // Cancel all countdown timer in currentState of TestStateTransition.
         salivaTestAdapter.cancelTestStateCountdownTimer();
 
-        // Unbind the connection with ResultService.
-        salivaTestAdapter.stopResultService();
+//        // Unbind the connection with ResultService.
+//        salivaTestAdapter.stopResultService();
 
         super.onDestroy();
     }

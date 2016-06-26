@@ -220,7 +220,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     /*** Start ResultService through ResultServiceAdapter. ***/
     public void startResultService() {
-        resultServiceAdapter = new ResultServiceAdapter(mainActivity, this);
+        resultServiceAdapter = mainActivity.getResultServiceAdapter(this);
         resultServiceAdapter.doBindService();
         resultServiceAdapter.startResultService();
 
@@ -390,6 +390,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         ble.bleDerequestSalivaVoltage();
         ble.bleCancelCassetteInfo();
         ble.bleSelfDisconnection();
+        ble = null;
+
+        //
 
         // Clear salivaVoltageQueue & salivaVoltageQueueSum.
         salivaVoltageQueue.clear();
