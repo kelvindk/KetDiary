@@ -69,7 +69,7 @@ public class TestStateConnecting extends TestStateTransition {
                     public void run() {
                         getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
                     }
-                }, 1000);
+                }, 500);
 
                 // Transit to TestStateConnected.
                 newState = new TestStateConnected(getSalivaTestAdapter());

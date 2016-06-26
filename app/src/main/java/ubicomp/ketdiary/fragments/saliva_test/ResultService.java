@@ -27,17 +27,24 @@ public class ResultService extends Service {
 
     public static final int MSG_REGISTER_CLIENT = 1;
     public static final int MSG_UNREGISTER_CLIENT = 2;
-    public static final int MSG_SET_VALUE = 3;
+    public static final int MSG_CURRENT_COUNTDOWN = 3;
+
 
     /** For showing and hiding our notification. */
-    NotificationManager mNM;
+    private NotificationManager mNM;
+    // Visible of notification
+    private boolean enableNotificaiton = false;
+
     /** Keeps track of all current registered clients. */
-    ArrayList<Messenger> mClients = new ArrayList<Messenger>();
+    private ArrayList<Messenger> mClients = new ArrayList<Messenger>();
 
     /** Holds last value set by a client. */
-    int mValue = 0;
+    private int mValue = 0;
 
+    /** Countdown timer for saliva test result */
     private CountDownTimer resultServiceCountdown = null;
+    // Current value of countdown.
+    private int currentCountdown = 0;
 
     /**
      * Handler of incoming messages from clients.
@@ -48,23 +55,12 @@ public class ResultService extends Service {
             switch (msg.what) {
                 case MSG_REGISTER_CLIENT:
                     mClients.add(msg.replyTo);
+                    enableNotificaiton = false;
+                    mNM.cancel(R.string.remote_service_started);
                     break;
                 case MSG_UNREGISTER_CLIENT:
                     mClients.remove(msg.replyTo);
-                    break;
-                case MSG_SET_VALUE:
-                    mValue = msg.arg1;
-                    for (int i=mClients.size()-1; i>=0; i--) {
-                        try {
-                            mClients.get(i).send(Message.obtain(null,
-                                    MSG_SET_VALUE, mValue, 0));
-                        } catch (RemoteException e) {
-                            // The client is dead.  Remove it from the list;
-                            // we are going through the list from back to front
-                            // so this is safe to do inside the loop.
-                            mClients.remove(i);
-                        }
-                    }
+                    enableNotificaiton = true;
                     break;
                 default:
                     super.handleMessage(msg);
@@ -79,18 +75,38 @@ public class ResultService extends Service {
 
     // Start countdown for waiting saliva test result and send message to mainActivity every 1 second.
     public void startResultServiceCountdown() {
-        resultServiceCountdown = new CountDownTimer(10000, 1000){
+        resultServiceCountdown = new CountDownTimer(100000, 1000){
             @Override
             public void onFinish() {
                 Log.d("ResultService", "resultServiceCountdown onFinish");
+                mNM.cancel(R.string.remote_service_started);
             }
 
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d("ResultService", "resultServiceCountdown onTick "+millisUntilFinished/1000);
+                Log.d("ResultService", "resultServiceCountdown onTick "+millisUntilFinished/1000+" mClients.size() "+mClients.size());
+                // Update currentCountdown to remaining time of this countdown timer.
+                currentCountdown = (int) millisUntilFinished/1000;
 
                 // Display a notification about us starting.  We put an icon in the status bar.
-                showNotification("resultServiceCountdown onTick "+millisUntilFinished/1000);
+                if(enableNotificaiton)
+                    showNotification(getString(R.string.test_notification_countdown)+
+                            currentCountdown/60+"分"+currentCountdown%60+"秒");
+
+                // Send MSG_CURRENT_COUNTDOWN message to foreground activity.
+                if(mClients.size()>0) {
+                    for (int i=mClients.size()-1; i>=0; i--) {
+                        try {
+                            mClients.get(i).send(Message.obtain(null,
+                                    MSG_CURRENT_COUNTDOWN, currentCountdown, 0));
+                        } catch (RemoteException e) {
+                            // The client is dead.  Remove it from the list;
+                            // we are going through the list from back to front
+                            // so this is safe to do inside the loop.
+                            mClients.remove(i);
+                        }
+                    }
+                }
 
             }
         }.start();
@@ -100,9 +116,11 @@ public class ResultService extends Service {
     public void onCreate() {
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
+        // Start countdown to 12min for waiting saliva test result.
         startResultServiceCountdown();
 
     }
+
 
     @Override
     public void onDestroy() {
@@ -118,6 +136,7 @@ public class ResultService extends Service {
     public IBinder onBind(Intent intent) {
         return mMessenger.getBinder();
     }
+
 
     /**
      * Show a notification while this service is running.

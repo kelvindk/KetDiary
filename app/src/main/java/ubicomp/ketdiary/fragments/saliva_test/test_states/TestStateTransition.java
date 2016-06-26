@@ -21,6 +21,7 @@ public abstract class TestStateTransition {
     public static final int TEST_TRANSIT_STAGE3 = 10;
     public static final int TEST_TRANSIT_STAGE3_RESPIT = 11;
     public static final int TEST_FINISH = 12;
+    public static final int DEVICE_LOW_BATTERY = 13;
 
     private SalivaTestAdapter salivaTestAdapter = null;
 

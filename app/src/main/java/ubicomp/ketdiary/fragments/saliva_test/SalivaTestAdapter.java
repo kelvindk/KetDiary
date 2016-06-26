@@ -46,6 +46,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public static int SECOND_VOLTAGE_THRESHOLD= 100;//PreferenceControl.getVoltag2();
     public static int SALIVA_VOLTAGE_QUEUE_SIZE= 3;
 
+    public static int DEVICE_LOW_BATTERY_THRESHOLD= 105;
+
     public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
     public static final int STAGE2_COUNTDOWN = 5000; // Should be 60000
@@ -101,6 +103,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     private CountDownTimer stage2TestCountdown = null;
     private CountDownTimer stage3TestCountdown = null;
     private CountDownTimer stage3RespitTestCountdown = null;
+
+    // ResultServiceAdapter is used to handle the connection with ResultService.
+    private ResultServiceAdapter resultServiceAdapter = null;
 
 
     public SalivaTestAdapter(MainActivity mainActivity) {
@@ -209,9 +214,20 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return salivaVoltageQueueSum/SALIVA_VOLTAGE_QUEUE_SIZE;
     }
 
+    /*** Start ResultService through ResultServiceAdapter. ***/
+    public void startResultService() {
+        resultServiceAdapter = new ResultServiceAdapter(mainActivity, this);
+        resultServiceAdapter.doBindService();
+
+    }
+
+    public void stopResultService() {
+        if(resultServiceAdapter != null)
+            resultServiceAdapter.doUnbindService();
+    }
+
 
     /*** Below contains a lot of codes written for fitting legacy codes, need rewrite....  ***/
-
     // Play short_beep sound feedback.
     public void playShortBeepAudio() {
         soundPool.play(shortBeepAudioId, 0.6f, 0.6f, 0, 0, 1.0F);
@@ -322,7 +338,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
                 // Take photo!
                 cameraRunHandler.sendEmptyMessage(0);
 
-                // Finish saliva spit process, transit to TestStateFinish.
+                // Finish saliva spit process, transit to TestStateWaitResult.
                 currentState = currentState.transit(TestStateTransition.TEST_FINISH);
 
             }
@@ -357,7 +373,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         currentState = new TestStateIdle(this);
 
         // Disconnect BLE connection with device.
-        getBle().bleSelfDisconnection();
+        ble.bleUnlockDevice();
+        ble.bleDerequestSalivaVoltage();
+        ble.bleCancelCassetteInfo();
+        ble.bleSelfDisconnection();
 
         // Clear salivaVoltageQueue & salivaVoltageQueueSum.
         salivaVoltageQueue.clear();
@@ -459,9 +478,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     public void sendRequestSalivaVoltage() {
         // Send request saliva voltage to device.
-        byte[] command = new byte[]{BluetoothLE.BLE_REQUEST_SALIVA_VOLTAGE};
-        ble.mAppStateTypeDef = BluetoothLE.AppStateTypeDef.APP_FETCH_INFO;
-        ble.bleWriteCharacteristic1(command);
+        ble.bleRequestSalivaNotification();
     }
 
     public void bleEnableUserPressConfirm() {
@@ -529,6 +546,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void bleUpdateBattLevel(int battVolt) {
         Log.d("BLE", "bleUpdateBattLevel "+battVolt);
+        if(battVolt < DEVICE_LOW_BATTERY_THRESHOLD)
+            currentState = currentState.transit(TestStateTransition.DEVICE_LOW_BATTERY);
     }
 
     @Override

@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ubicomp.ketdiary">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -51,6 +57,11 @@
 
         <service
             android:name=".utility.test.bluetoothle.BluetoothLeService"
+            android:enabled="true" >
+        </service>
+
+        <service
+            android:name=".utility.test.bluetoothle.BluetoothDataParserService"
             android:enabled="true" >
         </service>
 

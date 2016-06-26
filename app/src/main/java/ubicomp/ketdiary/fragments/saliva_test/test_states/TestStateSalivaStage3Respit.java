@@ -88,15 +88,15 @@ public class TestStateSalivaStage3Respit extends TestStateTransition {
                         < SalivaTestAdapter.SECOND_VOLTAGE_THRESHOLD) {
                     Log.d("TestState", "TestStateSalivaStage3Respit SECOND_VOLTAGE_THRESHOLD");
 
-                    // Finish saliva spit process, transit to TestStateFinish.
-                    newState = new TestStateFinish(getSalivaTestAdapter());
+                    // Finish saliva spit process, transit to TestStateWaitResult.
+                    newState = new TestStateWaitResult(getSalivaTestAdapter());
                 }
                 else
                     newState = this;
                 break;
             case TEST_FINISH:
-                // Transit to TestStateFinish.
-                newState = new TestStateFinish(getSalivaTestAdapter());
+                // Transit to TestStateWaitResult.
+                newState = new TestStateWaitResult(getSalivaTestAdapter());
                 break;
             default:
                 Log.d("TestState", "TestStateSalivaStage3Respit default "+trigger);

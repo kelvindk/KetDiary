@@ -55,6 +55,9 @@ public class FragmentTest extends Fragment {
 
         // New SalivaTestAdapter for handling the saliva test process.
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);
+
+        /*** For developing ***/
+//        salivaTestAdapter.startResultService();
     }
 
     @Override
@@ -82,12 +85,16 @@ public class FragmentTest extends Fragment {
         BluetoothLE ble = salivaTestAdapter.getBle();
         if(ble != null) {
             ble.bleUnlockDevice();
+            ble.bleDerequestSalivaVoltage();
             ble.bleCancelCassetteInfo();
             ble.bleSelfDisconnection();
         }
 
         // Enable related phone components that can affect saliva test.
         salivaTestAdapter.setEnableBlockedForTest(true);
+
+        // Unbind the connection with ResultService.
+        salivaTestAdapter.stopResultService();
 
         super.onDestroy();
     }
