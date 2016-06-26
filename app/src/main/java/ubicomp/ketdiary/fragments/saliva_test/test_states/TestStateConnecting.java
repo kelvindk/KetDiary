@@ -62,14 +62,13 @@ public class TestStateConnecting extends TestStateTransition {
                 break;
             case BLE_DEVICE_CONNECTED:
                 Log.d("TestState", "BLE_DEVICE_CONNECTED");
-                // Request cassette info from device with delay 500ms.
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+
+                // Request cassette ID from device.
+                Handler handler1 = new Handler();
+                handler1.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        // Test shotting function of device.
-                        Log.d("BLE", "take Pic!");
-                        getSalivaTestAdapter().getBle().bleTakePicture();
+                        getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
                     }
                 }, 200);
 

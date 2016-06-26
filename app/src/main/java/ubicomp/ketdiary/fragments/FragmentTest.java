@@ -92,6 +92,9 @@ public class FragmentTest extends Fragment {
         // Enable related phone components that can affect saliva test.
         salivaTestAdapter.setEnableUiComponents(true);
 
+        // Cancel all countdown timer in currentState of TestStateTransition.
+        salivaTestAdapter.cancelTestStateCountdownTimer();
+
         // Unbind the connection with ResultService.
         salivaTestAdapter.stopResultService();
 

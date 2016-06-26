@@ -51,15 +51,18 @@ public class TestStateWaitResult extends TestStateTransition {
         // Enable related phone components that can affect saliva test.
         salivaTestAdapter.setEnableUiComponents(true);
 
-        // Countdown to finish saliva test(collection).
+        /*** Start TestResultService to wait result after 12min ***/
+        getSalivaTestAdapter().startResultService();
+
+        // Countdown to finish saliva test(collection) and then go to CreateEventActivity.
         finishCountdown = new CountDownTimer(STAGE_FINAL_COUNTDOWN, STAGE_FINAL_PERIOD){
             @Override
             public void onFinish() {
                 Log.d("TestState", "TestStateWaitResult countdown onFinish");
-                // Reset to Idle state.
-                getSalivaTestAdapter().setToIdleState(R.string.test_null);
+//                // Reset to Idle state.
+//                getSalivaTestAdapter().setToIdleState(R.string.test_null);
 
-                /*** Start TestResultService to wait result after about 10min ***/
+                /*** Go to coping skill fragment ***/
 
             }
 

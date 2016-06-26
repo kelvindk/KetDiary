@@ -224,9 +224,17 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     }
 
+    /*** Stop ResultService through ResultServiceAdapter. ***/
     public void stopResultService() {
         if(resultServiceAdapter != null)
             resultServiceAdapter.doUnbindService();
+    }
+
+
+    // Cancel countdown timer inside currentState
+    public void cancelTestStateCountdownTimer() {
+        if(currentState != null)
+            currentState.transit(TestStateTransition.CANCEL_COUNTDOWN_TIMER);
     }
 
 

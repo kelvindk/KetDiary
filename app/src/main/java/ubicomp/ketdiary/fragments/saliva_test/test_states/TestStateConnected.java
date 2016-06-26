@@ -21,6 +21,9 @@ public class TestStateConnected extends TestStateTransition {
     private TestStateTransition newState = null;
     private CountDownTimer prepareSalivaCountdown = null;
 
+    // Boolean of cassette ID is whether passed validation.
+    boolean isCassetteIdValid = false;
+
     public TestStateConnected(SalivaTestAdapter salivaTestAdapter) {
         super(salivaTestAdapter);
 
@@ -153,22 +156,25 @@ public class TestStateConnected extends TestStateTransition {
                 int pluggedCassetteId = getSalivaTestAdapter().getPluggedCassetteId();
                 Log.d("TestState", "BLE_CASSETTE_PLUGGED "+pluggedCassetteId);
 
-                /*** Check cassette ID from database ***/
-                /* NOT YET IMPLEMENT */
-//                getSalivaTestAdapter().getBle().bleCancelCassetteInfo();
+
+                if(!isCassetteIdValid) {
+                    isCassetteIdValid = true;
+                    /*** Check cassette ID from database ***/
+                    /* NOT YET IMPLEMENT */
+
+                    // Test shotting function of device.
+                    Log.d("BLE", "take Pic!");
+                    getSalivaTestAdapter().getBle().bleTakePicture();
+                }
 
                 newState = this;
                 break;
             case BLE_GET_IMAGE_SUCCESS:
                 Log.d("TestState", "BLE_GET_IMAGE_SUCCESS ");
-                // Request cassette ID from device.
-                Handler handler1 = new Handler();
-                handler1.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
-                    }
-                }, 200);
+
+                // Enable cassette info again. MAY NOT NECESSARY, NEED CHECK!
+                getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
+
                 newState = this;
                 break;
             case BLE_GET_IMAGE_FAILURE:
@@ -197,6 +203,14 @@ public class TestStateConnected extends TestStateTransition {
                 // Enable related phone components that can affect saliva test.
                 getSalivaTestAdapter().setEnableUiComponents(true);
 
+                newState = this;
+                break;
+            case CANCEL_COUNTDOWN_TIMER:
+                Log.d("TestState", "CANCEL_COUNTDOWN_TIMER ");
+                // Cancel prepareSalivaCountdown timer.
+                if(prepareSalivaCountdown != null)
+                    prepareSalivaCountdown.cancel();
+                break;
             default:
                 newState = this;
                 break;
