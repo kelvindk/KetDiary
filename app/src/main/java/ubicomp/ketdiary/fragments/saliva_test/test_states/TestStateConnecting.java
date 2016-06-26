@@ -56,7 +56,7 @@ public class TestStateConnecting extends TestStateTransition {
                 getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
                 // Enable center button.
                 getSalivaTestAdapter().getImagebuttonTestButton().setClickable(true);
-                getSalivaTestAdapter().setEnableBlockedForTest(true);
+                getSalivaTestAdapter().setEnableUiComponents(true);
                 // Transit to TestStateIdle.
                 newState = new TestStateIdle(getSalivaTestAdapter());
                 break;
@@ -67,9 +67,11 @@ public class TestStateConnecting extends TestStateTransition {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
+                        // Test shotting function of device.
+                        Log.d("BLE", "take Pic!");
+                        getSalivaTestAdapter().getBle().bleTakePicture();
                     }
-                }, 500);
+                }, 200);
 
                 // Transit to TestStateConnected.
                 newState = new TestStateConnected(getSalivaTestAdapter());

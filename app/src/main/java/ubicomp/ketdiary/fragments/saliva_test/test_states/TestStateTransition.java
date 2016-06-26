@@ -22,6 +22,8 @@ public abstract class TestStateTransition {
     public static final int TEST_TRANSIT_STAGE3_RESPIT = 11;
     public static final int TEST_FINISH = 12;
     public static final int DEVICE_LOW_BATTERY = 13;
+    public static final int BLE_GET_IMAGE_SUCCESS = 14;
+    public static final int BLE_GET_IMAGE_FAILURE = 15;
 
     private SalivaTestAdapter salivaTestAdapter = null;
 

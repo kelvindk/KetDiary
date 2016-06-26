@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments.saliva_test.test_states;
 
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,11 @@ public class TestStateSalivaStage1 extends TestStateTransition {
         switch (trigger) {
             case BLE_NO_CASSETTE_PLUGGED:
                 Log.d("TestState", "TestStateTransition BLE_NO_CASSETTE_PLUGGED");
+                // Cancel stage1TestCountdown.
+                CountDownTimer stage1TestCountdown = getSalivaTestAdapter().getStage1TestCountdown();
+                if(stage1TestCountdown != null)
+                    stage1TestCountdown.cancel();
+
                 // Show CustomToastCassette.
                 CustomToastCassette.generateToast();
 
@@ -53,7 +59,7 @@ public class TestStateSalivaStage1 extends TestStateTransition {
                 getSalivaTestAdapter().getBle().bleSelfDisconnection();
 
                 // Enable related phone components that can affect saliva test.
-                getSalivaTestAdapter().setEnableBlockedForTest(true);
+                getSalivaTestAdapter().setEnableUiComponents(true);
 
                 break;
             case BLE_DEVICE_DISCONNECTED:

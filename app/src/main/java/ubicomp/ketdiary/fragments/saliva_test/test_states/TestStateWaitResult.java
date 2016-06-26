@@ -1,13 +1,11 @@
 package ubicomp.ketdiary.fragments.saliva_test.test_states;
 
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.fragments.saliva_test.CustomToastCassette;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 
 /**
@@ -17,6 +15,8 @@ public class TestStateWaitResult extends TestStateTransition {
 
     public static final int STAGE_FINAL_COUNTDOWN = 6000;
     public static final int STAGE_FINAL_PERIOD = 1000;
+
+    private  CountDownTimer finishCountdown = null;
 
     public TestStateWaitResult(SalivaTestAdapter salivaTestAdapter) {
         super(salivaTestAdapter);
@@ -33,7 +33,7 @@ public class TestStateWaitResult extends TestStateTransition {
         salivaTestAdapter.getTextviewTestButton().setBackgroundResource(R.drawable.check_test);
         salivaTestAdapter.getTextviewTestInstructionTop().setText(R.string.test_instruction_top10);
         salivaTestAdapter.getTextviewTestInstructionDown().setText("");
-        salivaTestAdapter.setEnableBlockedForTest(true);
+        salivaTestAdapter.setEnableUiComponents(true);
 
         // Disconnect BLE connection with device.
         salivaTestAdapter.getBle().bleSelfDisconnection();
@@ -49,10 +49,10 @@ public class TestStateWaitResult extends TestStateTransition {
         salivaTestAdapter.getImageGuideCassette().setVisibility(View.GONE);
 
         // Enable related phone components that can affect saliva test.
-        salivaTestAdapter.setEnableBlockedForTest(true);
+        salivaTestAdapter.setEnableUiComponents(true);
 
         // Countdown to finish saliva test(collection).
-        CountDownTimer finishCountdown = new CountDownTimer(STAGE_FINAL_COUNTDOWN, STAGE_FINAL_PERIOD){
+        finishCountdown = new CountDownTimer(STAGE_FINAL_COUNTDOWN, STAGE_FINAL_PERIOD){
             @Override
             public void onFinish() {
                 Log.d("TestState", "TestStateWaitResult countdown onFinish");

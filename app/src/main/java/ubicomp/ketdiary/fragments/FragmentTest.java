@@ -3,7 +3,6 @@ package ubicomp.ketdiary.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -91,7 +90,7 @@ public class FragmentTest extends Fragment {
         }
 
         // Enable related phone components that can affect saliva test.
-        salivaTestAdapter.setEnableBlockedForTest(true);
+        salivaTestAdapter.setEnableUiComponents(true);
 
         // Unbind the connection with ResultService.
         salivaTestAdapter.stopResultService();

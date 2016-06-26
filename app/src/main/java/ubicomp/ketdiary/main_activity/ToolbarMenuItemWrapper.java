@@ -56,16 +56,16 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
         // Disable the App title on toolbar
         mainActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
-
     }
 
 
     /*
-    *  Enable/Disable clickable of Toolbar spinner.
+    *  Enable/Disable clickable of Toolbar spinner & action button.
     * */
-    public void enableToolbarSpinner(boolean enable) {
+    public void enableToolbarClickable(boolean enable) {
         spinner_toolbar.setEnabled(enable);
+        MenuItem itemActionSettings = menu.findItem(R.id.action_settings);
+        MenuItemCompat.getActionView(itemActionSettings).setEnabled(enable);
     }
 
     /*

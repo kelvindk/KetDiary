@@ -62,7 +62,7 @@ public class TestStateSalivaStage3Respit extends TestStateTransition {
                 getSalivaTestAdapter().getBle().bleSelfDisconnection();
 
                 // Enable related phone components that can affect saliva test.
-                getSalivaTestAdapter().setEnableBlockedForTest(true);
+                getSalivaTestAdapter().setEnableUiComponents(true);
 
                 break;
             case BLE_DEVICE_DISCONNECTED:

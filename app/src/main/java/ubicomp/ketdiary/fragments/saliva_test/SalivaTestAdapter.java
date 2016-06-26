@@ -52,9 +52,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public static final int STAGE1_PERIOD = 3000;
     public static final int STAGE2_COUNTDOWN = 5000; // Should be 60000
     public static final int STAGE2_PERIOD = 1000;
-    public static final int STAGE3_COUNTDOWN = 10000; // Should be 180000
+    public static final int STAGE3_COUNTDOWN = 6000; // Should be 180000
     public static final int STAGE3_PERIOD = 1000;
-    public static final int STAGE3_RESPIT_COUNTDOWN = 120000; // Should be 120000
+    public static final int STAGE3_RESPIT_COUNTDOWN = 6000; // Should be 120000
     public static final int STAGE3_RESPIT_PERIOD = 1000;
 
     private MainActivity mainActivity = null;
@@ -165,6 +165,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         this.ble = ble;
     }
 
+    public void setCurrentState(TestStateTransition newState) {
+        currentState = newState;
+    }
 
     /*** Getter of UI components. ***/
     public TextView getTextviewTestButton() {
@@ -367,7 +370,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         getTextviewTestButton().setText(R.string.test_start);
         getTextviewTestInstructionTop().setText(failMessage);
         getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
-        setEnableBlockedForTest(true);
+        setEnableUiComponents(true);
 
         // Transit to TestStateIdle.
         currentState = new TestStateIdle(this);
@@ -396,14 +399,14 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         getImagebuttonTestButton().setClickable(true);
 
         // Enable related phone components that can affect saliva test.
-        setEnableBlockedForTest(true);
+        setEnableUiComponents(true);
     }
 
     // When start saliva test process, block all related components that can affect testing.
-    public void setEnableBlockedForTest(boolean enable) {
-        // Enable clickable of Toolbar Spinner & Tabs.
+    public void setEnableUiComponents(boolean enable) {
+        // Enable clickable of Toolbar & Tabs.
         mainActivity.getTabLayoutWrapper().enableTabs(enable);
-        mainActivity.getToolbarMenuItemWrapper().enableToolbarSpinner(enable);
+        mainActivity.getToolbarMenuItemWrapper().enableToolbarClickable(enable);
 
         // Release WakeLock to enable phone sleep and other resources.
         if(enable) {
@@ -510,6 +513,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void bleConnected() {
         Log.d("BLE", "bleConnected");
+
         currentState = currentState.transit(TestStateTransition.BLE_DEVICE_CONNECTED);
     }
 
@@ -579,11 +583,16 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void bleGetImageSuccess(Bitmap bitmap) {
         Log.d("BLE", "bleGetImageSuccess");
+
+        currentState = currentState.transit(TestStateTransition.BLE_GET_IMAGE_SUCCESS);
     }
 
     @Override
     public void bleGetImageFailure(float dropoutRate) {
         Log.d("BLE", "bleGetImageFailure "+dropoutRate);
+
+        if(currentState != null)
+            currentState = currentState.transit(TestStateTransition.BLE_GET_IMAGE_FAILURE);
     }
 
     @Override
