@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ubicomp.myapplication.MainActivity">
 
-    <item
-        android:id="@+id/action_cancel"
-        android:orderInCategory="100"
-        app:actionLayout="@layout/menu_item_cancel"
-        app:showAsAction="always" />
+    <!--<item-->
+        <!--android:id="@+id/action_cancel"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:actionLayout="@layout/menu_item_cancel"-->
+        <!--app:showAsAction="always" />-->
 
     <item
         android:id="@+id/action_save"

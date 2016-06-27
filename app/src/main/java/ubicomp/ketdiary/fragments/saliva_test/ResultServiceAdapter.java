@@ -14,6 +14,7 @@ import android.util.Log;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.CustomToast;
+import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
@@ -61,6 +62,7 @@ public class ResultServiceAdapter {
                         // Transit to StateIdle and show error message.
                         if(salivaTestAdapter != null)
                             salivaTestAdapter.setToIdleState(R.string.test_instruction_top4);
+                        mainActivity.setFragment(FragmentSwitcher.FRAGMENT_TEST);
 
                         doUnbindService();
 
@@ -74,6 +76,7 @@ public class ResultServiceAdapter {
                         // Transit to StateIdle and show error message.
                         if(salivaTestAdapter != null)
                             salivaTestAdapter.setToIdleState(R.string.test_instruction_top3);
+                        mainActivity.setFragment(FragmentSwitcher.FRAGMENT_TEST);
 
                         doUnbindService();
 
@@ -216,17 +219,6 @@ public class ResultServiceAdapter {
         }
     }
 
-    public void stopResultService() {
-        if (mService != null) {
-            try {
-                Message msg = Message.obtain(null,
-                        ResultService.MSG_REQUEST_SERVICE_FINISH);
-                msg.replyTo = mMessenger;
-                mService.send(msg);
-            } catch (RemoteException e) {
-            }
-        }
-    }
 
     public void startBleConnection() {
         if (mService != null) {

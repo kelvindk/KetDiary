@@ -1,7 +1,9 @@
 package ubicomp.ketdiary.fragments.create_event;
 
 import android.os.Handler;
+import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,14 @@ public class ScrollViewAdapter implements View.OnTouchListener {
     private RelativeLayout[] stepRelativeLayouts = new RelativeLayout[NUMBER_OF_TOTAL_STEPS];
     // Buttons of steps as a trick for setting clickable and transparent of of each step
     private Button[] stepCoverButtons = new Button[NUMBER_OF_TOTAL_STEPS];
+
+
+    // Boolean to store action save button state.
+    private boolean isActionSaveButtonClickable = false;
+
+    public boolean isActionSaveButtonClickable() {
+        return isActionSaveButtonClickable;
+    }
 
     public ScrollViewAdapter(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
@@ -201,6 +211,7 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             if(currentMaxStep < STEPS_ALLOW_SAVE) {
                 ((LinearLayout) createEventActivity.
                         findViewById(R.id.menu_item_add_event)).setAlpha((float)0.1);
+                isActionSaveButtonClickable = false;
             }
 
             // Do specific UI actions for particular step.
@@ -256,6 +267,7 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             if(currentMaxStep >= STEPS_ALLOW_SAVE) {
                 ((LinearLayout) createEventActivity.
                         findViewById(R.id.menu_item_add_event)).setAlpha(1);
+                isActionSaveButtonClickable = true;
             }
 
             // Do specific UI actions for particular step.

@@ -283,19 +283,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
-//        @Override
-//        public void onManagerConnected(int status) {
-//            switch (status) {
-//                case LoaderCallbackInterface.SUCCESS:{
-//                    Log.i("Ket", "OpenCV loaded successfully");
-//                } break;
-//                default:{
-//                    super.onManagerConnected(status);
-//                } break;
-//            }
-//        }
-//    };
-
-
 }

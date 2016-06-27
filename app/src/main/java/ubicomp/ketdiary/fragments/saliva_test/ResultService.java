@@ -14,7 +14,6 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
-import android.view.View;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
@@ -36,6 +35,9 @@ public class ResultService extends Service implements BluetoothListener{
     public static final int MSG_REQUEST_SERVICE_FINISH = 5;
     public static final int MSG_IS_RUNNING = 6;
     public static final int MSG_BLE_CONNECT = 7;
+
+    public static final int MSG_REGISTER_CREATE_EVENT_CLIENT = 8;
+    public static final int MSG_UNREGISTER_CREATE_EVENT_CLIENT = 9;
 
     public static final int MSG_SERVICE_NOT_RUNNING = -1;
     public static final int MSG_SERVICE_FINISH = -2;
@@ -66,8 +68,12 @@ public class ResultService extends Service implements BluetoothListener{
     // Visible of notification
     private boolean enableNotification = false;
 
-    /** Keeps current registered client. */
-    private Messenger mClient = null;
+    /** Keeps current registered client: MainActivity. */
+    private Messenger mainClient = null;
+
+    /** Keeps current registered client: CreateEventActivity. */
+    private Messenger createEventClient = null;
+
 
 
     /** Countdown timer for saliva test result */
@@ -133,11 +139,11 @@ public class ResultService extends Service implements BluetoothListener{
                     }
 
                     enableNotification = false;
-                    mClient = msg.replyTo;
+                    mainClient = msg.replyTo;
                     mNM.cancel(R.string.remote_service_started);
                     break;
                 case MSG_UNREGISTER_CLIENT:
-                    mClient = null;
+                    mainClient = null;
                     enableNotification = true;
                     break;
                 case MSG_START_RESULT_SERVICE_COUNTDOWN:
@@ -162,8 +168,13 @@ public class ResultService extends Service implements BluetoothListener{
                     ble.bleConnect();
 
                     break;
-                case MSG_REQUEST_SERVICE_FINISH:
-//                    onDestroy();
+                case MSG_REGISTER_CREATE_EVENT_CLIENT:
+                    //
+                    createEventClient = msg.replyTo;
+                    break;
+                case MSG_UNREGISTER_CREATE_EVENT_CLIENT:
+                    //
+                    createEventClient = null;
                     break;
                 default:
                     super.handleMessage(msg);
@@ -187,9 +198,9 @@ public class ResultService extends Service implements BluetoothListener{
 
                 // Send MSG_CURRENT_COUNTDOWN message to foreground activity.
                 currentCountdown = MSG_SERVICE_FINISH;
-                if(mClient != null) {
+                if(mainClient != null) {
                     try {
-                        mClient.send(Message.obtain(null,
+                        mainClient.send(Message.obtain(null,
                                 MSG_CURRENT_COUNTDOWN, currentCountdown, 0));
                     } catch (RemoteException e) {
                         e.printStackTrace();
@@ -201,6 +212,15 @@ public class ResultService extends Service implements BluetoothListener{
                         showNotification(getString(R.string.test_result_is_out));
                     }
 
+                }
+
+                if(createEventClient != null) {
+                    try {
+                        createEventClient.send(Message.obtain(null,
+                                MSG_CURRENT_COUNTDOWN, currentCountdown, 0));
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 startBleDisconnect();
@@ -218,10 +238,18 @@ public class ResultService extends Service implements BluetoothListener{
                             currentCountdown/60+"分"+currentCountdown%60+"秒");
 
                 // Send MSG_CURRENT_COUNTDOWN message to foreground activity.
-                if(mClient != null) {
+                if(mainClient != null) {
                     try {
-                        mClient.send(Message.obtain(null,
+                        mainClient.send(Message.obtain(null,
                                         MSG_CURRENT_COUNTDOWN, currentCountdown, 0));
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(createEventClient != null) {
+                    try {
+                        createEventClient.send(Message.obtain(null,
+                                MSG_CURRENT_COUNTDOWN, currentCountdown, 0));
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -290,12 +318,22 @@ public class ResultService extends Service implements BluetoothListener{
         if(enableNotification)
             showNotification(getString(R.string.test_instruction_top3));
 
+        PreferenceControl.setResultServiceIsRunning(false);
+
         testFail = true;
 
         // Send MSG_SERVICE_FAIL_CONNECT_TIMEOUT through MSG_CURRENT_COUNTDOWN message to foreground activity.
-        if(mClient != null) {
+        if(mainClient != null) {
             try {
-                mClient.send(Message.obtain(null,
+                mainClient.send(Message.obtain(null,
+                        MSG_CURRENT_COUNTDOWN, MSG_SERVICE_FAIL_CONNECT_TIMEOUT, 0));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        if(createEventClient != null) {
+            try {
+                createEventClient.send(Message.obtain(null,
                         MSG_CURRENT_COUNTDOWN, MSG_SERVICE_FAIL_CONNECT_TIMEOUT, 0));
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -306,6 +344,8 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleConnected() {
         Log.d(TAG, "bleConnected");
+        if(ble != null)
+            ble.bleRequestCassetteInfo();
     }
 
     @Override
@@ -348,17 +388,28 @@ public class ResultService extends Service implements BluetoothListener{
         if(enableNotification)
             showNotification(getString(R.string.test_instruction_top4));
 
+        PreferenceControl.setResultServiceIsRunning(false);
+
         testFail = true;
 
         // Send MSG_SERVICE_FAIL_NO_PLUG through MSG_CURRENT_COUNTDOWN message to foreground activity.
-        if(mClient != null) {
+        if(mainClient != null) {
             try {
-                mClient.send(Message.obtain(null,
+                mainClient.send(Message.obtain(null,
                         MSG_CURRENT_COUNTDOWN, MSG_SERVICE_FAIL_NO_PLUG, 0));
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         }
+        if(createEventClient != null) {
+            try {
+                createEventClient.send(Message.obtain(null,
+                        MSG_CURRENT_COUNTDOWN, MSG_SERVICE_FAIL_NO_PLUG, 0));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
 
     }
 
