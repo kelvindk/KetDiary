@@ -15,6 +15,7 @@ import android.widget.TextView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.utility.back_door.HelpActivity;
 
 /**
  *  ToolbarMenuItemAdapter is used to handle the page switching between test, result, event and
@@ -116,6 +117,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     public void onClick(View v) {
                         Log.d("Ket", "action_settings");
                         // Listener of action Settings button
+                        Intent createEventIntent = new Intent (mainActivity, HelpActivity.class);
+                        mainActivity.startActivity(createEventIntent);
                     }
                 });
                 break;
