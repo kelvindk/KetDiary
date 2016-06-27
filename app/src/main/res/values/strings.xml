@@ -12,8 +12,8 @@
     <string name="testFail">好好加油！</string>
     <string name="doneQuestionnaire">繼續加油！</string>
     <string name="salivaResult">檢測結果</string>
-    <string name="salivaResultNegative">檢測結果為「通過」</string>
-    <string name="salivaResultPositive">檢測結果為「不通過」</string>
+    <string name="salivaResultNegative">檢測結果為\n「通過」</string>
+    <string name="salivaResultPositive">檢測結果為\n「不通過」</string>
 
     <string name="tab_test">檢測</string>
     <string name="tab_result">記錄</string>

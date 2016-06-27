@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static MainActivity mainActivity = null;
 
-    // ResultServiceRunning is running or not, which is used to adapt FragmentTest's view.
-    private boolean isResultServiceRunning = false;
-
     public ResultServiceAdapter getResultServiceAdapter(SalivaTestAdapter salivaTestAdapter) {
         resultServiceAdapter = new ResultServiceAdapter(this, salivaTestAdapter);
         return resultServiceAdapter;
@@ -122,13 +119,6 @@ public class MainActivity extends AppCompatActivity {
         return toolbarMenuItemWrapper;
     }
 
-    public boolean isResultServiceRunning() {
-        return isResultServiceRunning;
-    }
-
-    public void setResultServiceRunning(boolean resultServiceRunning) {
-        isResultServiceRunning = resultServiceRunning;
-    }
 
     // Pass the method call to FragmentSwitcher.
     public void setFragment(int fragmentToSwitch) {
@@ -136,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Pass the method call to FragmentSwitcher.
-    public void setFragmentTest() {
+    public void setFragmentTestWaitResult() {
         fragmentSwitcher.setFragmentTestWaitResult();
     }
 
@@ -152,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         switch (countdown){
             case ResultService.MSG_SERVICE_NOT_RUNNING:
                 textviewToolbar.setVisibility(View.GONE);
+                PreferenceControl.setResultServiceIsRunning(false);
                 // With a trick to stop service.
                 resultServiceAdapter.doUnbindService();
                 Intent intent = new Intent(this, ResultService.class);
@@ -160,8 +151,9 @@ public class MainActivity extends AppCompatActivity {
             case ResultService.MSG_SERVICE_FINISH:
                 int result = PreferenceControl.getTestResult();
                 Log.d("KetResult", "Test result is: "+result);
-                isResultServiceRunning = false;
-                fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_TEST);
+                PreferenceControl.setResultServiceIsRunning(false);
+
+
                 /*** What else need to store? ***/
                 if(result == 1) { // Saliva test results positive.
                     textviewToolbar.setText(R.string.salivaResultPositive);
@@ -170,6 +162,14 @@ public class MainActivity extends AppCompatActivity {
                     textviewToolbar.setText(R.string.salivaResultNegative);
                 }
 
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_RESULT);
+                    }
+                }, 500);
+
+                handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 textviewToolbar.setVisibility(View.VISIBLE);
                 textviewToolbar.setText(getString(R.string.test_notification_countdown)
                         +"\n"+countdown/60+"分"+countdown%60+"秒");
+
                 break;
         }
     }

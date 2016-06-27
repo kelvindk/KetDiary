@@ -129,6 +129,7 @@ public class ResultService extends Service implements BluetoothListener{
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
+                        testResultIsOut = false;
                     }
 
                     enableNotification = false;
@@ -152,6 +153,7 @@ public class ResultService extends Service implements BluetoothListener{
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
+                        PreferenceControl.setResultServiceIsRunning(true);
                     }
                     break;
                 case MSG_BLE_CONNECT:

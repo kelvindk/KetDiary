@@ -21,6 +21,7 @@ import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateTransition;
 import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 /**
@@ -59,7 +60,7 @@ public class FragmentTest extends Fragment {
 
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
-        if(mainActivity.isResultServiceRunning()) {
+        if( PreferenceControl.isResultServiceIsRunning()) {
             return inflater.inflate(R.layout.fragment_test_wait_result, container, false);
         }
 

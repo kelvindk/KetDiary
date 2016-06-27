@@ -423,8 +423,6 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     // When start saliva test process, block all related components that can affect testing.
     public void setEnableUiComponents(boolean enable) {
-        if(mainActivity.isResultServiceRunning())
-            return;
 
         // Enable clickable of Toolbar & Tabs.
         mainActivity.getTabLayoutWrapper().enableTabs(enable);

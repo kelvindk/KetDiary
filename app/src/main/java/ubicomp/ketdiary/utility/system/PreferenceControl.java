@@ -1472,4 +1472,15 @@ public class PreferenceControl {
 
 	// }
 
+
+	public static void setResultServiceIsRunning(boolean state) {
+		SharedPreferences.Editor edit = sp.edit();
+		edit.putBoolean("ResultServiceIsRunning", state);
+		edit.commit();
+	}
+
+	public static boolean isResultServiceIsRunning() {
+		return sp.getBoolean("ResultServiceIsRunning", false);
+	}
+
 }

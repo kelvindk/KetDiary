@@ -10,11 +10,9 @@ import java.util.Calendar;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.fragments.FragmentEvent;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
-import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
@@ -68,14 +66,14 @@ public class TestStateWaitResult extends TestStateTransition {
             public void onFinish() {
                 Log.d("TestState", "TestStateWaitResult countdown onFinish");
                 // Reset to Idle state.
-                getSalivaTestAdapter().setToIdleState(R.string.test_null);
+//                getSalivaTestAdapter().setToIdleState(R.string.test_null);
 
                 // Write timestamp to preference as ID of this saliva test.
                 PreferenceControl.setUpdateDetectionTimestamp(System.currentTimeMillis());
 
                 /*** Go to waiting result fragment ***/
-                getSalivaTestAdapter().getMainActivity().setResultServiceRunning(true);
-                getSalivaTestAdapter().getMainActivity().setFragmentTest();
+                PreferenceControl.setResultServiceIsRunning(true);
+                getSalivaTestAdapter().getMainActivity().setFragmentTestWaitResult();
 
                 /*** Start CreateEventActivity ***/
                 EventLogStructure event = new EventLogStructure();

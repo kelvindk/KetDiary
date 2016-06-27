@@ -80,16 +80,31 @@ public class FragmentSwitcher {
         toolbarMenuItemWrapper.setSpinnerSelection(fragmentToSwitch);
     }
 
-    // Switch the fragment test.
+    // Switch to FragmentTestWaitResult.
     public void setFragmentTestWaitResult() {
         Log.d("Ket", "setFragmentTestWaitResult");
+        toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
+
+        currentFragment = FRAGMENT_TEST_WAIT_RESULT;
+
+        // Switch fragment to selected page.
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_main_container, fragments[FRAGMENT_TEST_WAIT_RESULT]);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    // Switch to FragmentTest.
+    public void setFragmentTest() {
+        Log.d("Ket", "setFragmentTest");
         toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
 
         currentFragment = FRAGMENT_TEST;
 
         // Switch fragment to selected page.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_main_container, fragments[FRAGMENT_TEST_WAIT_RESULT]);
+        fragmentTransaction.replace(R.id.fragment_main_container, fragments[FRAGMENT_TEST]);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 //        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
