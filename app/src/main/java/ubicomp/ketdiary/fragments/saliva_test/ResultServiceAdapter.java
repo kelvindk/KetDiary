@@ -12,7 +12,9 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import ubicomp.ketdiary.MainActivity;
-import ubicomp.ketdiary.fragments.FragmentTest;
+import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.main_activity.CustomToast;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
  * Created by kelvindk on 16/6/25.
@@ -45,15 +47,60 @@ public class ResultServiceAdapter {
         @Override
         public void handleMessage(Message msg) {
 
-            switch (msg.what) {
-                case ResultService.MSG_CURRENT_COUNTDOWN:
-                    Log.d("Ket", "resultServiceCountdown received from ResultService: " + msg.arg1);
-                    int receivedMsg = msg.arg1;
-                    mainActivity.resultServiceRunning(receivedMsg);
-                    break;
-                default:
-                    super.handleMessage(msg);
+            if (msg.what == ResultService.MSG_CURRENT_COUNTDOWN) {
+                Log.d("Ket", "resultServiceCountdown received from ResultService: " + msg.arg1);
+                int receivedMsg = msg.arg1;
+
+                Intent intent = new Intent(mainActivity, ResultService.class);
+
+                switch (receivedMsg) {
+                    case ResultService.MSG_SERVICE_FAIL_NO_PLUG:
+                        // Show CustomToast.
+                        CustomToast.generateToast(R.string.test_instruction_top4, -1);
+
+                        // Transit to StateIdle and show error message.
+                        if(salivaTestAdapter != null)
+                            salivaTestAdapter.setToIdleState(R.string.test_instruction_top4);
+
+                        doUnbindService();
+
+                        mainActivity.stopService(intent);
+                        break;
+
+                    case ResultService.MSG_SERVICE_FAIL_CONNECT_TIMEOUT:
+                        // Show CustomToast.
+                        CustomToast.generateToast(R.string.test_instruction_top3, -1);
+
+                        // Transit to StateIdle and show error message.
+                        if(salivaTestAdapter != null)
+                            salivaTestAdapter.setToIdleState(R.string.test_instruction_top3);
+
+                        doUnbindService();
+
+                        mainActivity.stopService(intent);
+                        break;
+
+                    case ResultService.MSG_SERVICE_FINISH:
+                        int result = PreferenceControl.getTestResult();
+                        // Show CustomToast.
+                        if(result == 1) { // Saliva test results positive.
+                            CustomToast.generateToast(R.string.salivaResultPositive, -1);
+                        }
+                        else {
+                            CustomToast.generateToast(R.string.salivaResultNegative, 0);
+                        }
+
+                        doUnbindService();
+
+                        mainActivity.stopService(intent);
+                        break;
+                }
+
+
+                mainActivity.resultServiceRunning(receivedMsg);
             }
+            else
+                super.handleMessage(msg);
         }
     }
 

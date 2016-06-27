@@ -62,16 +62,19 @@ public class FragmentTest extends Fragment {
 
     @Override
     public void onStart() {
-        super.onStart();
-
-        /*** Check whether a ResultService is working ***/
-
-
         // New SalivaTestAdapter for handling the saliva test process.
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);
 
-        /*** For developing ***/
-//        salivaTestAdapter.startResultService();
+        Log.d("Ket", "FragmentTest onStart");
+
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("Ket", "FragmentTest onResume");
+
+        super.onResume();
     }
 
     @Override
@@ -110,8 +113,6 @@ public class FragmentTest extends Fragment {
         // Cancel all countdown timer in currentState of TestStateTransition.
         salivaTestAdapter.cancelTestStateCountdownTimer();
 
-//        // Unbind the connection with ResultService.
-//        salivaTestAdapter.stopResultService();
 
         super.onDestroy();
     }

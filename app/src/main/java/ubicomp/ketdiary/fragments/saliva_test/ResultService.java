@@ -14,9 +14,11 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.View;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
 
@@ -25,7 +27,7 @@ import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
  */
 public class ResultService extends Service implements BluetoothListener{
 
-    public static final String TAG = "ResultService BLE";
+    public static final String TAG = "ResultServiceBLE";
 
     public static final int MSG_REGISTER_CLIENT = 1;
     public static final int MSG_UNREGISTER_CLIENT = 2;
@@ -35,15 +37,28 @@ public class ResultService extends Service implements BluetoothListener{
     public static final int MSG_IS_RUNNING = 6;
     public static final int MSG_BLE_CONNECT = 7;
 
-    public static final int WAIT_RESULT_COUNTDOWN = 300000;
+    public static final int MSG_SERVICE_NOT_RUNNING = -1;
+    public static final int MSG_SERVICE_FINISH = -2;
+    public static final int MSG_SERVICE_FAIL_NO_PLUG = -3;
+    public static final int MSG_SERVICE_FAIL_CONNECT_TIMEOUT = -4;
+
+    public static final int WAIT_RESULT_COUNTDOWN = 130000;
     public static final int WAIT_RESULT_PERIOD = 1000;
 
-    public static final int LAST_TWO_MINUTES = 120000;
+    public static final int LAST_TWO_MINUTES = 120; //120 second
+    public static final int LAST_ONE_MINUTES = 60; //60 second
 
 
     private ResultService resultService = null;
 
     private BluetoothLE ble = null;
+
+    private boolean testFail = false;
+
+    private boolean testResultIsOut = false;
+    private int testResult = 0;
+
+    private int pictureCount = 0;
 
 
     /** For showing and hiding our notification. */
@@ -96,6 +111,26 @@ public class ResultService extends Service implements BluetoothListener{
             Log.d("ResultService", "handleMessage "+msg.what);
             switch (msg.what) {
                 case MSG_REGISTER_CLIENT:
+                    // Reply testFail if error occurs during testing.
+                    if(testFail) {
+                        try {
+                            msg.replyTo.send(Message.obtain(null, MSG_CURRENT_COUNTDOWN,
+                                    MSG_SERVICE_FAIL_NO_PLUG, 0));
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    // Reply testFail if error occurs during testing.
+                    if(testResultIsOut) {
+                        try {
+                            msg.replyTo.send(Message.obtain(null, MSG_CURRENT_COUNTDOWN,
+                                    MSG_SERVICE_FINISH, 0));
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
                     enableNotification = false;
                     mClient = msg.replyTo;
                     mNM.cancel(R.string.remote_service_started);
@@ -112,22 +147,17 @@ public class ResultService extends Service implements BluetoothListener{
                     if(resultServiceCountdown == null) {
                         // Reply MainActivity this service is running or not.
                         try {
-                            msg.replyTo.send(Message.obtain(null, MSG_CURRENT_COUNTDOWN, -1, 0));
+                            msg.replyTo.send(Message.obtain(null, MSG_CURRENT_COUNTDOWN,
+                                    MSG_SERVICE_NOT_RUNNING, 0));
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
                     }
                     break;
                 case MSG_BLE_CONNECT:
-//                    ble = new BluetoothLE(resultService, "ket_049", System.currentTimeMillis());
-//                    ble.bleConnect();
-//                    Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            ble.bleConnect();
-//                        }
-//                    }, 5000);
+                    //
+                    ble = new BluetoothLE(resultService, "ket_049", PreferenceControl.getUpdateDetectionTimestamp());
+                    ble.bleConnect();
 
                     break;
                 case MSG_REQUEST_SERVICE_FINISH:
@@ -150,16 +180,28 @@ public class ResultService extends Service implements BluetoothListener{
             @Override
             public void onFinish() {
                 Log.d("ResultService", "resultServiceCountdown onFinish");
+                // Cancel notification.
                 mNM.cancel(R.string.remote_service_started);
+
                 // Send MSG_CURRENT_COUNTDOWN message to foreground activity.
+                currentCountdown = MSG_SERVICE_FINISH;
                 if(mClient != null) {
                     try {
                         mClient.send(Message.obtain(null,
-                                MSG_CURRENT_COUNTDOWN, -2, 0));
+                                MSG_CURRENT_COUNTDOWN, currentCountdown, 0));
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
                 }
+                else {
+                    if(enableNotification) {
+                        testResultIsOut = true;
+                        showNotification(getString(R.string.test_result_is_out));
+                    }
+
+                }
+
+                startBleDisconnect();
             }
 
             @Override
@@ -181,6 +223,13 @@ public class ResultService extends Service implements BluetoothListener{
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
+                }
+
+                // Take pictures at last 2min and 1min.
+                if((currentCountdown == LAST_TWO_MINUTES)||(currentCountdown == LAST_ONE_MINUTES)) {
+                    // Take picture for test.
+                    Log.d("BLE", "take Pic! " + currentCountdown);
+                    ble.bleTakePicture();
                 }
 
             }
@@ -230,6 +279,28 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleConnectionTimeout() {
         Log.d(TAG, "bleConnectionTimeout");
+        // Cancel resultServiceCountdown due to bleNoPlugDetected make test fail.
+        if(resultServiceCountdown != null)
+            resultServiceCountdown.cancel();
+
+        // Disconnect BLE.
+        startBleDisconnect();
+
+        // Display a notification about us starting.  We put an icon in the status bar.
+        if(enableNotification)
+            showNotification(getString(R.string.test_instruction_top3));
+
+        testFail = true;
+
+        // Send MSG_SERVICE_FAIL_CONNECT_TIMEOUT through MSG_CURRENT_COUNTDOWN message to foreground activity.
+        if(mClient != null) {
+            try {
+                mClient.send(Message.obtain(null,
+                        MSG_CURRENT_COUNTDOWN, MSG_SERVICE_FAIL_CONNECT_TIMEOUT, 0));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -240,6 +311,16 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleDisconnected() {
         Log.d(TAG, "bleDisconnected");
+        // Auto reconnect to device after 1 sec.
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(ble != null)
+                    ble.bleConnect();
+            }
+        }, 1000);
+
     }
 
     @Override
@@ -255,6 +336,30 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleNoPlugDetected() {
         Log.d(TAG, "bleNoPlugDetected");
+
+        // Cancel resultServiceCountdown due to bleNoPlugDetected make test fail.
+        if(resultServiceCountdown != null)
+            resultServiceCountdown.cancel();
+
+        // Disconnect BLE.
+        startBleDisconnect();
+
+        // Display a notification about us starting.  We put an icon in the status bar.
+        if(enableNotification)
+            showNotification(getString(R.string.test_instruction_top4));
+
+        testFail = true;
+
+        // Send MSG_SERVICE_FAIL_NO_PLUG through MSG_CURRENT_COUNTDOWN message to foreground activity.
+        if(mClient != null) {
+            try {
+                mClient.send(Message.obtain(null,
+                        MSG_CURRENT_COUNTDOWN, MSG_SERVICE_FAIL_NO_PLUG, 0));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
@@ -280,6 +385,7 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleGetImageSuccess(Bitmap bitmap) {
         Log.d(TAG, "bleGetImageSuccess");
+
     }
 
     @Override
@@ -289,11 +395,30 @@ public class ResultService extends Service implements BluetoothListener{
 
     @Override
     public void bleNotifyDetectionResult(double score) {
-        Log.d(TAG, "bleNotifyDetectionResult "+score);
+        // pictureCount++ to memory how many pictures were taken.
+        pictureCount++;
+
+        // Copy from legacy codes, need confirm.
+        if(score == 1)
+            testResult = 1;
+        else if(score == -1)
+            testResult = 0;
+
+        PreferenceControl.setTestResult(testResult);
+
+        Log.d(TAG, "bleNotifyDetectionResult "+score+ " pictureCount "+pictureCount);
     }
 
     @Override
     public void bleReturnDeviceVersion(int version) {
 
+    }
+
+    public void startBleDisconnect()
+    {
+        ble.bleUnlockDevice();
+        ble.bleCancelCassetteInfo();
+        ble.bleSelfDisconnection();
+        ble = null;
     }
 }

@@ -1,24 +1,14 @@
 package ubicomp.ketdiary;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
-
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.LoaderCallbackInterface;
 
 import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
@@ -27,6 +17,7 @@ import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -70,11 +61,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayoutWrapper = new TabLayoutWrapper(this);
         // New the object of handling fragment switch.
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
-
-        // Check ResultService is running or not.
-        textviewToolbar = (TextView) findViewById(R.id.textview_toolbar);
-        resultServiceAdapter = new ResultServiceAdapter(this);
-        resultServiceAdapter.doBindService();
 
 
         // For developing
@@ -145,16 +131,59 @@ public class MainActivity extends AppCompatActivity {
     * */
     public void resultServiceRunning(int countdown) {
         Log.d("Ket", "MainActivity resultServiceRunning countdown="+countdown);
+
+        Handler handler = new Handler();
         switch (countdown){
-            case -1:
+            case ResultService.MSG_SERVICE_NOT_RUNNING:
                 textviewToolbar.setVisibility(View.GONE);
                 // With a trick to stop service.
                 resultServiceAdapter.doUnbindService();
                 Intent intent = new Intent(this, ResultService.class);
-                mainActivity.stopService(intent);
+                stopService(intent);
                 break;
-            case -2:
-                textviewToolbar.setVisibility(View.GONE);
+            case ResultService.MSG_SERVICE_FINISH:
+                int result = PreferenceControl.getTestResult();
+                Log.d("KetResult", "Test result is: "+result);
+
+                /*** What else need to store? ***/
+                if(result == 1) { // Saliva test results positive.
+                    textviewToolbar.setText(R.string.salivaResultPositive);
+                }
+                else {
+                    textviewToolbar.setText(R.string.salivaResultNegative);
+                }
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        textviewToolbar.setVisibility(View.GONE);
+                    }
+                }, 20000);
+
+                break;
+            case ResultService.MSG_SERVICE_FAIL_NO_PLUG:
+                /*** Saliva test process is fail!  ***/
+                textviewToolbar.setText(getString(R.string.test_instruction_top4));
+
+                // Invisible textviewToolbar after 10 sec.
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        textviewToolbar.setVisibility(View.GONE);
+                    }
+                }, 20000);
+                break;
+            case ResultService.MSG_SERVICE_FAIL_CONNECT_TIMEOUT:
+                /*** Saliva test process is fail!  ***/
+                textviewToolbar.setText(getString(R.string.test_instruction_top3));
+
+                // Invisible textviewToolbar after 10 sec.
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        textviewToolbar.setVisibility(View.GONE);
+                    }
+                }, 20000);
                 break;
             default:
                 textviewToolbar.setVisibility(View.VISIBLE);
@@ -187,13 +216,17 @@ public class MainActivity extends AppCompatActivity {
 //            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
 //        }
 
+        // Check ResultService is running or not.
+        textviewToolbar = (TextView) findViewById(R.id.textview_toolbar);
+        resultServiceAdapter = new ResultServiceAdapter(this);
+        resultServiceAdapter.doBindService();
+
         super.onResume();
     }
 
     @Override
     public void onStart() {
         Log.d("Ket", "MainActivity onStart");
-
 
         super.onStart();
     }

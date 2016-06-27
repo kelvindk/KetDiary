@@ -386,13 +386,14 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         currentState = new TestStateIdle(this);
 
         // Disconnect BLE connection with device.
-        ble.bleUnlockDevice();
-        ble.bleDerequestSalivaVoltage();
-        ble.bleCancelCassetteInfo();
-        ble.bleSelfDisconnection();
-        ble = null;
+        if(ble != null) {
+            ble.bleUnlockDevice();
+            ble.bleDerequestSalivaVoltage();
+            ble.bleCancelCassetteInfo();
+            ble.bleSelfDisconnection();
+            ble = null;
+        }
 
-        //
 
         // Clear salivaVoltageQueue & salivaVoltageQueueSum.
         salivaVoltageQueue.clear();
