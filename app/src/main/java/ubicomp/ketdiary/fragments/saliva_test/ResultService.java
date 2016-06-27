@@ -237,8 +237,6 @@ public class ResultService extends Service implements BluetoothListener{
     }
 
 
-
-
     /**
      * Show a notification while this service is running.
      */

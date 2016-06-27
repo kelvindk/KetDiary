@@ -1,12 +1,18 @@
 package ubicomp.ketdiary.fragments.saliva_test.test_states;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 
+import java.util.Calendar;
+
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.FragmentEvent;
+import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
@@ -36,7 +42,6 @@ public class TestStateWaitResult extends TestStateTransition {
         salivaTestAdapter.getTextviewTestButton().setBackgroundResource(R.drawable.check_test);
         salivaTestAdapter.getTextviewTestInstructionTop().setText(R.string.test_instruction_top10);
         salivaTestAdapter.getTextviewTestInstructionDown().setText("");
-        salivaTestAdapter.setEnableUiComponents(true);
 
         // Disconnect BLE connection with device.
         salivaTestAdapter.getBle().bleSelfDisconnection();
@@ -48,11 +53,11 @@ public class TestStateWaitResult extends TestStateTransition {
         // Invisible progress bar.
         salivaTestAdapter.getProgressbar().setVisibility(View.GONE);
 
+        // Invisible face anchor on test screen.
+        getSalivaTestAdapter().getImageFaceAnchor().setVisibility(View.GONE);
+
         // Invisible getImageGuideCassette.
         salivaTestAdapter.getImageGuideCassette().setVisibility(View.GONE);
-
-        // Enable related phone components that can affect saliva test.
-        salivaTestAdapter.setEnableUiComponents(true);
 
         /*** Start TestResultService to wait result after 12min ***/
         getSalivaTestAdapter().startResultService();
@@ -68,8 +73,22 @@ public class TestStateWaitResult extends TestStateTransition {
                 // Write timestamp to preference as ID of this saliva test.
                 PreferenceControl.setUpdateDetectionTimestamp(System.currentTimeMillis());
 
-                /*** Go to coping skill fragment ***/
-//                getSalivaTestAdapter().getMainActivity().setFragment(FragmentSwitcher.FRAGMENT_TEST_WAIT_RESULT);
+                /*** Go to waiting result fragment ***/
+                getSalivaTestAdapter().getMainActivity().setResultServiceRunning(true);
+                getSalivaTestAdapter().getMainActivity().setFragmentTest();
+
+                /*** Start CreateEventActivity ***/
+                EventLogStructure event = new EventLogStructure();
+                event.createTime = (Calendar) Calendar.getInstance().clone();
+
+                Intent intent =
+                        new Intent(getSalivaTestAdapter().getMainActivity(), CreateEventActivity.class);
+                // Put the serializable object into eventContentActivityIntent through a Bundle.
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, event);
+                intent.putExtras(bundle);
+                // Start the activity.
+                getSalivaTestAdapter().getMainActivity().startActivity(intent);
             }
 
             @Override

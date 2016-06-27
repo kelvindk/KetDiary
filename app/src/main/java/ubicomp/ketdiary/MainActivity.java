@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static MainActivity mainActivity = null;
 
+    // ResultServiceRunning is running or not, which is used to adapt FragmentTest's view.
+    private boolean isResultServiceRunning = false;
+
     public ResultServiceAdapter getResultServiceAdapter(SalivaTestAdapter salivaTestAdapter) {
         resultServiceAdapter = new ResultServiceAdapter(this, salivaTestAdapter);
         return resultServiceAdapter;
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 //        EventLogStructure event = new EventLogStructure();
 //        // Set one field as example. scenarioType is an enum.
 //        event.scenarioType = EventLogStructure.ScenarioTypeEnum.BODY;
-//        Intent eventContentActivityIntent = new Intent CreateEventActivity.class);
+//        Intent eventContentActivityIntent = new Intent(CreateEventActivity.class);
 //        // Put the serializable object into eventContentActivityIntent through a Bundle.
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, event);
@@ -119,9 +122,22 @@ public class MainActivity extends AppCompatActivity {
         return toolbarMenuItemWrapper;
     }
 
+    public boolean isResultServiceRunning() {
+        return isResultServiceRunning;
+    }
+
+    public void setResultServiceRunning(boolean resultServiceRunning) {
+        isResultServiceRunning = resultServiceRunning;
+    }
+
     // Pass the method call to FragmentSwitcher.
     public void setFragment(int fragmentToSwitch) {
         fragmentSwitcher.setFragment(fragmentToSwitch);
+    }
+
+    // Pass the method call to FragmentSwitcher.
+    public void setFragmentTest() {
+        fragmentSwitcher.setFragmentTestWaitResult();
     }
 
 
@@ -144,7 +160,8 @@ public class MainActivity extends AppCompatActivity {
             case ResultService.MSG_SERVICE_FINISH:
                 int result = PreferenceControl.getTestResult();
                 Log.d("KetResult", "Test result is: "+result);
-
+                isResultServiceRunning = false;
+                fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_TEST);
                 /*** What else need to store? ***/
                 if(result == 1) { // Saliva test results positive.
                     textviewToolbar.setText(R.string.salivaResultPositive);

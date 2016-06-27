@@ -10,12 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import junit.framework.Test;
+
 import org.w3c.dom.Text;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateTransition;
+import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
@@ -54,6 +58,10 @@ public class FragmentTest extends Fragment {
 
 
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
+
+        if(mainActivity.isResultServiceRunning()) {
+            return inflater.inflate(R.layout.fragment_test_wait_result, container, false);
+        }
 
         View fragmentTestView = inflater.inflate(R.layout.fragment_test, container, false);
 

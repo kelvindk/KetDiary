@@ -126,7 +126,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
 
         // Set listener to image button: testButton.
-        testButton.setOnClickListener(test_button_click);
+        if(testButton != null)
+            testButton.setOnClickListener(test_button_click);
 
         // Init the currentState as TestStateIdle.
         currentState = new TestStateIdle(this);
@@ -155,6 +156,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     public MainActivity getMainActivity() {
         return mainActivity;
+    }
+
+    public TestStateTransition getCurrentState() {
+        return currentState;
     }
 
     public BluetoothLE getBle() {
@@ -418,6 +423,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     // When start saliva test process, block all related components that can affect testing.
     public void setEnableUiComponents(boolean enable) {
+        if(mainActivity.isResultServiceRunning())
+            return;
+
         // Enable clickable of Toolbar & Tabs.
         mainActivity.getTabLayoutWrapper().enableTabs(enable);
         mainActivity.getToolbarMenuItemWrapper().enableToolbarClickable(enable);
@@ -425,7 +433,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         // Release WakeLock to enable phone sleep and other resources.
         if(enable) {
             /*** Will crash if do not close CameraRecorder. ***/
-            imageFaceAnchor.setVisibility(View.INVISIBLE);
+             if(imageFaceAnchor != null)
+                imageFaceAnchor.setVisibility(View.INVISIBLE);
             if(cameraRecorder != null) {
                 cameraRecorder.pause();
                 cameraRecorder.close();

@@ -48,7 +48,7 @@ public class ResultServiceAdapter {
         public void handleMessage(Message msg) {
 
             if (msg.what == ResultService.MSG_CURRENT_COUNTDOWN) {
-                Log.d("Ket", "resultServiceCountdown received from ResultService: " + msg.arg1);
+                Log.d("Ket", "resultServiceCountdown " + msg.arg1);
                 int receivedMsg = msg.arg1;
 
                 Intent intent = new Intent(mainActivity, ResultService.class);

@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
@@ -11,6 +12,7 @@ import ubicomp.ketdiary.fragments.FragmentEvent;
 import ubicomp.ketdiary.fragments.FragmentRanking;
 import ubicomp.ketdiary.fragments.FragmentResult;
 import ubicomp.ketdiary.fragments.FragmentTest;
+import ubicomp.ketdiary.fragments.FragmentTestWaitResult;
 
 /**
  * This class aggregates all manipulation of fragment switch.
@@ -20,10 +22,10 @@ import ubicomp.ketdiary.fragments.FragmentTest;
 
 public class FragmentSwitcher {
     public final static int FRAGMENT_TEST = 0;
-    public final static int FRAGMENT_TEST_WAIT_RESULT = 10;
     public final static int FRAGMENT_RESULT = 1;
     public final static int FRAGMENT_EVENT = 2;
     public final static int FRAGMENT_RANKING = 3;
+    public final static int FRAGMENT_TEST_WAIT_RESULT = 4;
 
     private MainActivity mainActivity = null;
     private TabLayoutWrapper tabLayoutWrapper = null;
@@ -36,7 +38,7 @@ public class FragmentSwitcher {
 
     // FragmentManager is used to manage fragment.
     private FragmentManager fragmentManager = null;
-    private Fragment[] fragments = new Fragment[4];
+    private Fragment[] fragments = new Fragment[5];
     private int currentFragment = 0;
 
     // Constructor received the references for fragment switch.
@@ -52,6 +54,7 @@ public class FragmentSwitcher {
         fragments[1] = new FragmentResult(this);
         fragments[2] = new FragmentEvent(this, this.mainActivity);
         fragments[3] = new FragmentRanking(this);
+        fragments[4] = new FragmentTestWaitResult(this);
 
         fragmentManager = this.mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -61,6 +64,7 @@ public class FragmentSwitcher {
         fragmentTransaction.add(R.id.fragment_main_container, fragments[1], ""+FRAGMENT_RESULT);
         fragmentTransaction.add(R.id.fragment_main_container, fragments[2], ""+FRAGMENT_EVENT);
         fragmentTransaction.add(R.id.fragment_main_container, fragments[3], ""+FRAGMENT_RANKING);
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[4], ""+FRAGMENT_TEST_WAIT_RESULT);
 
 
         // Show FragmentTest as first page.
@@ -74,6 +78,21 @@ public class FragmentSwitcher {
     public void setFragmentOnlyDowndropTab(int fragmentToSwitch) {
         tabLayoutWrapper.setTabSelected(fragmentToSwitch);
         toolbarMenuItemWrapper.setSpinnerSelection(fragmentToSwitch);
+    }
+
+    // Switch the fragment test.
+    public void setFragmentTestWaitResult() {
+        Log.d("Ket", "setFragmentTestWaitResult");
+        toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
+
+        currentFragment = FRAGMENT_TEST;
+
+        // Switch fragment to selected page.
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_main_container, fragments[FRAGMENT_TEST_WAIT_RESULT]);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
 
@@ -116,11 +135,11 @@ public class FragmentSwitcher {
 
 
         // When switch out from FragmentEvent, do this trick to avoid crash.
-        if(this.currentFragment == FRAGMENT_EVENT)
+        if(currentFragment == FRAGMENT_EVENT)
             ((FragmentEvent)fragments[FRAGMENT_EVENT]).invisibleList();
 
         // Update which fragment we stay.
-        this.currentFragment = fragmentToSwitch;
+        currentFragment = fragmentToSwitch;
 
         // Switch fragment to selected page.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
