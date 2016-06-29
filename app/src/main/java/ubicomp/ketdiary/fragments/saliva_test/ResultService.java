@@ -17,6 +17,7 @@ import android.util.Log;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
@@ -74,7 +75,8 @@ public class ResultService extends Service implements BluetoothListener{
     /** Keeps current registered client: CreateEventActivity. */
     private Messenger createEventClient = null;
 
-
+    // For accessing database.
+    FirstPageDataBase testDB = null;
 
     /** Countdown timer for saliva test result */
     private CountDownTimer resultServiceCountdown = null;
@@ -87,12 +89,14 @@ public class ResultService extends Service implements BluetoothListener{
         this.resultService = this;
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
+        testDB = new FirstPageDataBase();
+
     }
 
 
     @Override
     public void onDestroy() {
-        Log.d("ResultService", "onDestroy");
+        Log.d(TAG, "onDestroy");
 
         // Cancel the persistent notification.
         mNM.cancel(R.string.remote_service_started);
@@ -114,7 +118,7 @@ public class ResultService extends Service implements BluetoothListener{
     class IncomingHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            Log.d("ResultService", "handleMessage "+msg.what);
+            Log.d(TAG, "handleMessage "+msg.what);
             switch (msg.what) {
                 case MSG_REGISTER_CLIENT:
                     // Reply testFail if error occurs during testing.
@@ -164,12 +168,20 @@ public class ResultService extends Service implements BluetoothListener{
                     break;
                 case MSG_BLE_CONNECT:
                     //
-                    ble = new BluetoothLE(resultService, "ket_049", PreferenceControl.getUpdateDetectionTimestamp());
+                    ble = new BluetoothLE(resultService, testDB.getDeviceId(), PreferenceControl.getUpdateDetectionTimestamp());
                     ble.bleConnect();
 
                     break;
                 case MSG_REGISTER_CREATE_EVENT_CLIENT:
-                    //
+                    // Reply testFail if error occurs during testing.
+                    if(testResultIsOut) {
+                        try {
+                            msg.replyTo.send(Message.obtain(null, MSG_CURRENT_COUNTDOWN,
+                                    MSG_SERVICE_FINISH, 0));
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     createEventClient = msg.replyTo;
                     break;
                 case MSG_UNREGISTER_CREATE_EVENT_CLIENT:
@@ -192,7 +204,7 @@ public class ResultService extends Service implements BluetoothListener{
         resultServiceCountdown = new CountDownTimer(WAIT_RESULT_COUNTDOWN, WAIT_RESULT_PERIOD){
             @Override
             public void onFinish() {
-                Log.d("ResultService", "resultServiceCountdown onFinish");
+                Log.d(TAG, "resultServiceCountdown onFinish");
                 // Cancel notification.
                 mNM.cancel(R.string.remote_service_started);
 
@@ -228,7 +240,7 @@ public class ResultService extends Service implements BluetoothListener{
 
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d("ResultService", "resultServiceCountdown onTick "+millisUntilFinished/WAIT_RESULT_PERIOD);
+                Log.d(TAG, "resultServiceCountdown onTick "+millisUntilFinished/WAIT_RESULT_PERIOD);
                 // Update currentCountdown to remaining time of this countdown timer.
                 currentCountdown = (int) millisUntilFinished/WAIT_RESULT_PERIOD;
 
@@ -351,6 +363,11 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleDisconnected() {
         Log.d(TAG, "bleDisconnected");
+        if(testResultIsOut)
+            return;
+
+        Log.d(TAG, "ble Reconnected");
+
         // Auto reconnect to device after 1 sec.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -450,9 +467,9 @@ public class ResultService extends Service implements BluetoothListener{
         pictureCount++;
 
         // Copy from legacy codes, need confirm.
-        if(score == 1)
+        if(score == 1) // Positive
             testResult = 1;
-        else if(score == -1)
+        else if(score == -1)  // Negative
             testResult = 0;
 
         PreferenceControl.setTestResult(testResult);
@@ -467,9 +484,10 @@ public class ResultService extends Service implements BluetoothListener{
 
     public void startBleDisconnect()
     {
-        ble.bleUnlockDevice();
-        ble.bleCancelCassetteInfo();
-        ble.bleSelfDisconnection();
+//        ble.bleUnlockDevice();
+//        ble.bleCancelCassetteInfo();
+//        ble.bleSelfDisconnection();
+        ble.bleHardTermination();
         ble = null;
     }
 }

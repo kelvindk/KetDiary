@@ -1,6 +1,5 @@
 package ubicomp.ketdiary.main_activity;
 
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,7 +9,7 @@ import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.FragmentEvent;
 import ubicomp.ketdiary.fragments.FragmentRanking;
-import ubicomp.ketdiary.fragments.FragmentResult;
+import ubicomp.ketdiary.fragments.FragmentStatistics;
 import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.fragments.FragmentTestWaitResult;
 
@@ -22,7 +21,7 @@ import ubicomp.ketdiary.fragments.FragmentTestWaitResult;
 
 public class FragmentSwitcher {
     public final static int FRAGMENT_TEST = 0;
-    public final static int FRAGMENT_RESULT = 1;
+    public final static int FRAGMENT_STATISTICS = 1;
     public final static int FRAGMENT_EVENT = 2;
     public final static int FRAGMENT_RANKING = 3;
     public final static int FRAGMENT_TEST_WAIT_RESULT = 4;
@@ -51,7 +50,7 @@ public class FragmentSwitcher {
 
         // Create four fragments.
         fragments[0] = new FragmentTest(this, this.mainActivity);
-        fragments[1] = new FragmentResult(this);
+        fragments[1] = new FragmentStatistics(this);
         fragments[2] = new FragmentEvent(this, this.mainActivity);
         fragments[3] = new FragmentRanking(this);
         fragments[4] = new FragmentTestWaitResult(this);
@@ -61,7 +60,7 @@ public class FragmentSwitcher {
 
         // Add four fragments to view.
         fragmentTransaction.add(R.id.fragment_main_container, fragments[0], ""+FRAGMENT_TEST);
-        fragmentTransaction.add(R.id.fragment_main_container, fragments[1], ""+FRAGMENT_RESULT);
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[1], ""+FRAGMENT_STATISTICS);
         fragmentTransaction.add(R.id.fragment_main_container, fragments[2], ""+FRAGMENT_EVENT);
         fragmentTransaction.add(R.id.fragment_main_container, fragments[3], ""+FRAGMENT_RANKING);
         fragmentTransaction.add(R.id.fragment_main_container, fragments[4], ""+FRAGMENT_TEST_WAIT_RESULT);
@@ -130,8 +129,8 @@ public class FragmentSwitcher {
             case FRAGMENT_TEST:
                 toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
                 break;
-            case FRAGMENT_RESULT:
-                toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_result);
+            case FRAGMENT_STATISTICS:
+                toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_statistics);
                 break;
             case FRAGMENT_EVENT:
                 toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_event);

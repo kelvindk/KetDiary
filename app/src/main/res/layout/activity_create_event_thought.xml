@@ -14,7 +14,7 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/then_thought"/>
+        android:text="@string/original_thought"/>
 
 
 

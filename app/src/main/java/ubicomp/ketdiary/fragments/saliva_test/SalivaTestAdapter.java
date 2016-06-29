@@ -25,6 +25,7 @@ import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateIdle;
 import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateTransition;
+import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.file.ImageFileHandler;
 import ubicomp.ketdiary.utility.data.file.MainStorage;
 import ubicomp.ketdiary.utility.data.file.VoltageFileHandler;
@@ -46,7 +47,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public static int SECOND_VOLTAGE_THRESHOLD= 100;//PreferenceControl.getVoltag2();
     public static int SALIVA_VOLTAGE_QUEUE_SIZE= 3;
 
-    public static int DEVICE_LOW_BATTERY_THRESHOLD= 105;
+    public static int DEVICE_LOW_BATTERY_THRESHOLD= 102;
 
     public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
@@ -107,6 +108,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     // ResultServiceAdapter is used to handle the connection with ResultService.
     private ResultServiceAdapter resultServiceAdapter = null;
 
+    // For accessing database.
+    FirstPageDataBase testDB = null;
+
 
     public SalivaTestAdapter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -138,6 +142,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         dinDingAudioId = soundPool.load(mainActivity, R.raw.din_ding, 1);
         supplyAudioId = soundPool.load(mainActivity, R.raw.supply, 1);
 
+        // New object for accessing database.
+        testDB = new FirstPageDataBase();
+
     }
 
 
@@ -168,6 +175,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     public void setBle(BluetoothLE ble) {
         this.ble = ble;
+    }
+
+    public FirstPageDataBase getTestDB() {
+        return testDB;
     }
 
     public void setCurrentState(TestStateTransition newState) {
@@ -392,9 +403,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         // Disconnect BLE connection with device.
         if(ble != null) {
-            ble.bleUnlockDevice();
-            ble.bleDerequestSalivaVoltage();
-            ble.bleCancelCassetteInfo();
+//            ble.bleUnlockDevice();
+//            ble.bleDerequestSalivaVoltage();
+//            ble.bleCancelCassetteInfo();
             ble.bleSelfDisconnection();
             ble = null;
         }

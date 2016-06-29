@@ -21,7 +21,10 @@ public class TestStateIdle extends TestStateTransition {
         TestStateTransition newState = null;
         switch (trigger) {
             case TEST_BUTTON_CLICK:
-                BluetoothLE ble = new BluetoothLE(getSalivaTestAdapter(), "ket_049", 0);
+                // Get device ID from database.
+                String deviceId = getSalivaTestAdapter().getTestDB().getDeviceId();
+
+                BluetoothLE ble = new BluetoothLE(getSalivaTestAdapter(), deviceId, 0);
                 getSalivaTestAdapter().setBle(ble);
                 // Try to connect saliva device.
                 ble.bleConnect();

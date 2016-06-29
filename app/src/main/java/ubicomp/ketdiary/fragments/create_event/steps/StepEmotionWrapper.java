@@ -58,7 +58,7 @@ public class StepEmotionWrapper {
 
             // New dialog.
             AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
-            dialog.setTitle(R.string.then_emotion);
+            dialog.setTitle(R.string.original_emotion);
 
             dialog.setMultiChoiceItems(emotionStrings, dialogCheckList,
                 new DialogInterface.OnMultiChoiceClickListener() {

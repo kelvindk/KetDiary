@@ -24,4 +24,14 @@
     <color name="setting_title_bg_color">#FF434343</color>
     <color name="orange">#FFc98123</color>
     <color name="lite_orange">#FFF19700</color>
+
+    <color name="blue">#FF7dcdff</color>
+    <color name="date_before_gray">#FFdcdada</color>
+    <color name="dark_gray">#FF898989</color>
+    <color name="red">#FFf2a6a3</color>
+    <color name="text_color">#B3B3B4</color>
+    <color name="text_gray2">#FFb3b3b4</color>
+    <color name="text_gray3">#FF9E9E9F</color>
+    <color name="toast_point">#FF2dc7b3</color>
+    <color name="white_shadow">#99FFFFFF</color>
 </resources>

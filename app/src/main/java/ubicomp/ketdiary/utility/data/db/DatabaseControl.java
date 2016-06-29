@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.utility.data.structure.AddScore;
 import ubicomp.ketdiary.utility.data.structure.Appeal;
@@ -177,7 +178,28 @@ public class DatabaseControl {
 	 *            replaced by current Detection
 	 * @see com.ubicomp.ketdiary.data.structure.TestResult
 	 */
-	
+
+	public void insertTestResult(TestResult data) {
+		synchronized (sqlLock) {
+
+			db = dbHelper.getWritableDatabase();
+			ContentValues content = new ContentValues();
+			content.put("result", data.getResult());
+			content.put("cassetteId", data.getCassette_id());
+			content.put("year", data.getTv().getYear());
+			content.put("month", data.getTv().getMonth());
+			content.put("day", data.getTv().getDay());
+			content.put("ts", data.getTv().getTimestamp());
+			content.put("week", data.getTv().getWeek());
+			content.put("isPrime", 1);
+			content.put("isFilled", data.getIsFilled());
+			//content.put("weeklyScore", weeklyScore + addScore);
+			//content.put("score", score + addScore);
+			db.insert("TestResult", null, content);
+			db.close();
+		}
+	}
+
 	public int insertTestResult(TestResult data, boolean update) {
 		synchronized (sqlLock) {
 
@@ -2401,13 +2423,7 @@ public class DatabaseControl {
 			}
 		}
 		
-		/**
-		 * Insert a Reflection
-		 * 
-		 * @param data
-		 *            inserted Reflection
-		 * @see com.ubicomp.ketdiary.data.structure.Reflection
-		 */
+
 		public void insertReflection(Reflection data) {
 			Log.i("GG", "inserReflectionSQL");
 			synchronized (sqlLock) {
@@ -2424,14 +2440,7 @@ public class DatabaseControl {
 				db.close();
 			}
 		}
-		
-		/**
-		 * Get all Reflection which are not uploaded to the server
-		 * 
-		 * @return An array of Reflection. If there are no Reflection,
-		 *         return null.
-		 * @see com.ubicomp.ketdiary.data.structure.Reflection
-		 */
+
 		public Reflection[] getNotUploadedReflection() {
 			Log.i("GG", "getNotUploadReflectionSQL");
 			synchronized (sqlLock) {
@@ -2464,13 +2473,7 @@ public class DatabaseControl {
 				return data;
 			}
 		}
-		/**
-		 * get the NoteAdd
-		 *
-		 *
-		 *
-		 * @see com.ubicomp.ketdiary.data.structure.NoteAdd
-		 */
+
 		public NoteAdd getNoteAddByRelationKey(int relation_key) {
 			synchronized (sqlLock) {
 				NoteAdd data = null;
@@ -2514,13 +2517,7 @@ public class DatabaseControl {
 				return data;
 			}
 		}
-		/**
-		 * Label the Reflection uploaded
-		 * 
-		 * @param ts
-		 *            Timestamp of the uploaded Appeal
-		 * @see com.ubicomp.ketdiary.data.structure.Appeal
-		 */
+
 		public void setReflectionUploaded(long ts) {
 			synchronized (sqlLock) {
 				db = dbHelper.getWritableDatabase();
@@ -2613,13 +2610,7 @@ public class DatabaseControl {
 			}
 		}
 		
-		/**
-		 * Insert a AddScore
-		 * 
-		 * @param data
-		 *            inserted AddScore
-		 * @see com.ubicomp.ketdiary.data.structure.AddScore
-		 */
+
 		public void insertAddScore(AddScore data) {
 			AddScore preScore = getLastestAddScore();
 			data.setAccumulation(preScore.getAccumulation() + data.getAddScore());
@@ -2646,13 +2637,7 @@ public class DatabaseControl {
 				db.close();
 			}
 		}
-		
-		/**
-		 * Get Lastest AddScore
-		 * 
-		 *
-		 * @see com.ubicomp.ketdiary.data.structure.AddScore
-		 */
+
 		public AddScore getLastestAddScore() {
 			synchronized (sqlLock) {
 				db = dbHelper.getReadableDatabase();
@@ -2712,14 +2697,7 @@ public class DatabaseControl {
 				return data;
 			}
 		}
-		
-		/**
-		 * Label the AddScore uploaded
-		 * 
-		 * @param ts
-		 *            Timestamp of the uploaded Appeal
-		 * @see com.ubicomp.ketdiary.data.structure.Appeal
-		 */
+
 		public void setAddScoreUploaded(long ts) {
 			synchronized (sqlLock) {
 				db = dbHelper.getWritableDatabase();
@@ -2766,14 +2744,7 @@ public class DatabaseControl {
 				return thinkingEvent;
 			}
 		}
-		
-		/**
-		 * Insert a IdentityScore
-		 * 
-		 * @param data
-		 *            inserted IdentityScore
-		 * @see com.ubicomp.ketdiary.data.structure.IdentityScore
-		 */
+
 		public void insertIdentityScore(IdentityScore data) {
 			Log.i("GG", "inserScoreSQL");
 			synchronized (sqlLock) {
@@ -2830,13 +2801,7 @@ public class DatabaseControl {
 			}
 		}
 
-		/**
-		 * Insert a History
-		 *
-		 * @param data
-		 *
-		 * @see com.ubicomp.ketdiary.data.structure.NoteAdd
-		 */
+
 		public void insertHistoryWithNoteAdd(NoteAdd data) {
 
 			synchronized (sqlLock) {
@@ -2865,13 +2830,7 @@ public class DatabaseControl {
 			}
 		}
 
-		/**
-		 * Insert a History
-		 *
-		 * @param data
-		 *
-		 * @see com.ubicomp.ketdiary.data.structure.Reflection
-		 */
+
 		public void insertHistoryWithRefleciton(Reflection data) {
 			NoteAdd noteAdd = getNoteAddByRelationKey(data.getKey());
 			synchronized (sqlLock) {
@@ -2886,7 +2845,7 @@ public class DatabaseControl {
 				db.close();
 			}
 
-			if(data.getThinking() != "")
+			if (data.getThinking() != "")
 				synchronized (sqlLock) {
 					db = dbHelper.getWritableDatabase();
 					ContentValues content = new ContentValues();
@@ -2900,13 +2859,6 @@ public class DatabaseControl {
 				}
 		}
 
-		/**
-		 * Insert a History
-		 * 
-		 * @param data
-		 *            inserted IdentityScore
-		 * @see com.ubicomp.ketdiary.data.structure.IdentityScore
-		 */
 		public void insertHistory(History data) {
 
 			synchronized (sqlLock) {
@@ -2950,14 +2902,7 @@ public class DatabaseControl {
 				return data;
 			}
 		}
-		
-		/**
-		 * Insert a TriggerItem
-		 * 
-		 * @param data
-		 *            inserted TriggerItem
-		 * @see com.ubicomp.ketdiary.data.structure.TriggerItem
-		 */
+
 		public void insertTriggerItem(TriggerItem data) {
 
 			synchronized (sqlLock) {
@@ -2972,13 +2917,7 @@ public class DatabaseControl {
 			}
 		}
 		
-		/**
-		 * Insert a TriggerItem
-		 * 
-		 * @param data
-		 *            inserted TriggerItem
-		 * @see com.ubicomp.ketdiary.data.structure.TriggerItem
-		 */
+
 		public boolean findTriggerItem(int data) {
 
 			synchronized (sqlLock) {
@@ -3025,4 +2964,123 @@ public class DatabaseControl {
 				return data;
 			}
 		}
+
+	public void insertEventLog(EventLogStructure data) {
+
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			ContentValues content = new ContentValues();
+
+			content.put("editTime", data.editTime.getTimeInMillis());
+			content.put("eventTime", data.eventTime.getTimeInMillis());
+			content.put("scenarioType", data.scenarioType.ordinal());
+			content.put("scenario", data.scenario);
+			content.put("drugUseRiskLevel", data.drugUseRiskLevel);
+			content.put("originalBehavior", data.originalBehavior);
+			content.put("originalEmotion", data.originalEmotion);
+			content.put("originalThought", data.originalThought);
+			content.put("expectedBehavior", data.expectedBehavior);
+			content.put("expectedEmotion", data.expectedEmotion);
+			content.put("expectedThought", data.expectedThought);
+			content.put("therapyStatus", data.therapyStatus.ordinal());
+			content.put("isAfterTest", data.isAfterTest? 1:0);
+			content.put("isComplete", data.isComplete? 1:0);
+
+			db.insert("EventLog", null, content);
+			db.close();
+		}
+	}
+
+	public EventLogStructure[] getAllEventLog() {
+		synchronized (sqlLock) {
+
+			EventLogStructure[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM EventLog";
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			Log.d("GG", "count = "+ count);
+
+			data = new EventLogStructure[count];
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+
+				data[i] = new EventLogStructure();
+
+				data[i].editTime = Calendar.getInstance();
+				data[i].eventTime = Calendar.getInstance();
+				data[i].editTime.setTimeInMillis(cursor.getLong(1));
+				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
+				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(3)];
+				data[i].scenario = cursor.getString(4);
+				data[i].drugUseRiskLevel = cursor.getInt(5);
+				data[i].originalBehavior = cursor.getString(6);
+				data[i].originalEmotion = cursor.getString(7);
+				data[i].originalThought = cursor.getString(8);
+				data[i].expectedBehavior = cursor.getString(9);
+				data[i].expectedEmotion = cursor.getString(10);
+				data[i].expectedThought = cursor.getString(11);
+				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(12)];
+				data[i].isAfterTest = (cursor.getInt(13) > 0);
+				data[i].isComplete =  (cursor.getInt(14) > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
+	public EventLogStructure[] getAfterEventLog(Calendar cal) {
+		synchronized (sqlLock) {
+			long ts = cal.getTimeInMillis();
+			EventLogStructure[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM EventLog WHERE eventTime >= " + ts;
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			Log.d("GG", "count = "+ count);
+
+			data = new EventLogStructure[count];
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+
+				data[i] = new EventLogStructure();
+
+				data[i].editTime = Calendar.getInstance();
+				data[i].eventTime = Calendar.getInstance();
+				data[i].createTime = Calendar.getInstance();
+				data[i].editTime.setTimeInMillis(cursor.getLong(1));
+				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
+				data[i].eventTime.setTimeInMillis(cursor.getLong(3));
+				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
+				data[i].scenario = cursor.getString(5);
+				data[i].drugUseRiskLevel = cursor.getInt(6);
+				data[i].originalBehavior = cursor.getString(7);
+				data[i].originalEmotion = cursor.getString(8);
+				data[i].originalThought = cursor.getString(9);
+				data[i].expectedBehavior = cursor.getString(10);
+				data[i].expectedEmotion = cursor.getString(11);
+				data[i].expectedThought = cursor.getString(12);
+				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
+				data[i].isAfterTest = (cursor.getInt(14) > 0);
+				data[i].isComplete =  (cursor.getInt(15) > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
 }

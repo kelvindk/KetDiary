@@ -6,6 +6,75 @@
     <string name="action_save">儲存</string>
     <string name="action_cancel">取消</string>
 
+    <string name="coping_skill">應對技巧</string>
+
+    <string name="default_goal_good"> 機車</string>
+    <string name="default_recreation_1">聽音樂</string>
+    <string name="default_recreation_2">慢跑</string>
+    <string name="default_recreation_3">打球</string>
+
+    <string name="self_help_counter_unit">點</string>
+
+    <string name="TAG_PAGE_YEAR">tag_page_year</string>
+    <string name="TAG_PAGE_MONTH">tag_page_month</string>
+
+    <string name="TAG_CAL_CELL_DAY">tag_cal_cell_day</string>
+    <string name="TAG_CAL_CELL_MONTH">tag_cal_cell_month</string>
+    <string name="TAG_CAL_CELL_PAGE_MONTH">tag_cal_cell_page_month</string>
+    <string name="TAG_CAL_CELL_YEAR">tag_cal_cell_year</string>
+    <string name="TAG_CAL_CELL_TS">tag_cal_cell_ts</string>
+    <string name="TAG_CAL_CELL_NOTEADD">tag_cal_cell_noteadd</string>
+
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="morning_time">0&#8211;12</string>
+    <string name="noon">下午</string>
+    <string name="noon_time">12&#8211;20</string>
+    <string name="night_time">20&#8211;24</string>
+
+    <string name="dollor_sign">$</string>
+    <string name="high">高</string>
+    <string name="low">低</string>
+
+
+    <string name="done">完成</string>
+    <string name="today_test">今日測試</string>
+    <string name="today_test_none">尚未測試</string>
+    <string name="week_test">每周測試統計</string>
+    <string name="month_test">每月統計測試</string>
+    <string name="test_pass">通過</string>
+    <string name="test_fail">不通過</string>
+    <string name="test_none">未測試</string>
+    <string name="result">檢測結果</string>
+
+    <string name="negative_consequence">負面後果</string>
+    <string name="positive_goal">正向目標</string>
+
+    <string name="analysis_rank_month_help">整體排名：</string>
+    <string name="analysis_rank_week_help">本周排名：</string>
+
+    <string name="call_check_help">確定要撥給 </string>
+    <string name="question_sign">？</string>
+
+    <string name="title_activity_dev">DevActivity</string>
+
+    <string-array name="spinner_array">
+        <item>@string/tab_test</item>
+        <item>@string/tab_statistics</item>
+        <item>@string/tab_event</item>
+        <item>@string/tab_ranking</item>
+    </string-array>
+
+    <string-array name="analysis_rank_change_help">
+        <item>第一名</item>
+        <item>第二名</item>
+        <item>第三名</item>
+        <item></item>
+        <item>進步了</item>
+        <item>後退了</item>
+    </string-array>
+
 
     <string name="point">點</string>
     <string name="testPass">做得很好！</string>
@@ -16,7 +85,7 @@
     <string name="salivaResultPositive">檢測結果為\n「不通過」</string>
 
     <string name="tab_test">檢測</string>
-    <string name="tab_result">記錄</string>
+    <string name="tab_statistics">記錄</string>
     <string name="tab_event">記事</string>
     <string name="tab_ranking">排行</string>
 
@@ -25,7 +94,7 @@
 
     <string-array name="toolbar_spinner_array">
         <item>@string/tab_test</item>
-        <item>@string/tab_result</item>
+        <item>@string/tab_statistics</item>
         <item>@string/tab_event</item>
         <item>@string/tab_ranking</item>
     </string-array>
@@ -134,13 +203,13 @@
     <string name="large">大</string>
     <string name="very_large">很大</string>
     
-    <string name="then_behavior">當時行為</string>
+    <string name="original_behavior">當時行為</string>
     <string name="step4_question_left">在「</string>
     <string name="step4_question_right">」的時候，我作了什麼?</string>
     <string name="frequent_input_step4">常用行為</string>
 
 
-    <string name="then_emotion">當時情緒</string>
+    <string name="original_emotion">當時情緒</string>
     <string name="step5_question_left">「</string>
     <string name="step5_question_right">」的時候，當時的情緒是?</string>
 
@@ -155,7 +224,7 @@
         <item>渴望</item>
     </string-array>
 
-    <string name="then_thought">當時想法</string>
+    <string name="original_thought">當時想法</string>
     <string name="step6_question_left">當「</string>
     <string name="step6_question_mid">」，是什麼原因讓我感到「?</string>
     <string name="step6_question_right">」?</string>
@@ -195,6 +264,25 @@
     <string name="about_setting">設定：</string>
     <string name="about_time_gap">提醒時間間隔為：</string>
 
+
+    <string name="scenario">發生時情境</string>
+    <string name="coping_strategy">應對策略</string>
+    <string name="event_details">詳細事件</string>
+
+    <string name="edit">編輯</string>
+    <string name="delete">刪除</string>
+
+    <string name="date">日期</string>
+
+    <string name="drug_use_risk">用毒可能性</string>
+    <string name="therapist_suggestion">治療師</string>
+
+    <string name="therapist_disapproval">治療師不贊同</string>
+    <string name="therapist_approval">治療師贊同</string>
+
+    <string name="most_small">最小</string>
+    <string name="most_big">最大</string>
+
     <string-array name="about_message">
         <item>此應用程式由</item>
         <item>合作開發。</item>
@@ -228,5 +316,11 @@
     <string name="no">否</string>
     <string name="send">寄送</string>
     <string name="ok">確定</string>
+
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
 
 </resources>

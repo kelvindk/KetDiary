@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ubicomp.myapplication.MainActivity">
+
+    <item
+        android:id="@+id/coping_skill"
+        android:orderInCategory="100"
+        app:actionLayout="@layout/menu_item_coping_skill"
+        app:showAsAction="always" />
+
+</menu>

@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_RESULT);
+                        fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_STATISTICS);
                     }
                 }, 500);
 

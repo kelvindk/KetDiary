@@ -16,6 +16,11 @@
     <dimen name="voice_input_width">35dp</dimen>
     <dimen name="text_input_width">300dp</dimen>
 
+    <dimen name="small_title_size">18sp</dimen>
+    <dimen name="normal_title_size">21.3sp</dimen>
+    <dimen name="large_title_size">28sp</dimen>
+    <dimen name="xlarge_title_size">56.7sp</dimen>
+
     <dimen name="verysmall_text_size">9sp</dimen>
     <dimen name="small_text_size">10.7sp</dimen>
     <dimen name="sn_text_size">12sp</dimen>
@@ -23,8 +28,6 @@
     <dimen name="large_text_size">16sp</dimen>
     <dimen name="xlarge_text_size">42.7sp</dimen>
 
-    <dimen name="small_title_size">18sp</dimen>
-    <dimen name="normal_title_size">21.3sp</dimen>
-    <dimen name="large_title_size">28sp</dimen>
-    <dimen name="xlarge_title_size">56.7sp</dimen>
+    <dimen name="week_circle_width">34.6dp</dimen>
+    <dimen name="week_circle_height">32dp</dimen>
 </resources>

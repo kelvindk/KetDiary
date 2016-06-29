@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="trigger_list">
+        <item>負面情緒</item>
+        <item>生理因素</item>
+        <item>正面情緒</item>
+        <item>測試自己控制力</item>
+        <item>衝動、誘惑或轉移注意</item>
+        <item>與他人相處上遇到困難</item>
+        <item>維持社交</item>
+        <item>與他人或動物相處</item>
+        <item>自訂</item>
+    </string-array>
+</resources>

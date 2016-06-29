@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    This layout gives a page view of each event description.
+    On the top row, it has the following elements
+        - back button to go back to the list view
+        -
+-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:padding="5dp"
+            android:shrinkColumns="1"
+            android:stretchColumns="1">
+
+            <!--Event Date  -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:paddingRight="15dp"
+                    android:text="@string/date"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/event_content_container_event_date"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="2016 5 30 午"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+
+            </TableRow>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:background="#FFFFFF" />
+
+            <!--Context type icon and context -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:text="@string/scenario"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_scenario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:maxLines="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="情境情境情境情境情境情境情境情境情境"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+
+                <ImageView
+                    android:id="@+id/event_content_container_scenario_type"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/type_icon3" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FFFFFF" />
+
+            <!-- Drug use risk ratingbar -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="center_vertical|right"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:text="@string/drug_use_risk"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/most_small"
+                        android:textSize="@dimen/abc_text_size_medium_material" />
+
+
+                    <!--style="@style/SkullRatingBar"-->
+                    <RatingBar
+                        android:id="@+id/event_content_container_drug_use_risk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:numStars="5"
+                        android:rating="1"
+                        android:stepSize="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/most_big"
+                        android:textSize="@dimen/abc_text_size_medium_material" />
+                </LinearLayout>
+
+            </TableRow>
+
+            <View
+                android:layout_height="15dip"
+                android:background="#FFFFFF" />
+
+            <!-- Expected thinking-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:focusable="true"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:text="@string/expected_thought"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_expected_thinking"
+                    android:layout_gravity="top"
+                    android:clickable="true"
+                    android:enabled="false"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="想法想法想法想法 "
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+
+            </TableRow>
+
+
+            <!--        <View
+                        android:layout_height="1dip"
+                        android:background="#FF909090" />-->
+
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FFFFFF" />
+
+            <!-- Expected emotion-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:text="@string/expected_emotion"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_expected_emotion"
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="情緒情緒情緒"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FFFFFF" />
+
+            <!-- Expected behavior-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:text="@string/expected_behavior"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_expected_behavior"
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="行為行為行為"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+            </TableRow>
+
+
+            <!--        <View
+                        android:layout_height="1dip"
+                        android:background="#FF909090" />-->
+
+            <View
+                android:layout_height="20dip"
+                android:background="#FFFFFF" />
+
+            <!-- Original thinking-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:text="@string/original_thought"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_original_thinking"
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="想法 想法 想法 想法 想法"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+            </TableRow>
+
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FFFFFF" />
+
+            <!-- Original emotion-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:text="@string/original_emotion"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_original_emotion"
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="情緒 情緒 情緒 情緒 情緒"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+            </TableRow>
+
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FFFFFF" />
+
+            <!-- Original behavior-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:gravity="right"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:text="@string/original_behavior"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/event_content_container_original_behavior"
+                    android:layout_gravity="top"
+                    android:focusable="false"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="行為 行為 行為 行為 行為"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
+            </TableRow>
+
+            <View
+                android:layout_height="20dip"
+                android:background="#FFFFFF" />
+
+            <!--        <View
+                        android:layout_height="1dip"
+                        android:background="#FF909090" />-->
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/frament_event_list_expected_behavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:focusable="true"
+                    android:gravity="left"
+                    android:paddingRight="15dp"
+                    android:singleLine="false"
+                    android:text="" />
+
+                <LinearLayout
+                    android:id="@+id/event_content_container_therapy_layout">
+                    <TextView
+                        android:id="@+id/event_content_container_therapy_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="治療師贊同"
+                        android:textSize="@dimen/abc_text_size_medium_material" />
+
+
+                    <ImageView
+                        android:id="@+id/event_content_container_therapy_status_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:src="@drawable/ic_check_black_24dp" />
+                </LinearLayout>
+
+            </TableRow>
+
+
+        </TableLayout>
+    </LinearLayout>
+
+</ScrollView>

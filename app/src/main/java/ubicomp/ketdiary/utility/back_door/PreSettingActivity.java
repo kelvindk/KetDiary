@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.utility.data.db.DatabaseControl;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.system.cleaner.Cleaner;
 
 
@@ -87,60 +89,46 @@ public class PreSettingActivity extends Activity {
 		activity = this;
 
 		uid = (EditText) this.findViewById(R.id.uid_edit);
-		//TODO
-		//uid.setText(PreferenceControl.getUID());
+		uid.setText(PreferenceControl.getUID());
 		
 		did = (EditText) this.findViewById(R.id.did_edit);
-		//TODO
-		//did.setText(PreferenceControl.getDeviceId());
+		did.setText(PreferenceControl.getDeviceId());
 
 		collectdata_switch = (CheckBox) this.findViewById(R.id.collectdata_switch);
-		//TODO
-		//collectdata_switch.setChecked(PreferenceControl.getCollectData());
+		collectdata_switch.setChecked(PreferenceControl.getCollectData());
 		
 		developer_switch = (CheckBox) this.findViewById(R.id.developer_switch);
-		//TODO
-		//developer_switch.setChecked(PreferenceControl.isDeveloper());
+		developer_switch.setChecked(PreferenceControl.isDeveloper());
 		
 		skip_saliva_switch = (CheckBox) this.findViewById(R.id.skip_saliva_switch);
-		//TODO
-		//skip_saliva_switch.setChecked(PreferenceControl.isSkip());
+		skip_saliva_switch.setChecked(PreferenceControl.isSkip());
 		
 		demo_switch = (CheckBox) this.findViewById(R.id.demo_switch);
-		//TODO
-		//demo_switch.setChecked(PreferenceControl.isDemo());
+		demo_switch.setChecked(PreferenceControl.isDemo());
 		
 		target_good = (EditText) this.findViewById(R.id.target_positive_edit);
-		//TODO
-		//target_good.setText(PreferenceControl.getPostiveGoal());
+		target_good.setText(PreferenceControl.getPostiveGoal());
 
 		target_bad = (EditText) this.findViewById(R.id.target_negative_edit);
-		//TODO
-		//target_bad.setText(PreferenceControl.getNegativeGoal());
+		target_bad.setText(PreferenceControl.getNegativeGoal());
 
 		drink = (EditText) this.findViewById(R.id.target_drink_edit);
-		//TODO
-		//drink.setText(String.valueOf(PreferenceControl.getSavingDrinkCost()));
+		drink.setText(String.valueOf(PreferenceControl.getSavingDrinkCost()));
 		
 		voltage1 = (EditText) this.findViewById(R.id.voltage1_edit);
-		//TODO
-		//voltage1.setText(String.valueOf(PreferenceControl.getVoltag1()));
+		voltage1.setText(String.valueOf(PreferenceControl.getVoltag1()));
 		
 		voltage2 = (EditText) this.findViewById(R.id.voltage2_edit);
-		//TODO
-		//voltage2.setText(String.valueOf(PreferenceControl.getVoltag2()));
+		voltage2.setText(String.valueOf(PreferenceControl.getVoltag2()));
 		
 		ACountDown = (EditText) this.findViewById(R.id.after_countdown_edit);
-		//TODO
-		//ACountDown.setText(String.valueOf(PreferenceControl.getAfterCountDown()));
+		ACountDown.setText(String.valueOf(PreferenceControl.getAfterCountDown()));
 		
 		VCountDown = (EditText) this.findViewById(R.id.voltage1_countdown_edit);
-		//TODO
-		//VCountDown.setText(String.valueOf(PreferenceControl.getVoltageCountDown()));
+		VCountDown.setText(String.valueOf(PreferenceControl.getVoltageCountDown()));
 		
 		V2CountDown = (EditText) this.findViewById(R.id.voltage2_countdown_edit);
-		//TODO
-		//V2CountDown.setText(String.valueOf(PreferenceControl.getVoltage2CountDown()));
+		V2CountDown.setText(String.valueOf(PreferenceControl.getVoltage2CountDown()));
 		
 		mDateDisplay = (TextView) findViewById(R.id.date);
 		mPickDate = (Button) findViewById(R.id.date_button);
@@ -152,11 +140,9 @@ public class PreSettingActivity extends Activity {
 		addPass = (EditText) this.findViewById(R.id.add_pass_edit);
 
 		appeal_switch = (CheckBox) this.findViewById(R.id.appeal_mode_switch);
-		//TODO
-		//appeal_switch.setChecked(PreferenceControl.getAppealOpen());
+		appeal_switch.setChecked(PreferenceControl.getAppealOpen());
 
-		//TODO
-		/*int[] startDateData = PreferenceControl.getStartDateData();
+		int[] startDateData = PreferenceControl.getStartDateData();
 		mYear = startDateData[0];
 		mMonth = startDateData[1];
 		mDay = startDateData[2];
@@ -164,7 +150,7 @@ public class PreSettingActivity extends Activity {
 		int[] lockDateData = PreferenceControl.getLockDateData();
 		lYear = lockDateData[0];
 		lMonth = lockDateData[1];
-		lDay = lockDateData[2];*/
+		lDay = lockDateData[2];
 
 		saveButton = (Button) this.findViewById(R.id.uid_OK);
 		saveButton.setOnClickListener(new OKOnclickListener());
@@ -239,8 +225,7 @@ public class PreSettingActivity extends Activity {
 		lDateDisplay = (TextView) findViewById(R.id.lock_date);
 		lPickDate = (Button) findViewById(R.id.lock_button);
 
-		//TODO
-		//lDateCheckBox.setChecked(PreferenceControl.isLocked());
+		lDateCheckBox.setChecked(PreferenceControl.isLocked());
 
 		PackageInfo pinfo;
 		try {
@@ -294,8 +279,7 @@ public class PreSettingActivity extends Activity {
 //				resotreAlertDialogVer1));
 		restoreVer1Button.setOnClickListener(new RestoreVer1OnClickListener());
 
-		//TODO
-		//debug = PreferenceControl.isDebugMode();
+		debug = PreferenceControl.isDebugMode();
 		debugButton = (Button) this.findViewById(R.id.debug_normal_switch);
 
 		if (debug)
@@ -323,14 +307,12 @@ public class PreSettingActivity extends Activity {
                 {
                         if(isChecked) 
                         {
-							//TODO
-                        	//PreferenceControl.setAppealOpen(true);
+                        	PreferenceControl.setAppealOpen(true);
                         	CustomToastSmall.generateToast("開啟申訴功能");
                         }
                         else
                         {
-							//TODO
-                        	//PreferenceControl.setAppealOpen(false);
+							PreferenceControl.setAppealOpen(false);
                         	CustomToastSmall.generateToast("關閉申訴功能");
                         }
                 }
@@ -401,8 +383,7 @@ public class PreSettingActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			debug = !debug;
-			//TODO
-			//PreferenceControl.setDebugMode(debug);
+			PreferenceControl.setDebugMode(debug);
 			if (debug) {
 				debugButton.setText("Switch to normal mode");
 			} else {
@@ -488,7 +469,7 @@ public class PreSettingActivity extends Activity {
 			
 			if (check) {
 				//TODO
-				/*PreferenceControl.setUID(text);
+				PreferenceControl.setUID(text);
 				PreferenceControl.setDeviceId(text2);
 				
 				PreferenceControl.setIsDemo(demo_switch.isChecked());
@@ -508,7 +489,7 @@ public class PreSettingActivity extends Activity {
 				PreferenceControl.setLocked(lDateCheckBox.isChecked());
 				if (lDateCheckBox.isChecked()) {
 					PreferenceControl.setLockDate(lYear, lMonth, lDay);
-				}*/
+				}
 				activity.finish();
 			}
 		}

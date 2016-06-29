@@ -32,69 +32,101 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/very_small"
+            android:layout_weight="1"
+            android:gravity="left"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/very_large"
+            android:layout_weight="1"
+            android:gravity="right"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:src="@drawable/gray_line"
+        android:layout_gravity="center" />
+
     <RadioGroup
         android:id="@+id/radioGroupStep3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0.8"
-        android:paddingTop="15dp"
+        android:layout_marginTop="-5dp"
         android:paddingBottom="20dp"
-        android:paddingLeft="5dp"
+        android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:orientation="horizontal">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/very_small"
+            android:text="@string/one"
             android:textColor="@color/color6Gray"
             android:id="@+id/radioButton1"
             android:button="@null"
-            android:drawableBottom="@android:drawable/btn_radio"
+            android:drawableTop="@android:drawable/btn_radio"
             android:gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/small"
+            android:text="@string/two"
             android:textColor="@color/color6Gray"
             android:id="@+id/radioButton2"
             android:button="@null"
-            android:drawableBottom="@android:drawable/btn_radio"
+            android:drawableTop="@android:drawable/btn_radio"
             android:gravity="center"
             android:layout_weight="1"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/medium"
+            android:text="@string/three"
             android:textColor="@color/color6Gray"
             android:id="@+id/radioButton3"
             android:button="@null"
-            android:drawableBottom="@android:drawable/btn_radio"
+            android:drawableTop="@android:drawable/btn_radio"
             android:gravity="center"
             android:layout_weight="1"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/large"
+            android:text="@string/four"
             android:textColor="@color/color6Gray"
             android:id="@+id/radioButton4"
             android:button="@null"
-            android:drawableBottom="@android:drawable/btn_radio"
+            android:drawableTop="@android:drawable/btn_radio"
             android:gravity="center"
             android:layout_weight="1"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/very_large"
+            android:text="@string/five"
             android:textColor="@color/color6Gray"
             android:id="@+id/radioButton5"
             android:button="@null"
-            android:drawableBottom="@android:drawable/btn_radio"
+            android:drawableTop="@android:drawable/btn_radio"
             android:gravity="center"
             android:layout_weight="1"/>
     </RadioGroup>

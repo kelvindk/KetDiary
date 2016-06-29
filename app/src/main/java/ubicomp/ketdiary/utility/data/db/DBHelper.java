@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		
 		
 		//  NoteAdd Table
-		db.execSQL("CREATE TABLE NoteAdd ("
+		/*db.execSQL("CREATE TABLE NoteAdd ("
 				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
 				+ " isAfterTest INT NOT NULL," + " year INTEGER NOT NULL,"
 				+ " month INTEGER NOT NULL," + " day INTEGER NOT NULL,"
@@ -62,7 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " depth INTEGER NOT NULL DEFAULT 0,"
 				+ " deleted INTEGER NOT NULL DEFAULT 0"
 				+ ")");
-		
+		*/
 		
 		db.execSQL("CREATE TABLE TestDetail ("
 				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -139,7 +139,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " upload INTEGER NOT NULL DEFAULT 0" + ")");
 		
 		//reflection
-		db.execSQL("CREATE TABLE Reflection ("
+		/*db.execSQL("CREATE TABLE Reflection ("
 				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
 				+ " ts INTEGER NOT NULL,"
 				+ " action CHAR[255], "	
@@ -152,7 +152,8 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " depth INTEGER NOT NULL DEFAULT 0,"
 				+ " deleted INTEGER NOT NULL DEFAULT 0"
 				+ ")");
-		
+		*/
+
 		//risk  version 14->15
 		db.execSQL("CREATE TABLE Risk ("
 				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -205,118 +206,30 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " thinking CHAR[255] NOT NULL, "
 				+ " feeling CHAR[255] NOT NULL "
 				+ ")");
+
+		db.execSQL("CREATE TABLE EventLog ("
+				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ " editTime INTEGER NOT NULL, "
+				+ " eventTime INTEGER NOT NULL, "
+				+ " creatTime INTEGER NOT NULL, "
+				+ " scenarioType INTEGER NOT NULL DEFAULT 0, "
+				+ " scenario CHAR[255] NOT NULL, "
+				+ " drugUseRiskLevel NOT NULL DEFAULT 0, "
+				+ " originalBehavior CHAR[255] NOT NULL, "
+				+ " originalEmotion CHAR[255] NOT NULL DEFAULT 0, "
+				+ " originalThought CHAR[255] NOT NULL, "
+				+ " expectedBehavior CHAR[255] NOT NULL, "
+				+ " expectedEmotion CHAR[255] NOT NULL DEFAULT 0, "
+				+ " expectedThought CHAR[255] NOT NULL, "
+				+ " therapyStatus INTEGER NOT NULL DEFAULT 0, "
+				+ " isAfterTest INTEGER NOT NULL DEFAULT 0, "
+				+ " isComplete INTEGER NOT NULL DEFAULT 0"
+				+ ")");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int old_ver, int new_ver) {
-		
-		if (new_ver > old_ver) {
-			 db.beginTransaction();//建立交易
-			     
-			 boolean success = false;//判斷參數
-			        
-			 //由之前不用的版本，可做不同的動作     
-			 switch (old_ver) {
-			    case 13://新增認同度      
-			      db.execSQL("ALTER TABLE NoteAdd ADD COLUMN acceptance integer NOT NULL DEFAULT 0");
-			      db.execSQL("ALTER TABLE Reflection ADD COLUMN acceptance integer NOT NULL DEFAULT 0");
-			             
-			      success = true;
-			      break;
-			     
-			    case 14://新增認同度      
-				  db.execSQL("CREATE TABLE Risk ("
-						  + " id INTEGER PRIMARY KEY AUTOINCREMENT, "
-						  + " item INTEGER NOT NULL DEFAULT 0,"
-						  + " description CHAR[255],"
-						  + " show INTEGER NOT NULL DEFAULT 1"
-						  + ")");
-				  success = true;
-				  break;
-				 
-			    case 15://新增分數      
-			    	db.execSQL("CREATE TABLE Score ("
-							+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
-							+ " addScore INTEGER NOT NULL DEFAULT 0,"
-							+ " accumulation INTEGER NOT NULL DEFAULT 0,"
-							+ " ts INTEGER NOT NULL,"
-							+ " reason CHAR[255]"
-							+ ")");
-			    	success = true;
-				    break;
-			    
-			    case 16://新增分數 upload    
-				      db.execSQL("ALTER TABLE Score ADD COLUMN upload INTEGER NOT NULL DEFAULT 0");
-				             
-				  success = true;
-				  break;
-				  
-			    case 17://新增認同度  
-			    	db.execSQL("CREATE TABLE Identity ("
-							+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
-							+ " ts INTEGER NOT NULL,"
-							+ " Score INTEGER NOT NULL DEFAULT 0,"
-							+ " relationKey INTEGER NOT NULL,"
-							+ " isReflection INTEGER NOT NULL DEFAULT 0, "
-							+ " upload INTEGER NOT NULL DEFAULT 0" 
-							+ ")");
-				             
-				  success = true;
-			    case 18://新增歷史紀錄
-				  db.execSQL("CREATE TABLE History ("
-							+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
-							+ " ts INTEGER NOT NULL,"
-							+ " item INTEGER NOT NULL DEFAULT 0,"
-							+ " type INTEGER NOT NULL DEFAULT 0,"
-							+ " content CHAR[255] NOT NULL"
-							+ ")");
-				  success = true;
-				  break;
 
-
-				 case 19://patients add recordData
-					 db.execSQL("ALTER TABLE NoteAdd ADD COLUMN recordData integer NOT NULL DEFAULT 0");
-					 db.execSQL("ALTER TABLE Identity ADD COLUMN another integer NOT NULL DEFAULT 0");
-					 db.execSQL("ALTER TABLE Identity ADD COLUMN anotherID CHAR[255]");
-					 db.execSQL("CREATE TABLE OtherNoteAdd ("
-							 + " id INTEGER PRIMARY KEY AUTOINCREMENT, "
-							 + " userId CHAR[255] NOT NULL, "
-							 + " ts INTEGER NOT NULL,"
-							 + " key INTEGER NOT NULL DEFAULT 0,"
-							 + " isReflection INTEGER NOT NULL DEFAULT 0,"
-							 + " event CHAR[255] NOT NULL, "
-							 + " thinking CHAR[255] NOT NULL, "
-							 + " feeling CHAR[255] NOT NULL "
-							 + ")");
-					 success = true;
-					 break;
-			 }
-			                
-			if (success) {
-			   db.setTransactionSuccessful();//正確交易才成功
-			}
-			db.endTransaction();
-			old_ver++;
-		}
-		else {
-			onCreate(db);
-		}   
-		
-		/*db.execSQL("DROP TABLE IF EXISTS Ranking");
-			
-		db.execSQL("CREATE TABLE Ranking (" + " user_id CHAR[255] PRIMERY KEY,"
-				+ " total_score INTEGER NOT NULL,"
-				+ " test_score INTEGER NOT NULL  DEFAULT 0,"
-				+ " note_score INTEGER NOT NULL  DEFAULT 0,"
-				+ " question_score INTEGER NOT NULL  DEFAULT 0,"
-				+ " coping_score INTEGER NOT NULL  DEFAULT 0,"
-				
-				+ " times_score INTEGER NOT NULL  DEFAULT 0,"
-				+ " pass_score INTEGER NOT NULL  DEFAULT 0,"
-				+ " normalQ_score INTEGER NOT NULL  DEFAULT 0,"
-				+ " randomQ_score INTEGER NOT NULL  DEFAULT 0"+")");
-				
-		*/
 	}
 
 	@Override
