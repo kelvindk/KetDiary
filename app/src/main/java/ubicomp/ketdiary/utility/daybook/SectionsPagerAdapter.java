@@ -17,11 +17,11 @@ import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
-import ubicomp.ketdiary.main_activity.Typefaces;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.structure.NoteAdd;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.data.structure.TimeValue;
+import ubicomp.ketdiary.utility.statistic.Typefaces;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 public class SectionsPagerAdapter extends PagerAdapter {

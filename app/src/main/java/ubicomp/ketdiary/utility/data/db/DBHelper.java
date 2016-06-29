@@ -159,7 +159,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
 				+ " item INTEGER NOT NULL DEFAULT 0,"
 				+ " description CHAR[255],"
-				+ " show INTEGER NOT NULL DEFAULT 1"
+				+ " show INTEGER NOT NULL DEFAULT 0"
 				+ ")");
 		
 		//score  version 15->16

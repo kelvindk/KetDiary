@@ -15,7 +15,12 @@ import android.widget.TextView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.utility.back_door.HelpActivity;
+import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TriggerItem;
+import ubicomp.ketdiary.utility.statistic.CopingActivity;
+import ubicomp.ketdiary.utility.statistic.ScaleOnTouchListener;
 
 /**
  *  ToolbarMenuItemAdapter is used to handle the page switching between test, result, event and
@@ -116,13 +121,32 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     @Override
                     public void onClick(View v) {
                         Log.d("Ket", "action_settings");
-                        // Listener of action Settings button
+//                         Listener of action Settings button
                         Intent createEventIntent = new Intent (mainActivity, HelpActivity.class);
                         mainActivity.startActivity(createEventIntent);
+
+//                        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
+//                        TriggerItem[] triggerItems = thirdPageDataBase.getAllTrigger();
+
                     }
                 });
                 break;
-            case R.menu.menu_result:
+            case R.menu.menu_statistics:
+
+                mainActivity.getMenuInflater().inflate(R.menu.menu_statistics, menu);
+
+                MenuItem copingSkill = menu.findItem(R.id.coping_skill);
+                MenuItemCompat.getActionView(copingSkill).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("Ket", "comping_skill");
+
+                        Intent intent = new Intent();
+                        intent.setClass(mainActivity, CopingActivity.class);
+                        mainActivity.startActivity(intent);
+                    }
+                });
+                MenuItemCompat.getActionView(copingSkill).setOnTouchListener(new ScaleOnTouchListener());
                 break;
             case R.menu.menu_event:
                 mainActivity.getMenuInflater().inflate(R.menu.menu_event, menu);

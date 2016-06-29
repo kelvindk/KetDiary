@@ -18,11 +18,11 @@ import java.util.Random;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.CustomToast;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
-import ubicomp.ketdiary.main_activity.Typefaces;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.structure.AddScore;
 import ubicomp.ketdiary.utility.data.structure.QuestionTest;
 import ubicomp.ketdiary.utility.statistic.AnalysisCounterView;
+import ubicomp.ketdiary.utility.statistic.Typefaces;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 //import ubicomp.ketdiary.system.clicklog.ClickLog;

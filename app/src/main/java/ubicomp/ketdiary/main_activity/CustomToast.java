@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.utility.statistic.Typefaces;
 
 public class CustomToast {
 

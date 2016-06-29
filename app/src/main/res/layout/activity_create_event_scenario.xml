@@ -347,8 +347,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
-            android:entries="@array/spinner_step2"
             android:id="@+id/spinner_step2_question"/>
+        <!--android:entries="@array/spinner_step2"-->
 
 
 

@@ -50,7 +50,7 @@
         </activity>
 
         <activity
-            android:name="ubicomp.ketdiary.CopingActivity"
+            android:name="ubicomp.ketdiary.utility.statistic.CopingActivity"
             android:label="@string/title_activity_dev"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:launchMode="singleTop"

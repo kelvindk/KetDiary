@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.utility.back_door.Typefaces;
 
 /**
  * Activity for Help Button

@@ -2937,14 +2937,14 @@ public class DatabaseControl {
 		
 		public TriggerItem[] getAllTriggerItem() {
 			synchronized (sqlLock) {
-				//Log.d("GG", "in getAllTriggerItem");
+
 				TriggerItem[] data = null;
 				db = dbHelper.getReadableDatabase();
 				String sql = "SELECT * FROM Risk";
 				Cursor cursor = db.rawQuery(sql, null);
 				int count = cursor.getCount();
 				if (count == 0) {
-					//Log.d("GG", "in getAllTriggerItem count = 0");
+
 					cursor.close();
 					db.close();
 					return null;
@@ -2956,7 +2956,7 @@ public class DatabaseControl {
 					int item = cursor.getInt(1);
 					String content = cursor.getString(2);
 					int show = cursor.getInt(3);
-					//Log.d("GG", "in getAllTriggerItem new triggeritem : "+ item+","+content + ","+ show);
+
 					data[i] = new TriggerItem(item, content, show > 0);
 				}
 				cursor.close();
@@ -2964,6 +2964,36 @@ public class DatabaseControl {
 				return data;
 			}
 		}
+
+	public TriggerItem[] getTypeTriggerItem(int type) {
+		synchronized (sqlLock) {
+
+			TriggerItem[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM Risk WHERE item >= " + type*100 + " AND item <= " + (type*100+99);
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			data = new TriggerItem[count];
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+				int item = cursor.getInt(1);
+				String content = cursor.getString(2);
+				int show = cursor.getInt(3);
+
+				data[i] = new TriggerItem(item, content, show > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
 
 	public void insertEventLog(EventLogStructure data) {
 

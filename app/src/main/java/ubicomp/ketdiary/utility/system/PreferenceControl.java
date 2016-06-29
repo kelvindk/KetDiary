@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 //import ubicomp.ketdiary.SelectActivity;
+import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.structure.ExchangeHistory;
 import ubicomp.ketdiary.utility.data.structure.TimeValue;
@@ -578,18 +579,18 @@ public class PreferenceControl {
 		edit.commit();
 	}
 	
-//	public static String[] getRecreations() {
-//		String[] recreation = new String[5];
-//		recreation[0] = sp.getString("recreation0",
-//				KetdiaryApplication.getContext().getString(R.string.default_recreation_1));
-//		recreation[1] = sp.getString("recreation1",
-//				KetdiaryApplication.getContext().getString(R.string.default_recreation_2));
-//		recreation[2] = sp.getString("recreation2",
-//				KetdiaryApplication.getContext().getString(R.string.default_recreation_3));
-//		recreation[3] = sp.getString("recreation3", "");
-//		recreation[4] = sp.getString("recreation4", "");
-//		return recreation;
-//	}
+	public static String[] getRecreations() {
+		String[] recreation = new String[5];
+		recreation[0] = sp.getString("recreation0",
+				KetdiaryApplication.getContext().getString(R.string.default_recreation_1));
+		recreation[1] = sp.getString("recreation1",
+				KetdiaryApplication.getContext().getString(R.string.default_recreation_2));
+		recreation[2] = sp.getString("recreation2",
+				KetdiaryApplication.getContext().getString(R.string.default_recreation_3));
+		recreation[3] = sp.getString("recreation3", "");
+		recreation[4] = sp.getString("recreation4", "");
+		return recreation;
+	}
 
 	public static void setRecreation(String recreation, int id) {
 		String key = "recreation" + id;
