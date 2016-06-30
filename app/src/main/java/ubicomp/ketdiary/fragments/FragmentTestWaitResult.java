@@ -7,18 +7,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
 /**
- * A placeholder fragment containing a simple view for Ranking fragment.
+ * A placeholder fragment containing a simple view for TestWaitResult fragment.
  */
 public class FragmentTestWaitResult extends Fragment {
 
-    FragmentSwitcher fragmentSwitcher = null;
+    private FragmentSwitcher fragmentSwitcher = null;
+    private MainActivity mainActivity = null;
 
-    public FragmentTestWaitResult(FragmentSwitcher fragmentSwitcher) {
+    public FragmentTestWaitResult(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
+        this.mainActivity = mainActivity;
     }
 
     @Override

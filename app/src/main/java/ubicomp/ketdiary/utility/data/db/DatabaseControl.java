@@ -3046,20 +3046,22 @@ public class DatabaseControl {
 
 				data[i].editTime = Calendar.getInstance();
 				data[i].eventTime = Calendar.getInstance();
+				data[i].createTime = Calendar.getInstance();
 				data[i].editTime.setTimeInMillis(cursor.getLong(1));
 				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
-				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(3)];
-				data[i].scenario = cursor.getString(4);
-				data[i].drugUseRiskLevel = cursor.getInt(5);
-				data[i].originalBehavior = cursor.getString(6);
-				data[i].originalEmotion = cursor.getString(7);
-				data[i].originalThought = cursor.getString(8);
-				data[i].expectedBehavior = cursor.getString(9);
-				data[i].expectedEmotion = cursor.getString(10);
-				data[i].expectedThought = cursor.getString(11);
-				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(12)];
-				data[i].isAfterTest = (cursor.getInt(13) > 0);
-				data[i].isComplete =  (cursor.getInt(14) > 0);
+				data[i].createTime.setTimeInMillis(cursor.getLong(3));
+				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
+				data[i].scenario = cursor.getString(5);
+				data[i].drugUseRiskLevel = cursor.getInt(6);
+				data[i].originalBehavior = cursor.getString(7);
+				data[i].originalEmotion = cursor.getString(8);
+				data[i].originalThought = cursor.getString(9);
+				data[i].expectedBehavior = cursor.getString(10);
+				data[i].expectedEmotion = cursor.getString(11);
+				data[i].expectedThought = cursor.getString(12);
+				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
+				data[i].isAfterTest = (cursor.getInt(14) > 0);
+				data[i].isComplete =  (cursor.getInt(15) > 0);
 			}
 			cursor.close();
 			db.close();
@@ -3094,7 +3096,7 @@ public class DatabaseControl {
 				data[i].createTime = Calendar.getInstance();
 				data[i].editTime.setTimeInMillis(cursor.getLong(1));
 				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
-				data[i].eventTime.setTimeInMillis(cursor.getLong(3));
+				data[i].createTime.setTimeInMillis(cursor.getLong(3));
 				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
 				data[i].scenario = cursor.getString(5);
 				data[i].drugUseRiskLevel = cursor.getInt(6);

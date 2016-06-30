@@ -211,7 +211,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " id INTEGER PRIMARY KEY AUTOINCREMENT, "
 				+ " editTime INTEGER NOT NULL, "
 				+ " eventTime INTEGER NOT NULL, "
-				+ " creatTime INTEGER NOT NULL, "
+				+ " createTime INTEGER NOT NULL, "
 				+ " scenarioType INTEGER NOT NULL DEFAULT 0, "
 				+ " scenario CHAR[255] NOT NULL, "
 				+ " drugUseRiskLevel NOT NULL DEFAULT 0, "

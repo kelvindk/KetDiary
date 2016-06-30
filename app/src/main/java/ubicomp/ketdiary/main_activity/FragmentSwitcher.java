@@ -49,11 +49,11 @@ public class FragmentSwitcher {
         this.toolbarMenuItemWrapper = toolbarMenuItemWrapper;
 
         // Create four fragments.
-        fragments[0] = new FragmentTest(this, this.mainActivity);
+        fragments[0] = new FragmentTestWaitResult(this, mainActivity);
         fragments[1] = new FragmentStatistics(this);
-        fragments[2] = new FragmentEvent(this, this.mainActivity);
+        fragments[2] = new FragmentEvent(this, mainActivity);
         fragments[3] = new FragmentRanking(this);
-        fragments[4] = new FragmentTestWaitResult(this);
+        fragments[4] = new FragmentTestWaitResult(this, mainActivity);
 
         fragmentManager = this.mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

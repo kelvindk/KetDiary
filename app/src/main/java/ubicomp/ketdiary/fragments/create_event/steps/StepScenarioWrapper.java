@@ -223,10 +223,12 @@ public class StepScenarioWrapper implements View.OnClickListener {
         // Get content of selected scenario type from database.
         ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
         TriggerItem[] triggerItems = thirdPageDataBase.getTypeTrigger(previousSelectedIcon+1);
-        frequentInputString = new String[triggerItems.length];
-        for(int i=0; i<triggerItems.length; i++) {
-            /** Need to have a condition for determine show or not*/
-            frequentInputString[i] = triggerItems[i].getContent();
+        if(triggerItems != null) {
+            frequentInputString = new String[triggerItems.length];
+            for(int i=0; i<triggerItems.length; i++) {
+                /** Need to have a condition for determine show or not*/
+                frequentInputString[i] = triggerItems[i].getContent();
+            }
         }
 
         // Enable popup of dialog.
