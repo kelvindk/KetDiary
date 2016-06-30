@@ -31,8 +31,9 @@ public class EventLogStructure implements Serializable {
 
     public enum TherapyStatusEnum {
         NOT_YET, //未審核
-        GOOD,
-        BAD,
+        GOOD, // 己驗證
+        BAD, // 有錯誤
+        DISCUSSED, // 己與心理師討論
         NULL,
     };
 
@@ -54,18 +55,25 @@ public class EventLogStructure implements Serializable {
     // Risk level of drug use. 1~5. 0: not yet to set.
     public int drugUseRiskLevel = 0;
 
+    public boolean checkOriginalBehavior = false;
     public String originalBehavior = "";
 
+    public boolean checkOriginalEmotion = false;
     public String originalEmotion = "";
 
+    public boolean checkOriginalThought = false;
     public String originalThought = "";
 
+    public boolean checkExpectedBehavior = false;
     public String expectedBehavior = "";
 
+    public boolean checkExpectedEmotion = false;
     public String expectedEmotion = "";
 
+    public boolean checkExpectedThought = false;
     public String expectedThought = "";
 
+    // Event status related therapist validation.
     public TherapyStatusEnum therapyStatus = TherapyStatusEnum.NULL;
 
     // Whether this event is filled just after routine test.
