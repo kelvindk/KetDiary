@@ -192,8 +192,8 @@ public class SectionsPagerAdapter extends PagerAdapter {
 
             	if(mCalendar.getTimeInMillis()> startDay.getTimeInMillis() && mCalendar.getTimeInMillis() <= today.getTimeInMillis()+86400000){
 
-            		noteAdds = db.getDayNoteAdd(mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
-            		cellView.setTag(TAG_ADDNOTE, noteAdds);
+            		//noteAdds = db.getDayNoteAdd(mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+            		//cellView.setTag(TAG_ADDNOTE, noteAdds);
             		
             		//if(noteAdds!= null)
             		//	updateNoteAdd(cellView, noteAdds);
@@ -275,6 +275,7 @@ public class SectionsPagerAdapter extends PagerAdapter {
         }
 
     }
+
     public void updateCalendar(){
     	for(int ii = 0; ii < glCalendar.length; ii++){
     		if(glCalendar[ii] == null)

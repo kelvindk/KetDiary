@@ -3116,4 +3116,50 @@ public class DatabaseControl {
 		}
 	}
 
+	public EventLogStructure getTsEventLog(long ts) {
+		synchronized (sqlLock) {
+			EventLogStructure data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM EventLog WHERE createTime = " + ts;
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			Log.d("GG", "count = "+ count);
+
+			data = new EventLogStructure();
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+
+				data = new EventLogStructure();
+
+				data.editTime = Calendar.getInstance();
+				data.eventTime = Calendar.getInstance();
+				data.createTime = Calendar.getInstance();
+				data.editTime.setTimeInMillis(cursor.getLong(1));
+				data.eventTime.setTimeInMillis(cursor.getLong(2));
+				data.createTime.setTimeInMillis(cursor.getLong(3));
+				data.scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
+				data.scenario = cursor.getString(5);
+				data.drugUseRiskLevel = cursor.getInt(6);
+				data.originalBehavior = cursor.getString(7);
+				data.originalEmotion = cursor.getString(8);
+				data.originalThought = cursor.getString(9);
+				data.expectedBehavior = cursor.getString(10);
+				data.expectedEmotion = cursor.getString(11);
+				data.expectedThought = cursor.getString(12);
+				data.therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
+				data.isAfterTest = (cursor.getInt(14) > 0);
+				data.isComplete =  (cursor.getInt(15) > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
 }

@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // For developing
-        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
-        EventLogStructure[] eventLogStructures = thirdPageDataBase.getAllEventLog();
+//        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
+//        EventLogStructure[] eventLogStructures = thirdPageDataBase.getAllEventLog();
 
 ////        Calendar yesterday = (Calendar) Calendar.getInstance().clone();
 ////        Calendar now = (Calendar) Calendar.getInstance().clone();

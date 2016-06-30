@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.utility.back_door.CustomTypefaceSpan;
 import ubicomp.ketdiary.utility.back_door.Typefaces;
@@ -114,9 +115,13 @@ public class StatisticDayView extends StatisticPageView {
 
 		//Detection detection = db.getLatestDetection();
 		TestResult testResult = db.getLatestTestResult();
-		NoteAdd noteAdd = db.getTsNoteAdd(testResult.getTv().getTimestamp());
-		
-		type_idx = noteAdd.getType();
+		//NoteAdd noteAdd = db.getTsNoteAdd(testResult.getTv().getTimestamp());
+		EventLogStructure eventLog = db.getTsEventLog(testResult.getTv().getTimestamp());
+
+		if(eventLog == null)
+			type_idx = -1;
+		else
+			type_idx = eventLog.scenarioType.ordinal();
 		result = testResult.getResult();
 		brac_time = testResult.getTv().getTimestamp();
 		//brac = detection.getBrac();
