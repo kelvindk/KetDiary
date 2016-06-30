@@ -90,14 +90,17 @@ public class ResultServiceAdapter {
 
                     case ResultService.MSG_SERVICE_FINISH:
                         int result = PreferenceControl.getTestResult();
+                        String cassetteId = PreferenceControl.getCassetteId()+"";
 
                         /** Write test result to database */
                         TestResult testResult = new TestResult(result,
                                 PreferenceControl.getSalivaTestTimestamp(),
-                                PreferenceControl.getCassetteId()+"",
+                                cassetteId,
                                 1, 0, 0, 0);
 
-                        new FirstPageDataBase().addTestResult(testResult);
+                        FirstPageDataBase firstPageDataBase = new FirstPageDataBase();
+                        firstPageDataBase.setCassetteUsed(cassetteId);
+                        firstPageDataBase.addTestResult(testResult);
 
                         // Show CustomToast.
                         if(result == 1) { // Saliva test results positive.

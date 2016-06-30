@@ -18,7 +18,10 @@ import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
+import ubicomp.ketdiary.utility.data.db.DatabaseControl;
+import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 
@@ -66,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         // For developing
+        DatabaseControl db = new DatabaseControl();
+        TestResult testResult = db.getLatestTestResult();
+
 //        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
 //        EventLogStructure[] eventLogStructures = thirdPageDataBase.getAllEventLog();
 

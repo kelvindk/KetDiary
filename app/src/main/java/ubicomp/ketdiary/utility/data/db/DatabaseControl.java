@@ -96,6 +96,37 @@ public class DatabaseControl {
 		}
 	}
 
+	public TestResult[] getAllTestResult() {
+		synchronized (sqlLock) {
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM TestResult";
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			TestResult[] testResult = new TestResult[count];
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+				int result = cursor.getInt(1);
+				String cassetteId = cursor.getString(2);
+				long ts = cursor.getLong(6);
+				int isPrime = cursor.getInt(8);
+				int isFilled= cursor.getInt(9);
+				int weeklyScore = cursor.getInt(10);
+				int score = cursor.getInt(11);
+				testResult[i] = new TestResult(result, ts, cassetteId, isPrime, isFilled, weeklyScore, score);
+			}
+
+			cursor.close();
+			db.close();
+			return testResult;
+		}
+	}
+
 	/**
 	 * This method is used for the latest result detection
 	 * 
@@ -191,7 +222,7 @@ public class DatabaseControl {
 			content.put("day", data.getTv().getDay());
 			content.put("ts", data.getTv().getTimestamp());
 			content.put("week", data.getTv().getWeek());
-			content.put("isPrime", 1);
+			content.put("isPrime", data.getIsPrime());
 			content.put("isFilled", data.getIsFilled());
 			//content.put("weeklyScore", weeklyScore + addScore);
 			//content.put("score", score + addScore);
