@@ -125,9 +125,6 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                         Intent createEventIntent = new Intent (mainActivity, HelpActivity.class);
                         mainActivity.startActivity(createEventIntent);
 
-//                        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
-//                        TriggerItem[] triggerItems = thirdPageDataBase.getAllTrigger();
-
                     }
                 });
                 break;

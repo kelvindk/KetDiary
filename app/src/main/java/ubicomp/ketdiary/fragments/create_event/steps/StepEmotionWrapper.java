@@ -44,6 +44,7 @@ public class StepEmotionWrapper {
         // Get emotion string list.
         emotionStrings = createEventActivity.
                 getApplicationContext().getResources().getStringArray(R.array.then_emotions);
+
         // New a check list of dialog.
         dialogCheckList =  new boolean[emotionStrings.length];
         Arrays.fill(dialogCheckList, Boolean.FALSE);

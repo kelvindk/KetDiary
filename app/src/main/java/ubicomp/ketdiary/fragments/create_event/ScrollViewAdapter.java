@@ -178,10 +178,10 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             // Set Gone to the part of current step.
             stepRelativeLayouts[currentStep].setVisibility(View.GONE);
 
-            // Set Visible to "next step" button if current is last step.
+            // Set "next step"  to next step button if current is last step.
             if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
                 ((Button) createEventActivity.findViewById(R.id.create_event_next)).
-                        setVisibility(View.VISIBLE);
+                        setText(R.string.next_step);
             }
 
             // Reduce the count to previous step.
@@ -228,6 +228,17 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "NextButtonOnclick");
+            if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
+                Log.d("Ket", "NextButtonOnclick complete");
+                // Trigger action save button to perform save as well as user click.
+                MenuItem actionSaveEvent = createEventActivity.getMenu().findItem(R.id.action_save);
+                MenuItemCompat.getActionView(actionSaveEvent).performClick();
+                // Also press onBackPressed() of createEventActivity to exit.
+                createEventActivity.onBackPressed();
+                return;
+            }
+
+
             // Enable the button cover of current step.
             stepCoverButtons[currentStep].setVisibility(View.VISIBLE);
 
@@ -243,11 +254,11 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             if(currentStep > currentMaxStep)
                 currentMaxStep = currentStep;
 
-            // Invisible the "next step" button if reach the last step.
+            // Set "complete" to next step button if reach the last step.
             if(currentStep >= (NUMBER_OF_TOTAL_STEPS-1)) {
                 currentStep = NUMBER_OF_TOTAL_STEPS-1;
                 ((Button) createEventActivity.findViewById(R.id.create_event_next)).
-                        setVisibility(View.INVISIBLE);
+                        setText(R.string.complete);
             }
 
             // Set Visible of the part of next step.

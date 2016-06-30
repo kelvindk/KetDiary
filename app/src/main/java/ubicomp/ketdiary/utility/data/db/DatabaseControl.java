@@ -3003,6 +3003,7 @@ public class DatabaseControl {
 
 			content.put("editTime", data.editTime.getTimeInMillis());
 			content.put("eventTime", data.eventTime.getTimeInMillis());
+			content.put("createTime", data.createTime.getTimeInMillis());
 			content.put("scenarioType", data.scenarioType.ordinal());
 			content.put("scenario", data.scenario);
 			content.put("drugUseRiskLevel", data.drugUseRiskLevel);

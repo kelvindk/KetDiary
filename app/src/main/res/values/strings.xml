@@ -152,6 +152,7 @@
 
     <string name="previous_step">上一步</string>
     <string name="next_step">下一步</string>
+    <string name="complete">完成</string>
     <string name="scenario_type">情境類型</string>
     <string name="self_state">自我狀態</string>
     <string name="social_interaction">社交互動</string>
@@ -164,7 +165,7 @@
     <string name="social">社交</string>
     <string name="entertain">同樂</string>
     <string name="step2_question_left">「</string>
-    <string name="step2_question_right">」類型之中，以下哪個情境會讓你想用K?</string>
+    <string name="step2_question_right">」的類型之中\n哪個情境會讓你想用K?</string>
 
     <string name="event_content_name">詳細事件</string>
 

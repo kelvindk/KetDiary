@@ -4,8 +4,8 @@
     <shared>
       <config>
         <devices>
-          <device id="Nexus S" />
           <device id="Nexus 5X" />
+          <device id="Nexus S" />
           <device id="Galaxy Nexus" />
           <device id="Nexus One" />
           <device id="Nexus 7" />
@@ -176,66 +176,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.16908212">
+              <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ToolbarMenuItemWrapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="127" column="0" selection-start-line="127" selection-start-column="2" selection-end-line="128" selection-end-column="89" />
+              <caret line="150" column="77" selection-start-line="150" selection-start-column="61" selection-end-line="150" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4494#5111#0" expanded="true" />
-                <element signature="e#5110#5111#0" expanded="true" />
-                <marker date="1467225522000" expanded="true" signature="4210:5136" placeholder="//..." />
+                <marker date="1467228961000" expanded="true" signature="4210:4956" placeholder="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StepScenarioWrapper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepScenarioWrapper.java">
+      <file leaf-file-name="ScrollViewAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/ScrollViewAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4390681">
-              <caret line="34" column="105" selection-start-line="34" selection-start-column="105" selection-end-line="34" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StepBehaviorWrapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepBehaviorWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6666665">
-              <caret line="82" column="46" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_create_event_scenario.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_scenario.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.924528">
-              <caret line="349" column="51" selection-start-line="349" selection-start-column="29" selection-end-line="349" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_create_event_expected_emotion.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_expected_emotion.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6792455">
-              <caret line="61" column="19" selection-start-line="35" selection-start-column="4" selection-end-line="61" selection-end-column="19" />
+            <state vertical-scroll-proportion="-47.77778">
+              <caret line="207" column="19" selection-start-line="207" selection-start-column="19" selection-end-line="207" selection-end-column="19" />
               <folding>
-                <element signature="e#1095#1119#0" expanded="true" />
+                <element signature="e#7870#9705#0" expanded="true" />
+                <element signature="e#8386#8404#0" expanded="true" />
+                <element signature="e#9704#9705#0" expanded="true" />
+                <element signature="e#11417#11434#0" expanded="true" />
               </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="CreateEventActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/CreateEventActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.814815">
+              <caret line="203" column="68" selection-start-line="203" selection-start-column="68" selection-end-line="203" selection-end-column="68" />
+              <folding>
+                <element signature="e#6679#7791#0" expanded="true" />
+                <element signature="e#7790#7791#0" expanded="true" />
+                <element signature="e#9335#9350#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseControl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/DatabaseControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="3096" column="33" selection-start-line="3096" selection-start-column="24" selection-end-line="3096" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventLogStructure.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/event/EventLogStructure.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThirdPageDataBase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/ThirdPageDataBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#500#501#0" expanded="true" />
+                <element signature="e#574#575#0" expanded="true" />
+                <element signature="e#616#617#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -775,6 +800,16 @@
                 <option name="description" value="Prepare com.android.support:support-vector-drawable:23.4.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportSupportVectorDrawable2340Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-appindexing:8.1.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesAppindexing810Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-basement:8.1.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesBasement810Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1475,6 +1510,16 @@
                 <option name="description" value="Prepare com.android.support:support-vector-drawable:23.4.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportSupportVectorDrawable2340Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-appindexing:8.1.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesAppindexing810Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.google.android.gms:play-services-basement:8.1.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComGoogleAndroidGmsPlayServicesBasement810Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2280,7 +2325,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5865510450000" />
+        <entry key="$PROJECT_DIR$" value="5865570236000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2464,10 +2509,12 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/abego/treelayout/org.abego.treelayout.core/1.0.1/org.abego.treelayout.core-1.0.1.jar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/appcompat-v7/23.4.0/appcompat-v7-23.4.0.aar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/design/23.4.0/design-23.4.0.aar" />
+                            <option value="$USER_HOME$/AndroidSDK/extras/google/m2repository/com/google/android/gms/play-services-appindexing/8.1.0/play-services-appindexing-8.1.0.aar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/animated-vector-drawable/23.4.0/animated-vector-drawable-23.4.0.aar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0.aar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/support-vector-drawable/23.4.0/support-vector-drawable-23.4.0.aar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/recyclerview-v7/23.4.0/recyclerview-v7-23.4.0.aar" />
+                            <option value="$USER_HOME$/AndroidSDK/extras/google/m2repository/com/google/android/gms/play-services-basement/8.1.0/play-services-basement-8.1.0.aar" />
                             <option value="$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar" />
                             <option value="$MODULE_DIR$/libs/httpcore-4.3.2.jar" />
                             <option value="$MODULE_DIR$/libs/httpmime-4.3.5.jar" />
@@ -2646,13 +2693,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_create_event.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/ScrollViewAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/CreateEventActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/menu_item_cancel.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/back_door/PreSettingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/ResultService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/test_states/TestStateIdle.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/SalivaTestAdapter.java" />
@@ -2660,7 +2700,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_ranking.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_relapse_probability.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/event_content.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/saliva_test/FragmentStatistics.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/dialog/QuizCaller.java" />
@@ -2670,7 +2709,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/download/UserLevelCollector.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/StatisticPageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/AnalysisCounterView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/StatisticDayView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/FragmentSwitcher.java" />
@@ -2692,11 +2730,20 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/CustomToast.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/ThirdPageDataBase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/system/Config.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepBehaviorWrapper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_scenario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepEmotionWrapper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_scenario.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepScenarioWrapper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/ScrollViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_expected_thought.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/CreateEventActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/DatabaseControl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/event/EventLogStructure.java" />
       </list>
     </option>
   </component>
@@ -2851,33 +2898,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KetDiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ketdiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
+              <option name="myItemId" value="main_activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3315,9 +3336,9 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32414553" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32414553" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28445426" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28445426" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893" sideWeight="0.5028612" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3358,129 +3379,27 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="120" />
+      <option name="time" value="121" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/download/UserLevelCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6825939">
-          <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/StatisticPageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18771331">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/analysis_saving_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22727273">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_developer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48295453">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/ShowRadarChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06825939">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bar_animation_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38135594">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/FragmentSwitcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0327022">
-          <caret line="66" column="52" selection-start-line="66" selection-start-column="52" selection-end-line="66" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/dialog/QuizCaller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20654045">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/upload/ServerUrl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.41996557">
-          <caret line="223" column="20" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/StatisticMonthView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36144578">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentStatistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/StatisticDayView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/ScaleOnTouchListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25641027">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/statistic/Typefaces.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25641027">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46952224">
           <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3495,6 +3414,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.9291599">
           <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3629,18 +3549,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/structure/TriggerItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19323671">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AndroidSDK/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/FragmentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35897437">
           <caret line="603" column="0" selection-start-line="603" selection-start-column="0" selection-end-line="603" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3675,72 +3588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/DatabaseControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4363929">
-          <caret line="2951" column="16" selection-start-line="2951" selection-start-column="16" selection-end-line="2951" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/ThirdPageDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41384864">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="e#822#823#0" expanded="false" />
-            <element signature="e#867#868#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.531401">
-          <caret line="248" column="0" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="2" selection-end-line="128" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4494#5111#0" expanded="true" />
-            <element signature="e#5110#5111#0" expanded="true" />
-            <marker date="1467225522000" expanded="true" signature="4210:5136" placeholder="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72386587">
-          <caret line="194" column="19" selection-start-line="194" selection-start-column="19" selection-end-line="194" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepEmotionWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6564103">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepBehaviorWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6666665">
-          <caret line="82" column="46" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AndroidSDK/sources/android-23/android/widget/Spinner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.3504274">
@@ -3760,20 +3607,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_scenario.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.924528">
-          <caret line="349" column="51" selection-start-line="349" selection-start-column="29" selection-end-line="349" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_expected_emotion.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6792455">
+        <state vertical-scroll-proportion="1.906015">
           <caret line="61" column="19" selection-start-line="35" selection-start-column="4" selection-end-line="61" selection-end-column="19" />
           <folding>
             <element signature="e#1095#1119#0" expanded="true" />
@@ -3784,11 +3620,282 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepEmotionWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2939068">
+          <caret line="63" column="53" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AndroidSDK/sources/android-23/android/text/Selection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37777779">
+          <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AndroidSDK/sources/android-23/android/widget/EditText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+          <folding>
+            <element signature="e#2946#2947#0" expanded="false" />
+            <element signature="e#3002#3003#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepBehaviorWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25448027">
+          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/structure/TriggerItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46153846">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AndroidSDK/platforms/android-23/data/res/color/primary_text_dark.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.1764706">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AndroidSDK/platforms/android-23/data/res/values/themes.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3258427">
+          <caret line="681" column="63" selection-start-line="681" selection-start-column="63" selection-end-line="681" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6292135">
+          <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77255636">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_scenario.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.0582707">
+          <caret line="367" column="47" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="47" />
+          <folding>
+            <element signature="e#596#619#0" expanded="true" />
+            <element signature="e#849#869#0" expanded="true" />
+            <element signature="e#1263#1298#0" expanded="true" />
+            <element signature="e#1333#1369#0" expanded="true" />
+            <element signature="e#1734#1769#0" expanded="true" />
+            <element signature="e#1804#1840#0" expanded="true" />
+            <element signature="e#2205#2240#0" expanded="true" />
+            <element signature="e#2275#2311#0" expanded="true" />
+            <element signature="e#2676#2711#0" expanded="true" />
+            <element signature="e#2746#2782#0" expanded="true" />
+            <element signature="e#3147#3182#0" expanded="true" />
+            <element signature="e#3217#3253#0" expanded="true" />
+            <element signature="e#3918#3953#0" expanded="true" />
+            <element signature="e#4114#4133#0" expanded="true" />
+            <element signature="e#4332#4367#0" expanded="true" />
+            <element signature="e#4528#4542#0" expanded="true" />
+            <element signature="e#4741#4776#0" expanded="true" />
+            <element signature="e#4937#4954#0" expanded="true" />
+            <element signature="e#5153#5188#0" expanded="true" />
+            <element signature="e#5349#5366#0" expanded="true" />
+            <element signature="e#5565#5600#0" expanded="true" />
+            <element signature="e#5761#5778#0" expanded="true" />
+            <element signature="e#6208#6236#0" expanded="true" />
+            <element signature="e#6634#6669#0" expanded="true" />
+            <element signature="e#6704#6740#0" expanded="true" />
+            <element signature="e#7082#7117#0" expanded="true" />
+            <element signature="e#7152#7188#0" expanded="true" />
+            <element signature="e#7530#7565#0" expanded="true" />
+            <element signature="e#7600#7636#0" expanded="true" />
+            <element signature="e#7978#8013#0" expanded="true" />
+            <element signature="e#8048#8084#0" expanded="true" />
+            <element signature="e#8367#8402#0" expanded="true" />
+            <element signature="e#8437#8473#0" expanded="true" />
+            <element signature="e#9069#9104#0" expanded="true" />
+            <element signature="e#9265#9284#0" expanded="true" />
+            <element signature="e#9483#9518#0" expanded="true" />
+            <element signature="e#9679#9695#0" expanded="true" />
+            <element signature="e#9894#9929#0" expanded="true" />
+            <element signature="e#10090#10109#0" expanded="true" />
+            <element signature="e#10308#10343#0" expanded="true" />
+            <element signature="e#10677#10712#0" expanded="true" />
+            <element signature="e#12270#12296#0" expanded="true" />
+            <element signature="e#12335#12362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16934046">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35580525">
+          <caret line="167" column="59" selection-start-line="167" selection-start-column="59" selection-end-line="167" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/steps/StepScenarioWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4390681">
-          <caret line="34" column="105" selection-start-line="34" selection-start-column="105" selection-end-line="34" selection-end-column="105" />
+        <state vertical-scroll-proportion="0.36239317">
+          <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+          <folding>
+            <element signature="e#9626#9701#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="150" column="77" selection-start-line="150" selection-start-column="61" selection-end-line="150" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1467228961000" expanded="true" signature="4210:4956" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/create_event_container.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.981132">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_create_event.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.943396">
+          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_expected_thought.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33270678">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event_content.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5150376">
+          <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/ScrollViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-47.77778">
+          <caret line="207" column="19" selection-start-line="207" selection-start-column="19" selection-end-line="207" selection-end-column="19" />
+          <folding>
+            <element signature="e#7870#9705#0" expanded="true" />
+            <element signature="e#8386#8404#0" expanded="true" />
+            <element signature="e#9704#9705#0" expanded="true" />
+            <element signature="e#11417#11434#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/ThirdPageDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/create_event/CreateEventActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.814815">
+          <caret line="203" column="68" selection-start-line="203" selection-start-column="68" selection-end-line="203" selection-end-column="68" />
+          <folding>
+            <element signature="e#6679#7791#0" expanded="true" />
+            <element signature="e#7790#7791#0" expanded="true" />
+            <element signature="e#9335#9350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/event/EventLogStructure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/utility/data/db/DatabaseControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="3096" column="33" selection-start-line="3096" selection-start-column="24" selection-end-line="3096" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16908212">
+          <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

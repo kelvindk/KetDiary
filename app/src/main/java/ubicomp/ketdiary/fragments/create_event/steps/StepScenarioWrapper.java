@@ -1,8 +1,12 @@
 package ubicomp.ketdiary.fragments.create_event.steps;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -11,6 +15,8 @@ import android.widget.TextView;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TriggerItem;
 
 /**
  * Click listener of scenario icons in step2 of create event.
@@ -23,17 +29,25 @@ public class StepScenarioWrapper implements View.OnClickListener {
     private EventLogStructure eventLogStructure = null;
 
     Spinner spinner_step2_question = null;
+    EditText editText_scenario_step2 = null;
 
     private ImageButton[] step2Icons = new ImageButton[8];
     private int previousSelectedIcon = 0;
+
+    private String dialogPrompt = null;
+
+    String[] frequentInputString = null;
 
 
     public StepScenarioWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
         this.eventLogStructure = createEventActivity.getEventLogStructure();
 
-        spinner_step2_question = (Spinner) createEventActivity.findViewById(R.id.spinner_step2_question);
-        spinner_step2_question.setOnItemSelectedListener(spinnerListener);
+        // Set listener to image button: recent_emotion.
+        ((ImageButton) createEventActivity.findViewById(R.id.scenario_step2)).setOnClickListener(scenario_step2);
+        editText_scenario_step2 = ((EditText) createEventActivity.findViewById(R.id.editText_scenario_step2));
+        editText_scenario_step2.setOnClickListener(scenario_step2);
+
 
         (step2Icons[0] = (ImageButton) createEventActivity.findViewById(R.id.scenario_button1)).
                 setOnClickListener(this);
@@ -54,24 +68,33 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
     }
 
-    /*
-    *  Select listener for spinner of scenario.
-    * */
-    AdapterView.OnItemSelectedListener spinnerListener = new AdapterView.OnItemSelectedListener() {
 
+    // Popup dialog to show recently use behavior.
+    View.OnClickListener scenario_step2 = new View.OnClickListener() {
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Log.d("Ket", " "+parent.getSelectedItem().toString());
+        public void onClick(View v) {
+            Log.d("Ket", "scenario_step2");
 
-            /*** Log event scenario type inputted by user. ***/
-            eventLogStructure.scenario = parent.getSelectedItem().toString();
-        }
+            AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
+            dialog.setTitle(Html.fromHtml("<b>"+dialogPrompt+"</b>"));
+            dialog.setItems(frequentInputString, new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int pos) {
+                    // TODO Auto-generated method stub
+                    Log.d("Ket", "scenario_step2 onClick");
+                    logToEventLogStructure(frequentInputString[pos]);
+                    editText_scenario_step2.setText(frequentInputString[pos]);
+                }
+            });
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
+            dialog.show();
         }
     };
+
+    /*** Log event originalBehavior. ***/
+    private void logToEventLogStructure(String input) {
+        eventLogStructure.scenario = input;
+    }
 
 
     /*
@@ -193,18 +216,25 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 break;
         }
 
-        // Set the prompt of the spinner's popup along with selected type of scenario.
-        String spinnerPrompt = createEventActivity.getResources().getString(R.string.step2_question_right);
+        // Set the prompt of popup dialog along with selected type of scenario.
+        dialogPrompt = createEventActivity.getResources().getString(R.string.step2_question_right);
+        dialogPrompt = "「"+createEventActivity.getResources().getString(iconSelectedStringId)+dialogPrompt;
 
-        spinnerPrompt = "「"+createEventActivity.getResources().getString(iconSelectedStringId)+spinnerPrompt;
-        spinner_step2_question.setPrompt(spinnerPrompt);
+        // Get content of selected scenario type from database.
+        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
+        TriggerItem[] triggerItems = thirdPageDataBase.getTypeTrigger(previousSelectedIcon+1);
+        frequentInputString = new String[triggerItems.length];
+        for(int i=0; i<triggerItems.length; i++) {
+            /** Need to have a condition for determine show or not*/
+            frequentInputString[i] = triggerItems[i].getContent();
+        }
 
-
-        // Enable popup of spinner.
-        spinner_step2_question.performClick();
-        ((TextView) createEventActivity.findViewById(R.id.textview_step2_question)).setText(spinnerPrompt);
-
+        // Enable popup of dialog.
+        editText_scenario_step2.performClick();
+        ((TextView) createEventActivity.findViewById(R.id.textview_step2_question)).setText(dialogPrompt);
         ((LinearLayout) createEventActivity.findViewById(R.id.layout_step2_question)).setVisibility(View.VISIBLE);
+        editText_scenario_step2.requestFocus();
+
 
         // Switch clicked icon to "selected" icon.
         view.setBackgroundResource(iconSelectedDrawableId);

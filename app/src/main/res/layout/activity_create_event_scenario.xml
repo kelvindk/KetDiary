@@ -259,8 +259,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent" >
 
         <View
             android:layout_width="10dp"
@@ -332,8 +331,6 @@
         android:visibility="gone"
         android:orientation="vertical"
         android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -341,14 +338,38 @@
             android:id="@+id/textview_step2_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-        <Spinner
+        <LinearLayout
+            android:id="@+id/layout_scenario_step2"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dialog"
-            android:id="@+id/spinner_step2_question"/>
-        <!--android:entries="@array/spinner_step2"-->
+            android:weightSum="1">
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText_scenario_step2"
+                android:editable="false"
+                android:layout_weight="0.95" />
+
+
+            <ImageButton
+                android:layout_width="@dimen/voice_input_width"
+                android:layout_height="@dimen/voice_input_height"
+                android:alpha="0.6"
+                android:background="@drawable/ic_arrow_drop_down_black_48dp"
+                android:id="@+id/scenario_step2"
+                android:layout_weight="0.05"/>
+
+
+        </LinearLayout>
 
 
 

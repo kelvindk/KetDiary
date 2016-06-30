@@ -11,12 +11,14 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import ubicomp.ketdiary.fragments.FragmentTest;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
 import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
+import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // For developing
+        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
+        EventLogStructure[] eventLogStructures = thirdPageDataBase.getAllEventLog();
 
 ////        Calendar yesterday = (Calendar) Calendar.getInstance().clone();
 ////        Calendar now = (Calendar) Calendar.getInstance().clone();

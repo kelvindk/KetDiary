@@ -32,6 +32,7 @@ import ubicomp.ketdiary.fragments.create_event.steps.*;
 import ubicomp.ketdiary.fragments.create_event.steps.StepTimeWrapper;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
+import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
@@ -60,6 +61,8 @@ public class CreateEventActivity extends AppCompatActivity {
     private StepExpectedBehaviorWrapper step7Adapter = null;
     private StepExpectedEmotionWrapper step8Adapter = null;
     private StepExpectedThoughtWrapper step9Adapter = null;
+
+    private ThirdPageDataBase thirdPageDataBase = null;
 
     private TextView textviewToolbar = null;
 
@@ -127,6 +130,8 @@ public class CreateEventActivity extends AppCompatActivity {
 
         /*** Handle filling content of event ***/
 
+        /** Object to access database */
+        thirdPageDataBase = new ThirdPageDataBase();
 
         /*** Step 0, add a edit timestamp to eventLogStructure ***/
         // Add current time to ediTime, eventTime & createTime.
@@ -196,7 +201,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 toast.show();
 
                 /*** Need save event data to storage ***/
-
+                thirdPageDataBase.addNewEventLog(eventLogStructure);
             }
         });
 

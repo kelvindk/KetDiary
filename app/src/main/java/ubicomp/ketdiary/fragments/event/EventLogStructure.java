@@ -25,6 +25,7 @@ public class EventLogStructure implements Serializable {
         GET_ALONG, //相處
         SOCIAL, //社交
         ENTERTAIN, //同樂
+        NULL,
     };
 
 
@@ -32,6 +33,7 @@ public class EventLogStructure implements Serializable {
         NOT_YET, //未審核
         GOOD,
         BAD,
+        NULL,
     };
 
     // A timestamps of event create time.
@@ -44,27 +46,27 @@ public class EventLogStructure implements Serializable {
     public Calendar eventTime = null;
 
     // Scenario type
-    public ScenarioTypeEnum scenarioType = null;
+    public ScenarioTypeEnum scenarioType = ScenarioTypeEnum.NULL;
 
     // Selected scenario.
-    public String scenario = null;
+    public String scenario = "";
 
     // Risk level of drug use. 1~5. 0: not yet to set.
     public int drugUseRiskLevel = 0;
 
-    public String originalBehavior = null;
+    public String originalBehavior = "";
 
-    public String originalEmotion = null;
+    public String originalEmotion = "";
 
-    public String originalThought = null;
+    public String originalThought = "";
 
-    public String expectedBehavior = null;
+    public String expectedBehavior = "";
 
-    public String expectedEmotion = null;
+    public String expectedEmotion = "";
 
-    public String expectedThought = null;
+    public String expectedThought = "";
 
-    public TherapyStatusEnum therapyStatus = null;
+    public TherapyStatusEnum therapyStatus = TherapyStatusEnum.NULL;
 
     // Whether this event is filled just after routine test.
     public boolean isAfterTest = false;

@@ -43,7 +43,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="310dp"
+            android:layout_height="340dp"
             android:background="@color/colorWhite"
             android:id="@+id/create_event_cover_step2"
             android:alpha="0.7"
@@ -68,7 +68,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="190dp"
             android:background="@color/colorWhite"
             android:id="@+id/create_event_cover_step3"
             android:alpha="0.7"
