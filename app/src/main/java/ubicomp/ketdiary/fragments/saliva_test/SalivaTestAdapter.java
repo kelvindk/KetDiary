@@ -29,6 +29,7 @@ import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.file.ImageFileHandler;
 import ubicomp.ketdiary.utility.data.file.MainStorage;
 import ubicomp.ketdiary.utility.data.file.VoltageFileHandler;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
 import ubicomp.ketdiary.utility.test.camera.CameraCaller;
@@ -575,6 +576,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void blePlugInserted(int cassetteId) {
         Log.d("BLE", currentState.getClass().getSimpleName()+" blePlugInserted "+cassetteId);
+        PreferenceControl.setCassetteId(cassetteId);
         pluggedCassetteId = cassetteId;
         currentState = currentState.transit(TestStateTransition.BLE_CASSETTE_PLUGGED);
     }

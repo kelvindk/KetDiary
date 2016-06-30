@@ -263,7 +263,7 @@ public class PreferenceControl {
 		//int questionScore = db.getLatestQuestionTest().getScore();
 		//int copingScore = db.getLatestCopingSkill().getScore();
 		
-		//Log.i(TAG, "result: "+resultScore + "note: "+noteScore + "question: "+questionScore +"coping: " +copingScore);
+		//Log.D(TAG, "result: "+resultScore + "note: "+noteScore + "question: "+questionScore +"coping: " +copingScore);
 
 		int total_point = db.getLastestAddScore().getAccumulation();//= resultScore + noteScore + questionScore + copingScore;
 		return total_point;	
@@ -1472,6 +1472,26 @@ public class PreferenceControl {
 	// 	edit.commit();
 
 	// }
+
+	public static void setCassetteId(int id) {
+		SharedPreferences.Editor edit = sp.edit();
+		edit.putInt("CassetteId", id);
+		edit.commit();
+	}
+
+	public static int getCassetteId() {
+		return sp.getInt("CassetteId", 0);
+	}
+
+	public static void setSalivaTestTimestamp(long timestamp) {
+		SharedPreferences.Editor edit = sp.edit();
+		edit.putLong("SalivaTestTimestamp", timestamp);
+		edit.commit();
+	}
+
+	public static long getSalivaTestTimestamp() {
+		return sp.getLong("SalivaTestTimestamp", 0);
+	}
 
 
 	public static void setResultServiceIsRunning(boolean state) {

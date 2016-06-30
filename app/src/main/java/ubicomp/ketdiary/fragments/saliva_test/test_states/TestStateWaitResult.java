@@ -78,6 +78,7 @@ public class TestStateWaitResult extends TestStateTransition {
                 /*** Start CreateEventActivity ***/
                 EventLogStructure event = new EventLogStructure();
                 event.createTime = (Calendar) Calendar.getInstance().clone();
+                event.isAfterTest = true;
 
                 Intent intent =
                         new Intent(getSalivaTestAdapter().getMainActivity(), CreateEventActivity.class);

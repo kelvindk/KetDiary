@@ -15,6 +15,8 @@ import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.CustomToast;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
@@ -24,6 +26,7 @@ public class ResultServiceAdapter {
 
     private MainActivity mainActivity = null;
     private SalivaTestAdapter salivaTestAdapter = null;
+
 
     /** Messenger for communicating with service. */
     private Messenger mService = null;
@@ -40,6 +43,8 @@ public class ResultServiceAdapter {
     public ResultServiceAdapter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
+
+
 
     /**
      * Handler of incoming messages from service.
@@ -85,6 +90,15 @@ public class ResultServiceAdapter {
 
                     case ResultService.MSG_SERVICE_FINISH:
                         int result = PreferenceControl.getTestResult();
+
+                        /** Write test result to database */
+                        TestResult testResult = new TestResult(result,
+                                PreferenceControl.getSalivaTestTimestamp(),
+                                PreferenceControl.getCassetteId()+"",
+                                1, 0, 0, 0);
+
+                        new FirstPageDataBase().addTestResult(testResult);
+
                         // Show CustomToast.
                         if(result == 1) { // Saliva test results positive.
                             CustomToast.generateToast(R.string.salivaResultPositive, -1);

@@ -91,6 +91,8 @@ public class ResultService extends Service implements BluetoothListener{
 
         testDB = new FirstPageDataBase();
 
+        PreferenceControl.setSalivaTestTimestamp(System.currentTimeMillis());
+
     }
 
 
