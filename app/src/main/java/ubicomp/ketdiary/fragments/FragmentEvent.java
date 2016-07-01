@@ -61,7 +61,8 @@ public class FragmentEvent extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("Ket", "eventListView onItemClick " + i);
-                // For developing
+
+                // Invoke EventContentActivity.
                 Intent eventContentIntent = new Intent (mainActivity, EventContentActivity.class);
                 // Put the serializable object into eventContentActivityIntent through a Bundle.
                 Bundle bundle = new Bundle();

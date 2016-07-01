@@ -3058,7 +3058,7 @@ public class DatabaseControl {
 
 			EventLogStructure[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog";
+			String sql = "SELECT * FROM EventLog ORDER BY eventTime DESC";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {

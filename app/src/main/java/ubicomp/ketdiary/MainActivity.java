@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         TestResult testResult = db.getLatestTestResult();
 
 //        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
+//        thirdPageDataBase.insertDummyTrigger();
 //        EventLogStructure[] eventLogStructures = thirdPageDataBase.getAllEventLog();
 
 ////        Calendar yesterday = (Calendar) Calendar.getInstance().clone();

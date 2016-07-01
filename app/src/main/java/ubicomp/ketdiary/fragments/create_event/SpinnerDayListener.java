@@ -32,6 +32,16 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
 
     }
 
+    public void setDateText(Calendar calendar) {
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Set time period on the screen to selected one.
+        TextView dayText = (TextView) this.createEventActivity.findViewById(R.id.create_event_day);
+        dayText.setText(year+"/"+month+"/"+day);
+    }
+
     /*
     * Spinner time period click listener.
     * */
@@ -58,10 +68,11 @@ public class SpinnerDayListener implements AdapterView.OnItemSelectedListener {
 
         // Set time period on the screen to selected one.
         TextView dayText = (TextView) this.createEventActivity.findViewById(R.id.create_event_day);
-        dayText.setText(year+"."+month+"."+day);
+        dayText.setText(year+"/"+month+"/"+day);
 
         /*** Log event day selected by user. ***/
-        eventLogStructure.eventTime.set(Calendar.DAY_OF_MONTH, day);
+        eventLogStructure.eventTime.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+        eventLogStructure.eventTime.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Override

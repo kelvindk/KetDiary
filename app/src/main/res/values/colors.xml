@@ -11,6 +11,8 @@
     <color name="colorBlack">#000000</color>
     <color name="colorBadgeBackground">#FF0000</color>
 
+    <color name="colorRed">#FF0000</color>
+
     <color name="colorDarkGray">#FF898989</color>
     <color name="colorToastPoint">#FF2dc7b3</color>
 

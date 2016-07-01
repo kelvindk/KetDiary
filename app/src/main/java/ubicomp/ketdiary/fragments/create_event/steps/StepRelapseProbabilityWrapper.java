@@ -2,6 +2,7 @@ package ubicomp.ketdiary.fragments.create_event.steps;
 
 
 import android.util.Log;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import ubicomp.ketdiary.R;
@@ -25,6 +26,13 @@ public class StepRelapseProbabilityWrapper implements RadioGroup.OnCheckedChange
 
         RadioGroup radioGroup = (RadioGroup) createEventActivity.findViewById(R.id.radioGroupStep3);
         radioGroup.setOnCheckedChangeListener(this);
+
+        // Load existed data.
+        if(createEventActivity.getInitStep() != 0) {
+            int selected = eventLogStructure.drugUseRiskLevel-1;
+            if(selected >= 0)
+                ((RadioButton)radioGroup.getChildAt(selected)).setChecked(true);
+        }
 
     }
 

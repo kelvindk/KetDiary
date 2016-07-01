@@ -1,8 +1,9 @@
 package ubicomp.ketdiary.fragments.event;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
+
+import ubicomp.ketdiary.R;
 
 /**
  *  Data structure of event log.
@@ -13,6 +14,11 @@ public class EventLogStructure implements Serializable {
 
     // Key of this object for deliver between activities through Intent.
     public static final String EVENT_LOG_STRUCUTRE_KEY = "EventLogStructure";
+
+    public final static int MIDNIGHT = 0;
+    public final static int MORNING = 1;
+    public final static int AFTERNOON = 2;
+    public final static int NIGHT = 3;
 
 
     // Eight scenario type enum.
@@ -55,22 +61,22 @@ public class EventLogStructure implements Serializable {
     // Risk level of drug use. 1~5. 0: not yet to set.
     public int drugUseRiskLevel = 0;
 
-    public boolean checkOriginalBehavior = false;
+    public boolean reviseOriginalBehavior = false;
     public String originalBehavior = "";
 
-    public boolean checkOriginalEmotion = false;
+    public boolean reviseOriginalEmotion = false;
     public String originalEmotion = "";
 
-    public boolean checkOriginalThought = false;
+    public boolean reviseOriginalThought = false;
     public String originalThought = "";
 
-    public boolean checkExpectedBehavior = false;
+    public boolean reviseExpectedBehavior = false;
     public String expectedBehavior = "";
 
-    public boolean checkExpectedEmotion = false;
+    public boolean reviseExpectedEmotion = false;
     public String expectedEmotion = "";
 
-    public boolean checkExpectedThought = false;
+    public boolean reviseExpectedThought = false;
     public String expectedThought = "";
 
     // Event status related therapist validation.
@@ -81,5 +87,84 @@ public class EventLogStructure implements Serializable {
 
     // Whether this event is completely filled.
     public boolean isComplete = false;
+
+
+    public String eventTimeToString() {
+        String week = "";
+        switch(eventTime.get(Calendar.DAY_OF_WEEK)){
+            case Calendar.SUNDAY:
+                week = "(日)";
+                break;
+            case Calendar.MONDAY:
+                week = "(一)";
+                break;
+            case Calendar.TUESDAY:
+                week = "(二)";
+                break;
+            case Calendar.WEDNESDAY:
+                week = "(三)";
+                break;
+            case Calendar.THURSDAY:
+                week = "(四)";
+                break;
+            case Calendar.FRIDAY:
+                week = "(五)";
+                break;
+            case Calendar.SATURDAY:
+                week = "(六)";
+        }
+
+        String timePeriod = "";
+        int hour = eventTime.get(Calendar.HOUR_OF_DAY);
+
+        switch(hour/6) {
+            case MIDNIGHT:
+                timePeriod = "半夜";
+                break;
+            case MORNING:
+                timePeriod = "早上";
+                break;
+            case AFTERNOON:
+                timePeriod = "下午";
+                break;
+            case NIGHT:
+                timePeriod = "晚上";
+                break;
+        }
+        return (eventTime.get(Calendar.MONTH)+1)+"/"+eventTime.get(Calendar.DAY_OF_MONTH)+ " "
+                +week+" "+timePeriod;
+
+    }
+
+    public int scenarioTypeToIconId() {
+        int iconId = 0;
+        switch (scenarioType) {
+            case SLACKNESS:
+                iconId = R.drawable.type_icon1;
+                break;
+            case BODY:
+                iconId = R.drawable.type_icon2;
+                break;
+            case CONTROL:
+                iconId = R.drawable.type_icon3;
+                break;
+            case IMPULSE:
+                iconId = R.drawable.type_icon4;
+                break;
+            case EMOTION:
+                iconId = R.drawable.type_icon5;
+                break;
+            case GET_ALONG:
+                iconId = R.drawable.type_icon6;
+                break;
+            case SOCIAL:
+                iconId = R.drawable.type_icon7;
+                break;
+            case ENTERTAIN:
+                iconId = R.drawable.type_icon8;
+                break;
+        }
+        return iconId;
+    }
 
 }

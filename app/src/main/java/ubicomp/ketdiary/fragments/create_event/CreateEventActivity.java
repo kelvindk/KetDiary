@@ -30,6 +30,7 @@ import java.util.Calendar;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.steps.*;
 import ubicomp.ketdiary.fragments.create_event.steps.StepTimeWrapper;
+import ubicomp.ketdiary.fragments.event.EventContentActivity;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
 import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
@@ -68,6 +69,8 @@ public class CreateEventActivity extends AppCompatActivity {
 
     private Menu menu = null;
 
+    // If InitStep is not 0 that means this is edit mode for event log.
+    int initStep = 0;
 
     /** Messenger for communicating with service. */
     private Messenger mService = null;
@@ -76,6 +79,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public Menu getMenu() {
         return menu;
+    }
+
+    public int getInitStep() {
+        return initStep;
     }
 
 
@@ -89,21 +96,6 @@ public class CreateEventActivity extends AppCompatActivity {
 
         // Get CoordinatorLayout for showing Snackbar.
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.create_event_coordinatorLayout);
-
-        // Get event data structure through Intent.
-        Intent intent = this.getIntent();
-        EventLogStructure receivedEventLogStructure =
-                (EventLogStructure) intent.getSerializableExtra(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);
-
-        // For creating a new event, eventLogStructure will be null. Then new an object here.
-        if(receivedEventLogStructure == null) {
-            Log.d("CreateEvent", "eventLogStructure null");
-            eventLogStructure = new EventLogStructure();
-        }
-        else {
-            Log.d("CreateEvent", "existed eventLogStructure, for editing with this page");
-            eventLogStructure = receivedEventLogStructure;
-        }
 
         // Set full screen.
         getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -128,16 +120,45 @@ public class CreateEventActivity extends AppCompatActivity {
         // UI component.
         textviewToolbar = (TextView) findViewById(R.id.textview_create_toolbar);
 
+        // Get event data structure through Bundle.
+        Bundle bundle = getIntent().getExtras();
+
+
+        // For creating a new event, eventLogStructure will be null. Then new an object here.
+        if(bundle == null) {
+            Log.d("CreateEvent", "eventLogStructure null");
+            eventLogStructure = new EventLogStructure();
+
+        }
+        else {
+            Log.d("CreateEvent", "existed eventLogStructure, for editing with this page");
+            eventLogStructure =
+                    (EventLogStructure) bundle.getSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);;
+            initStep = bundle.getInt(EventContentActivity.EVENT_CONTENT_ACTIVITY_KEY);
+
+            Log.d("CreateEvent", "eventLog.isAfterTest "+eventLogStructure.isAfterTest+" initStep "+initStep);
+        }
+
+
+        /*
+        * If initStep is not 0, this activity is invoked by EventContentActivity.
+        * */
+        if(initStep != 0) {
+            //
+        }
+        else {
+            // Add current time eventTime & createTime for new eventLogStructure.
+            eventLogStructure.eventTime = (Calendar) Calendar.getInstance().clone();
+            eventLogStructure.createTime = (Calendar) Calendar.getInstance().clone();
+        }
+
+        // Add current time to editTime for existed eventLogStructure.
+        eventLogStructure.editTime = (Calendar) Calendar.getInstance().clone();
+
         /*** Handle filling content of event ***/
 
         /** Object to access database */
         thirdPageDataBase = new ThirdPageDataBase();
-
-        /*** Step 0, add a edit timestamp to eventLogStructure ***/
-        // Add current time to ediTime, eventTime & createTime.
-        eventLogStructure.editTime = (Calendar) Calendar.getInstance().clone();
-        eventLogStructure.eventTime = (Calendar) Calendar.getInstance().clone();
-        eventLogStructure.createTime = (Calendar) Calendar.getInstance().clone();
 
         /*** Step 1 ***/
         step1Adapter = new StepTimeWrapper(this);
@@ -165,12 +186,6 @@ public class CreateEventActivity extends AppCompatActivity {
 
         /*** Step 9 ***/
         step9Adapter = new StepExpectedThoughtWrapper(this);
-
-
-//        Bundle bundle = getIntent().getExtras();
-//        EventLogStructure eventLog =
-//                (EventLogStructure) bundle.getSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);
-//        Log.d("Ket", "eventLog.scenarioType "+eventLog.scenarioType);
 
     }
 

@@ -123,83 +123,151 @@
     <LinearLayout
         android:id="@+id/event_content_container_expected_thought_layout"
         android:layout_below="@id/event_content_container_scenario_layout"
-        android:layout_marginTop="17dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/expected_thought"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/event_content_container_expected_thought"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/expected_thought"
+                android:layout_alignParentTop="true"
+                android:textSize="@dimen/abc_text_size_small_material"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/event_content_container_expected_thought_revise"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/need_revise"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/abc_text_size_small_material"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
+            <TextView
+                android:id="@+id/event_content_container_expected_thought"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法"
+                android:textSize="@dimen/abc_text_size_medium_material" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Expected emotion-->
     <LinearLayout
         android:id="@+id/event_content_container_expected_emotion_layout"
         android:layout_below="@id/event_content_container_expected_thought_layout"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/expected_emotion"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/event_content_container_expected_emotion"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="情緒情緒情緒"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/expected_emotion"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/event_content_container_expected_emotion_revise"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/need_revise"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
+            <TextView
+                android:id="@+id/event_content_container_expected_emotion"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="情緒情緒情緒"
+                android:textSize="@dimen/abc_text_size_medium_material" />
+
+        </LinearLayout>
     </LinearLayout>
-
 
 
     <!-- Expected behavior-->
     <LinearLayout
         android:id="@+id/event_content_container_expected_behavior_layout"
         android:layout_below="@id/event_content_container_expected_emotion_layout"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/expected_behavior"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/event_content_container_expected_behavior"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="行為行為行為"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/expected_behavior"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/event_content_container_expected_behavior_revise"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/need_revise"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
+            <TextView
+                android:id="@+id/event_content_container_expected_behavior"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="行為行為行為"
+                android:textSize="@dimen/abc_text_size_medium_material" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <View
@@ -207,7 +275,7 @@
         android:layout_width="match_parent"
         android:background="@color/colorAGray"
         android:alpha="0.5"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="2dp"
         android:layout_height="2dp"></View>
 
 
@@ -215,27 +283,52 @@
     <LinearLayout
         android:id="@+id/event_content_container_original_thought_layout"
         android:layout_below="@id/event_content_container_expected_behavior_layout"
-        android:layout_marginTop="17dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/original_thought"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/event_content_container_original_thought"
-            android:text="想法 想法 想法 想法 想法"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/original_thought"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/event_content_container_original_thought_revise"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/need_revise"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/event_content_container_original_thought"
+                android:text="想法 想法 想法 想法 想法"
+                android:textSize="@dimen/abc_text_size_medium_material" />
+
+        </LinearLayout>
     </LinearLayout>
 
 
@@ -243,59 +336,99 @@
     <LinearLayout
         android:id="@+id/event_content_container_original_emotion_layout"
         android:layout_below="@id/event_content_container_original_thought_layout"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/original_emotion"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/event_content_container_original_emotion"
-            android:text="情緒 情緒 情緒 情緒 情緒"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/original_emotion"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/event_content_container_original_emotion_revise"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/need_revise"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/event_content_container_original_emotion"
+                android:text="情緒 情緒 情緒 情緒 情緒"
+                android:textSize="@dimen/abc_text_size_medium_material" />
+
+        </LinearLayout>
     </LinearLayout>
-
 
     <!-- Original behavior-->
     <LinearLayout
         android:id="@+id/event_content_container_original_behavior_layout"
         android:layout_below="@id/event_content_container_original_emotion_layout"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_gravity="top"
-            android:focusable="true"
-            android:gravity="right"
-            android:paddingRight="15dp"
-            android:text="@string/original_behavior"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold"
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/event_content_container_original_behavior"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="行為 行為 行為 行為 行為 行為 行為 行為 行為"
-            android:textSize="@dimen/abc_text_size_medium_material"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/original_behavior"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/event_content_container_original_behavior_revise"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/need_revise"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/abc_text_size_small_material"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
+            <TextView
+                android:id="@+id/event_content_container_original_behavior"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="行為 行為 行為 行為 行為 行為 行為 行為 行為"
+                android:textSize="@dimen/abc_text_size_medium_material"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

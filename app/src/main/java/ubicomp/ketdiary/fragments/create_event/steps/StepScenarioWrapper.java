@@ -66,6 +66,11 @@ public class StepScenarioWrapper implements View.OnClickListener {
         (step2Icons[7] = (ImageButton) createEventActivity.findViewById(R.id.scenario_button8)).
                 setOnClickListener(this);
 
+        // Load existed data.
+        if(createEventActivity.getInitStep() != 0) {
+            setScenarioSelection();
+        }
+
     }
 
 
@@ -243,5 +248,82 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
         /*** Log event scenario type inputted by user. ***/
         eventLogStructure.scenarioType = selectedScenarioTypeEnum;
+    }
+
+    /*
+    *  Method to load data from eventLogStructure.
+    * */
+    private void setScenarioSelection() {
+        int iconSelectedStringId = 0;
+        switch (eventLogStructure.scenarioType) {
+            case SLACKNESS:
+                //
+                previousSelectedIcon = 0;
+                iconSelectedStringId = R.string.slackness;
+                step2Icons[0].setBackgroundResource(R.drawable.type_icon1_pressed);
+                break;
+            case BODY:
+                //
+                previousSelectedIcon = 1;
+                iconSelectedStringId = R.string.body;
+                step2Icons[1].setBackgroundResource(R.drawable.type_icon2_pressed);
+                break;
+            case CONTROL:
+                //
+                previousSelectedIcon = 2;
+                iconSelectedStringId = R.string.control;
+                step2Icons[2].setBackgroundResource(R.drawable.type_icon3_pressed);
+                break;
+            case IMPULSE:
+                //
+                previousSelectedIcon = 3;
+                iconSelectedStringId = R.string.impulse;
+                step2Icons[3].setBackgroundResource(R.drawable.type_icon4_pressed);
+                break;
+            case EMOTION:
+                //
+                previousSelectedIcon = 4;
+                iconSelectedStringId = R.string.emotion;
+                step2Icons[4].setBackgroundResource(R.drawable.type_icon5_pressed);
+                break;
+            case GET_ALONG:
+                //
+                previousSelectedIcon = 5;
+                iconSelectedStringId = R.string.get_along;
+                step2Icons[5].setBackgroundResource(R.drawable.type_icon6_pressed);
+                break;
+            case SOCIAL:
+                //
+                previousSelectedIcon = 6;
+                iconSelectedStringId = R.string.social;
+                step2Icons[6].setBackgroundResource(R.drawable.type_icon7_pressed);
+                break;
+            case ENTERTAIN:
+                //
+                previousSelectedIcon = 7;
+                iconSelectedStringId = R.string.entertain;
+                step2Icons[7].setBackgroundResource(R.drawable.type_icon8_pressed);
+                break;
+        }
+
+        // Set the prompt of popup dialog along with selected type of scenario.
+        dialogPrompt = createEventActivity.getResources().getString(R.string.step2_question_right);
+        dialogPrompt = "「"+createEventActivity.getResources().getString(iconSelectedStringId)+dialogPrompt;
+
+        ((TextView) createEventActivity.findViewById(R.id.textview_step2_question)).setText(dialogPrompt);
+        ((LinearLayout) createEventActivity.findViewById(R.id.layout_step2_question)).setVisibility(View.VISIBLE);
+        editText_scenario_step2.setText(eventLogStructure.scenario);
+        editText_scenario_step2.requestFocus();
+
+        // Get content of selected scenario type from database.
+        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
+        TriggerItem[] triggerItems = thirdPageDataBase.getTypeTrigger(previousSelectedIcon+1);
+        if(triggerItems != null) {
+            frequentInputString = new String[triggerItems.length];
+            for(int i=0; i<triggerItems.length; i++) {
+                /** Need to have a condition for determine show or not*/
+                frequentInputString[i] = triggerItems[i].getContent();
+            }
+        }
     }
 }
