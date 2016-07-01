@@ -67,7 +67,7 @@ public class ResultServiceAdapter {
                         // Transit to StateIdle and show error message.
                         if(salivaTestAdapter != null)
                             salivaTestAdapter.setToIdleState(R.string.test_instruction_top4);
-                        mainActivity.setFragment(FragmentSwitcher.FRAGMENT_TEST);
+                        mainActivity.getFragmentSwitcher().setFragment(FragmentSwitcher.FRAGMENT_TEST);
 
                         doUnbindService();
 
@@ -81,7 +81,7 @@ public class ResultServiceAdapter {
                         // Transit to StateIdle and show error message.
                         if(salivaTestAdapter != null)
                             salivaTestAdapter.setToIdleState(R.string.test_instruction_top3);
-                        mainActivity.setFragment(FragmentSwitcher.FRAGMENT_TEST);
+                        mainActivity.getFragmentSwitcher().setFragment(FragmentSwitcher.FRAGMENT_TEST);
 
                         doUnbindService();
 
@@ -109,6 +109,8 @@ public class ResultServiceAdapter {
                         else {
                             CustomToast.generateToast(R.string.salivaResultNegative, 0);
                         }
+
+                        PreferenceControl.setResultServiceIsRunning(false);
 
                         doUnbindService();
 

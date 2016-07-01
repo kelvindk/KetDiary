@@ -224,8 +224,8 @@ public class DatabaseControl {
 			content.put("week", data.getTv().getWeek());
 			content.put("isPrime", data.getIsPrime());
 			content.put("isFilled", data.getIsFilled());
-			//content.put("weeklyScore", weeklyScore + addScore);
-			//content.put("score", score + addScore);
+			content.put("weeklyScore", 0);
+			content.put("score", 0);
 			db.insert("TestResult", null, content);
 			db.close();
 		}

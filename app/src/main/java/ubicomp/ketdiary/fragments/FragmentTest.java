@@ -10,16 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import junit.framework.Test;
-
-import org.w3c.dom.Text;
-
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
-import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
-import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateTransition;
-import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
@@ -60,7 +53,7 @@ public class FragmentTest extends Fragment {
 
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
-        if( PreferenceControl.isResultServiceIsRunning()) {
+        if( PreferenceControl.isResultServiceRunning()) {
             return inflater.inflate(R.layout.fragment_test_wait_result, container, false);
         }
 
@@ -71,10 +64,10 @@ public class FragmentTest extends Fragment {
 
     @Override
     public void onStart() {
+        Log.d("Ket", "FragmentTest onStart");
+
         // New SalivaTestAdapter for handling the saliva test process.
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);
-
-        Log.d("Ket", "FragmentTest onStart");
 
         super.onStart();
     }
@@ -125,5 +118,7 @@ public class FragmentTest extends Fragment {
 
         super.onDestroy();
     }
+
+
 
 }

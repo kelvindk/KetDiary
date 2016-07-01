@@ -397,7 +397,6 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         getTextviewTestButton().setText(R.string.test_start);
         getTextviewTestInstructionTop().setText(failMessage);
         getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
-        setEnableUiComponents(true);
 
         // Transit to TestStateIdle.
         currentState = new TestStateIdle(this);

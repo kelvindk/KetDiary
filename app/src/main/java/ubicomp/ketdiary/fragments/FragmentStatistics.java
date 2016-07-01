@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.dialog.QuizCaller;
@@ -33,9 +34,11 @@ import ubicomp.ketdiary.utility.statistic.StatisticPagerAdapter;
  * A placeholder fragment containing a simple view.
  */
 public class FragmentStatistics extends Fragment implements QuizCaller {
-    FragmentSwitcher fragmentSwitcher = null;
 
     private static final String TAG = "Statistics";
+
+    private MainActivity mainActivity = null;
+    private FragmentSwitcher fragmentSwitcher = null;
 
     private View view;
     private Activity activity;
@@ -57,8 +60,9 @@ public class FragmentStatistics extends Fragment implements QuizCaller {
     public FragmentStatistics() {
     }
 
-    public FragmentStatistics(FragmentSwitcher fragmentSwitcher) {
+    public FragmentStatistics(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
+        this.mainActivity = mainActivity;
     }
 
     @Override
@@ -215,5 +219,6 @@ public class FragmentStatistics extends Fragment implements QuizCaller {
     public void QuizDone() {
         // TODO Auto-generated method stub
     }
+
 
 }

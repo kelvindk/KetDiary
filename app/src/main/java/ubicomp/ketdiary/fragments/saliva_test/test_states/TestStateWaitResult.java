@@ -66,14 +66,17 @@ public class TestStateWaitResult extends TestStateTransition {
             public void onFinish() {
                 Log.d("TestState", "TestStateWaitResult countdown onFinish");
                 // Reset to Idle state.
-//                getSalivaTestAdapter().setToIdleState(R.string.test_null);
+                getSalivaTestAdapter().setToIdleState(R.string.test_null);
 
                 // Write timestamp to preference as ID of this saliva test.
                 PreferenceControl.setUpdateDetectionTimestamp(System.currentTimeMillis());
 
                 /*** Go to waiting result fragment ***/
                 PreferenceControl.setResultServiceIsRunning(true);
-                getSalivaTestAdapter().getMainActivity().setFragmentTestWaitResult();
+                getSalivaTestAdapter().getMainActivity().getFragmentSwitcher().setFragmentTestWaitResult();
+
+                // Enable clickable of UI components.
+                getSalivaTestAdapter().setEnableUiComponents(true);
 
                 /*** Start CreateEventActivity ***/
                 EventLogStructure event = new EventLogStructure();

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
@@ -15,10 +16,12 @@ import ubicomp.ketdiary.main_activity.FragmentSwitcher;
  */
 public class FragmentRanking extends Fragment {
 
-    FragmentSwitcher fragmentSwitcher = null;
+    private MainActivity mainActivity = null;
+    private FragmentSwitcher fragmentSwitcher = null;
 
-    public FragmentRanking(FragmentSwitcher fragmentSwitcher) {
+    public FragmentRanking(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
+        this.mainActivity = mainActivity;
     }
 
     @Override
@@ -36,5 +39,11 @@ public class FragmentRanking extends Fragment {
         View fragmentRankingView = inflater.inflate(R.layout.fragment_ranking, container, false);
 
         return fragmentRankingView;
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("Ket", "FragmentEvent onResume");
+        super.onResume();
     }
 }

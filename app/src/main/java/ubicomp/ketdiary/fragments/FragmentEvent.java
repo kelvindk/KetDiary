@@ -63,12 +63,19 @@ public class FragmentEvent extends Fragment {
                 // For developing
                 Intent eventContentIntent = new Intent (mainActivity, EventContentActivity.class);
                 startActivity(eventContentIntent);
-                eventListAdapter.addItem();
+//                eventListAdapter.addItem();
 
             }
         });
 
         return fragmentEventView;
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("Ket", "FragmentEvent onResume");
+        eventListAdapter.refreshDataSet();
+        super.onResume();
     }
 
     // Set height of ListView to 0, this is a trick to avoid crash while switch fragment.

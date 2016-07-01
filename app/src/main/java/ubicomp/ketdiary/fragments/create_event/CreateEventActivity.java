@@ -224,7 +224,7 @@ public class CreateEventActivity extends AppCompatActivity {
         Log.d(TAG, "onResume");
 
         // Receive message from ResultService if necessary.
-        if( PreferenceControl.isResultServiceIsRunning()) {
+        if( PreferenceControl.isResultServiceRunning()) {
             doBindService();
         }
         else {

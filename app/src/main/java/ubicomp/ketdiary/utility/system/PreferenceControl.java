@@ -1500,7 +1500,7 @@ public class PreferenceControl {
 		edit.commit();
 	}
 
-	public static boolean isResultServiceIsRunning() {
+	public static boolean isResultServiceRunning() {
 		return sp.getBoolean("ResultServiceIsRunning", false);
 	}
 

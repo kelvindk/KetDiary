@@ -70,6 +70,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     * */
     public void enableToolbarClickable(boolean enable) {
         spinner_toolbar.setEnabled(enable);
+        if(menu == null)
+            return;
         MenuItem itemActionSettings = menu.findItem(R.id.action_settings);
         if(itemActionSettings != null)
             MenuItemCompat.getActionView(itemActionSettings).setEnabled(enable);
@@ -187,7 +189,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
         // Inflate the menu; this adds items to the action bar according to the selection.
-        mainActivity.setFragment(pos);
+        mainActivity.getFragmentSwitcher().setFragment(pos);
 
 //        switch(pos) {
 //            // Inflate the menu; this adds items to the action bar according to the selection.

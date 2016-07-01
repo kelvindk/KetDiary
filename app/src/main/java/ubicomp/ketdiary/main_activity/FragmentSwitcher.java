@@ -12,6 +12,7 @@ import ubicomp.ketdiary.fragments.FragmentRanking;
 import ubicomp.ketdiary.fragments.FragmentStatistics;
 import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.fragments.FragmentTestWaitResult;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
  * This class aggregates all manipulation of fragment switch.
@@ -50,27 +51,28 @@ public class FragmentSwitcher {
 
         // Create four fragments.
         fragments[0] = new FragmentTest(this, mainActivity);
-        fragments[1] = new FragmentStatistics(this);
+        fragments[1] = new FragmentStatistics(this, mainActivity);
         fragments[2] = new FragmentEvent(this, mainActivity);
-        fragments[3] = new FragmentRanking(this);
+        fragments[3] = new FragmentRanking(this, mainActivity);
         fragments[4] = new FragmentTestWaitResult(this, mainActivity);
 
         fragmentManager = this.mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        // Add four fragments to view.
-        fragmentTransaction.add(R.id.fragment_main_container, fragments[0], ""+FRAGMENT_TEST);
-        fragmentTransaction.add(R.id.fragment_main_container, fragments[1], ""+FRAGMENT_STATISTICS);
-        fragmentTransaction.add(R.id.fragment_main_container, fragments[2], ""+FRAGMENT_EVENT);
-        fragmentTransaction.add(R.id.fragment_main_container, fragments[3], ""+FRAGMENT_RANKING);
-        fragmentTransaction.add(R.id.fragment_main_container, fragments[4], ""+FRAGMENT_TEST_WAIT_RESULT);
+//        // Add four fragments to view.
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[0], fragments[0].getClass().getName());
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[1], fragments[1].getClass().getName());
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[2], fragments[2].getClass().getName());
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[3], fragments[3].getClass().getName());
+        fragmentTransaction.add(R.id.fragment_main_container, fragments[4], fragments[4].getClass().getName());
 
+        fragmentTransaction.hide(fragments[1]);
+        fragmentTransaction.hide(fragments[2]);
+        fragmentTransaction.hide(fragments[3]);
+        fragmentTransaction.hide(fragments[4]);
 
-        // Show FragmentTest as first page.
-        fragmentTransaction.replace(R.id.fragment_main_container, fragments[0]);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
 
     }
 
@@ -84,38 +86,20 @@ public class FragmentSwitcher {
         Log.d("Ket", "setFragmentTestWaitResult");
         toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
 
+        setHideFragment(currentFragment);
+
         currentFragment = FRAGMENT_TEST_WAIT_RESULT;
 
         // Switch fragment to selected page.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_main_container, fragments[FRAGMENT_TEST_WAIT_RESULT]);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 
-    // Switch to FragmentTest.
-    public void setFragmentTest() {
-        Log.d("Ket", "setFragmentTest");
-        toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
-
-        currentFragment = FRAGMENT_TEST;
-
-        // Switch fragment to selected page.
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_main_container, fragments[FRAGMENT_TEST]);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.show(fragments[FRAGMENT_TEST_WAIT_RESULT]);
         fragmentTransaction.commit();
     }
 
 
     // Switch the fragment.
     public void setFragment(int fragmentToSwitch) {
-
-        // Return if attempt to go the same fragment.
-        if(fragmentToSwitch == this.currentFragment)
-            return;
 
         /*
         * Bind tab and downdrop selection,
@@ -142,26 +126,35 @@ public class FragmentSwitcher {
                 break;
         }
 
-
-//        for(int i=0; i<fragments.length; i++) {
-//            Log.d("Ket", i+" "+fragments[i].isAdded()+" "+fragments[i].isHidden()+" "+fragments[i].isInLayout());
-//        }
+        // Hide current fragment.
+        setHideFragment(currentFragment);
 
 
-        // When switch out from FragmentEvent, do this trick to avoid crash.
-        if(currentFragment == FRAGMENT_EVENT)
-            ((FragmentEvent)fragments[FRAGMENT_EVENT]).invisibleList();
+
+        // Switch fragment to selected page.
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Log.d("PreferenceControl", "isResultServiceRunning "+PreferenceControl.isResultServiceRunning());
+
+        if(PreferenceControl.isResultServiceRunning()) {
+            if(fragmentToSwitch == FRAGMENT_TEST) {
+                fragmentToSwitch = FRAGMENT_TEST_WAIT_RESULT;
+            }
+        }
+
+        fragmentTransaction.show(fragments[fragmentToSwitch]);
+
+        fragmentTransaction.commit();
 
         // Update which fragment we stay.
         currentFragment = fragmentToSwitch;
 
-        // Switch fragment to selected page.
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_main_container, fragments[fragmentToSwitch]);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+    }
 
+    public void setHideFragment(int fragmentPos) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.hide(fragments[fragmentPos]);
+        fragmentTransaction.commit();
     }
 
     /*

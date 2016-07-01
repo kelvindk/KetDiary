@@ -3,6 +3,7 @@ package ubicomp.ketdiary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ToolbarMenuItemWrapper toolbarMenuItemWrapper = null;
     // The wrapper to handle tab layout.
     private TabLayoutWrapper tabLayoutWrapper = null;
+
     // The class to manipulate fragment switch, all switching should use this class.
     private FragmentSwitcher fragmentSwitcher = null;
 
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("opencv_java3");
     }
 
+    // Getter of FragmentSwitcher.
+    public FragmentSwitcher getFragmentSwitcher() {
+        return fragmentSwitcher;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayoutWrapper = new TabLayoutWrapper(this);
         // New the object of handling fragment switch.
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
+
+        // Avoid ResultServiceIsRunning stay in true when crash.
+//        PreferenceControl.setResultServiceIsRunning(false);
 
 
         // For developing
@@ -93,21 +102,13 @@ public class MainActivity extends AppCompatActivity {
 //        // Start the activity.
 //        startActivity(eventContentActivityIntent);
 
+        Log.d("Ket", "MainActivity onCreate");
     }
 
-    @Override
-    public void onBackPressed() {
-//        /*** Bug-fix 1 ****/
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//
-//        Log.d("Ket", "  "+fragmentManager.getBackStackEntryCount()+" "+getFragmentManager().getBackStackEntryCount());
-//        if (fragmentManager.getBackStackEntryCount() > 0 ){
-//            fragmentManager.popBackStack();
-//        } else {
-//            super.onBackPressed();
-//        }
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//    }
 
     public static MainActivity getMainActivity() {
         return mainActivity;
@@ -127,17 +128,6 @@ public class MainActivity extends AppCompatActivity {
     // Getter of ToolbarMenuItemWrapper.
     public ToolbarMenuItemWrapper getToolbarMenuItemWrapper() {
         return toolbarMenuItemWrapper;
-    }
-
-
-    // Pass the method call to FragmentSwitcher.
-    public void setFragment(int fragmentToSwitch) {
-        fragmentSwitcher.setFragment(fragmentToSwitch);
-    }
-
-    // Pass the method call to FragmentSwitcher.
-    public void setFragmentTestWaitResult() {
-        fragmentSwitcher.setFragmentTestWaitResult();
     }
 
 
@@ -175,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        fragmentSwitcher.setHideFragment(FragmentSwitcher.FRAGMENT_TEST_WAIT_RESULT);
                         fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_STATISTICS);
                     }
                 }, 500);

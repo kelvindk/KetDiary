@@ -131,6 +131,7 @@ public class ResultService extends Service implements BluetoothListener{
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
+                        testFail = false;
                     }
 
                     // Reply testFail if error occurs during testing.

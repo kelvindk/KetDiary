@@ -52,13 +52,14 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         Log.d("Ket", "onTabSelected " + tab.getPosition());
-        mainActivity.setFragment(tab.getPosition());
+        mainActivity.getFragmentSwitcher().setFragment(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
         // no op
 //        Log.d("Ket", "onTabUnselected " + tab.getPosition());
+//        mainActivity.getFragmentSwitcher().setHideFragment(tab.getPosition());
     }
 
     @Override
