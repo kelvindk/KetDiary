@@ -1,15 +1,301 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    This layout gives a page view of each event description.
+    On the top row, it has the following elements
+        - back button to go back to the list view
+        -
+-->
+
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentStart="true">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!--Event Date  -->
+    <LinearLayout
+        android:id="@+id/event_content_container_date_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Event Content"/>
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/event_content_container_event_date"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="2016 5 30 午"
+            android:textSize="@dimen/abc_text_size_small_material" />
+
+        <TextView
+            android:id="@+id/event_content_container_therapy_status"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="心理師驗證"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+
+            <RatingBar
+                android:id="@+id/event_content_container_drug_use_risk"
+                style="@style/SkullRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:numStars="5"
+                android:rating="1"
+                android:clickable="false"
+                android:stepSize="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_below="@id/event_content_container_date_layout"
+        android:layout_width="match_parent"
+        android:background="@color/colorAGray"
+        android:alpha="0.5"
+        android:layout_marginTop="5dp"
+        android:layout_height="2dp"></View>
+
+    <!--Scenario type icon and context -->
+    <TextView
+        android:id="@+id/event_content_container_scenario_textview"
+        android:layout_below="@id/event_content_container_date_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/scenario"
+        android:textSize="@dimen/abc_text_size_small_material"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/event_content_container_scenario_layout"
+        android:layout_below="@id/event_content_container_scenario_textview"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/event_content_container_scenario_type"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:src="@drawable/type_icon3" />
+
+        <TextView
+            android:id="@+id/event_content_container_scenario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:text="情境情境情境情境情境情境情境情境情境情境情境情境"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_below="@id/event_content_container_scenario_layout"
+        android:layout_width="match_parent"
+        android:background="@color/colorAGray"
+        android:alpha="0.5"
+        android:layout_marginTop="7dp"
+        android:layout_height="2dp"></View>
+
+
+    <!-- Expected thought-->
+    <LinearLayout
+        android:id="@+id/event_content_container_expected_thought_layout"
+        android:layout_below="@id/event_content_container_scenario_layout"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/expected_thought"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/event_content_container_expected_thought"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+    </LinearLayout>
+
+    <!-- Expected emotion-->
+    <LinearLayout
+        android:id="@+id/event_content_container_expected_emotion_layout"
+        android:layout_below="@id/event_content_container_expected_thought_layout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/expected_emotion"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/event_content_container_expected_emotion"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="情緒情緒情緒"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+    </LinearLayout>
+
+
+
+    <!-- Expected behavior-->
+    <LinearLayout
+        android:id="@+id/event_content_container_expected_behavior_layout"
+        android:layout_below="@id/event_content_container_expected_emotion_layout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/expected_behavior"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/event_content_container_expected_behavior"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="行為行為行為"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_below="@id/event_content_container_expected_behavior_layout"
+        android:layout_width="match_parent"
+        android:background="@color/colorAGray"
+        android:alpha="0.5"
+        android:layout_marginTop="7dp"
+        android:layout_height="2dp"></View>
+
+
+    <!-- Original thought-->
+    <LinearLayout
+        android:id="@+id/event_content_container_original_thought_layout"
+        android:layout_below="@id/event_content_container_expected_behavior_layout"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/original_thought"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/event_content_container_original_thought"
+            android:text="想法 想法 想法 想法 想法"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+    </LinearLayout>
+
+
+    <!-- Original emotion-->
+    <LinearLayout
+        android:id="@+id/event_content_container_original_emotion_layout"
+        android:layout_below="@id/event_content_container_original_thought_layout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/original_emotion"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/event_content_container_original_emotion"
+            android:text="情緒 情緒 情緒 情緒 情緒"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+    </LinearLayout>
+
+
+    <!-- Original behavior-->
+    <LinearLayout
+        android:id="@+id/event_content_container_original_behavior_layout"
+        android:layout_below="@id/event_content_container_original_emotion_layout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_gravity="top"
+            android:focusable="true"
+            android:gravity="right"
+            android:paddingRight="15dp"
+            android:text="@string/original_behavior"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <TextView
+            android:id="@+id/event_content_container_original_behavior"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="行為 行為 行為 行為 行為 行為 行為 行為 行為"
+            android:textSize="@dimen/abc_text_size_medium_material"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

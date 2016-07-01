@@ -58,7 +58,7 @@
         </activity>
 
         <activity
-            android:name=".main_activity.EventContentActivity"
+            android:name=".fragments.event.EventContentActivity"
             android:label="@string/event_content_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

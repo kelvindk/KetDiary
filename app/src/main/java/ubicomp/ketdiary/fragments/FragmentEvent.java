@@ -13,7 +13,8 @@ import android.widget.ListView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventListAdapter;
-import ubicomp.ketdiary.main_activity.EventContentActivity;
+import ubicomp.ketdiary.fragments.event.EventContentActivity;
+import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
 /**
@@ -62,9 +63,11 @@ public class FragmentEvent extends Fragment {
                 Log.d("Ket", "eventListView onItemClick " + i);
                 // For developing
                 Intent eventContentIntent = new Intent (mainActivity, EventContentActivity.class);
+                // Put the serializable object into eventContentActivityIntent through a Bundle.
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventListAdapter.getEventListItem(i));
+                eventContentIntent.putExtras(bundle);
                 startActivity(eventContentIntent);
-//                eventListAdapter.addItem();
-
             }
         });
 

@@ -48,13 +48,13 @@ public class EventListAdapter extends BaseAdapter {
 
         thirdPageDataBase = new ThirdPageDataBase();
 
-
-
-
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
 
+    public EventLogStructure getEventListItem(int pos) {
+        return eventListItems.get(pos);
+    }
 
 
     @Override
@@ -120,7 +120,7 @@ public class EventListAdapter extends BaseAdapter {
         }
 
         String timePeriod = "";
-        int hour = calendar.get(Calendar.HOUR);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
         switch(hour/6) {
             case MIDNIGHT:
                 timePeriod = mainActivity.getString(R.string.midnight);
