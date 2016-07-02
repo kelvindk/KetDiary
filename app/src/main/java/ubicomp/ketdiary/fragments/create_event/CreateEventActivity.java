@@ -143,7 +143,8 @@ public class CreateEventActivity extends AppCompatActivity {
         /*
         * If initStep is not 0, this activity is invoked by EventContentActivity.
         * */
-        if(initStep != 0) {
+        if(initStep > 0) {
+            setTitle(R.string.edit_event);
             //
             scrollViewAdapter.setFocusStep(initStep);
         }

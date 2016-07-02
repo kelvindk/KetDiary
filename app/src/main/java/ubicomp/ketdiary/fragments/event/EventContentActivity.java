@@ -3,19 +3,21 @@ package ubicomp.ketdiary.fragments.event;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Rating;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
@@ -156,11 +158,11 @@ public class EventContentActivity extends AppCompatActivity {
             event_content_container_original_emotion_layout.setBackgroundResource(R.drawable.layout_red_frame);
             event_content_container_original_emotion_layout.setOnClickListener(eventContentClickListener);
 //        }
-//        if(eventLog.reviseOriginalBehavior) {
+        if(eventLog.reviseOriginalBehavior) {
             event_content_container_original_behavior_revise.setVisibility(View.VISIBLE);
             event_content_container_original_behavior_layout.setBackgroundResource(R.drawable.layout_red_frame);
             event_content_container_original_behavior_layout.setOnClickListener(eventContentClickListener);
-//        }
+        }
 
         // Enable toolbar on create event activity with back button on the top left.
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_event_content_toolbar);
@@ -174,6 +176,61 @@ public class EventContentActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the icon on the top right of toolbar in CreateEventActivity.
+        getMenuInflater().inflate(R.menu.menu_event_content, menu);
+
+        MenuItem actionDeleteEvent = menu.findItem(R.id.action_delete);
+        MenuItemCompat.getActionView(actionDeleteEvent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Ket", "actionDeleteEvent");
+                //New dialog.
+                AlertDialog.Builder dialog = new AlertDialog.Builder(eventContentActivity);
+                dialog.setTitle(R.string.confirm_delete_event_click);
+                dialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        /* User clicked "Confirm"*/
+
+                        /*** Need to delete event data from database ***/
+
+                        // Finish activity.
+                        eventContentActivity.finish();
+                    }
+                });
+                dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        /* User clicked "Confirm"*/
+                        // no op.
+                    }
+                });
+                dialog.show();
+
+//                Toast toast = Toast.makeText(EventContentActivity.this, R.string.create_event_saved, Toast.LENGTH_LONG);
+//                toast.show();
+
+
+            }
+        });
+
+        MenuItem actionEditEvent = menu.findItem(R.id.action_edit);
+        MenuItemCompat.getActionView(actionEditEvent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Ket", "actionEditEvent");
+
+                // Start CreateEventActivity to edit event.
+                startCreateEventActivity(2);
+            }
+        });
+
+        return true;
+    }
+
+
+
     View.OnClickListener eventContentClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -182,40 +239,48 @@ public class EventContentActivity extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.event_content_container_expected_thought_layout:
                     Log.d("Ket", "event_content_container_expected_thought_layout");
-                    step = 8;
+                    step = 9;
                     break;
                 case R.id.event_content_container_expected_emotion_layout:
                     Log.d("Ket", "event_content_container_expected_emotion_layout");
-                    step = 7;
+                    step = 8;
                     break;
                 case R.id.event_content_container_expected_behavior_layout:
                     Log.d("Ket", "event_content_container_expected_behavior_layout");
-                    step = 6;
+                    step = 7;
                     break;
                 case R.id.event_content_container_original_thought_layout:
                     Log.d("Ket", "event_content_container_original_thought_layout");
-                    step = 5;
+                    step = 6;
                     break;
                 case R.id.event_content_container_original_emotion_layout:
                     Log.d("Ket", "event_content_container_original_emotion_layout");
-                    step = 4;
+                    step = 5;
                     break;
                 case R.id.event_content_container_original_behavior_layout:
                     Log.d("Ket", "event_content_container_original_behavior_layout");
-                    step = 3;
+                    step = 4;
                     break;
             }
 
-            Intent intent =
-                    new Intent(eventContentActivity, CreateEventActivity.class);
-            // Put the serializable object into eventContentActivityIntent through a Bundle.
-            Bundle bundle = new Bundle();
-            bundle.putInt(EVENT_CONTENT_ACTIVITY_KEY, step);
-            bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventLog);
-            intent.putExtras(bundle);
-            // Start the activity.
-            startActivity(intent);
+            // Start startCreateEventActivity.
+            startCreateEventActivity(step);
         }
     };
+
+    /*
+    *  Start CreateEventActivity and send an existed EventLogStructure with focus step.
+    * */
+    private void startCreateEventActivity(int step) {
+        Intent intent =
+                new Intent(eventContentActivity, CreateEventActivity.class);
+        // Put the serializable object into eventContentActivityIntent through a Bundle.
+        Bundle bundle = new Bundle();
+        bundle.putInt(EVENT_CONTENT_ACTIVITY_KEY, step);
+        bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventLog);
+        intent.putExtras(bundle);
+        // Start the activity.
+        startActivity(intent);
+    }
 
 }

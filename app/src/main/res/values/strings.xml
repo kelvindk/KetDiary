@@ -5,6 +5,9 @@
     <string name="action_remind">提醒</string>
     <string name="action_save">儲存</string>
     <string name="action_cancel">取消</string>
+    <string name="action_delete">刪除</string>
+    <string name="action_edit">修改</string>
+
 
     <string name="coping_skill">應對技巧</string>
 
@@ -255,6 +258,8 @@
 
     <string name="confirm_cancel_click">確定要離開本頁面?</string>
     <string name="create_event_saved">新增的活動己儲存</string>
+
+    <string name="confirm_delete_event_click">確定要刪除這個事件?\n*刪除後</string>
 
     <string name="help_name">相關設定與資訊</string>
     <string name="about_name">關於</string>

@@ -296,43 +296,42 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
 
     public void setFocusStep(int step) {
-        currentStep = step;
-        currentMaxStep = step;
+        currentStep = step-1;
+        currentMaxStep = currentStep;
 
-        for(int i=0; i<step; i++) {
+        for(int i=0; i<currentStep; i++) {
             // Enable the button cover of current step.
             stepCoverButtons[i].setVisibility(View.VISIBLE);
             // Set Visible of the part of next step.
             stepRelativeLayouts[i].setVisibility(View.VISIBLE);
         }
-        stepRelativeLayouts[step].setVisibility(View.VISIBLE);
+        stepRelativeLayouts[currentStep].setVisibility(View.VISIBLE);
 
         // Set Visible to previous button if current is going to step 1.
-        if(step > 0) {
+        if(currentStep > 0) {
             ((Button) createEventActivity.findViewById(R.id.create_event_previous)).
                     setVisibility(View.VISIBLE);
         }
 
         // Set "complete" to next step button if reach the last step.
-        if(step >= (NUMBER_OF_TOTAL_STEPS-1)) {
+        if(currentStep >= (NUMBER_OF_TOTAL_STEPS-1)) {
             currentStep = NUMBER_OF_TOTAL_STEPS-1;
             ((Button) createEventActivity.findViewById(R.id.create_event_next)).
                     setText(R.string.complete);
         }
 
-        // Scroll screen to button after a micro delay.
+        // Scroll screen to button after a delay.
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Scroll screen to button.
                 scrollToBottom();
+                // Do specific UI actions for particular step.
                 setUiActions();
             }
         }, 300);
 
-        // Do specific UI actions for particular step.
-//        setUiActions();
     }
 
 
