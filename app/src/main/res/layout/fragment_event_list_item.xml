@@ -30,7 +30,7 @@
         android:paddingRight="10dp"
         android:paddingLeft="5dp"
         android:id="@+id/fragment_event_list_category_icon"
-        android:layout_below="@+id/fragment_event_list_date"
+        android:layout_below="@id/fragment_event_list_date"
         android:layout_alignParentStart="true"
         android:src="@drawable/type_icon3"/>
 
@@ -48,7 +48,7 @@
         android:paddingTop="10dp"
         android:text="thinking, scenario ..."
         android:id="@+id/fragment_event_list_description"
-        android:layout_below="@+id/fragment_event_list_danger"
+        android:layout_below="@id/fragment_event_list_danger"
         android:layout_alignBottom="@+id/fragment_event_list_category_icon"
         android:layout_alignEnd="@+id/fragment_event_list_danger"
         android:layout_toEndOf="@+id/fragment_event_list_category_icon" />
@@ -60,7 +60,7 @@
         android:singleLine="true"
         android:textStyle="bold"
         android:text="@string/expected_behavior"
-        android:layout_below="@+id/fragment_event_list_category_icon"
+        android:layout_below="@id/fragment_event_list_category_icon"
         android:layout_alignStart="@+id/fragment_event_list_category_icon" />
 
     <RatingBar

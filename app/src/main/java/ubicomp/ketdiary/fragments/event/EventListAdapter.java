@@ -59,17 +59,16 @@ public class EventListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
-        return eventListItems.get(i);
+    public Object getItem(int position) {
+        return eventListItems.get(position);
     }
 
     @Override
-    public long getItemId(int i) {
-        Log.d("Ket", "eventListView onItemClick " + i);
-        return eventListItems.indexOf(getItem(i));
+    public long getItemId(int position) {
+        return eventListItems.indexOf(getItem(position));
     }
 
-
+    // UI components of item.
     public class EventListItemHolder
     {
         TextView fragment_event_list_date = null;
@@ -80,7 +79,7 @@ public class EventListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View convertView, ViewGroup parent) {
 
 
         View eventItemView = layoutInflater.inflate(R.layout.fragment_event_list_item, null);
@@ -92,23 +91,23 @@ public class EventListAdapter extends BaseAdapter {
                 = (TextView)  eventItemView.findViewById(R.id.fragment_event_list_date);
 
         eventListItemHolder.fragment_event_list_date.
-                setText(eventListItems.get(i).eventTimeToString());
+                setText(eventListItems.get(position).eventTimeToString());
 
         // Set event icon.
         eventListItemHolder.fragment_event_list_category_icon
                 = (ImageView) eventItemView.findViewById(R.id.fragment_event_list_category_icon);
 
         eventListItemHolder.fragment_event_list_category_icon.
-                setImageResource(eventListItems.get(i).scenarioTypeToIconId());
+                setImageResource(eventListItems.get(position).scenarioTypeToIconId());
 
         // Set event scenario.
         eventListItemHolder.fragment_event_list_description
                 = (TextView) eventItemView.findViewById(R.id.fragment_event_list_description);
-        eventListItemHolder.fragment_event_list_description.setText(eventListItems.get(i).scenario);
+        eventListItemHolder.fragment_event_list_description.setText(eventListItems.get(position).scenario);
 
         // Set expected behavior.
         String expectedBehavior = mainActivity.getString(R.string.expected_behavior) + "： "+
-                eventListItems.get(i).expectedBehavior;
+                eventListItems.get(position).expectedBehavior;
         eventListItemHolder.fragment_event_list_expected_behavior
                 = (TextView) eventItemView.findViewById(R.id.fragment_event_list_expected_behavior);
         eventListItemHolder.fragment_event_list_expected_behavior.setText(expectedBehavior);
@@ -116,13 +115,13 @@ public class EventListAdapter extends BaseAdapter {
         // Set risk level.
         eventListItemHolder.fragment_event_list_item_drug_use_risk_level
                 = (RatingBar) eventItemView.findViewById(R.id.fragment_event_list_item_drug_use_risk_level);
-        eventListItemHolder.fragment_event_list_item_drug_use_risk_level.setRating(eventListItems.get(i).drugUseRiskLevel);
+        eventListItemHolder.fragment_event_list_item_drug_use_risk_level.setRating(eventListItems.get(position).drugUseRiskLevel);
 
         return eventItemView;
     }
 
     // Refresh item to ListView in FragmentEvent.
-    public void refreshDataSet() {
+    public void refreshListViewContent() {
         Calendar oneWeekAgo = (Calendar) Calendar.getInstance().clone();
         oneWeekAgo.add(Calendar.DATE, -7);
 //        EventLogStructure[] eventLogStructures = thirdPageDataBase.getLaterEventLog(oneWeekAgo);

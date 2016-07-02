@@ -27,7 +27,7 @@ public class FragmentEvent extends Fragment {
 
     private ListView eventListView = null;
 
-    private EventListAdapter eventListAdapter;
+    private EventListAdapter eventListAdapter = null;
 
     public FragmentEvent(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
@@ -78,7 +78,7 @@ public class FragmentEvent extends Fragment {
     @Override
     public void onResume() {
         Log.d("Ket", "FragmentEvent onResume");
-        eventListAdapter.refreshDataSet();
+        eventListAdapter.refreshListViewContent();
         super.onResume();
     }
 
