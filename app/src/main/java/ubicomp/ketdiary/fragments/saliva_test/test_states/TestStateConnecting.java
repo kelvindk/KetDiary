@@ -64,8 +64,8 @@ public class TestStateConnecting extends TestStateTransition {
                 Log.d("TestState", "BLE_DEVICE_CONNECTED");
 
                 // Request cassette ID from device.
-                Handler handler1 = new Handler();
-                handler1.postDelayed(new Runnable() {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         getSalivaTestAdapter().getBle().bleRequestCassetteInfo();

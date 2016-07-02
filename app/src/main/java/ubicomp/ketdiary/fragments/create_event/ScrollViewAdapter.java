@@ -85,13 +85,14 @@ public class ScrollViewAdapter implements View.OnTouchListener {
                 setOnClickListener(previousButtonOnClickListener);
         createEventActivity.findViewById(R.id.create_event_next).
                 setOnClickListener(nextButtonOnClickListener);
+
     }
 
 
     /*
     *  Set specific UI actions for particular steps.
     * */
-    /*** If no extra specific action for each step, can rewrite this function to more simple. ***/
+    /*** If no extra specific action for each step, can rewrite this function to be more simple. ***/
     private void setUiActions() {
         switch (currentStep) {
             case 0:
@@ -175,48 +176,7 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         public void onClick(View v) {
             Log.d("Ket", "PreviousButtonOnclick");
 
-            // Set Gone to the part of current step.
-            stepRelativeLayouts[currentStep].setVisibility(View.GONE);
-
-            // Set "next step"  to next step button if current is last step.
-            if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
-                ((Button) createEventActivity.findViewById(R.id.create_event_next)).
-                        setText(R.string.next_step);
-            }
-
-            // Reduce the count to previous step.
-            currentStep--;
-
-            // Invisible the "previous step" button if reach the first step.
-            if(currentStep <= 0) {
-                currentStep = 0;
-                ((Button) createEventActivity.findViewById(R.id.create_event_previous)).
-                        setVisibility(View.INVISIBLE);
-            }
-
-            // Disable the button cover of previous step.
-            stepCoverButtons[currentStep].setVisibility(View.GONE);
-
-            // Scroll screen to button after a micro delay.
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    // Scroll screen to button.
-                    scrollToBottom();
-                }
-            }, 50);
-
-            // Disable "Save" action button, if currentStep < 2.
-            if(currentMaxStep < STEPS_ALLOW_SAVE) {
-                ((LinearLayout) createEventActivity.
-                        findViewById(R.id.menu_item_add_event)).setAlpha((float)0.1);
-                isActionSaveButtonClickable = false;
-            }
-
-            // Do specific UI actions for particular step.
-            setUiActions();
-
+            performPreviousStep();
         }
     };
 
@@ -228,63 +188,152 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "NextButtonOnclick");
-            if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
-                Log.d("Ket", "NextButtonOnclick complete");
-                // Trigger action save button to perform save as well as user click.
-                MenuItem actionSaveEvent = createEventActivity.getMenu().findItem(R.id.action_save);
-                MenuItemCompat.getActionView(actionSaveEvent).performClick();
-                // Also press onBackPressed() of createEventActivity to exit.
-                createEventActivity.onBackPressed();
-                return;
-            }
-
-
-            // Enable the button cover of current step.
-            stepCoverButtons[currentStep].setVisibility(View.VISIBLE);
-
-            // Set Visible to previous button if current is step 1.
-            if(currentStep == 0) {
-                ((Button) createEventActivity.findViewById(R.id.create_event_previous)).
-                        setVisibility(View.VISIBLE);
-            }
-
-            // Advance the count to next step.
-            currentStep++;
-            // Keep most advanced step had reach.
-            if(currentStep > currentMaxStep)
-                currentMaxStep = currentStep;
-
-            // Set "complete" to next step button if reach the last step.
-            if(currentStep >= (NUMBER_OF_TOTAL_STEPS-1)) {
-                currentStep = NUMBER_OF_TOTAL_STEPS-1;
-                ((Button) createEventActivity.findViewById(R.id.create_event_next)).
-                        setText(R.string.complete);
-            }
-
-            // Set Visible of the part of next step.
-            stepRelativeLayouts[currentStep].setVisibility(View.VISIBLE);
-
-            // Scroll screen to button after a micro delay.
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    // Scroll screen to button.
-                    scrollToBottom();
-                }
-            }, 50);
-
-            // Enable "Save" action button, if currentStep >= 2.
-            if(currentMaxStep >= STEPS_ALLOW_SAVE) {
-                ((LinearLayout) createEventActivity.
-                        findViewById(R.id.menu_item_add_event)).setAlpha(1);
-                isActionSaveButtonClickable = true;
-            }
-
-            // Do specific UI actions for particular step.
-            setUiActions();
+            performNextStep();
         }
     };
+
+    public void performPreviousStep() {
+        // Set Gone to the part of current step.
+        stepRelativeLayouts[currentStep].setVisibility(View.GONE);
+
+        // Set "next step"  to next step button if current is last step.
+        if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
+            ((Button) createEventActivity.findViewById(R.id.create_event_next)).
+                    setText(R.string.next_step);
+        }
+
+        // Reduce the count to previous step.
+        currentStep--;
+
+        // Invisible the "previous step" button if reach the first step.
+        if(currentStep <= 0) {
+            currentStep = 0;
+            ((Button) createEventActivity.findViewById(R.id.create_event_previous)).
+                    setVisibility(View.INVISIBLE);
+        }
+
+        // Disable the button cover of previous step.
+        stepCoverButtons[currentStep].setVisibility(View.GONE);
+
+        // Scroll screen to button after a micro delay.
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Scroll screen to button.
+                scrollToBottom();
+            }
+        }, 50);
+
+        // Disable "Save" action button, if currentStep < 2.
+        if(currentMaxStep < STEPS_ALLOW_SAVE) {
+            ((LinearLayout) createEventActivity.
+                    findViewById(R.id.menu_item_add_event)).setAlpha((float)0.1);
+            isActionSaveButtonClickable = false;
+        }
+
+        // Do specific UI actions for particular step.
+        setUiActions();
+    }
+
+    public void performNextStep() {
+        if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
+            Log.d("Ket", "NextButtonOnclick complete");
+            // Trigger action save button to perform save as well as user click.
+            MenuItem actionSaveEvent = createEventActivity.getMenu().findItem(R.id.action_save);
+            MenuItemCompat.getActionView(actionSaveEvent).performClick();
+            // Also press onBackPressed() of createEventActivity to exit.
+            createEventActivity.onBackPressed();
+            return;
+        }
+
+
+        // Enable the button cover of current step.
+        stepCoverButtons[currentStep].setVisibility(View.VISIBLE);
+
+        // Set Visible to previous button if current is going to step 1.
+        if(currentStep == 0) {
+            ((Button) createEventActivity.findViewById(R.id.create_event_previous)).
+                    setVisibility(View.VISIBLE);
+        }
+
+        // Advance the count to next step.
+        currentStep++;
+        // Keep most advanced step had reach.
+        if(currentStep > currentMaxStep)
+            currentMaxStep = currentStep;
+
+        // Set "complete" to next step button if reach the last step.
+        if(currentStep >= (NUMBER_OF_TOTAL_STEPS-1)) {
+            currentStep = NUMBER_OF_TOTAL_STEPS-1;
+            ((Button) createEventActivity.findViewById(R.id.create_event_next)).
+                    setText(R.string.complete);
+        }
+
+        // Set Visible of the part of next step.
+        stepRelativeLayouts[currentStep].setVisibility(View.VISIBLE);
+
+        // Scroll screen to button after a micro delay.
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Scroll screen to button.
+                scrollToBottom();
+            }
+        }, 50);
+
+        // Enable "Save" action button, if currentStep >= 2.
+        if(currentMaxStep >= STEPS_ALLOW_SAVE) {
+            ((LinearLayout) createEventActivity.
+                    findViewById(R.id.menu_item_add_event)).setAlpha(1);
+            isActionSaveButtonClickable = true;
+        }
+
+        // Do specific UI actions for particular step.
+        setUiActions();
+    }
+
+
+    public void setFocusStep(int step) {
+        currentStep = step;
+        currentMaxStep = step;
+
+        for(int i=0; i<step; i++) {
+            // Enable the button cover of current step.
+            stepCoverButtons[i].setVisibility(View.VISIBLE);
+            // Set Visible of the part of next step.
+            stepRelativeLayouts[i].setVisibility(View.VISIBLE);
+        }
+        stepRelativeLayouts[step].setVisibility(View.VISIBLE);
+
+        // Set Visible to previous button if current is going to step 1.
+        if(step > 0) {
+            ((Button) createEventActivity.findViewById(R.id.create_event_previous)).
+                    setVisibility(View.VISIBLE);
+        }
+
+        // Set "complete" to next step button if reach the last step.
+        if(step >= (NUMBER_OF_TOTAL_STEPS-1)) {
+            currentStep = NUMBER_OF_TOTAL_STEPS-1;
+            ((Button) createEventActivity.findViewById(R.id.create_event_next)).
+                    setText(R.string.complete);
+        }
+
+        // Scroll screen to button after a micro delay.
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Scroll screen to button.
+                scrollToBottom();
+                setUiActions();
+            }
+        }, 300);
+
+        // Do specific UI actions for particular step.
+//        setUiActions();
+    }
 
 
     /*

@@ -44,7 +44,10 @@ public class StepExpectedBehaviorWrapper {
         ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step7)).setOnClickListener(voice_input_step7);
         ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step7)).setOnClickListener(recent_behavior_step7);
 
-
+        // Load existed data.
+        if(createEventActivity.getInitStep() != 0) {
+            editText.setText(eventLogStructure.expectedBehavior);
+        }
     }
 
     /*

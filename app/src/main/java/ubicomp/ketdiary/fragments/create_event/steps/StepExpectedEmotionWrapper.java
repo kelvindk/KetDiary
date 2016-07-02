@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
@@ -45,6 +46,22 @@ public class StepExpectedEmotionWrapper {
         // New a check list of dialog.
         dialogCheckList =  new boolean[emotionStrings.length];
         Arrays.fill(dialogCheckList, Boolean.FALSE);
+
+        // Load existed data.
+        if(createEventActivity.getInitStep() != 0) {
+            editText_emotion_step8.setText(eventLogStructure.expectedEmotion);
+            StringTokenizer tokens = new StringTokenizer(eventLogStructure.expectedEmotion, " ");
+            int i=0; // O(nlogn) comparison.
+            while(tokens.hasMoreTokens()) {
+                String token = tokens.nextToken();
+                for(; i<dialogCheckList.length;i++) {
+                    if(emotionStrings[i].equals(token)) {
+                        dialogCheckList[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     // Popup dialog to show recently use behavior.

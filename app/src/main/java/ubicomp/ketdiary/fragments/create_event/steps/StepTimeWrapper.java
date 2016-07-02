@@ -52,8 +52,11 @@ public class StepTimeWrapper {
 
 
         // New listeners.
-        SpinnerTimePeriodListener spinnerTimePeriodListener = new SpinnerTimePeriodListener(createEventActivity, eventLogStructure);
-        SpinnerDayListener spinnerDayListener = new SpinnerDayListener(createEventActivity, eventLogStructure);
+        SpinnerTimePeriodListener spinnerTimePeriodListener =
+                new SpinnerTimePeriodListener(createEventActivity, eventLogStructure);
+
+        SpinnerDayListener spinnerDayListener =
+                new SpinnerDayListener(createEventActivity, eventLogStructure);
 
         // Load existed data.
         if(createEventActivity.getInitStep() != 0) {

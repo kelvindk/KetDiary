@@ -13,6 +13,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class EventListAdapter extends BaseAdapter {
     ThirdPageDataBase thirdPageDataBase = null;
 
     // the list of items' object.
-    List<EventLogStructure> eventListItems = new ArrayList<EventLogStructure>();
+    List<EventLogStructure> eventListItems = new ArrayList<>();
 
     public EventListAdapter(MainActivity mainActivity, ListView eventListView) {
         this.mainActivity = mainActivity;
@@ -130,10 +131,7 @@ public class EventListAdapter extends BaseAdapter {
         if(eventLogStructures == null)
             return;
 
-        eventListItems.clear();
-        for(int i=0; i<eventLogStructures.length; i++) {
-            eventListItems.add(eventLogStructures[i]);
-        }
+        eventListItems = new ArrayList<>(Arrays.asList(eventLogStructures));
 
         notifyDataSetChanged();
 

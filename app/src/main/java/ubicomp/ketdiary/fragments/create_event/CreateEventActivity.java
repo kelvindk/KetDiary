@@ -145,6 +145,7 @@ public class CreateEventActivity extends AppCompatActivity {
         * */
         if(initStep != 0) {
             //
+            scrollViewAdapter.setFocusStep(initStep);
         }
         else {
             // Add current time eventTime & createTime for new eventLogStructure.

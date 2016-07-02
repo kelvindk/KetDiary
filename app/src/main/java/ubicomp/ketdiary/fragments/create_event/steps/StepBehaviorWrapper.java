@@ -45,6 +45,10 @@ public class StepBehaviorWrapper {
         ((ImageButton) createEventActivity.findViewById(R.id.recent_behavior_step4)).setOnClickListener(recent_behavior_step4);
 
 
+        // Load existed data.
+        if(createEventActivity.getInitStep() != 0) {
+            editText.setText(eventLogStructure.originalBehavior);
+        }
     }
 
     /*

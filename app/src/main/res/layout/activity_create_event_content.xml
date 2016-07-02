@@ -31,7 +31,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step1"
+        android:layout_below="@id/create_event_step1"
         android:id="@+id/create_event_step2"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -56,7 +56,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/create_event_step2"
+        android:layout_below="@id/create_event_step2"
         android:id="@+id/create_event_step3"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -82,7 +82,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step3"
+        android:layout_below="@id/create_event_step3"
         android:id="@+id/create_event_step4"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -107,7 +107,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step4"
+        android:layout_below="@id/create_event_step4"
         android:id="@+id/create_event_step5"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -132,7 +132,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step5"
+        android:layout_below="@id/create_event_step5"
         android:id="@+id/create_event_step6"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -157,7 +157,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step6"
+        android:layout_below="@id/create_event_step6"
         android:id="@+id/create_event_step7"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -182,7 +182,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step7"
+        android:layout_below="@id/create_event_step7"
         android:id="@+id/create_event_step8"
         android:visibility="gone"
         android:layout_alignParentStart="true">
@@ -207,7 +207,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/create_event_step8"
+        android:layout_below="@id/create_event_step8"
         android:id="@+id/create_event_step9"
         android:visibility="gone"
         android:layout_alignParentStart="true">

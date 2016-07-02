@@ -182,27 +182,27 @@ public class EventContentActivity extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.event_content_container_expected_thought_layout:
                     Log.d("Ket", "event_content_container_expected_thought_layout");
-                    step = 9;
+                    step = 8;
                     break;
                 case R.id.event_content_container_expected_emotion_layout:
                     Log.d("Ket", "event_content_container_expected_emotion_layout");
-                    step = 8;
+                    step = 7;
                     break;
                 case R.id.event_content_container_expected_behavior_layout:
                     Log.d("Ket", "event_content_container_expected_behavior_layout");
-                    step = 7;
+                    step = 6;
                     break;
                 case R.id.event_content_container_original_thought_layout:
                     Log.d("Ket", "event_content_container_original_thought_layout");
-                    step = 6;
+                    step = 5;
                     break;
                 case R.id.event_content_container_original_emotion_layout:
                     Log.d("Ket", "event_content_container_original_emotion_layout");
-                    step = 5;
+                    step = 4;
                     break;
                 case R.id.event_content_container_original_behavior_layout:
                     Log.d("Ket", "event_content_container_original_behavior_layout");
-                    step = 4;
+                    step = 3;
                     break;
             }
 
@@ -210,7 +210,7 @@ public class EventContentActivity extends AppCompatActivity {
                     new Intent(eventContentActivity, CreateEventActivity.class);
             // Put the serializable object into eventContentActivityIntent through a Bundle.
             Bundle bundle = new Bundle();
-            bundle.putInt(EVENT_CONTENT_ACTIVITY_KEY, view.getId());
+            bundle.putInt(EVENT_CONTENT_ACTIVITY_KEY, step);
             bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventLog);
             intent.putExtras(bundle);
             // Start the activity.

@@ -44,6 +44,10 @@ public class StepThoughtWrapper {
         ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step6)).setOnClickListener(voice_input_listener);
         ((ImageButton) createEventActivity.findViewById(R.id.recent_thought_step6)).setOnClickListener(recent_behavior_listener);
 
+        // Load existed data.
+        if(createEventActivity.getInitStep() != 0) {
+            editText.setText(eventLogStructure.originalThought);
+        }
 
     }
 
