@@ -56,7 +56,7 @@ public class FragmentRanking extends Fragment {
     @Override
     public void onResume() {
         Log.d("Ket", "FragmentRanking onResume");
-//        rankingListAdapter.refreshListViewContent();
+        rankingListAdapter.refreshListViewContent();
         super.onResume();
     }
 

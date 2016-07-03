@@ -34,7 +34,6 @@ public class RankingListAdapter extends BaseAdapter {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        refreshListViewContent();
 
     }
 

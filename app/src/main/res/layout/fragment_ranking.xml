@@ -9,6 +9,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
+        <!--<LinearLayout-->
+            <!--android:orientation="horizontal"-->
+            <!--android:id="@+id/ranking_field_name"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="@color/colorPrimaryDark"-->
+            <!--android:layout_height="wrap_content" >-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginLeft="90dp"-->
+                <!--android:textColor="@color/colorWhite"-->
+                <!--android:text="@string/scenario_type"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginLeft="70dp"-->
+                <!--android:textColor="@color/colorWhite"-->
+                <!--android:text="@string/scenario_type" />-->
+
+        <!--</LinearLayout>-->
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

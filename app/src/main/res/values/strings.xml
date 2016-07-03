@@ -172,6 +172,9 @@
 
     <string name="event_content_name">詳細事件</string>
 
+    <string name="ranking_frequency">次數：</string>
+    <string name="reflection_progress">反思進度</string>
+
     <string-array name="spinner_day">
         <item>@string/today</item>
         <item>@string/yesterday</item>

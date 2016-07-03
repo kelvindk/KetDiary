@@ -26,9 +26,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/fragment_event_list_category_icon"
         android:layout_below="@id/fragment_event_list_date"
         android:layout_alignParentStart="true"
@@ -49,9 +48,9 @@
         android:text="thinking, scenario ..."
         android:id="@+id/fragment_event_list_description"
         android:layout_below="@id/fragment_event_list_danger"
-        android:layout_alignBottom="@+id/fragment_event_list_category_icon"
-        android:layout_alignEnd="@+id/fragment_event_list_danger"
-        android:layout_toEndOf="@+id/fragment_event_list_category_icon" />
+        android:layout_alignBottom="@id/fragment_event_list_category_icon"
+        android:layout_alignEnd="@id/fragment_event_list_danger"
+        android:layout_toEndOf="@id/fragment_event_list_category_icon" />
 
     <TextView
         android:id="@+id/fragment_event_list_expected_behavior"
@@ -59,12 +58,14 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/expected_behavior"
         android:layout_below="@id/fragment_event_list_category_icon"
-        android:layout_alignStart="@+id/fragment_event_list_category_icon" />
+        android:layout_alignStart="@id/fragment_event_list_category_icon" />
 
     <RatingBar
-        android:id="@+id/fragment_event_list_item_drug_use_risk_level"
+        android:id="@+id/fragment_event_list_drug_use_risk_level"
         style="@style/SkullRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

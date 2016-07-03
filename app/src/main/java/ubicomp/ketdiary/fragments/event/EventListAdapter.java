@@ -2,7 +2,6 @@ package ubicomp.ketdiary.fragments.event;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,7 +113,7 @@ public class EventListAdapter extends BaseAdapter {
 
         // Set risk level.
         eventListItemHolder.fragment_event_list_item_drug_use_risk_level
-                = (RatingBar) eventItemView.findViewById(R.id.fragment_event_list_item_drug_use_risk_level);
+                = (RatingBar) eventItemView.findViewById(R.id.fragment_event_list_drug_use_risk_level);
         eventListItemHolder.fragment_event_list_item_drug_use_risk_level.setRating(eventListItems.get(position).drugUseRiskLevel);
 
         return eventItemView;
