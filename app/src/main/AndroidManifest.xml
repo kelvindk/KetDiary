@@ -49,19 +49,28 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity
-            android:name="ubicomp.ketdiary.utility.statistic.CopingActivity"
-            android:label="@string/title_activity_dev"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" >
-        </activity>
 
         <activity
             android:name=".fragments.event.EventContentActivity"
             android:label="@string/event_content_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".fragments.ranking.RankingContentActivity"
+            android:label="@string/ranking_content_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+
+        <activity
+            android:name="ubicomp.ketdiary.utility.statistic.CopingActivity"
+            android:label="@string/title_activity_dev"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
         </activity>
 
         <activity

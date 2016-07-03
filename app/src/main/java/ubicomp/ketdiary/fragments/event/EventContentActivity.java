@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;

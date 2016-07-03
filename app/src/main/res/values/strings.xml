@@ -171,6 +171,7 @@
     <string name="step2_question_right">」的類型之中\n哪個情境會讓你想用K?</string>
 
     <string name="event_content_name">詳細事件</string>
+    <string name="ranking_content_name">應對策略</string>
 
     <string name="ranking_frequency">次數：</string>
     <string name="reflection_progress">反思進度</string>

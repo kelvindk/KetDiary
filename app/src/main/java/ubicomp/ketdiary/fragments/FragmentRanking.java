@@ -1,15 +1,18 @@
 package ubicomp.ketdiary.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.ranking.RankingContentActivity;
 import ubicomp.ketdiary.fragments.ranking.RankingListAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 
@@ -49,6 +52,21 @@ public class FragmentRanking extends Fragment {
 
         rankingListAdapter = new RankingListAdapter(mainActivity, rankingListView);
         rankingListView.setAdapter(rankingListAdapter);
+
+        rankingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("Ket", "rankingListView onItemClick " + i);
+
+                // Invoke EventContentActivity.
+                Intent rankingContentIntent = new Intent (mainActivity, RankingContentActivity.class);
+                // Put the serializable object into eventContentActivityIntent through a Bundle.
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventListAdapter.getEventListItem(i));
+//                eventContentIntent.putExtras(bundle);
+                startActivity(rankingContentIntent);
+            }
+        });
 
         return fragmentRankingView;
     }
