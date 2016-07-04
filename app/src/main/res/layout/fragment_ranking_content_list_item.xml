@@ -4,13 +4,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp">
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:id="@+id/fragment_ranking_content_list_description"
             android:layout_alignTop="@+id/fragment_ranking_content_list_therapist_layout"
             android:layout_toEndOf="@+id/fragment_ranking_content_list_date">
@@ -47,11 +50,13 @@
 
         </LinearLayout>
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="5/30 (五) 午"
             android:id="@+id/fragment_ranking_content_list_date"
             android:layout_alignParentTop="true"
@@ -66,12 +71,12 @@
             android:layout_below="@id/fragment_ranking_content_list_date">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="15dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="18dp"
                 android:layout_gravity="center"
                 android:id="@+id/fragment_ranking_content_list_therapist_icon"
-                android:background="@drawable/discuss" />
+                android:background="@drawable/tri2" />
 
             <TextView
                 android:layout_width="wrap_content"

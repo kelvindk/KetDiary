@@ -9,8 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import ubicomp.ketdiary.R;
 
@@ -42,6 +46,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
     private RelativeLayout[] stepRelativeLayouts = new RelativeLayout[NUMBER_OF_TOTAL_STEPS];
     // Buttons of steps as a trick for setting clickable and transparent of of each step
     private Button[] stepCoverButtons = new Button[NUMBER_OF_TOTAL_STEPS];
+    // Progress bar & text.
+    private RatingBar progressBar = null;
+    private TextView progressText = null;
 
 
     // Boolean to store action save button state.
@@ -74,6 +81,10 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         stepCoverButtons[6] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step7);
         stepCoverButtons[7] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step8);
         stepCoverButtons[8] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step9);
+
+        // Progress bar in toolbar.
+        progressBar = (RatingBar) createEventActivity.findViewById(R.id.create_event_progress_bar);
+        progressText = (TextView) createEventActivity.findViewById(R.id.create_event_progress_text);
 
         // Get ScrollView of create event page and set a touch listener.
         scrollView = (ScrollView) createEventActivity.
@@ -205,6 +216,10 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         // Reduce the count to previous step.
         currentStep--;
 
+        // Update progress bar.
+        progressBar.setRating(currentStep+1);
+        progressText.setText((currentStep+1)+"/9");
+
         // Invisible the "previous step" button if reach the first step.
         if(currentStep <= 0) {
             currentStep = 0;
@@ -259,6 +274,11 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
         // Advance the count to next step.
         currentStep++;
+
+        // Update progress bar.
+        progressBar.setRating(currentStep+1);
+        progressText.setText((currentStep+1)+"/9");
+
         // Keep most advanced step had reach.
         if(currentStep > currentMaxStep)
             currentMaxStep = currentStep;
@@ -298,6 +318,11 @@ public class ScrollViewAdapter implements View.OnTouchListener {
     public void setFocusStep(int step) {
         currentStep = step-1;
         currentMaxStep = currentStep;
+
+
+        // Update progress bar.
+        progressBar.setRating(currentStep+1);
+        progressText.setText((currentStep+1)+"/9");
 
         for(int i=0; i<currentStep; i++) {
             // Enable the button cover of current step.

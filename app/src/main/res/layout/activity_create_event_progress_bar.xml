@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimary">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/colorWhite"
         android:text="@string/create_event_progress"
         android:layout_alignParentTop="true"
@@ -16,21 +18,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingRight="10dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginRight="10dp"
         android:textColor="@color/colorWhite"
-        android:text="1/10"
+        android:text="1/9"
         android:layout_alignParentEnd="true"
-        android:id="@+id/create_event_text_right"/>
+        android:id="@+id/create_event_progress_text"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
+
+    <RatingBar
+        android:id="@+id/create_event_progress_bar"
+        style="@style/CreateEventProgressRatingBar"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toEndOf="@+id/create_event_text_left"
-        android:layout_toStartOf="@+id/create_event_text_right">
-
-        <!--place the progress bar-->
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:numStars="9"
+        android:rating="1"
+        android:stepSize="1"
+        android:clickable="false"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/create_event_text_left" />
 
 </RelativeLayout>

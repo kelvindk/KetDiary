@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <color name="colorPrimary">#2070E0</color>
+    <color name="colorPrimaryDark">#BABABA</color>
+
     <color name="colorAccent">#FF4081</color>
     <color name="colorSpinnerText">#F4F4F4</color>
     <color name="colorWhite">#FFFFFF</color>
@@ -14,6 +17,7 @@
     <color name="colorProgressCircular">#489BE7</color>
 
     <color name="colorRed">#FF0000</color>
+    <color name="colorYellowGreen">#9ACD32</color>
 
     <color name="colorDarkGray">#FF898989</color>
     <color name="colorToastPoint">#FF2dc7b3</color>
