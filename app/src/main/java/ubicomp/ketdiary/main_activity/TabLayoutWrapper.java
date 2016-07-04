@@ -32,7 +32,7 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
         // Create four tabs.
         tabLayoutTabs[0] = tabLayout.newTab().setCustomView(R.layout.tab_icon_text_test);
         tabLayout.addTab(tabLayoutTabs[0]);
-        tabLayoutTabs[1] = tabLayout.newTab().setCustomView(R.layout.tab_icon_text_result);
+        tabLayoutTabs[1] = tabLayout.newTab().setCustomView(R.layout.tab_icon_text_statistics);
         tabLayout.addTab(tabLayoutTabs[1]);
         tabLayoutTabs[2] = tabLayout.newTab().setCustomView(R.layout.tab_icon_text_event);
         tabLayout.addTab(tabLayoutTabs[2]);

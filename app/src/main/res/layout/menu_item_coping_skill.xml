@@ -19,7 +19,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:gravity="center"
-            android:src="@drawable/statistic_coping"
+            android:src="@drawable/coping_white"
             android:layout_gravity="center" />
         <TextView
             android:id="@+id/menu_item_text"

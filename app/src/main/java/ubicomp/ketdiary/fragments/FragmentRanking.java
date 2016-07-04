@@ -28,6 +28,10 @@ public class FragmentRanking extends Fragment {
 
     private RankingListAdapter rankingListAdapter = null;
 
+    public FragmentRanking() {
+
+    }
+
     public FragmentRanking(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
         this.mainActivity = mainActivity;

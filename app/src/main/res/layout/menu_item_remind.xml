@@ -19,7 +19,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:gravity="center"
-            android:src="@drawable/affiliation_logo_0"
+            android:src="@drawable/bell_white"
             android:layout_gravity="center" />
 
         <TextView

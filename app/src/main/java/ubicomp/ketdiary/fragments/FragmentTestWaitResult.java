@@ -19,6 +19,10 @@ public class FragmentTestWaitResult extends Fragment {
     private FragmentSwitcher fragmentSwitcher = null;
     private MainActivity mainActivity = null;
 
+    public FragmentTestWaitResult() {
+
+    }
+
     public FragmentTestWaitResult(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
         this.mainActivity = mainActivity;

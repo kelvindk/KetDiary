@@ -10,7 +10,7 @@
         android:paddingTop="0dp"
         android:paddingLeft="0dp"
         android:gravity="center"
-        android:src="@drawable/bar_find_button"
+        android:src="@drawable/ic_account_box_white_48dp"
         android:layout_gravity="center" />
 
     <TextView

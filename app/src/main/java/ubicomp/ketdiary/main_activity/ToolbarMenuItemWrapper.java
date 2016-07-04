@@ -145,7 +145,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                         mainActivity.startActivity(intent);
                     }
                 });
-                MenuItemCompat.getActionView(copingSkill).setOnTouchListener(new ScaleOnTouchListener());
+//                MenuItemCompat.getActionView(copingSkill).setOnTouchListener(new ScaleOnTouchListener());
                 break;
             case R.menu.menu_event:
                 mainActivity.getMenuInflater().inflate(R.menu.menu_event, menu);

@@ -87,10 +87,10 @@
     <string name="salivaResultNegative">檢測結果為\n「通過」</string>
     <string name="salivaResultPositive">檢測結果為\n「不通過」</string>
 
-    <string name="tab_test">檢測</string>
-    <string name="tab_statistics">記錄</string>
-    <string name="tab_event">記事</string>
-    <string name="tab_ranking">排行</string>
+    <string name="tab_test">口水檢測</string>
+    <string name="tab_statistics">我的狀態</string>
+    <string name="tab_event">事件記錄</string>
+    <string name="tab_ranking">危險排行</string>
 
     <string name="remote_service_started">remote_service_started</string>
     <string name="remote_service_connected">remote_service_connected</string>

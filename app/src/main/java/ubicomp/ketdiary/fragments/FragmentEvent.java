@@ -29,6 +29,10 @@ public class FragmentEvent extends Fragment {
 
     private EventListAdapter eventListAdapter = null;
 
+    public FragmentEvent() {
+
+    }
+
     public FragmentEvent(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
         this.mainActivity = mainActivity;
