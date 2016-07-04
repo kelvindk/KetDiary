@@ -73,17 +73,19 @@ public class StepExpectedEmotionWrapper {
 
             // New dialog.
             AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
-            dialog.setTitle(R.string.original_emotion);
+            dialog.setTitle(R.string.expected_emotion);
 
-            dialog.setMultiChoiceItems(emotionStrings, dialogCheckList,
-                    new DialogInterface.OnMultiChoiceClickListener() {
-                        public void onClick(DialogInterface dialog, int item,
-                                            boolean isChecked) {
-                        /* User clicked on a check box */
-                            Log.d("Emotion", item+" "+isChecked);
-                            // no op.
-                        }
-                    });
+//            dialog.setMultiChoiceItems(emotionStrings, dialogCheckList,
+//                    new DialogInterface.OnMultiChoiceClickListener() {
+//                        public void onClick(DialogInterface dialog, int item,
+//                                            boolean isChecked) {
+//                        /* User clicked on a check box */
+//                            Log.d("Emotion", item+" "+isChecked);
+//                            // no op.
+//                        }
+//                    });
+
+            dialog.setSingleChoiceItems(emotionStrings, 0, null);
 
             dialog.setPositiveButton(R.string.confirm,
                     new DialogInterface.OnClickListener() {
@@ -93,11 +95,15 @@ public class StepExpectedEmotionWrapper {
 
                             // Get the string includes selected emotions.
                             String emotionsString = "";
-                            for(int i=0; i<dialogCheckList.length; i++) {
-                                if(dialogCheckList[i]) {
-                                    emotionsString += emotionStrings[i] +" ";
-                                }
-                            }
+                            dialog.dismiss();
+                            int selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
+                            emotionsString += emotionStrings[selectedPosition];
+
+//                            for(int i=0; i<dialogCheckList.length; i++) {
+//                                if(dialogCheckList[i]) {
+//                                    emotionsString += emotionStrings[i] +" ";
+//                                }
+//                            }
                             // Set selected emotions on the EditText. Can be multiple select.
                             editText_emotion_step8.setText(emotionsString);
                             /*** Log event expected emotions selected by user. ***/
