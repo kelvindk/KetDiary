@@ -29,6 +29,10 @@ public class FragmentTest extends Fragment {
 
     private TextView textviewToolbar = null;
 
+    public FragmentTest() {
+
+    }
+
     public FragmentTest(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         this.fragmentSwitcher = fragmentSwitcher;
