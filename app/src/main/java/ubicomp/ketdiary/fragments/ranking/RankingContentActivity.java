@@ -6,6 +6,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import ubicomp.ketdiary.R;
 
@@ -13,6 +19,10 @@ import ubicomp.ketdiary.R;
  * Created by kelvindk on 16/7/4.
  */
 public class RankingContentActivity extends AppCompatActivity {
+
+    private ArrayAdapter<String> adapter;
+    private List<String> liste;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +31,8 @@ public class RankingContentActivity extends AppCompatActivity {
         // Set full screen.
         getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN );
+
+
 
         // Enable toolbar on create event activity with back button on the top left.
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_ranking_content_toolbar);

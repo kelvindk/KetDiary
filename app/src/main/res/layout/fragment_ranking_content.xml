@@ -1,67 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
-
-    <!--Event Date  -->
-    <LinearLayout
-        android:id="@+id/event_content_container_date_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/event_content_container_event_date"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="2016 5 30 午"
-            android:textSize="@dimen/abc_text_size_small_material" />
 
-        <TextView
-            android:id="@+id/event_content_container_therapy_status"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="心理師驗證"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/fragment_ranking_content_item_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 "
+                    android:maxLines="2"
+                    android:id="@+id/fragment_ranking_content_description"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignTop="@+id/fragment_ranking_content_category_icon"
+                    android:layout_toEndOf="@+id/fragment_ranking_content_category_icon" />
+
+                <TextView
+                    android:id="@+id/fragment_ranking_content_rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="NO. 99"
+                    android:paddingLeft="5dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
 
 
-            <RatingBar
-                android:id="@+id/event_content_container_drug_use_risk"
-                style="@style/SkullRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:numStars="5"
-                android:rating="1"
-                android:clickable="false"
-                android:stepSize="1" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_below="@id/event_content_container_date_layout"
-        android:layout_width="match_parent"
-        android:background="@color/colorAGray"
-        android:alpha="0.5"
-        android:layout_marginTop="5dp"
-        android:layout_height="2dp"></View>
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/fragment_ranking_content_category_icon"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/fragment_ranking_content_rank"
+                    android:background="@drawable/type_icon1" />
 
 
 
+                <RatingBar
+                    android:id="@+id/fragment_ranking_content_drug_use_risk_level"
+                    style="@style/SkullRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="3"
+                    android:stepSize="1"
+                    android:clickable="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@id/fragment_ranking_content_rank" />
 
-</RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/fragment_ranking_content_frequency_layout"
+                    android:layout_below="@+id/fragment_ranking_content_category_icon">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="10"
+                        android:textStyle="bold"
+                        android:id="@+id/fragment_ranking_content_frequency_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/ranking_frequency"
+                        android:id="@+id/fragment_ranking_content_frequency_label" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="40dp"
+                    android:layout_alignTop="@id/fragment_ranking_content_frequency_layout"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/fragment_ranking_content_test_fail_layout">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="10"
+                        android:textStyle="bold"
+                        android:id="@+id/fragment_ranking_content_test_fail_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/ranking_test_fail"
+                        android:id="@+id/fragment_ranking_content_test_fail_label" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical"
+                    android:layout_alignBottom="@id/fragment_ranking_content_test_fail_layout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="40dp">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" >
+
+                        <ProgressBar
+                            android:id="@+id/ranking_content_reflection_progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:max="100"
+                            android:progress="100"
+                            android:progressDrawable="@drawable/progress_circular" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ranking_content_reflection_progress_text"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_gravity="center"
+                            android:text="100%"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_gravity="center"
+                        android:text="@string/reflection_progress" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_below="@id/fragment_ranking_content_frequency_layout"
+                    android:layout_width="match_parent"
+                    android:background="@color/colorAGray"
+                    android:alpha="0.5"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="2dp"></View>
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fragment_ranking_content_list_view"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/fragment_ranking_content_frequency_layout"
+                    android:layout_alignEnd="@id/fragment_ranking_content_description" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</FrameLayout>

@@ -18,7 +18,7 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
 /**
  * Created by kelvindk on 16/7/2.
  */
-public class RankingListAdapter extends BaseAdapter {
+public class RankingContentListAdapter extends BaseAdapter {
 
     private MainActivity mainActivity = null;
     private ListView rankingListView = null;
@@ -27,7 +27,7 @@ public class RankingListAdapter extends BaseAdapter {
     // the list of items' object.
     List<EventLogStructure> rankingListItems = new ArrayList<>();
 
-    public RankingListAdapter(MainActivity mainActivity, ListView rankingListView) {
+    public RankingContentListAdapter(MainActivity mainActivity, ListView rankingListView) {
         this.mainActivity = mainActivity;
         this.rankingListView = rankingListView;
         Context context = mainActivity;
@@ -61,7 +61,7 @@ public class RankingListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View rankingItemView = layoutInflater.inflate(R.layout.fragment_ranking_list_item, null);
+        View rankingItemView = layoutInflater.inflate(R.layout.fragment_ranking_content, null);
 
         RankingListItemHolder rankingListItemHolder = new RankingListItemHolder();
 

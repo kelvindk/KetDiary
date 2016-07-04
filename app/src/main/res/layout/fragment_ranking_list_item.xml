@@ -13,14 +13,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 "
             android:maxLines="2"
-            android:id="@+id/fragment_ranking_list_description"
+            android:id="@+id/fragment_ranking_content_description"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_alignTop="@+id/fragment_ranking_list_category_icon"
-            android:layout_toEndOf="@+id/fragment_ranking_list_category_icon" />
+            android:layout_alignTop="@id/fragment_ranking_content_category_icon"
+            android:layout_toEndOf="@id/fragment_ranking_content_category_icon" />
 
         <TextView
-            android:id="@+id/fragment_ranking_list_rank"
+            android:id="@+id/fragment_ranking_content_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -33,17 +33,17 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:id="@+id/fragment_ranking_list_category_icon"
+            android:id="@+id/fragment_ranking_content_category_icon"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_below="@id/fragment_ranking_list_rank"
+            android:layout_below="@id/fragment_ranking_content_rank"
             android:background="@drawable/type_icon1" />
 
 
 
         <RatingBar
-            android:id="@+id/fragment_ranking_list_drug_use_risk_level"
+            android:id="@+id/fragment_ranking_content_drug_use_risk_level"
             style="@style/SkullRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,15 +55,15 @@
             android:stepSize="1"
             android:clickable="false"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@id/fragment_ranking_list_rank" />
+            android:layout_toEndOf="@id/fragment_ranking_content_rank" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="40dp"
-            android:id="@+id/fragment_ranking_frequency_layout"
-            android:layout_below="@+id/fragment_ranking_list_category_icon">
+            android:id="@+id/fragment_ranking_content_frequency_layout"
+            android:layout_below="@id/fragment_ranking_content_category_icon">
 
 
             <TextView
@@ -73,7 +73,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="10"
                 android:textStyle="bold"
-                android:id="@+id/fragment_ranking_frequency_text"/>
+                android:id="@+id/fragment_ranking_content_frequency_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                 android:layout_gravity="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/ranking_frequency"
-                android:id="@+id/fragment_ranking_frequency_label" />
+                android:id="@+id/fragment_ranking_content_frequency_label" />
 
         </LinearLayout>
 
@@ -92,9 +92,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="40dp"
-            android:layout_alignTop="@+id/fragment_ranking_frequency_layout"
+            android:layout_alignTop="@id/fragment_ranking_content_frequency_layout"
             android:layout_centerHorizontal="true"
-            android:id="@+id/linearLayout2">
+            android:id="@+id/fragment_ranking_content_test_fail_layout">
 
 
             <TextView
@@ -104,7 +104,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="10"
                 android:textStyle="bold"
-                android:id="@+id/fragment_ranking_test_fail_text"/>
+                android:id="@+id/fragment_ranking_content_test_fail_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                 android:layout_gravity="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/ranking_test_fail"
-                android:id="@+id/fragment_ranking_test_fail_label" />
+                android:id="@+id/fragment_ranking_content_test_fail_label" />
 
         </LinearLayout>
 
@@ -123,18 +123,18 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             android:orientation="vertical"
-            android:layout_alignBottom="@+id/linearLayout2"
+            android:layout_alignBottom="@id/fragment_ranking_content_test_fail_layout"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="40dp">
 
             <FrameLayout
-                android:id="@+id/reflection_progress_layout"
+                android:id="@+id/ranking_reflection_progress_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" >
 
                 <ProgressBar
-                    android:id="@+id/reflection_progress_bar"
+                    android:id="@+id/ranking_content_reflection_progress_bar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -145,7 +145,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/reflection_progress_text"
+                    android:id="@+id/ranking_content_reflection_progress_text"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_gravity="center"
                     android:text="100%"/>
