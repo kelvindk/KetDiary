@@ -7,199 +7,153 @@
         -
 -->
 
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent" >
 
 
-    <!--Event Date  -->
-    <LinearLayout
-        android:id="@+id/event_content_container_date_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent" >
 
-        <TextView
-            android:id="@+id/event_content_container_event_date"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="2016 5 30 午"
-            android:textSize="@dimen/abc_text_size_small_material" />
 
-        <TextView
-            android:id="@+id/event_content_container_therapy_status"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="心理師驗證"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-
+        <!--Event Date  -->
         <LinearLayout
+            android:id="@+id/event_content_container_date_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
-
-
-            <RatingBar
-                android:id="@+id/event_content_container_drug_use_risk"
-                style="@style/SkullRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:numStars="5"
-                android:rating="1"
-                android:clickable="false"
-                android:stepSize="1" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_below="@id/event_content_container_date_layout"
-        android:layout_width="match_parent"
-        android:background="@color/colorAGray"
-        android:alpha="0.5"
-        android:layout_marginTop="5dp"
-        android:layout_height="2dp"></View>
-
-    <!--Scenario type icon and context -->
-    <TextView
-        android:id="@+id/event_content_container_scenario_textview"
-        android:layout_below="@id/event_content_container_date_layout"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/scenario"
-        android:textSize="@dimen/abc_text_size_small_material"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/event_content_container_scenario_layout"
-        android:layout_below="@id/event_content_container_scenario_textview"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/event_content_container_scenario_type"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:padding="5dp"
-            android:src="@drawable/type_icon3" />
-
-        <TextView
-            android:id="@+id/event_content_container_scenario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_gravity="center_vertical"
-            android:text="情境情境情境情境情境情境情境情境情境情境情境情境"
-            android:textSize="@dimen/abc_text_size_medium_material" />
-
-
-    </LinearLayout>
-
-
-    <View
-        android:layout_below="@id/event_content_container_scenario_layout"
-        android:layout_width="match_parent"
-        android:background="@color/colorAGray"
-        android:alpha="0.5"
-        android:layout_marginTop="7dp"
-        android:layout_height="2dp"></View>
-
-
-    <!-- Expected thought-->
-    <LinearLayout
-        android:id="@+id/event_content_container_expected_thought_layout"
-        android:layout_below="@id/event_content_container_scenario_layout"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/expected_thought"
-                android:layout_alignParentTop="true"
-                android:textSize="@dimen/abc_text_size_small_material"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/event_content_container_expected_thought_revise"
-                android:visibility="gone"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/need_revise"
-                android:textColor="@color/colorRed"
-                android:textSize="@dimen/abc_text_size_small_material"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true" />
-            </RelativeLayout>
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/event_content_container_expected_thought"
+                android:id="@+id/event_content_container_event_date"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="2016 5 30 午"
+                android:textSize="@dimen/abc_text_size_small_material" />
+
+            <TextView
+                android:id="@+id/event_content_container_therapy_status"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="心理師驗證"
                 android:textSize="@dimen/abc_text_size_medium_material" />
 
-        </LinearLayout>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right">
 
-    <!-- Expected emotion-->
-    <LinearLayout
-        android:id="@+id/event_content_container_expected_emotion_layout"
-        android:layout_below="@id/event_content_container_expected_thought_layout"
-        android:layout_marginBottom="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+                <RatingBar
+                    android:id="@+id/event_content_container_drug_use_risk"
+                    style="@style/SkullRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:numStars="5"
+                    android:rating="1"
+                    android:clickable="false"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_below="@id/event_content_container_date_layout"
+            android:layout_width="match_parent"
+            android:background="@color/colorAGray"
+            android:alpha="0.5"
+            android:layout_marginTop="5dp"
+            android:layout_height="2dp"></View>
+
+        <!--Scenario type icon and context -->
+        <TextView
+            android:id="@+id/event_content_container_scenario_textview"
+            android:layout_below="@id/event_content_container_date_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/scenario"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:id="@+id/event_content_container_scenario_layout"
+            android:layout_below="@id/event_content_container_scenario_textview"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/event_content_container_scenario_type"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="5dp"
+                android:src="@drawable/type_icon3" />
+
+            <TextView
+                android:id="@+id/event_content_container_scenario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="情境情境情境情境情境情境情境情境情境情境情境情境"
+                android:textSize="@dimen/abc_text_size_medium_material" />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_below="@id/event_content_container_scenario_layout"
+            android:layout_width="match_parent"
+            android:background="@color/colorAGray"
+            android:alpha="0.5"
+            android:layout_marginTop="7dp"
+            android:layout_height="2dp"></View>
+
+
+        <!-- Expected thought-->
+        <LinearLayout
+            android:id="@+id/event_content_container_expected_thought_layout"
+            android:layout_below="@id/event_content_container_scenario_layout"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/expected_emotion"
+                    android:text="@string/expected_thought"
                     android:layout_alignParentTop="true"
                     android:textSize="@dimen/abc_text_size_small_material"
                     android:textStyle="bold" />
                 <TextView
-                    android:id="@+id/event_content_container_expected_emotion_revise"
+                    android:id="@+id/event_content_container_expected_thought_revise"
                     android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -208,227 +162,279 @@
                     android:textSize="@dimen/abc_text_size_small_material"
                     android:textStyle="bold"
                     android:layout_alignParentEnd="true" />
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <TextView
-                android:id="@+id/event_content_container_expected_emotion"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="情緒情緒情緒"
-                android:textSize="@dimen/abc_text_size_medium_material" />
+                <TextView
+                    android:id="@+id/event_content_container_expected_thought"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法想法"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
 
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-
-    <!-- Expected behavior-->
-    <LinearLayout
-        android:id="@+id/event_content_container_expected_behavior_layout"
-        android:layout_below="@id/event_content_container_expected_emotion_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        <!-- Expected emotion-->
         <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:id="@+id/event_content_container_expected_emotion_layout"
+            android:layout_below="@id/event_content_container_expected_thought_layout"
+            android:layout_marginBottom="2dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/expected_emotion"
+                        android:layout_alignParentTop="true"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/event_content_container_expected_emotion_revise"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/need_revise"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
                 <TextView
+                    android:id="@+id/event_content_container_expected_emotion"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/expected_behavior"
-                    android:layout_alignParentTop="true"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/event_content_container_expected_behavior_revise"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="@string/need_revise"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
+                    android:text="情緒情緒情緒"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
 
-            <TextView
-                android:id="@+id/event_content_container_expected_behavior"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="行為行為行為"
-                android:textSize="@dimen/abc_text_size_medium_material" />
-
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_below="@id/event_content_container_expected_behavior_layout"
-        android:layout_width="match_parent"
-        android:background="@color/colorAGray"
-        android:alpha="0.5"
-        android:layout_marginTop="2dp"
-        android:layout_height="2dp"></View>
 
 
-    <!-- Original thought-->
-    <LinearLayout
-        android:id="@+id/event_content_container_original_thought_layout"
-        android:layout_below="@id/event_content_container_expected_behavior_layout"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        <!-- Expected behavior-->
         <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:id="@+id/event_content_container_expected_behavior_layout"
+            android:layout_below="@id/event_content_container_expected_emotion_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/expected_behavior"
+                        android:layout_alignParentTop="true"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/event_content_container_expected_behavior_revise"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/need_revise"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
                 <TextView
+                    android:id="@+id/event_content_container_expected_behavior"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/original_thought"
-                    android:layout_alignParentTop="true"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/event_content_container_original_thought_revise"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="@string/need_revise"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
+                    android:text="行為行為行為"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
 
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/event_content_container_original_thought"
-                android:text="想法 想法 想法 想法 想法"
-                android:textSize="@dimen/abc_text_size_medium_material" />
-
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-
-    <!-- Original emotion-->
-    <LinearLayout
-        android:id="@+id/event_content_container_original_emotion_layout"
-        android:layout_below="@id/event_content_container_original_thought_layout"
-        android:layout_marginBottom="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+        <View
+            android:layout_below="@id/event_content_container_expected_behavior_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@color/colorAGray"
+            android:alpha="0.5"
+            android:layout_marginTop="2dp"
+            android:layout_height="2dp"></View>
 
-            <RelativeLayout
+
+        <!-- Original thought-->
+        <LinearLayout
+            android:id="@+id/event_content_container_original_thought_layout"
+            android:layout_below="@id/event_content_container_expected_behavior_layout"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/original_thought"
+                        android:layout_alignParentTop="true"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/event_content_container_original_thought_revise"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/need_revise"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/original_emotion"
-                    android:layout_alignParentTop="true"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/event_content_container_original_emotion_revise"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="@string/need_revise"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
+                    android:id="@+id/event_content_container_original_thought"
+                    android:text="想法 想法 想法 想法 想法"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
 
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/event_content_container_original_emotion"
-                android:text="情緒 情緒 情緒 情緒 情緒"
-                android:textSize="@dimen/abc_text_size_medium_material" />
-
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Original behavior-->
-    <LinearLayout
-        android:id="@+id/event_content_container_original_behavior_layout"
-        android:layout_below="@id/event_content_container_original_emotion_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
+        <!-- Original emotion-->
         <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:id="@+id/event_content_container_original_emotion_layout"
+            android:layout_below="@id/event_content_container_original_thought_layout"
+            android:layout_marginBottom="2dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/original_emotion"
+                        android:layout_alignParentTop="true"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/event_content_container_original_emotion_revise"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/need_revise"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="@string/original_behavior"
-                    android:layout_alignParentTop="true"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/event_content_container_original_behavior_revise"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="@string/need_revise"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/abc_text_size_small_material"
-                    android:textStyle="bold"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
+                    android:id="@+id/event_content_container_original_emotion"
+                    android:text="情緒 情緒 情緒 情緒 情緒"
+                    android:textSize="@dimen/abc_text_size_medium_material" />
 
-            <TextView
-                android:id="@+id/event_content_container_original_behavior"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="行為 行為 行為 行為 行為 行為 行為 行為 行為"
-                android:textSize="@dimen/abc_text_size_medium_material"/>
-
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-</RelativeLayout>
+        <!-- Original behavior-->
+        <LinearLayout
+            android:id="@+id/event_content_container_original_behavior_layout"
+            android:layout_below="@id/event_content_container_original_emotion_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/original_behavior"
+                        android:layout_alignParentTop="true"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/event_content_container_original_behavior_revise"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/need_revise"
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/abc_text_size_small_material"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/event_content_container_original_behavior"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="行為 行為 行為 行為 行為 行為 行為 行為 行為"
+                    android:textSize="@dimen/abc_text_size_medium_material"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

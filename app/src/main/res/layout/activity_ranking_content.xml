@@ -26,7 +26,7 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <!--<include layout="@layout/ranking_content_container" />-->
+    <include layout="@layout/ranking_content_container" />
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -77,6 +77,17 @@ public class EventContentActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         eventLog = (EventLogStructure) bundle.getSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);
 
+        // Enable toolbar on create event activity with back button on the top left.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_event_content_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         // Initialize UI components.
         initUiComponents();
     }
@@ -162,16 +173,7 @@ public class EventContentActivity extends AppCompatActivity {
             event_content_container_original_behavior_layout.setOnClickListener(eventContentClickListener);
         }
 
-        // Enable toolbar on create event activity with back button on the top left.
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_event_content_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+
     }
 
 
