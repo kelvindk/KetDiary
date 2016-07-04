@@ -6,11 +6,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
         android:text="5/30 (五) 午"
         android:id="@+id/fragment_event_list_date"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/event_content_container_incomplete_status"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="心理師驗證"
+            android:textSize="@dimen/abc_text_size_small_material" />
+
+        <TextView
+            android:id="@+id/event_content_container_therapy_status"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="心理師驗證"
+            android:textSize="@dimen/abc_text_size_small_material" />
+
+        <TextView
+            android:id="@+id/event_content_container_saliva_status"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="心理師驗證"
+            android:textSize="@dimen/abc_text_size_small_material" />
+
+    </LinearLayout>
 
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
@@ -25,7 +59,7 @@
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:id="@+id/fragment_event_list_category_icon"
@@ -44,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:paddingTop="10dp"
+        android:layout_marginTop="30dp"
         android:text="thinking, scenario ..."
         android:id="@+id/fragment_event_list_description"
         android:layout_below="@id/fragment_event_list_danger"
@@ -58,7 +92,7 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textStyle="bold"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:text="@string/expected_behavior"
         android:layout_below="@id/fragment_event_list_category_icon"
@@ -67,6 +101,8 @@
     <RatingBar
         android:id="@+id/fragment_event_list_drug_use_risk_level"
         style="@style/SkullRatingBar"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:isIndicator="true"
@@ -74,7 +110,7 @@
         android:rating="3"
         android:stepSize="1"
         android:clickable="false"
-        android:layout_alignBottom="@+id/fragment_event_list_danger"
-        android:layout_alignEnd="@+id/fragment_event_list_expected_behavior" />
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/linearLayout" />
 
 </RelativeLayout>

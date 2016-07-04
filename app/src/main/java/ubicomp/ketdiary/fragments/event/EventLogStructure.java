@@ -85,6 +85,9 @@ public class EventLogStructure implements Serializable {
     // Whether this event is filled just after routine test.
     public boolean isAfterTest = false;
 
+    // Whether user has test today.
+    public boolean isTestToday = false;
+
     // Whether this event is completely filled.
     public boolean isComplete = false;
 

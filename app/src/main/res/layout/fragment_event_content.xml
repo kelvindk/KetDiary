@@ -35,58 +35,79 @@
                 android:text="2016 5 30 午"
                 android:textSize="@dimen/abc_text_size_small_material" />
 
+            <RatingBar
+                android:id="@+id/event_content_container_drug_use_risk"
+                style="@style/SkullRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="10dp"
+                android:numStars="5"
+                android:rating="1"
+                android:clickable="false"
+                android:stepSize="1" />
+
+        </LinearLayout>
+
+        <!--<View-->
+            <!--android:layout_below="@id/event_content_container_date_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="@color/colorAGray"-->
+            <!--android:alpha="0.5"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_height="2dp"></View>-->
+
+        <!--Scenario type icon and context -->
+        <!--<TextView-->
+            <!--android:id="@+id/event_content_container_scenario_textview"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:text="@string/scenario"-->
+            <!--android:textSize="@dimen/abc_text_size_small_material"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_below="@+id/event_content_container_date_layout"-->
+            <!--android:layout_alignStart="@+id/event_content_container_scenario_layout" />-->
+
+        <LinearLayout
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/event_content_container_date_layout">
+
+            <TextView
+                android:id="@+id/event_content_container_incomplete_status"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="心理師驗證"
+                android:textSize="@dimen/abc_text_size_small_material" />
+
             <TextView
                 android:id="@+id/event_content_container_therapy_status"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="5dp"
                 android:text="心理師驗證"
-                android:textSize="@dimen/abc_text_size_medium_material" />
+                android:textSize="@dimen/abc_text_size_small_material" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/event_content_container_saliva_status"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="right">
+                android:layout_width="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="心理師驗證"
+                android:textSize="@dimen/abc_text_size_small_material" />
 
-
-                <RatingBar
-                    android:id="@+id/event_content_container_drug_use_risk"
-                    style="@style/SkullRatingBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:numStars="5"
-                    android:rating="1"
-                    android:clickable="false"
-                    android:stepSize="1" />
-
-            </LinearLayout>
         </LinearLayout>
 
-        <View
-            android:layout_below="@id/event_content_container_date_layout"
-            android:layout_width="match_parent"
-            android:background="@color/colorAGray"
-            android:alpha="0.5"
-            android:layout_marginTop="5dp"
-            android:layout_height="2dp"></View>
 
-        <!--Scenario type icon and context -->
-        <TextView
-            android:id="@+id/event_content_container_scenario_textview"
-            android:layout_below="@id/event_content_container_date_layout"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:text="@string/scenario"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:textStyle="bold" />
+
 
         <LinearLayout
             android:id="@+id/event_content_container_scenario_layout"
-            android:layout_below="@id/event_content_container_scenario_textview"
+            android:layout_below="@id/event_content_container_date_layout"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
@@ -434,6 +455,8 @@
 
             </LinearLayout>
         </LinearLayout>
+
+
 
     </RelativeLayout>
 
