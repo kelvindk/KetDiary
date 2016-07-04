@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments.ranking;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 
@@ -20,21 +20,20 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
  */
 public class RankingContentListAdapter extends BaseAdapter {
 
-    private MainActivity mainActivity = null;
+    private Activity activity = null;
     private ListView rankingListView = null;
     private LayoutInflater layoutInflater = null;
 
     // the list of items' object.
     List<EventLogStructure> rankingListItems = new ArrayList<>();
 
-    public RankingContentListAdapter(MainActivity mainActivity, ListView rankingListView) {
-        this.mainActivity = mainActivity;
+    public RankingContentListAdapter(Activity activity, ListView rankingListView) {
+        this.activity = activity;
         this.rankingListView = rankingListView;
-        Context context = mainActivity;
 
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
+        refreshListViewContent();
     }
 
     @Override
@@ -55,19 +54,19 @@ public class RankingContentListAdapter extends BaseAdapter {
     // UI components of item.
     public class RankingListItemHolder
     {
-        TextView fragment_ranking_list_description = null;
+        TextView fragment_ranking_content_list_expected_though = null;
 
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View rankingItemView = layoutInflater.inflate(R.layout.fragment_ranking_content, null);
+        View rankingItemView = layoutInflater.inflate(R.layout.fragment_ranking_content_list_item, null);
 
         RankingListItemHolder rankingListItemHolder = new RankingListItemHolder();
 
-        rankingListItemHolder.fragment_ranking_list_description
-                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_content_description);
-        rankingListItemHolder.fragment_ranking_list_description.setText("---"+position+"---");
+        rankingListItemHolder.fragment_ranking_content_list_expected_though
+                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_content_list_expected_though);
+        rankingListItemHolder.fragment_ranking_content_list_expected_though.setText("---"+position+"---");
 
         return rankingItemView;
     }

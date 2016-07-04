@@ -66,7 +66,7 @@ public class RankingListAdapter extends BaseAdapter {
         RankingListItemHolder rankingListItemHolder = new RankingListItemHolder();
 
         rankingListItemHolder.fragment_ranking_list_description
-                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_content_description);
+                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_description);
         rankingListItemHolder.fragment_ranking_list_description.setText("---"+position+"---");
 
         return rankingItemView;

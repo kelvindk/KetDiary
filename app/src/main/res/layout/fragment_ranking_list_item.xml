@@ -13,7 +13,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 情境 "
             android:maxLines="2"
-            android:id="@+id/fragment_ranking_content_description"
+            android:id="@+id/fragment_ranking_description"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_alignTop="@id/fragment_ranking_content_category_icon"

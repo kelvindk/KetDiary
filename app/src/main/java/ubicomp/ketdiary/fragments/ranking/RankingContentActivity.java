@@ -20,8 +20,8 @@ import ubicomp.ketdiary.R;
  */
 public class RankingContentActivity extends AppCompatActivity {
 
-    private ArrayAdapter<String> adapter;
-    private List<String> liste;
+    private ListView listView = null;
+    private RankingContentListAdapter rankingContentListAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,12 @@ public class RankingContentActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN );
 
 
+        // Setup listView.
+        listView = (ListView) findViewById(R.id.fragment_ranking_content_list_view);
+
+        rankingContentListAdapter = new RankingContentListAdapter(this, listView);
+
+        listView.setAdapter(rankingContentListAdapter);
 
         // Enable toolbar on create event activity with back button on the top left.
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_ranking_content_toolbar);

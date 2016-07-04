@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/fragment_ranking_content_list_description"
+            android:layout_alignTop="@+id/fragment_ranking_content_list_therapist_layout"
+            android:layout_toEndOf="@+id/fragment_ranking_content_list_date">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/expected_thought_colon"/>
+
+            <TextView
+                android:id="@+id/fragment_ranking_content_list_expected_though"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法 想法"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/expected_behavior_colon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為 行為"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="10dp"
+            android:text="5/30 (五) 午"
+            android:id="@+id/fragment_ranking_content_list_date"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/fragment_ranking_content_list_therapist_layout"
+            android:layout_below="@id/fragment_ranking_content_list_date">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:id="@+id/fragment_ranking_content_list_therapist_icon"
+                android:background="@drawable/discuss" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="己討論"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

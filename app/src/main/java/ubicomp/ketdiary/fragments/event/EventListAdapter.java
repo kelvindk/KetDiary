@@ -1,6 +1,7 @@
 package ubicomp.ketdiary.fragments.event;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
  */
 public class EventListAdapter extends BaseAdapter {
 
-    private MainActivity mainActivity = null;
+    private Activity mainActivity = null;
     private ListView eventListView = null;
     private LayoutInflater layoutInflater = null;
 
@@ -36,7 +37,7 @@ public class EventListAdapter extends BaseAdapter {
     // the list of items' object.
     List<EventLogStructure> eventListItems = new ArrayList<>();
 
-    public EventListAdapter(MainActivity mainActivity, ListView eventListView) {
+    public EventListAdapter(Activity mainActivity, ListView eventListView) {
         this.mainActivity = mainActivity;
         this.eventListView = eventListView;
         Context context = mainActivity;
