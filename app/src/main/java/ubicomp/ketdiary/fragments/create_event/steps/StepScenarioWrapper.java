@@ -91,6 +91,8 @@ public class StepScenarioWrapper implements View.OnClickListener {
                     editText_scenario_step2.setText(frequentInputString[pos]);
                 }
             });
+            dialog.setCancelable(false);
+
 
             dialog.show();
         }
