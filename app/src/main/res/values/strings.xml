@@ -340,4 +340,10 @@
     <string name="four">4</string>
     <string name="five">5</string>
 
+    <string name="setting_limit">抱歉！最多只能選擇十項</string>
+    <string name="select_name">選項</string>
+
+    <string name="device_reject_not_digit">請確認輸入字元皆為數字</string>
+    <string name="device_reject_range_error">編號範圍(1~999)</string>
+
 </resources>

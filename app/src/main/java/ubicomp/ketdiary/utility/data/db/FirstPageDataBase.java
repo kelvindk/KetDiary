@@ -1,5 +1,7 @@
 package ubicomp.ketdiary.utility.data.db;
 
+import java.util.Calendar;
+
 import ubicomp.ketdiary.utility.data.structure.TestDetail;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.data.structure.Cassette;
@@ -50,4 +52,7 @@ public class FirstPageDataBase {
         db.insertCassette(cassette_id );
     }
 
+    public boolean checkTestStatus(Calendar cal){
+        return db.checkTestStatus(cal);
+    }
 }

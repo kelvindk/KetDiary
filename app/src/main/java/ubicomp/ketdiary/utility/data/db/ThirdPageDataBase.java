@@ -20,14 +20,26 @@ public class ThirdPageDataBase {
         db.insertEventLog(data);
     }
 
+    // edit a old EventLog
+    public void editEventLog(EventLogStructure data)
+    {
+        db.updateOldEventLog(data);
+        db.insertEventLog(data);
+    }
+
     // get all EventLog
     public EventLogStructure[] getAllEventLog(){
         return db.getAllEventLog();
     }
 
-    // get all EventLog
+    // get all EventLog after a time
     public EventLogStructure[] getLaterEventLog(Calendar cal){
         return db.getAfterEventLog(cal);
+    }
+
+    // get all EventLog which isComplete is false
+    public EventLogStructure[] getNotCompleteEventLog(){
+        return db.getNotCompleteEventLog();
     }
 
     // get all trigger
@@ -36,9 +48,31 @@ public class ThirdPageDataBase {
         return db.getAllTriggerItem();
     }
 
+    // get the riggers with type
     public TriggerItem[] getTypeTrigger(int type)
     {
         return db.getTypeTriggerItem(type);
+    }
+
+
+    // get the recent N originalBehavior
+    public String[] getHistoryOriginalBehavior(String scenario, int n){
+        return db.getEventLogMessageByScenario(scenario, 1, n);
+    }
+
+    // get the recent N originalThought
+    public String[] getHistoryOriginalThought(String scenario, int n){
+        return db.getEventLogMessageByScenario(scenario, 2, n);
+    }
+
+    // get the recent N expectedBehavior
+    public String[] getHistoryExpectedBehavior(String scenario, int n){
+        return db.getEventLogMessageByScenario(scenario, 3, n);
+    }
+
+    // get the recent N expectedThought
+    public String[] getHistoryExpectedThought(String scenario, int n){
+        return db.getEventLogMessageByScenario(scenario, 4, n);
     }
 
     // debug use

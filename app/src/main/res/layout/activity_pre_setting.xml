@@ -936,7 +936,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/setting_title_bg_color"
                 android:padding="5dp"
-                android:text="Reset Trigger List"
+                android:text="Reset DataBase"
                 android:textColor="@color/white"
                 android:textSize="@dimen/large_title_size" />
 
@@ -955,10 +955,48 @@
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
                     android:paddingTop="3dp"
-                    android:text="Reset"
+                    android:text="Reset Trigger"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small_title_size" />
-
+                <Button
+                    android:id="@+id/testDetail_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/setting_button"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="3dp"
+                    android:text="Reset TestDetail"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_title_size" />
+                <Button
+                    android:id="@+id/testResult_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/setting_button"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="3dp"
+                    android:text="Reset TestResult"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_title_size" />
+                <Button
+                    android:id="@+id/eventLog_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/setting_button"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="3dp"
+                    android:text="Reset EventLog"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_title_size" />
             </LinearLayout>
 
         </LinearLayout>

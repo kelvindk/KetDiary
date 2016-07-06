@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,10 +17,8 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
@@ -45,7 +42,7 @@ public class PreSettingActivity extends Activity {
 	
 	private Button saveButton, exchangeButton, restoreButton, debugButton,
 			restoreVer1Button, dummyDataButton, changeButton, cleanButton, cassetteButton,
-			addTestResultButton, triggerResetButton;
+			addTestResultButton, triggerResetButton, testDetailResetButton, testResultResetButton, eventLogResetButton;
 	
 	private boolean debug;
 	private Activity activity;
@@ -166,9 +163,9 @@ public class PreSettingActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				 //TODO
-				 /*Intent intent = new Intent();
+				 Intent intent = new Intent();
 				 intent.setClass(activity, SelectActivity.class);
-				 startActivity(intent);		*/
+				 startActivity(intent);
 			}
 			
 		});
@@ -324,12 +321,51 @@ public class PreSettingActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				//TODO
-				/*DatabaseControl db = new DatabaseControl();
+				DatabaseControl db = new DatabaseControl();
 				db.clearTrigger();
-				PreferenceControl.setTriggerVersion(0);*/
+				PreferenceControl.setTriggerVersion(0);
+			}
 
 
+		});
 
+		testDetailResetButton = (Button) this.findViewById(R.id.testDetail_reset);
+		testDetailResetButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				//TODO
+				DatabaseControl db = new DatabaseControl();
+				db.clearTestDetail();
+				PreferenceControl.setTriggerVersion(0);
+			}
+
+
+		});
+
+		testResultResetButton = (Button) this.findViewById(R.id.testResult_reset);
+		testResultResetButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				//TODO
+				DatabaseControl db = new DatabaseControl();
+				db.clearTestResult();
+				PreferenceControl.setTriggerVersion(0);
+			}
+
+
+		});
+
+		eventLogResetButton = (Button) this.findViewById(R.id.eventLog_reset);
+		eventLogResetButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				//TODO
+				DatabaseControl db = new DatabaseControl();
+				db.clearEventLog();
+				PreferenceControl.setTriggerVersion(0);
 			}
 
 

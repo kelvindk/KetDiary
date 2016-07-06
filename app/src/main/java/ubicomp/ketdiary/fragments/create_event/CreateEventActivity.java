@@ -218,7 +218,15 @@ public class CreateEventActivity extends AppCompatActivity {
                 toast.show();
 
                 /*** Need save event data to storage ***/
-                thirdPageDataBase.addNewEventLog(eventLogStructure);
+                // editEventLog() for editing event, addNewEventLog() for add new event.
+                if(initStep > 0) {
+                    thirdPageDataBase.editEventLog(eventLogStructure);
+                }
+                else {
+                    thirdPageDataBase.addNewEventLog(eventLogStructure);
+                }
+
+
             }
         });
 

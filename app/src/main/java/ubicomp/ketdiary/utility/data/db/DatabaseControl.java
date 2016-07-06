@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.LoginFilter;
+import android.util.EventLog;
 import android.util.Log;
 
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
@@ -69,37 +71,6 @@ public class DatabaseControl {
 		synchronized (sqlLock) {
 			db = dbHelper.getReadableDatabase();
 			String sql = "SELECT * FROM TestResult WHERE isPrime = 1 ORDER BY ts ASC";
-			Cursor cursor = db.rawQuery(sql, null);
-			int count = cursor.getCount();
-			if (count == 0) {
-				cursor.close();
-				db.close();
-				return null;
-			}
-
-			TestResult[] testResult = new TestResult[count];
-			for (int i = 0; i < count; ++i) {
-				cursor.moveToPosition(i);
-				int result = cursor.getInt(1);
-				String cassetteId = cursor.getString(2);
-				long ts = cursor.getLong(6);
-				int isPrime = cursor.getInt(8);
-				int isFilled= cursor.getInt(9);
-				int weeklyScore = cursor.getInt(10);
-				int score = cursor.getInt(11);
-				testResult[i] = new TestResult(result, ts, cassetteId, isPrime, isFilled, weeklyScore, score);
-			}
-
-			cursor.close();
-			db.close();
-			return testResult;
-		}
-	}
-
-	public TestResult[] getAllTestResult() {
-		synchronized (sqlLock) {
-			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM TestResult";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -222,10 +193,10 @@ public class DatabaseControl {
 			content.put("day", data.getTv().getDay());
 			content.put("ts", data.getTv().getTimestamp());
 			content.put("week", data.getTv().getWeek());
-			content.put("isPrime", data.getIsPrime());
+			content.put("isPrime", 1);
 			content.put("isFilled", data.getIsFilled());
-			content.put("weeklyScore", 0);
-			content.put("score", 0);
+			//content.put("weeklyScore", weeklyScore + addScore);
+			//content.put("score", score + addScore);
 			db.insert("TestResult", null, content);
 			db.close();
 		}
@@ -3001,7 +2972,7 @@ public class DatabaseControl {
 
 			TriggerItem[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM Risk WHERE item >= " + type*100 + " AND item <= " + (type*100+99);
+			String sql = "SELECT * FROM Risk WHERE show = 1 AND item >= " + type*100 + " AND item <= " + (type*100+99);
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -3026,6 +2997,39 @@ public class DatabaseControl {
 		}
 	}
 
+	public void updateTriggerItem(String trigger, boolean show) {
+
+		synchronized (sqlLock) {
+
+			db = dbHelper.getReadableDatabase();
+			String sql;
+			Cursor cursor;
+			sql = "SELECT * FROM Risk WHERE description = '" + trigger + "'";
+			cursor = db.rawQuery(sql, null);
+			if (!cursor.moveToFirst()) {
+				cursor.close();
+				db.close();
+				return;
+			}
+
+			int item = cursor.getInt(1);
+			String description = cursor.getString(2);
+
+			db = dbHelper.getWritableDatabase();
+			ContentValues content = new ContentValues();
+
+			content.put("item", item);
+			content.put("description", description);
+			content.put("show", show? 1:0);
+			Log.d("GG", "show = " + show);
+			String where = "item = " + item;
+			if(db.update("Risk", content, where, null) > 0)
+				Log.d("GG", "update success");
+
+			db.close();
+		}
+	}
+
 	public void insertEventLog(EventLogStructure data) {
 
 		synchronized (sqlLock) {
@@ -3047,6 +3051,7 @@ public class DatabaseControl {
 			content.put("therapyStatus", data.therapyStatus.ordinal());
 			content.put("isAfterTest", data.isAfterTest? 1:0);
 			content.put("isComplete", data.isComplete? 1:0);
+			content.put("isLastest", 1);
 
 			db.insert("EventLog", null, content);
 			db.close();
@@ -3058,7 +3063,7 @@ public class DatabaseControl {
 
 			EventLogStructure[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog ORDER BY eventTime DESC, createTime DESC";
+			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 ORDER BY eventTime DESC";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -3067,7 +3072,52 @@ public class DatabaseControl {
 				return null;
 			}
 
-			Log.d("GG", "count = "+ count);
+
+			data = new EventLogStructure[count];
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+
+				data[i] = new EventLogStructure();
+
+				data[i].editTime = Calendar.getInstance();
+				data[i].eventTime = Calendar.getInstance();
+				data[i].createTime = Calendar.getInstance();
+				data[i].editTime.setTimeInMillis(cursor.getLong(1));
+				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
+				data[i].createTime.setTimeInMillis(cursor.getLong(3));
+				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
+				data[i].scenario = cursor.getString(5);
+				data[i].drugUseRiskLevel = cursor.getInt(6);
+				data[i].originalBehavior = cursor.getString(7);
+				data[i].originalEmotion = cursor.getString(8);
+				data[i].originalThought = cursor.getString(9);
+				data[i].expectedBehavior = cursor.getString(10);
+				data[i].expectedEmotion = cursor.getString(11);
+				data[i].expectedThought = cursor.getString(12);
+				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
+				data[i].isAfterTest = (cursor.getInt(14) > 0);
+				data[i].isComplete =  (cursor.getInt(15) > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
+	public EventLogStructure[] getNotCompleteEventLog() {
+		synchronized (sqlLock) {
+
+			EventLogStructure[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 AND isComplete = 0 ORDER BY eventTime DESC";
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
 
 			data = new EventLogStructure[count];
 			for (int i = 0; i < count; ++i) {
@@ -3105,7 +3155,8 @@ public class DatabaseControl {
 			long ts = cal.getTimeInMillis();
 			EventLogStructure[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog WHERE eventTime >= " + ts;
+			String sql = "SELECT * FROM EventLog WHERE eventTime >= " + ts
+						+ " AND isLastest = 1 ORDER BY eventTime DESC";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -3114,7 +3165,6 @@ public class DatabaseControl {
 				return null;
 			}
 
-			Log.d("GG", "count = "+ count);
 
 			data = new EventLogStructure[count];
 			for (int i = 0; i < count; ++i) {
@@ -3151,7 +3201,7 @@ public class DatabaseControl {
 		synchronized (sqlLock) {
 			EventLogStructure data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog WHERE createTime = " + ts;
+			String sql = "SELECT * FROM EventLog WHERE createTime = " + ts + " AND isLastest = 1";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -3160,7 +3210,6 @@ public class DatabaseControl {
 				return null;
 			}
 
-			Log.d("GG", "count = "+ count);
 
 			data = new EventLogStructure();
 			for (int i = 0; i < count; ++i) {
@@ -3190,6 +3239,237 @@ public class DatabaseControl {
 			cursor.close();
 			db.close();
 			return data;
+		}
+	}
+
+	public void updateOldEventLog(EventLogStructure data) {
+		EventLogStructure oldData = getTsEventLog(data.createTime.getTimeInMillis());
+		if(oldData == null)
+			return;
+
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			ContentValues content = new ContentValues();
+
+			content.put("editTime", oldData.editTime.getTimeInMillis());
+			content.put("eventTime", oldData.eventTime.getTimeInMillis());
+			content.put("createTime", oldData.createTime.getTimeInMillis());
+			content.put("scenarioType", oldData.scenarioType.ordinal());
+			content.put("scenario", oldData.scenario);
+			content.put("drugUseRiskLevel", oldData.drugUseRiskLevel);
+			content.put("originalBehavior", oldData.originalBehavior);
+			content.put("originalEmotion", oldData.originalEmotion);
+			content.put("originalThought", oldData.originalThought);
+			content.put("expectedBehavior", oldData.expectedBehavior);
+			content.put("expectedEmotion", oldData.expectedEmotion);
+			content.put("expectedThought", oldData.expectedThought);
+			content.put("therapyStatus", oldData.therapyStatus.ordinal());
+			content.put("isAfterTest", oldData.isAfterTest? 1:0);
+			content.put("isLastest", 0);
+
+			String where = "createTime = " + oldData.createTime.getTimeInMillis()
+							+ " AND isLastest = 1";
+			if(db.update("EventLog", content, where, null) > 0)
+				Log.d("GG", "update EventLog success");
+
+			db.close();
+		}
+	}
+
+
+	public boolean checkTestStatus(Calendar cal){
+		synchronized (sqlLock) {
+			long ts = cal.getTimeInMillis() - (6 * 60 * 60 * 1000); // 6 hours
+			TestResult data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM TestResult WHERE ts > " + ts;
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			cursor.close();
+			db.close();
+			if (count < 2) {
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	}
+
+	public EventLogStructure[] getEventLogByScenario(){
+		synchronized (sqlLock) {
+			EventLogStructure[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM EventLog ORDER BY scenario DESC, eventTime AND isLastest = 1";
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+
+			data = new EventLogStructure[count];
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+
+				data[i] = new EventLogStructure();
+
+				data[i].editTime = Calendar.getInstance();
+				data[i].eventTime = Calendar.getInstance();
+				data[i].createTime = Calendar.getInstance();
+				data[i].editTime.setTimeInMillis(cursor.getLong(1));
+				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
+				data[i].createTime.setTimeInMillis(cursor.getLong(3));
+				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
+				data[i].scenario = cursor.getString(5);
+				data[i].drugUseRiskLevel = cursor.getInt(6);
+				data[i].originalBehavior = cursor.getString(7);
+				data[i].originalEmotion = cursor.getString(8);
+				data[i].originalThought = cursor.getString(9);
+				data[i].expectedBehavior = cursor.getString(10);
+				data[i].expectedEmotion = cursor.getString(11);
+				data[i].expectedThought = cursor.getString(12);
+				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
+				data[i].isAfterTest = (cursor.getInt(14) > 0);
+				data[i].isComplete =  (cursor.getInt(15) > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
+	public String[] getEventLogMessageByScenario(String scenario, int type, int n){
+		synchronized (sqlLock) {
+			EventLogStructure[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql = "SELECT * FROM EventLog WHERE scenario = '"+scenario + "'";
+			Cursor cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+
+			String[] returnData = new String[n];
+			for (int i = 0; i < n; i++)
+				returnData[i] = "罐頭";
+
+			int index = 0;
+			String pre = "";
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+
+				String message = "";
+				if(type == 1) // originalBehavior
+					message = cursor.getString(7);
+				if(type == 2) // originalThought
+					message = cursor.getString(9);
+				if(type == 3) // expectedBehavior
+					message = cursor.getString(10);
+				if(type == 4) // expectedThought
+					message = cursor.getString(12);
+
+				if((index == 0 || !message.equals(pre)) && !message.equals(""))
+				{
+					returnData[index] = message;
+					index ++;
+				}
+				if(index >= n)
+					break;
+
+				pre = message;
+			}
+
+			cursor.close();
+			db.close();
+			return returnData;
+		}
+	}
+
+	public int getNoPassNum(String scenario){
+		int allCount = 0;
+		long[] tsData = null;
+		db = dbHelper.getReadableDatabase();
+		String sql = "SELECT * FROM EventLog WHERE scenario = '" + scenario + "' AND isLastest = 1";
+		Cursor cursor = db.rawQuery(sql, null);
+		int count = cursor.getCount();
+		if (count == 0) {
+			cursor.close();
+			db.close();
+			return 0;
+		}
+
+		// get all event
+		tsData = new long[count];
+		for (int i = 0; i < count; ++i) {
+			cursor.moveToPosition(i);
+
+			tsData[i] = cursor.getLong(2); // eventTime
+		}
+
+		// count num
+		long dayMillSecond = 24 * 60 * 60 * 60 * 1000;
+		for (int i = 0; i < count; ++i) {
+			//check is same day with pre event
+			if(i > 0)
+			{
+				Calendar now = Calendar.getInstance();
+				Calendar pre = Calendar.getInstance();
+
+				now.setTimeInMillis(tsData[i]);
+				pre.setTimeInMillis(tsData[i-1]);
+
+				if(now.get(Calendar.YEAR) == pre.get(Calendar.YEAR) &&
+					now.get(Calendar.DAY_OF_YEAR) == pre.get(Calendar.DAY_OF_YEAR))
+					continue;
+			}
+
+			// count the no pass testResult
+			long start = tsData[i] - (tsData[i] % dayMillSecond);
+			long end = start + dayMillSecond;
+
+			String tsql = "SELECT * FROM TestResult WHERE result = 1 AND isPrime = 1 AND ts > start AND ts < end";
+			Cursor tcursor = db.rawQuery(tsql, null);
+			int tcount = tcursor.getCount();
+
+			allCount += tcount;
+		}
+
+		return allCount;
+	}
+
+	public void clearTrigger(){
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			String sql = "DELETE  FROM Risk";
+			db.execSQL(sql);
+			db.close();
+		}
+	}
+
+	public void clearTestResult(){
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			String sql = "DELETE  FROM TestResult";
+			db.execSQL(sql);
+			db.close();
+		}
+	}
+
+	public void clearTestDetail(){
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			String sql = "DELETE  FROM TestDetail";
+			db.execSQL(sql);
+			db.close();
+		}
+	}
+
+	public void clearEventLog(){
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			String sql = "DELETE  FROM EventLog";
+			db.execSQL(sql);
+			db.close();
 		}
 	}
 

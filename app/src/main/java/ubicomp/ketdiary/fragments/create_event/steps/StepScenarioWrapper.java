@@ -91,7 +91,8 @@ public class StepScenarioWrapper implements View.OnClickListener {
                     editText_scenario_step2.setText(frequentInputString[pos]);
                 }
             });
-            dialog.setCancelable(false);
+            if(frequentInputString != null)
+                dialog.setCancelable(false);
 
 
             dialog.show();
@@ -237,6 +238,9 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 frequentInputString[i] = triggerItems[i].getContent();
             }
         }
+        else {
+            frequentInputString = null;
+        }
 
         // Enable popup of dialog.
         editText_scenario_step2.performClick();
@@ -326,6 +330,9 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 /** Need to have a condition for determine show or not*/
                 frequentInputString[i] = triggerItems[i].getContent();
             }
+        }
+        else {
+            frequentInputString = null;
         }
     }
 }

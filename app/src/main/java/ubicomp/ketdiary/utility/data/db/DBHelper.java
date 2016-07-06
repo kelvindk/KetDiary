@@ -169,7 +169,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " accumulation INTEGER NOT NULL DEFAULT 0,"
 				+ " ts INTEGER NOT NULL,"
 				+ " reason CHAR[255], "
-				+ " upload INTEGER NOT NULL DEFAULT 0," //version 16->17
+				+ " upload INTEGER NOT NULL DEFAULT 0,"
 				+ " weeklyAccumulation NOT NULL DEFAULT 0,"
 				+ " reasonBit NOT NULL DEFAULT 0"
 				+ ")");
@@ -223,7 +223,9 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " expectedThought CHAR[255] NOT NULL, "
 				+ " therapyStatus INTEGER NOT NULL DEFAULT 0, "
 				+ " isAfterTest INTEGER NOT NULL DEFAULT 0, "
-				+ " isComplete INTEGER NOT NULL DEFAULT 0"
+				+ " isComplete INTEGER NOT NULL DEFAULT 0, "
+				+ " isLastest INTEGER NOT NULL DEFAULT 0, "
+				+ " upload INTEGER NOT NULL DEFAULT 0 "
 				+ ")");
 	}
 
