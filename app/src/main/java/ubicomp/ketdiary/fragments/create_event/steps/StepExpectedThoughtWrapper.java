@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
 
 /**
  * Related actions in step 9 of create event.
@@ -33,6 +34,9 @@ public class StepExpectedThoughtWrapper {
 
     private EditText editText = null;
 
+    private ThirdPageDataBase thirdPageDataBase = null;
+
+
     public StepExpectedThoughtWrapper(CreateEventActivity createEventActivity) {
         this.createEventActivity = createEventActivity;
         this.eventLogStructure = createEventActivity.getEventLogStructure();
@@ -43,6 +47,8 @@ public class StepExpectedThoughtWrapper {
 
         ((ImageButton) createEventActivity.findViewById(R.id.voice_input_step9)).setOnClickListener(voice_input_listener);
         ((ImageButton) createEventActivity.findViewById(R.id.recent_thought_step9)).setOnClickListener(recent_behavior_listener);
+
+        thirdPageDataBase = new ThirdPageDataBase();
 
         // Load existed data.
         if(createEventActivity.getInitStep() != 0) {
@@ -83,7 +89,10 @@ public class StepExpectedThoughtWrapper {
         public void onClick(View v) {
             Log.d("Ket", "recent_behavior_step9");
 
-            final String[] frequentInputString = {"1","2","3","4","5","6"};
+//            final String[] frequentInputString = {"1","2","3","4","5","6"};
+            // Get 5 most frequent used inputs.
+            final String[] frequentInputString =
+                    thirdPageDataBase.getHistoryExpectedThought(eventLogStructure.scenario, 5);
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(createEventActivity);
             dialog.setTitle(R.string.frequent_input_step9);

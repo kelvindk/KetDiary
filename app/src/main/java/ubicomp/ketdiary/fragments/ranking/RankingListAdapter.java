@@ -5,15 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
+import ubicomp.ketdiary.utility.data.db.FourthPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TriggerRanking;
 
 /**
  * Created by kelvindk on 16/7/2.
@@ -24,17 +30,25 @@ public class RankingListAdapter extends BaseAdapter {
     private ListView rankingListView = null;
     private LayoutInflater layoutInflater = null;
 
+    private FourthPageDataBase fourthPageDataBase = null;
+
     // the list of items' object.
-    List<EventLogStructure> rankingListItems = new ArrayList<>();
+    List<TriggerRanking> rankingListItems = new ArrayList<>();
 
     public RankingListAdapter(MainActivity mainActivity, ListView rankingListView) {
         this.mainActivity = mainActivity;
         this.rankingListView = rankingListView;
         Context context = mainActivity;
 
+        fourthPageDataBase = new FourthPageDataBase();
+
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 
+    }
+
+    public TriggerRanking getRankingListItem(int pos) {
+        return rankingListItems.get(pos);
     }
 
     @Override
@@ -55,7 +69,14 @@ public class RankingListAdapter extends BaseAdapter {
     // UI components of item.
     public class RankingListItemHolder
     {
+        TextView fragment_ranking_list_rank = null;
+        RatingBar fragment_ranking_list_drug_use_risk_level = null;
+        ImageView fragment_ranking_list_category_icon = null;
         TextView fragment_ranking_list_description = null;
+        TextView fragment_ranking_list_frequency_text = null;
+        TextView fragment_ranking_list_test_fail_text = null;
+        TextView ranking_list_reflection_progress_text = null;
+        ProgressBar ranking_list_reflection_progress_bar = null;
 
     }
 
@@ -65,9 +86,50 @@ public class RankingListAdapter extends BaseAdapter {
 
         RankingListItemHolder rankingListItemHolder = new RankingListItemHolder();
 
+        // Set ranking number.
+        rankingListItemHolder.fragment_ranking_list_rank
+                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_list_rank);
+        rankingListItemHolder.fragment_ranking_list_rank.setText(""+(position+1));
+
+        // Set average risk level.
+        rankingListItemHolder.fragment_ranking_list_drug_use_risk_level
+                = (RatingBar)  rankingItemView.findViewById(R.id.fragment_ranking_list_drug_use_risk_level);
+        rankingListItemHolder.fragment_ranking_list_drug_use_risk_level.
+                setRating(rankingListItems.get(position).averageDrugUseRisk);
+
+        // Set scenario icon.
+        rankingListItemHolder.fragment_ranking_list_category_icon
+                = (ImageView)  rankingItemView.findViewById(R.id.fragment_ranking_list_category_icon);
+        rankingListItemHolder.fragment_ranking_list_category_icon.
+                setImageResource(rankingListItems.get(position).scenarioTypeToIconId());
+
+        // Set scenario.
         rankingListItemHolder.fragment_ranking_list_description
-                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_description);
-        rankingListItemHolder.fragment_ranking_list_description.setText("---"+position+"---");
+                = (TextView) rankingItemView.findViewById(R.id.fragment_ranking_list_description);
+        rankingListItemHolder.fragment_ranking_list_description.setText(rankingListItems.get(position).scenario);
+
+        // Set number of event for this scenario type.
+        rankingListItemHolder.fragment_ranking_list_frequency_text
+                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_list_frequency_text);
+        rankingListItemHolder.fragment_ranking_list_frequency_text.
+                setText(rankingListItems.get(position).eventLogNum+"");
+
+        // Set number of saliva fails.
+        rankingListItemHolder.fragment_ranking_list_test_fail_text
+                = (TextView)  rankingItemView.findViewById(R.id.fragment_ranking_list_test_fail_text);
+        rankingListItemHolder.fragment_ranking_list_test_fail_text.
+                setText(rankingListItems.get(position).noPassDay+"");
+
+        // Set percentage of reflection progress.
+        int percentage = (int)(rankingListItems.get(position).completePercentage*100);
+        rankingListItemHolder.ranking_list_reflection_progress_text
+                = (TextView) rankingItemView.findViewById(R.id.ranking_list_reflection_progress_text);
+        rankingListItemHolder.ranking_list_reflection_progress_text.
+                setText(percentage+"%");
+
+        rankingListItemHolder.ranking_list_reflection_progress_bar
+                = (ProgressBar) rankingItemView.findViewById(R.id.ranking_list_reflection_progress_bar);
+        rankingListItemHolder.ranking_list_reflection_progress_bar.setProgress(percentage);
 
         return rankingItemView;
     }
@@ -75,9 +137,13 @@ public class RankingListAdapter extends BaseAdapter {
     // Refresh item to ListView in FragmentEvent.
     public void refreshListViewContent() {
 
-        for(int i=0; i<20; i++) {
-            rankingListItems.add(new EventLogStructure());
-        }
+        TriggerRanking[] triggerRankings = fourthPageDataBase.getRankingList();
+
+        if(triggerRankings == null)
+            return;
+
+        rankingListItems = new ArrayList<>(Arrays.asList(triggerRankings));
+
         notifyDataSetChanged();
 
     }

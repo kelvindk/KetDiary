@@ -39,7 +39,9 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     private Menu menu = null;
     private Spinner spinner_toolbar = null;
 
-    private int remindBadgeCount = 95;
+    private int remindBadgeCount = 0;
+
+    ThirdPageDataBase thirdPageDataBase = null;
 
     // Construct object,
     public ToolbarMenuItemWrapper(MainActivity mainActivity) {
@@ -58,6 +60,10 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
         spinner_content_adapter.setDropDownViewResource(R.layout.toolbar_spinner_layout);
         // Apply the adapter to the spinner
         spinner_toolbar.setAdapter(spinner_content_adapter);
+
+        thirdPageDataBase = new ThirdPageDataBase();
+
+        refreshRemindBadgeCount();
 
         // Disable the App title on toolbar
         mainActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -99,8 +105,17 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
 
     public void refreshRemindBadgeCount() {
         TextView remindBadgeText = (TextView) mainActivity.findViewById(R.id.menu_remind_badge);
-        if(remindBadgeText == null) return;
-        remindBadgeText.setText(""+remindBadgeCount);
+        if((remindBadgeText == null)||(thirdPageDataBase.getNotCompleteEventLog() == null))
+            return;
+        remindBadgeCount = thirdPageDataBase.getNotCompleteEventLog().length;
+
+        if(remindBadgeCount == 0) {
+            remindBadgeText.setVisibility(View.GONE);
+        }
+        else {
+            remindBadgeText.setVisibility(View.VISIBLE);
+            remindBadgeText.setText(""+remindBadgeCount);
+        }
     }
 
     /* Inflate the icon on the top right of toolbar according to user's selection on dropdown menu
@@ -168,9 +183,13 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     public void onClick(View v) {
                         // Listener of action Remind button
                         // Set the badge of remind button according to the number of incomplete event logging.
-                        remindBadgeCount++;
+//                        remindBadgeCount++;
                         refreshRemindBadgeCount();
                         Log.d("Ket", "action_remind "+remindBadgeCount);
+
+
+
+//                        EventLogStructure[] eventLogStructures = thirdPageDataBase.getNotCompleteEventLog();
                     }
                 });
                 break;

@@ -93,14 +93,14 @@ public class EventListAdapter extends BaseAdapter {
         eventListItemHolder.fragment_event_list_date.
                 setText(eventListItems.get(position).eventTimeToString());
 
-        // Set event icon.
+        // Set scenario icon.
         eventListItemHolder.fragment_event_list_category_icon
                 = (ImageView) eventItemView.findViewById(R.id.fragment_event_list_category_icon);
 
         eventListItemHolder.fragment_event_list_category_icon.
                 setImageResource(eventListItems.get(position).scenarioTypeToIconId());
 
-        // Set event scenario.
+        // Set scenario.
         eventListItemHolder.fragment_event_list_description
                 = (TextView) eventItemView.findViewById(R.id.fragment_event_list_description);
         eventListItemHolder.fragment_event_list_description.setText(eventListItems.get(position).scenario);

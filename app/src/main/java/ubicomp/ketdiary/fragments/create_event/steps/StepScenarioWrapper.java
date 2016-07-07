@@ -317,6 +317,10 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 break;
         }
 
+        // iconSelectedStringId can be 0 only in developing phase, won't happen in regular case.
+        if(iconSelectedStringId == 0)
+            return;
+
         // Set the prompt of popup dialog along with selected type of scenario.
         dialogPrompt = createEventActivity.getResources().getString(R.string.step2_question_right);
         dialogPrompt = "「"+createEventActivity.getResources().getString(iconSelectedStringId)+dialogPrompt;

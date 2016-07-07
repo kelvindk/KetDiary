@@ -195,6 +195,8 @@ public class DatabaseControl {
 			content.put("week", data.getTv().getWeek());
 			content.put("isPrime", 1);
 			content.put("isFilled", data.getIsFilled());
+			content.put("weeklyScore", 0);
+			content.put("score", 0);
 			//content.put("weeklyScore", weeklyScore + addScore);
 			//content.put("score", score + addScore);
 			db.insert("TestResult", null, content);
@@ -3457,7 +3459,7 @@ public class DatabaseControl {
 			long start = tsData[i] - (tsData[i] % dayMillSecond);
 			long end = start + dayMillSecond;
 
-			String tsql = "SELECT * FROM TestResult WHERE result = 1 AND isPrime = 1 AND ts > start AND ts < end";
+			String tsql = "SELECT * FROM TestResult WHERE result = 1 AND isPrime = 1 AND ts > "+start+" AND ts < "+end;
 			Cursor tcursor = db.rawQuery(tsql, null);
 			int tcount = tcursor.getCount();
 

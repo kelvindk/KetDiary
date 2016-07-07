@@ -22,6 +22,7 @@ import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
+import ubicomp.ketdiary.utility.data.download.Downloader;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
@@ -76,10 +77,24 @@ public class MainActivity extends AppCompatActivity {
         // Avoid ResultServiceIsRunning stay in true when crash.
 //        PreferenceControl.setResultServiceIsRunning(false);
 
+        // Download data from server.
+//        Downloader downloader = new Downloader();
+//        downloader.updateSVM();
+//        downloader.updateTrigger();
+//        downloader.updateCassetteTask();
 
         // For developing
-        DatabaseControl db = new DatabaseControl();
-        TestResult testResult = db.getLatestTestResult();
+//        TestResult testResult = new TestResult(0,
+//                System.currentTimeMillis()-30000,
+//                "1",
+//                1, 0, 0, 0);
+//
+//        FirstPageDataBase firstPageDataBase = new FirstPageDataBase();
+////        firstPageDataBase.setCassetteUsed(cassetteId);
+//        firstPageDataBase.addTestResult(testResult);
+
+//        DatabaseControl db = new DatabaseControl();
+//        TestResult testResult = db.getLatestTestResult();
 
 //        ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
 //        thirdPageDataBase.insertDummyTrigger();

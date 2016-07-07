@@ -15,11 +15,15 @@ import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.ranking.RankingContentActivity;
 import ubicomp.ketdiary.fragments.ranking.RankingListAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.utility.data.structure.TriggerRanking;
 
 /**
  * A placeholder fragment containing a simple view for Ranking fragment.
  */
 public class FragmentRanking extends Fragment {
+
+    // Key of this object for deliver between activities through Intent.
+    public static final String FRAGMENT_RANKING_KEY = "FragmentRanking";
 
     private MainActivity mainActivity = null;
     private FragmentSwitcher fragmentSwitcher = null;
@@ -65,9 +69,10 @@ public class FragmentRanking extends Fragment {
                 // Invoke EventContentActivity.
                 Intent rankingContentIntent = new Intent (mainActivity, RankingContentActivity.class);
                 // Put the serializable object into eventContentActivityIntent through a Bundle.
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventListAdapter.getEventListItem(i));
-//                eventContentIntent.putExtras(bundle);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(TriggerRanking.TRIGGER_RANKING_STRUCUTRE_KEY, rankingListAdapter.getRankingListItem(i));
+                bundle.putInt(FRAGMENT_RANKING_KEY, i);
+                rankingContentIntent.putExtras(bundle);
                 startActivity(rankingContentIntent);
             }
         });

@@ -54,7 +54,6 @@ public class FragmentTest extends Fragment {
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_test");
 
-
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
         if( PreferenceControl.isResultServiceRunning()) {

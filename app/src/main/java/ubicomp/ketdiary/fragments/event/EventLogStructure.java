@@ -37,9 +37,9 @@ public class EventLogStructure implements Serializable {
 
     public enum TherapyStatusEnum {
         NOT_YET, //未審核
-        GOOD, // 己驗證
-        BAD, // 有錯誤
-        DISCUSSED, // 己與心理師討論
+        GOOD, // 己審核
+        BAD, // 待修正
+        DISCUSSED, // 己討論
         NULL,
     };
 
@@ -90,6 +90,9 @@ public class EventLogStructure implements Serializable {
 
     // Whether this event is completely filled.
     public boolean isComplete = false;
+
+    // Whether this event has been reflected.
+    public boolean isReflected = false;
 
 
     public String eventTimeToString() {
@@ -165,6 +168,45 @@ public class EventLogStructure implements Serializable {
                 break;
             case ENTERTAIN:
                 iconId = R.drawable.type_icon8;
+                break;
+        }
+        return iconId;
+    }
+
+    public String therapyStatusToIconString() {
+        String status = "";
+        switch (therapyStatus) {
+            case NOT_YET:
+            case NULL:
+                status = "未審核";
+                break;
+            case GOOD:
+                status = "己審核";
+                break;
+            case BAD:
+                status = "待修正";
+                break;
+            case DISCUSSED:
+                status = "己討論";
+                break;
+        }
+        return status;
+    }
+
+    public int therapyStatusToIconId() {
+        int iconId = 0;
+        switch (therapyStatus) {
+            case NOT_YET:
+                iconId = R.drawable.blank2;
+                break;
+            case GOOD:
+                iconId = R.drawable.circle2;
+                break;
+            case BAD:
+                iconId = R.drawable.tri2;
+                break;
+            case DISCUSSED:
+                iconId = R.drawable.star2;
                 break;
         }
         return iconId;

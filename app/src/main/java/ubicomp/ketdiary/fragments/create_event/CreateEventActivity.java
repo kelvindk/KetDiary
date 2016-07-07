@@ -224,8 +224,15 @@ public class CreateEventActivity extends AppCompatActivity {
 //                snackbar.setAction("Action", null);
 //                snackbar.show();
 
+                // Show toast of "event saved".
                 Toast toast = Toast.makeText(CreateEventActivity.this, R.string.create_event_saved, Toast.LENGTH_LONG);
                 toast.show();
+
+                // Disable save button after saved.
+                scrollViewAdapter.setSaveEventButtonClickable(false);
+
+                checkEventLogComplete();
+                checkEventLogReflection();
 
                 /*** Need save event data to storage ***/
                 // editEventLog() for editing event, addNewEventLog() for add new event.
@@ -307,9 +314,74 @@ public class CreateEventActivity extends AppCompatActivity {
                 // no op.
             }
         });
+        dialog.setCancelable(false);
         dialog.show();
     }
 
+
+    public boolean checkEventLogComplete() {
+
+        if(eventLogStructure.scenario.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.drugUseRiskLevel == 0) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.originalBehavior.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.originalEmotion.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.originalThought.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.expectedBehavior.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.expectedEmotion.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        if(eventLogStructure.expectedThought.equals("")) {
+            eventLogStructure.isComplete = false;
+            return false;
+        }
+
+        eventLogStructure.isComplete = true;
+        return true;
+    }
+
+    public boolean checkEventLogReflection() {
+
+        if((!eventLogStructure.originalBehavior.equals(""))
+                && (!eventLogStructure.expectedBehavior.equals(""))){
+            eventLogStructure.isReflected = true;
+            return true;
+        }
+
+        if((!eventLogStructure.originalThought.equals(""))
+                && (!eventLogStructure.expectedThought.equals(""))){
+            eventLogStructure.isReflected = true;
+            return true;
+        }
+
+        eventLogStructure.isReflected = false;
+        return false;
+    }
 
 
     public EventLogStructure getEventLogStructure() {

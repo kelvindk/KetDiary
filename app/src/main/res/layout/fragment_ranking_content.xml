@@ -50,8 +50,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_below="@id/fragment_ranking_content_rank"
-                    android:background="@drawable/type_icon1" />
+                    android:layout_below="@id/fragment_ranking_content_rank" />
 
 
 
@@ -187,8 +186,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/fragment_ranking_content_list_view"
                     android:layout_marginTop="20dp"
-                    android:layout_below="@id/fragment_ranking_content_frequency_layout"
-                    android:layout_alignEnd="@id/fragment_ranking_content_description" />
+                    android:layout_below="@id/fragment_ranking_content_frequency_layout" />
 
             </RelativeLayout>
 
