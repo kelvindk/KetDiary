@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,8 +18,10 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
@@ -337,7 +340,6 @@ public class PreSettingActivity extends Activity {
 				//TODO
 				DatabaseControl db = new DatabaseControl();
 				db.clearTestDetail();
-				PreferenceControl.setTriggerVersion(0);
 			}
 
 
@@ -351,7 +353,6 @@ public class PreSettingActivity extends Activity {
 				//TODO
 				DatabaseControl db = new DatabaseControl();
 				db.clearTestResult();
-				PreferenceControl.setTriggerVersion(0);
 			}
 
 
@@ -365,7 +366,6 @@ public class PreSettingActivity extends Activity {
 				//TODO
 				DatabaseControl db = new DatabaseControl();
 				db.clearEventLog();
-				PreferenceControl.setTriggerVersion(0);
 			}
 
 

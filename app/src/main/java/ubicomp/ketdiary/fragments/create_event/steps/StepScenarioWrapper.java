@@ -87,8 +87,13 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 public void onClick(DialogInterface dialog, int pos) {
                     // TODO Auto-generated method stub
                     Log.d("Ket", "scenario_step2 onClick");
+                    // Store selected scenario to EventLogStructure and show on the screen.
                     logToEventLogStructure(frequentInputString[pos]);
                     editText_scenario_step2.setText(frequentInputString[pos]);
+
+                    // In edit mode, set clickable to "save" action button when selected.
+                    if(createEventActivity.getInitStep() != 0)
+                        createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(true);
                 }
             });
             if(frequentInputString != null)

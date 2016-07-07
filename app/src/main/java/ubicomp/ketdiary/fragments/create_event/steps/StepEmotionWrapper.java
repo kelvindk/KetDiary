@@ -84,7 +84,7 @@ public class StepEmotionWrapper {
                     public void onClick(DialogInterface dialog, int item,
                                         boolean isChecked) {
                         /* User clicked on a check box */
-                        Log.d("Emotion", item+" "+isChecked);
+                        Log.d("Ket", "Emotion" + item+" "+isChecked);
                         // no op.
                     }
                 });
@@ -93,7 +93,7 @@ public class StepEmotionWrapper {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         /* User clicked "Confirm"*/
-                        Log.d("Emotion", "Confirm ");
+                        Log.d("Ket", "Emotion Confirm ");
 
                         // Get the string includes selected emotions.
                         String emotionsString = "";
@@ -102,6 +102,11 @@ public class StepEmotionWrapper {
                                 emotionsString += emotionStrings[i] +" ";
                             }
                         }
+
+                        // In edit mode, set clickable to "save" action button when selected if emotionsString is not null.
+                        if((createEventActivity.getInitStep() != 0) && (!emotionsString.toString().equals("")))
+                            createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(true);
+
                         // Set selected emotions on the EditText. Can be multiple select.
                         editText_emotion_step5.setText(emotionsString);
                         /*** Log event original emotions selected by user. ***/
@@ -112,7 +117,7 @@ public class StepEmotionWrapper {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         /* User clicked "Cancel" */
-                        Log.d("Emotion", "Cancel "+item);
+                        Log.d("Ket", "Emotion Cancel "+item);
                         // no op.
                     }
                 });

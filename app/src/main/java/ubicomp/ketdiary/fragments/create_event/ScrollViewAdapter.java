@@ -242,9 +242,7 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
         // Disable "Save" action button, if currentStep < 2.
         if(currentMaxStep < STEPS_ALLOW_SAVE) {
-            ((LinearLayout) createEventActivity.
-                    findViewById(R.id.menu_item_add_event)).setAlpha((float)0.1);
-            isActionSaveButtonClickable = false;
+            setSaveEventButtonClickable(false);
         }
 
         // Do specific UI actions for particular step.
@@ -303,15 +301,35 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             }
         }, 50);
 
-        // Enable "Save" action button, if currentStep >= 2.
-        if(currentMaxStep >= STEPS_ALLOW_SAVE) {
-            ((LinearLayout) createEventActivity.
-                    findViewById(R.id.menu_item_add_event)).setAlpha(1);
-            isActionSaveButtonClickable = true;
+        // Enable "Save" action button, if currentStep >= 2. And won't enable in save mode.
+        if((currentMaxStep >= STEPS_ALLOW_SAVE) && (createEventActivity.getInitStep() == 0)) {
+            setSaveEventButtonClickable(true);
         }
 
         // Do specific UI actions for particular step.
         setUiActions();
+    }
+
+    public void setSaveEventButtonClickable(boolean clickable) {
+        if(((LinearLayout) createEventActivity.
+                findViewById(R.id.menu_item_save_event_layout)) == null) {
+            return;
+        }
+
+        if(clickable) {
+            ((LinearLayout) createEventActivity.
+                    findViewById(R.id.menu_item_save_event_layout)).setAlpha(1);
+            // Update currentMaxStep.
+            currentMaxStep = STEPS_ALLOW_SAVE;
+
+        }
+        else {
+            ((LinearLayout) createEventActivity.
+                    findViewById(R.id.menu_item_save_event_layout)).setAlpha((float)0.1);
+        }
+
+        isActionSaveButtonClickable = clickable;
+
     }
 
 

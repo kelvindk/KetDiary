@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/menu_item_add_event"
+    android:id="@+id/menu_item_save_event_layout"
     android:orientation="vertical"
     android:alpha="0.1"
     android:paddingRight="10dp"

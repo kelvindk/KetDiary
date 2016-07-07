@@ -14,10 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
-import ubicomp.ketdiary.utility.back_door.BarButtonGenerator;
-import ubicomp.ketdiary.utility.back_door.Typefaces;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
-import ubicomp.ketdiary.utility.data.db.MultiRadioGroup;
 import ubicomp.ketdiary.utility.data.structure.TriggerItem;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 //import com.ubicomp.ketdiary.system.clicklog.ClickLogId;
@@ -142,8 +139,9 @@ public class SelectActivity extends Activity {
 					});
 		mainLayout.addView(titleView);
 
-		TriggerItem[] data = db.getTypeTriggerItem(1);
-
+		TriggerItem[] data = db.getTypeTriggerALLItem(1);
+		if(data == null)
+			data = new TriggerItem[0];
 		Type1Content = new String[data.length];
 		boolean[] socialSelected = new boolean[data.length];
 		for (int i = 0; i < Type1Content.length; i++)
@@ -185,8 +183,9 @@ public class SelectActivity extends Activity {
 						}
 					});
 		mainLayout.addView(titleView);
-		TriggerItem[] data = db.getTypeTriggerItem(2);
-
+		TriggerItem[] data = db.getTypeTriggerALLItem(2);
+		if(data == null)
+			data = new TriggerItem[0];
 		Type2Content = new String[data.length];
 		boolean[] socialSelected = new boolean[data.length];
 		for (int i = 0; i < Type2Content.length; i++)
@@ -223,8 +222,9 @@ private void setViews3(){
 					}
 				});
 	mainLayout.addView(titleView);
-	TriggerItem[] data = db.getTypeTriggerItem(3);
-
+	TriggerItem[] data = db.getTypeTriggerALLItem(3);
+	if(data == null)
+		data = new TriggerItem[0];
 	Type3Content = new String[data.length];
 	boolean[] socialSelected = new boolean[data.length];
 	for (int i = 0; i < Type3Content.length; i++)
@@ -261,8 +261,9 @@ private void setViews4(){
 					}
 				});
 	mainLayout.addView(titleView);
-	TriggerItem[] data = db.getTypeTriggerItem(4);
-
+	TriggerItem[] data = db.getTypeTriggerALLItem(4);
+	if(data == null)
+		data = new TriggerItem[0];
 	Type4Content = new String[data.length];
 	boolean[] socialSelected = new boolean[data.length];
 	for (int i = 0; i < Type4Content.length; i++)
@@ -299,8 +300,9 @@ private void setViews5(){
 					}
 				});
 	mainLayout.addView(titleView);
-	TriggerItem[] data = db.getTypeTriggerItem(5);
-
+	TriggerItem[] data = db.getTypeTriggerALLItem(5);
+	if(data == null)
+		data = new TriggerItem[0];
 	Type5Content = new String[data.length];
 	boolean[] socialSelected = new boolean[data.length];
 	for (int i = 0; i < Type5Content.length; i++)
@@ -337,8 +339,9 @@ private void setViews6(){
 					}
 				});
 	mainLayout.addView(titleView);
-	TriggerItem[] data = db.getTypeTriggerItem(6);
-
+	TriggerItem[] data = db.getTypeTriggerALLItem(6);
+	if(data == null)
+		data = new TriggerItem[0];
 	Type6Content = new String[data.length];
 	boolean[] socialSelected = new boolean[data.length];
 	for (int i = 0; i < Type6Content.length; i++)
@@ -375,8 +378,9 @@ private void setViews7(){
 					}
 				});
 	mainLayout.addView(titleView);
-	TriggerItem[] data = db.getTypeTriggerItem(7);
-
+	TriggerItem[] data = db.getTypeTriggerALLItem(7);
+	if(data == null)
+		data = new TriggerItem[0];
 	Type7Content = new String[data.length];
 	boolean[] socialSelected = new boolean[data.length];
 	for (int i = 0; i < Type7Content.length; i++)
@@ -413,8 +417,9 @@ private void setViews8(){
 					}
 				});
 	mainLayout.addView(titleView);
-	TriggerItem[] data = db.getTypeTriggerItem(8);
-
+	TriggerItem[] data = db.getTypeTriggerALLItem(8);
+	if(data == null)
+		data = new TriggerItem[0];
 	Type8Content = new String[data.length];
 	boolean[] socialSelected = new boolean[data.length];
 	for (int i = 0; i < Type8Content.length; i++)
@@ -511,42 +516,58 @@ private void setViews8(){
 	}
 	
 	private void storeType1(){
+		if(noteGroup1 == null)
+			return;
 		boolean[] socialSelected = noteGroup1.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type1Content[i], socialSelected[i]);
 	}
 	
 	private void storeType2(){
+		if(noteGroup2 == null)
+			return;
 		boolean[] socialSelected = noteGroup2.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type2Content[i], socialSelected[i]);
 	}
 	private void storeType3(){
+		if(noteGroup3 == null)
+			return;
 		boolean[] socialSelected = noteGroup3.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type3Content[i], socialSelected[i]);
 	}
 	private void storeType4(){
+		if(noteGroup4 == null)
+			return;
 		boolean[] socialSelected = noteGroup4.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type4Content[i], socialSelected[i]);
 	}
 	private void storeType5(){
+		if(noteGroup5 == null)
+			return;
 		boolean[] socialSelected = noteGroup5.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type5Content[i], socialSelected[i]);
 	}
 	private void storeType6(){
+		if(noteGroup6 == null)
+			return;
 		boolean[] socialSelected = noteGroup6.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type6Content[i], socialSelected[i]);
 	}
 	private void storeType7(){
+		if(noteGroup7 == null)
+			return;
 		boolean[] socialSelected = noteGroup7.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type7Content[i], socialSelected[i]);
 	}
 	private void storeType8(){
+		if(noteGroup8 == null)
+			return;
 		boolean[] socialSelected = noteGroup8.getResult();
 		for (int i = 0; i < socialSelected.length; i++)
 			db.updateTriggerItem(Type8Content[i], socialSelected[i]);

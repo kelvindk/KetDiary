@@ -87,6 +87,10 @@ public class CreateEventActivity extends AppCompatActivity {
         return initStep;
     }
 
+    public ScrollViewAdapter getScrollViewAdapter() {
+        return scrollViewAdapter;
+    }
+
     public void setSaved(boolean saved) {
         isSaved = saved;
     }

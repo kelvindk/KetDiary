@@ -64,6 +64,10 @@ public class StepRelapseProbabilityWrapper implements RadioGroup.OnCheckedChange
                 break;
         }
 
+        // In edit mode, set clickable to "save" action button when selected.
+        if(createEventActivity.getInitStep() != 0)
+            createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(true);
+
         /*** Log event drugUseRiskLevel selected by user. ***/
         eventLogStructure.drugUseRiskLevel = drugUseRiskLevel;
     }
