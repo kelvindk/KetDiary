@@ -72,6 +72,8 @@ public class CreateEventActivity extends AppCompatActivity {
     // If InitStep is not 0 that means this is edit mode for event log.
     int initStep = 0;
 
+    boolean isSaved = false;
+
     /** Messenger for communicating with service. */
     private Messenger mService = null;
     /** Flag indicating whether we have called bind on the service. */
@@ -83,6 +85,10 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public int getInitStep() {
         return initStep;
+    }
+
+    public void setSaved(boolean saved) {
+        isSaved = saved;
     }
 
 
@@ -221,6 +227,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 // editEventLog() for editing event, addNewEventLog() for add new event.
                 if(initStep > 0) {
                     thirdPageDataBase.editEventLog(eventLogStructure);
+                    isSaved = true;
                 }
                 else {
                     thirdPageDataBase.addNewEventLog(eventLogStructure);
@@ -278,8 +285,16 @@ public class CreateEventActivity extends AppCompatActivity {
         dialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 /* User clicked "Confirm"*/
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventLogStructure);
+                intent.putExtras(bundle);
+                if(isSaved)
+                    setResult(Activity.RESULT_OK, intent);
+                else
+                    setResult(Activity.RESULT_CANCELED, intent);
                 // Finish activity.
-                createEventActivity.finish();
+                finish();
             }
         });
         dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

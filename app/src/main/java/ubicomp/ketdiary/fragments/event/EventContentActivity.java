@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments.event;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,8 @@ public class EventContentActivity extends AppCompatActivity {
 
     // Key of this object for deliver between activities through Intent.
     public static final String EVENT_CONTENT_ACTIVITY_KEY = "EventContentActivity";
+
+    public static final int EVENT_CONTENT_ACTIVITY_INT_KEY = 46;
 
     private EventContentActivity eventContentActivity = null;
 
@@ -280,7 +283,41 @@ public class EventContentActivity extends AppCompatActivity {
         bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, eventLog);
         intent.putExtras(bundle);
         // Start the activity.
-        startActivity(intent);
+        startActivityForResult(intent, EVENT_CONTENT_ACTIVITY_INT_KEY);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == EVENT_CONTENT_ACTIVITY_INT_KEY) {
+            if(resultCode == Activity.RESULT_OK){
+                Bundle bundle = intent.getExtras();
+                eventLog =
+                        (EventLogStructure) bundle.getSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY);
+
+                Log.d("Ket", "EventContentActivity onActivityResult OK "+eventLog.drugUseRiskLevel);
+
+                /** Refresh edited data to UI components on this page.*/
+                // Fill content on UI components.
+                event_content_container_event_date.setText(eventLog.eventTimeToString());
+
+                event_content_container_scenario_type.setImageResource(eventLog.scenarioTypeToIconId());
+
+                event_content_container_scenario.setText(eventLog.scenario);
+
+                event_content_container_expected_thought.setText(eventLog.expectedThought);
+                event_content_container_expected_emotion.setText(eventLog.expectedEmotion);
+                event_content_container_expected_behavior.setText(eventLog.expectedBehavior);
+
+                event_content_container_original_thought.setText(eventLog.originalThought);
+                event_content_container_original_emotion.setText(eventLog.originalEmotion);
+                event_content_container_original_behavior.setText(eventLog.originalBehavior);
+
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
     }
 
 }
