@@ -15,6 +15,7 @@ import android.widget.TextView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.fragments.event.EventIIncompleteActivity;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.utility.back_door.HelpActivity;
 import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
@@ -182,14 +183,11 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     @Override
                     public void onClick(View v) {
                         // Listener of action Remind button
-                        // Set the badge of remind button according to the number of incomplete event logging.
-//                        remindBadgeCount++;
                         refreshRemindBadgeCount();
                         Log.d("Ket", "action_remind "+remindBadgeCount);
+                        Intent eventIncompleteIntent = new Intent (mainActivity, EventIIncompleteActivity.class);
+                        mainActivity.startActivity(eventIncompleteIntent);
 
-
-
-//                        EventLogStructure[] eventLogStructures = thirdPageDataBase.getNotCompleteEventLog();
                     }
                 });
                 break;

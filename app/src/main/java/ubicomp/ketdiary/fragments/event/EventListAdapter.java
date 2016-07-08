@@ -3,6 +3,7 @@ package ubicomp.ketdiary.fragments.event;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,10 +123,16 @@ public class EventListAdapter extends BaseAdapter {
 
     // Refresh item to ListView in FragmentEvent.
     public void refreshListViewContent() {
-        Calendar oneWeekAgo = (Calendar) Calendar.getInstance().clone();
-        oneWeekAgo.add(Calendar.DATE, -7);
+//        Calendar oneWeekAgo = (Calendar) Calendar.getInstance().clone();
+//        oneWeekAgo.add(Calendar.DATE, -7);
 //        EventLogStructure[] eventLogStructures = thirdPageDataBase.getLaterEventLog(oneWeekAgo);
-        EventLogStructure[] eventLogStructures = thirdPageDataBase.getAllEventLog();
+
+        EventLogStructure[] eventLogStructures = null;
+        // Load incomplete events if invoked by EventIIncompleteActivity, otherwise get all events.
+        if(mainActivity.getClass().getSimpleName().equals("EventIIncompleteActivity"))
+            eventLogStructures = thirdPageDataBase.getNotCompleteEventLog();
+        else
+            eventLogStructures = thirdPageDataBase.getAllEventLog();
 
         if(eventLogStructures == null)
             return;

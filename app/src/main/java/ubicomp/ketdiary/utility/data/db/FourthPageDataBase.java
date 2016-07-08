@@ -1,5 +1,7 @@
 package ubicomp.ketdiary.utility.data.db;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,10 +28,11 @@ public class FourthPageDataBase {
         ArrayList<TriggerRanking> rankList = new ArrayList<TriggerRanking>();
 
         int now_index = -1;
-        for (int i = 1; i < data.length; i++)
+        for (int i = 0; i < data.length; i++)
         {
+            Log.d("GG", "create : " + data[i].createTime.getTimeInMillis());
             // next type
-            if(now_index == -1 || data[i].scenario != data[i-1].scenario) {
+            if(now_index == -1 || !data[i].scenario.equals(data[i-1].scenario)) {
                 now_index++;
                 TriggerRanking rankItem = new TriggerRanking();
                 rankItem.scenarioType = data[i].scenarioType;
@@ -47,7 +50,7 @@ public class FourthPageDataBase {
             if(!data[i].expectedBehavior.equals("")  || !data[i].expectedThought.equals(""))
                 item.eventLogList.add(data[i]);
 
-            if(!data[i].isComplete)
+            if(data[i].isComplete)
                 item.completeEventLogNum++;
 
             rankList.set(now_index, item);

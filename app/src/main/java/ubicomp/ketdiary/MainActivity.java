@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
 //        PreferenceControl.setResultServiceIsRunning(false);
 
         // Download data from server.
-//        Downloader downloader = new Downloader();
-//        downloader.updateSVM();
-//        downloader.updateTrigger();
-//        downloader.updateCassetteTask();
+        Downloader downloader = new Downloader();
+        downloader.updateSVM();
+        downloader.updateTrigger();
+        downloader.updateCassetteTask();
 
         // For developing
 //        TestResult testResult = new TestResult(0,

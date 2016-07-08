@@ -3332,7 +3332,7 @@ public class DatabaseControl {
 		synchronized (sqlLock) {
 			EventLogStructure[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog ORDER BY scenario DESC, eventTime AND isLastest = 1";
+			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 ORDER BY scenario DESC, eventTime";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
