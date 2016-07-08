@@ -199,6 +199,7 @@ public class CreateEventActivity extends AppCompatActivity {
         /*** Step 9 ***/
         step9Adapter = new StepExpectedThoughtWrapper(this);
 
+
     }
 
 
@@ -265,6 +266,29 @@ public class CreateEventActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         Log.d(TAG, "onResume");
+
+        if(initStep > 0) {
+
+            /** A trick to delay set focus step with proper delay to wait UI component is updated */
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    scrollViewAdapter.setFocusQuestionText();
+                }
+            }, 200);
+
+
+            Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    scrollViewAdapter.setFocusCoverHeight();
+                }
+            }, 500);
+
+        }
+
 
         // Receive message from ResultService if necessary.
         if( PreferenceControl.isResultServiceRunning()) {

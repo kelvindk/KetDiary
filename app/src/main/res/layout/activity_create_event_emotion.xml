@@ -28,7 +28,7 @@
             android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/step5_question_right"
-            android:id="@+id/step5_question"/>
+            android:id="@+id/textview_step5_question"/>
 
 
     </LinearLayout>
