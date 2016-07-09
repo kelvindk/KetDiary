@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -130,7 +131,6 @@ public class StepExpectedThoughtWrapper {
                     createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(false);
                 }
             }
-
         }
 
         @Override

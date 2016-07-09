@@ -130,6 +130,7 @@ public class StepThoughtWrapper {
                     createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(false);
                 }
             }
+
         }
 
         @Override

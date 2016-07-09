@@ -417,7 +417,16 @@ public class CreateEventActivity extends AppCompatActivity {
     *  Pass method call to ScrollViewAdapter.
     * */
     public void scrollViewScrollToBottom() {
-        scrollViewAdapter.scrollToBottom();
+
+        // Scroll screen to button after a micro delay.
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Scroll screen to button.
+                scrollViewAdapter.scrollToBottom();
+            }
+        }, 50);
     }
 
 

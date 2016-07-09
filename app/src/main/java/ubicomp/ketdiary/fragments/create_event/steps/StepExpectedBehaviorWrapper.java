@@ -129,6 +129,7 @@ public class StepExpectedBehaviorWrapper {
                     createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(false);
                 }
             }
+
         }
 
         @Override
