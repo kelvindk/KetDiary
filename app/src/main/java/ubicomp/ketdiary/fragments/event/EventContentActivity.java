@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -61,6 +62,13 @@ public class EventContentActivity extends AppCompatActivity {
     private LinearLayout event_content_container_original_thought_layout = null;
     private LinearLayout event_content_container_original_emotion_layout = null;
     private LinearLayout event_content_container_original_behavior_layout = null;
+
+    private Drawable expected_thought_original_drawable = null;
+    private Drawable expected_emotion_original_drawable = null;
+    private Drawable expected_behavior_original_drawable = null;
+    private Drawable original_thought_original_drawable = null;
+    private Drawable original_emotion_original_drawable = null;
+    private Drawable original_behavior_original_drawable = null;
 
 
     private EventLogStructure eventLog = null;
@@ -126,55 +134,15 @@ public class EventContentActivity extends AppCompatActivity {
         event_content_container_original_emotion_layout = (LinearLayout) findViewById(R.id.event_content_container_original_emotion_layout);
         event_content_container_original_behavior_layout = (LinearLayout) findViewById(R.id.event_content_container_original_behavior_layout);
 
+        expected_thought_original_drawable = event_content_container_expected_thought_layout.getBackground();
+        expected_emotion_original_drawable = event_content_container_expected_emotion_layout.getBackground();
+        expected_behavior_original_drawable = event_content_container_expected_behavior_layout.getBackground();
+        original_thought_original_drawable = event_content_container_original_thought_layout.getBackground();
+        original_emotion_original_drawable = event_content_container_original_emotion_layout.getBackground();
+        original_behavior_original_drawable = event_content_container_original_behavior_layout.getBackground();
 
         // Fill content on UI components.
-        event_content_container_event_date.setText(eventLog.eventTimeToString());
-
-        event_content_container_scenario_type.setImageResource(eventLog.scenarioTypeToIconId());
-
-        event_content_container_scenario.setText(eventLog.scenario);
-
-        event_content_container_expected_thought.setText(eventLog.expectedThought);
-        event_content_container_expected_emotion.setText(eventLog.expectedEmotion);
-        event_content_container_expected_behavior.setText(eventLog.expectedBehavior);
-
-        event_content_container_original_thought.setText(eventLog.originalThought);
-        event_content_container_original_emotion.setText(eventLog.originalEmotion);
-        event_content_container_original_behavior.setText(eventLog.originalBehavior);
-
-        event_content_container_drug_use_risk.setRating(eventLog.drugUseRiskLevel);
-
-        // Show red frame on the fields that need revision.
-//        if(eventLog.reviseExpectedThought) {
-            event_content_container_expected_thought_revise.setVisibility(View.VISIBLE);
-            event_content_container_expected_thought_layout.setBackgroundResource(R.drawable.layout_red_frame);
-            event_content_container_expected_thought_layout.setOnClickListener(eventContentClickListener);
-//        }
-//        if(eventLog.reviseExpectedEmotion) {
-            event_content_container_expected_emotion_revise.setVisibility(View.VISIBLE);
-            event_content_container_expected_emotion_layout.setBackgroundResource(R.drawable.layout_red_frame);
-            event_content_container_expected_emotion_layout.setOnClickListener(eventContentClickListener);
-//        }
-//        if(eventLog.reviseExpectedBehavior) {
-            event_content_container_expected_behavior_revise.setVisibility(View.VISIBLE);
-            event_content_container_expected_behavior_layout.setBackgroundResource(R.drawable.layout_red_frame);
-            event_content_container_expected_behavior_layout.setOnClickListener(eventContentClickListener);
-//        }
-//        if(eventLog.reviseOriginalThought) {
-            event_content_container_original_thought_revise.setVisibility(View.VISIBLE);
-            event_content_container_original_thought_layout.setBackgroundResource(R.drawable.layout_red_frame);
-            event_content_container_original_thought_layout.setOnClickListener(eventContentClickListener);
-//        }
-//        if(eventLog.reviseOriginalEmotion) {
-            event_content_container_original_emotion_revise.setVisibility(View.VISIBLE);
-            event_content_container_original_emotion_layout.setBackgroundResource(R.drawable.layout_red_frame);
-            event_content_container_original_emotion_layout.setOnClickListener(eventContentClickListener);
-//        }
-        if(eventLog.reviseOriginalBehavior) {
-            event_content_container_original_behavior_revise.setVisibility(View.VISIBLE);
-            event_content_container_original_behavior_layout.setBackgroundResource(R.drawable.layout_red_frame);
-            event_content_container_original_behavior_layout.setOnClickListener(eventContentClickListener);
-        }
+        loadEventLogDataToUi();
 
 
     }
@@ -297,26 +265,101 @@ public class EventContentActivity extends AppCompatActivity {
                 Log.d("Ket", "EventContentActivity onActivityResult OK "+eventLog.drugUseRiskLevel);
 
                 /** Refresh edited data to UI components on this page.*/
-                // Fill content on UI components.
-                event_content_container_event_date.setText(eventLog.eventTimeToString());
-
-                event_content_container_scenario_type.setImageResource(eventLog.scenarioTypeToIconId());
-
-                event_content_container_scenario.setText(eventLog.scenario);
-
-                event_content_container_expected_thought.setText(eventLog.expectedThought);
-                event_content_container_expected_emotion.setText(eventLog.expectedEmotion);
-                event_content_container_expected_behavior.setText(eventLog.expectedBehavior);
-
-                event_content_container_original_thought.setText(eventLog.originalThought);
-                event_content_container_original_emotion.setText(eventLog.originalEmotion);
-                event_content_container_original_behavior.setText(eventLog.originalBehavior);
+                loadEventLogDataToUi();
 
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
             }
+        }
+    }
+
+
+    private void loadEventLogDataToUi() {
+        // Fill content on UI components.
+        event_content_container_event_date.setText(eventLog.eventTimeToString());
+
+        event_content_container_scenario_type.setImageResource(eventLog.scenarioTypeToIconId());
+
+        event_content_container_scenario.setText(eventLog.scenario);
+
+        event_content_container_expected_thought.setText(eventLog.expectedThought);
+        event_content_container_expected_emotion.setText(eventLog.expectedEmotion);
+        event_content_container_expected_behavior.setText(eventLog.expectedBehavior);
+
+        event_content_container_original_thought.setText(eventLog.originalThought);
+        event_content_container_original_emotion.setText(eventLog.originalEmotion);
+        event_content_container_original_behavior.setText(eventLog.originalBehavior);
+
+        event_content_container_drug_use_risk.setRating(eventLog.drugUseRiskLevel);
+
+        // Show red frame on the fields that need revision.
+        if((eventLog.reviseExpectedThought) || (eventLog.expectedThought.equals(""))) {
+            event_content_container_expected_thought_revise.setVisibility(View.VISIBLE);
+            event_content_container_expected_thought_layout.setBackgroundResource(R.drawable.layout_red_frame);
+            event_content_container_expected_thought_layout.setOnClickListener(eventContentClickListener);
+        }
+        else {
+            event_content_container_expected_thought_revise.setVisibility(View.GONE);
+            event_content_container_expected_thought_layout.setBackground(expected_thought_original_drawable);
+            event_content_container_expected_thought_layout.setOnClickListener(null);
+        }
+
+        if((eventLog.reviseExpectedEmotion) || (eventLog.expectedEmotion.equals(""))) {
+            event_content_container_expected_emotion_revise.setVisibility(View.VISIBLE);
+            event_content_container_expected_emotion_layout.setBackgroundResource(R.drawable.layout_red_frame);
+            event_content_container_expected_emotion_layout.setOnClickListener(eventContentClickListener);
+        }
+        else {
+            event_content_container_expected_emotion_revise.setVisibility(View.GONE);
+            event_content_container_expected_emotion_layout.setBackground(expected_emotion_original_drawable);
+            event_content_container_expected_emotion_layout.setOnClickListener(null);
+        }
+
+        if((eventLog.reviseExpectedBehavior) || (eventLog.expectedBehavior.equals(""))) {
+            event_content_container_expected_behavior_revise.setVisibility(View.VISIBLE);
+            event_content_container_expected_behavior_layout.setBackgroundResource(R.drawable.layout_red_frame);
+            event_content_container_expected_behavior_layout.setOnClickListener(eventContentClickListener);
+        }
+        else {
+            event_content_container_expected_behavior_revise.setVisibility(View.GONE);
+            event_content_container_expected_behavior_layout.setBackground(expected_behavior_original_drawable);
+            event_content_container_expected_behavior_layout.setOnClickListener(null);
+        }
+
+        if((eventLog.reviseOriginalThought) || (eventLog.originalThought.equals(""))) {
+            event_content_container_original_thought_revise.setVisibility(View.VISIBLE);
+            event_content_container_original_thought_layout.setBackgroundResource(R.drawable.layout_red_frame);
+            event_content_container_original_thought_layout.setOnClickListener(eventContentClickListener);
+        }
+        else {
+            event_content_container_original_thought_revise.setVisibility(View.GONE);
+            event_content_container_original_thought_layout.setBackground(original_thought_original_drawable);
+            event_content_container_original_thought_layout.setOnClickListener(null);
+        }
+
+        if((eventLog.reviseOriginalEmotion) || (eventLog.originalEmotion.equals(""))) {
+            event_content_container_original_emotion_revise.setVisibility(View.VISIBLE);
+            event_content_container_original_emotion_layout.setBackgroundResource(R.drawable.layout_red_frame);
+            event_content_container_original_emotion_layout.setOnClickListener(eventContentClickListener);
+        }
+        else {
+            event_content_container_original_emotion_revise.setVisibility(View.GONE);
+            event_content_container_original_emotion_layout.setBackground(original_emotion_original_drawable);
+            event_content_container_original_emotion_layout.setOnClickListener(eventContentClickListener);
+        }
+
+
+        if((eventLog.reviseOriginalBehavior) || (eventLog.originalBehavior.equals(""))) {
+            event_content_container_original_behavior_revise.setVisibility(View.VISIBLE);
+            event_content_container_original_behavior_layout.setBackgroundResource(R.drawable.layout_red_frame);
+            event_content_container_original_behavior_layout.setOnClickListener(eventContentClickListener);
+        }
+        else {
+            event_content_container_original_behavior_revise.setVisibility(View.GONE);
+            event_content_container_original_behavior_layout.setBackground(original_behavior_original_drawable);
+            event_content_container_original_behavior_layout.setOnClickListener(null);
         }
     }
 

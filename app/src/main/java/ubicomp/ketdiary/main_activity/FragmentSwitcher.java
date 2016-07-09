@@ -86,15 +86,14 @@ public class FragmentSwitcher {
         Log.d("Ket", "setFragmentTestWaitResult");
         toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
 
-        setHideFragment(currentFragment);
-
-        currentFragment = FRAGMENT_TEST_WAIT_RESULT;
-
         // Switch fragment to selected page.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        fragmentTransaction.hide(fragments[currentFragment]);
         fragmentTransaction.show(fragments[FRAGMENT_TEST_WAIT_RESULT]);
         fragmentTransaction.commit();
+
+        currentFragment = FRAGMENT_TEST_WAIT_RESULT;
     }
 
 
@@ -127,14 +126,14 @@ public class FragmentSwitcher {
         }
 
         // Hide current fragment.
-        setHideFragment(currentFragment);
-
+//        setHideFragment(currentFragment);
 
 
         // Switch fragment to selected page.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        Log.d("PreferenceControl", "isResultServiceRunning "+PreferenceControl.isResultServiceRunning());
+        Log.d("PreferenceControl", "isResultServiceRunning "+PreferenceControl.isResultServiceRunning()+" currentFragment "+currentFragment);
+
 
         if(PreferenceControl.isResultServiceRunning()) {
             if(fragmentToSwitch == FRAGMENT_TEST) {
@@ -142,6 +141,7 @@ public class FragmentSwitcher {
             }
         }
 
+        fragmentTransaction.hide(fragments[currentFragment]);
         fragmentTransaction.show(fragments[fragmentToSwitch]);
 
         fragmentTransaction.commit();

@@ -93,7 +93,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
     }
 
     public void setSpinnerSelection(int spinnerSelection) {
-        this.spinner_toolbar.setSelection(spinnerSelection);
+        spinner_toolbar.setSelection(spinnerSelection);
     }
 
     public void setRemindBadgeCount(int remindBadgeCount) {

@@ -385,6 +385,7 @@ public class CreateEventActivity extends AppCompatActivity {
             return false;
         }
 
+
         eventLogStructure.isComplete = true;
         return true;
     }

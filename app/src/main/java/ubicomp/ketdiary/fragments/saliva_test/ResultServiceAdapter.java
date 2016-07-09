@@ -61,6 +61,9 @@ public class ResultServiceAdapter {
 
                 switch (receivedMsg) {
                     case ResultService.MSG_SERVICE_FAIL_NO_PLUG:
+                        // Cancel countdown timer of current stage.
+                        salivaTestAdapter.cancelTestStateCountdownTimer();
+
                         // Show CustomToast.
                         CustomToast.generateToast(R.string.test_instruction_top4, -1);
 

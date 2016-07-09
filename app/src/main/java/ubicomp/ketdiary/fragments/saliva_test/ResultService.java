@@ -100,6 +100,8 @@ public class ResultService extends Service implements BluetoothListener{
     public void onDestroy() {
         Log.d(TAG, "onDestroy");
 
+        PreferenceControl.setResultServiceIsRunning(false);
+
         // Cancel the persistent notification.
         mNM.cancel(R.string.remote_service_started);
 
@@ -159,15 +161,17 @@ public class ResultService extends Service implements BluetoothListener{
                 case MSG_IS_RUNNING:
                     // If the service is not started, then reply 0.
                     if(resultServiceCountdown == null) {
-                        // Reply MainActivity this service is running or not.
+                        // Reply to MainActivity this service is running or not.
                         try {
                             msg.replyTo.send(Message.obtain(null, MSG_CURRENT_COUNTDOWN,
                                     MSG_SERVICE_NOT_RUNNING, 0));
                         } catch (RemoteException e) {
                             e.printStackTrace();
                         }
-                        PreferenceControl.setResultServiceIsRunning(true);
                     }
+                    else
+                        PreferenceControl.setResultServiceIsRunning(true);
+
                     break;
                 case MSG_BLE_CONNECT:
                     //

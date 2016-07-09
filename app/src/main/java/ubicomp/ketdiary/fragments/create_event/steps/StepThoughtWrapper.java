@@ -131,6 +131,9 @@ public class StepThoughtWrapper {
                 }
             }
 
+            // Any editing can set "revise" flag to false.
+            eventLogStructure.reviseOriginalThought = false;
+
         }
 
         @Override

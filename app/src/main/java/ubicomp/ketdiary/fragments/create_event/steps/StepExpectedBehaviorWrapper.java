@@ -130,6 +130,8 @@ public class StepExpectedBehaviorWrapper {
                 }
             }
 
+            // Any editing can set "revise" flag to false.
+            eventLogStructure.reviseExpectedBehavior = false;
         }
 
         @Override

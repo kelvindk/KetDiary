@@ -111,6 +111,9 @@ public class StepEmotionWrapper {
                         editText_emotion_step5.setText(emotionsString);
                         /*** Log event original emotions selected by user. ***/
                         eventLogStructure.originalEmotion = emotionsString;
+
+                        // Any editing can set "revise" flag to false.
+                        eventLogStructure.reviseOriginalEmotion = false;
                     }
                 });
             dialog.setNegativeButton(R.string.cancel,

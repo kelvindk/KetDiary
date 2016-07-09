@@ -105,8 +105,12 @@ public class StepExpectedEmotionWrapper {
 
                             // Set selected emotions on the EditText. Can be multiple select.
                             editText_emotion_step8.setText(emotionsString);
+
                             /*** Log event expected emotions selected by user. ***/
                             eventLogStructure.expectedEmotion = emotionsString;
+
+                            // Any editing can set "revise" flag to false.
+                            eventLogStructure.reviseExpectedEmotion = false;
                         }
                     });
             dialog.setNegativeButton(R.string.cancel,

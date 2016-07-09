@@ -134,6 +134,9 @@ public class StepBehaviorWrapper {
                     createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(false);
                 }
             }
+
+            // Any editing can set "revise" flag to false.
+            eventLogStructure.reviseOriginalBehavior = false;
         }
 
         @Override

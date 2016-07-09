@@ -131,6 +131,9 @@ public class StepExpectedThoughtWrapper {
                     createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(false);
                 }
             }
+
+            // Any editing can set "revise" flag to false.
+            eventLogStructure.reviseExpectedThought = false;
         }
 
         @Override

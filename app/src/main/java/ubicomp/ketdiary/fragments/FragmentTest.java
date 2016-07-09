@@ -56,9 +56,6 @@ public class FragmentTest extends Fragment {
 
         fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
-        if( PreferenceControl.isResultServiceRunning()) {
-            return inflater.inflate(R.layout.fragment_test_wait_result, container, false);
-        }
 
         View fragmentTestView = inflater.inflate(R.layout.fragment_test, container, false);
 
@@ -67,10 +64,15 @@ public class FragmentTest extends Fragment {
 
     @Override
     public void onStart() {
-        Log.d("Ket", "FragmentTest onStart");
+        Log.d("Ket", "FragmentTest onStart "+PreferenceControl.isResultServiceRunning());
 
         // New SalivaTestAdapter for handling the saliva test process.
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);
+
+        // Set fragment to FRAGMENT_TEST_WAIT_RESULT if saliva test is running.
+        if(PreferenceControl.isResultServiceRunning()) {
+            fragmentSwitcher.setFragmentTestWaitResult();
+        }
 
         super.onStart();
     }
@@ -78,6 +80,7 @@ public class FragmentTest extends Fragment {
     @Override
     public void onResume() {
         Log.d("Ket", "FragmentTest onResume");
+
 
         super.onResume();
     }

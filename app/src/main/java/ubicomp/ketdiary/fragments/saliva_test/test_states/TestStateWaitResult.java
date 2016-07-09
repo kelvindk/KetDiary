@@ -111,7 +111,10 @@ public class TestStateWaitResult extends TestStateTransition {
     public TestStateTransition transit(int trigger) {
         TestStateTransition newState = null;
         switch (trigger) {
-
+            case CANCEL_COUNTDOWN_TIMER:
+                Log.d("TestState", "TestStateWaitResult CANCEL_COUNTDOWN_TIMER");
+                finishCountdown.cancel();
+                break;
             default:
                 Log.d("TestState", "TestStateWaitResult default "+trigger);
                 newState = this;
