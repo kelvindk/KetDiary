@@ -28,8 +28,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
     public static final int STEP4_COVER_BASE_DP_HEIGHT = 50;
     public static final int STEP5_COVER_BASE_DP_HEIGHT = 65;
-    public static final int STEP6_COVER_BASE_DP_HEIGHT = 55;
+    public static final int STEP6_COVER_BASE_DP_HEIGHT = 65;
     public static final int STEP7_COVER_BASE_DP_HEIGHT = 75;
+    public static final int STEP8_COVER_BASE_DP_HEIGHT = 65;
 
     private CreateEventActivity createEventActivity = null;
     private ScrollView scrollView = null;
@@ -108,154 +109,6 @@ public class ScrollViewAdapter implements View.OnTouchListener {
     }
 
 
-    /*
-    *  Set specific UI actions for particular steps.
-    * */
-    /*** If no extra specific action for each step, can rewrite this function to be more simple. ***/
-    private void setUiActions() {
-        String tempText = "";
-        int coverHeight = 0;
-        switch (currentStep) {
-            case 0:
-                break;
-            case 3:
-                // Set focus to EditText after a micro delay.
-                final Handler handlerStep4 = new Handler();
-                handlerStep4.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Scroll screen to button.
-                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step4)).requestFocus();
-                    }
-                }, 50);
-
-                // Load scenario on screen.
-                tempText = createEventActivity.getString(R.string.step4_question_left)+
-                        createEventActivity.getEventLogStructure().scenario +
-                        createEventActivity.getString(R.string.step4_question_right);
-                ((TextView) createEventActivity.findViewById(R.id.textview_step4_question))
-                        .setText(tempText);
-                break;
-            case 4:
-                // Set focus to EditText after a micro delay.
-                final Handler handlerStep5 = new Handler();
-                handlerStep5.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Scroll screen to button.
-                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5)).requestFocus();
-                    }
-                }, 50);
-
-                // Load scenario on screen.
-                tempText = createEventActivity.getString(R.string.step5_question_left)+
-                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step4)).getText() +
-                        createEventActivity.getString(R.string.step5_question_right);
-                ((TextView) createEventActivity.findViewById(R.id.textview_step5_question))
-                        .setText(tempText);
-
-                // Adapt cover height.
-                coverHeight = (int)(STEP4_COVER_BASE_DP_HEIGHT*displayDensity) +
-                        ((View) createEventActivity.findViewById(R.id.textview_step4_question)).getHeight() +
-                        ((View) createEventActivity.findViewById(R.id.editText_behavior_step4)).getHeight();
-
-                ((View) createEventActivity.findViewById(R.id.create_event_cover_step4)).
-                        getLayoutParams().height = coverHeight;
-
-                int a = ((View) createEventActivity.findViewById(R.id.textview_step4_question)).getHeight();
-                int b = ((View) createEventActivity.findViewById(R.id.editText_behavior_step4)).getHeight();
-                Log.d("Ket", "H Step5 "+coverHeight+" "+a+" "+b);
-                break;
-            case 5:
-                // Set focus to EditText after a micro delay.
-                final Handler handlerStep6 = new Handler();
-                handlerStep6.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Scroll screen to button.
-                        ((EditText) createEventActivity.findViewById(R.id.editText_thought_step6)).requestFocus();
-                    }
-                }, 50);
-
-                // Load scenario on screen.
-                tempText = createEventActivity.getString(R.string.step6_question_left)+
-                        createEventActivity.getEventLogStructure().scenario +
-                        createEventActivity.getString(R.string.step6_question_mid)+
-                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5)).getText() +
-                        createEventActivity.getString(R.string.step6_question_right);
-                ((TextView) createEventActivity.findViewById(R.id.textview_step6_question))
-                        .setText(tempText);
-
-                // Adapt cover height.
-                coverHeight = (int)(STEP5_COVER_BASE_DP_HEIGHT*displayDensity) +
-                        ((View) createEventActivity.findViewById(R.id.textview_step5_question)).getHeight() +
-                        ((View) createEventActivity.findViewById(R.id.editText_emotion_step5)).getHeight();
-
-                ((View) createEventActivity.findViewById(R.id.create_event_cover_step5)).
-                        getLayoutParams().height = coverHeight;
-
-                int c = ((View) createEventActivity.findViewById(R.id.textview_step5_question)).getHeight();
-                int d = ((View) createEventActivity.findViewById(R.id.editText_emotion_step5)).getHeight();
-                Log.d("Ket", "H Step6 "+coverHeight+" "+c+" "+d);
-                break;
-            case 6:
-                // Set focus to EditText after a micro delay.
-                final Handler handlerStep7 = new Handler();
-                handlerStep7.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Scroll screen to button.
-                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step7)).requestFocus();
-                    }
-                }, 50);
-
-                // Adapt cover height.
-                coverHeight = (int)(STEP6_COVER_BASE_DP_HEIGHT*displayDensity) +
-                        ((View) createEventActivity.findViewById(R.id.textview_step6_question)).getHeight() +
-                        ((View) createEventActivity.findViewById(R.id.editText_thought_step6)).getHeight();
-
-                ((View) createEventActivity.findViewById(R.id.create_event_cover_step6)).
-                        getLayoutParams().height = coverHeight;
-
-                Log.d("Ket", "step 7 "+coverHeight);
-                break;
-            case 7:
-                // Set focus to EditText after a micro delay.
-                final Handler handlerStep8 = new Handler();
-                handlerStep8.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Scroll screen to button.
-                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step8)).requestFocus();
-                    }
-                }, 50);
-
-                // Adapt cover height.
-                coverHeight = (int)(STEP7_COVER_BASE_DP_HEIGHT*displayDensity) +
-                        ((View) createEventActivity.findViewById(R.id.editText_behavior_step7)).getHeight();
-
-                ((View) createEventActivity.findViewById(R.id.create_event_cover_step7)).
-                        getLayoutParams().height = coverHeight;
-
-                Log.d("Ket", "step 8 "+coverHeight);
-                break;
-            case 8:
-                // Set focus to EditText after a micro delay.
-                final Handler handlerStep9 = new Handler();
-                handlerStep9.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Scroll screen to button.
-                        ((EditText) createEventActivity.findViewById(R.id.editText_thought_step9)).requestFocus();
-                    }
-                }, 50);
-
-                Log.d("Ket", "step 9 "+coverHeight);
-                break;
-        }
-
-    }
-
 
     /*
     *   Click listener of previous step button.
@@ -294,6 +147,27 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
         // Reduce the count to previous step.
         currentStep--;
+
+
+        switch(currentStep) {
+            case 6:
+                // Show text of scenario & original behavior.
+                createEventActivity.findViewById(R.id.textview_step7_scenario).setVisibility(View.VISIBLE);
+
+                break;
+            case 7:
+                // Show text of scenario & original emotion.
+                createEventActivity.findViewById(R.id.textview_step8_scenario).setVisibility(View.VISIBLE);
+
+                break;
+
+            case 8:
+                // Show text of scenario & original thought.
+                createEventActivity.findViewById(R.id.textview_step9_scenario).setVisibility(View.VISIBLE);
+
+                break;
+        }
+
 
         // Update progress bar.
         progressBar.setRating(currentStep+1);
@@ -351,6 +225,10 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
         // Advance the count to next step.
         currentStep++;
+
+        // Handle question for reflection steps.
+        setReflectionText();
+
 
         // Update progress bar.
         progressBar.setRating(currentStep+1);
@@ -452,29 +330,64 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
     public void setFocusQuestionText() {
         /** */
-        String tempText = "";
+        String tempString = "";
         // Step4
-        tempText = createEventActivity.getString(R.string.step4_question_left)+
+        tempString = createEventActivity.getString(R.string.step4_question_left)+
                 createEventActivity.getEventLogStructure().scenario +
                 createEventActivity.getString(R.string.step4_question_right);
         ((TextView) createEventActivity.findViewById(R.id.textview_step4_question))
-                .setText(tempText);
+                .setText(tempString);
 
         // Step5
-        tempText = createEventActivity.getString(R.string.step5_question_left)+
+        tempString = createEventActivity.getString(R.string.step5_question_left)+
                 ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step4)).getText() +
                 createEventActivity.getString(R.string.step5_question_right);
         ((TextView) createEventActivity.findViewById(R.id.textview_step5_question))
-                .setText(tempText);
+                .setText(tempString);
 
         // Step6
-        tempText = createEventActivity.getString(R.string.step6_question_left)+
+        tempString = createEventActivity.getString(R.string.step6_question_left)+
                 createEventActivity.getEventLogStructure().scenario +
                 createEventActivity.getString(R.string.step6_question_mid)+
                 ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5)).getText() +
                 createEventActivity.getString(R.string.step6_question_right);
         ((TextView) createEventActivity.findViewById(R.id.textview_step6_question))
-                .setText(tempText);
+                .setText(tempString);
+
+        // Step7
+        TextView tempText = null;
+        String ifScenarioString = "\n\n"+createEventActivity.getString(R.string.if_scenario_again_left)+
+                createEventActivity.getEventLogStructure().scenario+
+                createEventActivity.getString(R.string.if_scenario_again_right);
+
+        // Show text of scenario & original behavior.
+        tempText = (TextView) createEventActivity.findViewById(R.id.textview_step7_scenario);
+        tempString = createEventActivity.getString(R.string.original_behavior_colon) +"\n"+
+                createEventActivity.getEventLogStructure().originalBehavior + ifScenarioString;
+        tempText.setText(tempString);
+        tempText.setVisibility(View.VISIBLE);
+
+        // Step8
+        // Disable text of scenario & original behavior in previous step.
+        createEventActivity.findViewById(R.id.textview_step7_scenario).setVisibility(View.GONE);
+
+        // Show text of scenario & original emotion.
+        tempText = (TextView) createEventActivity.findViewById(R.id.textview_step8_scenario);
+        tempString = createEventActivity.getString(R.string.original_emotion_colon) +"\n"+
+                createEventActivity.getEventLogStructure().originalEmotion + ifScenarioString;
+        tempText.setText(tempString);
+        tempText.setVisibility(View.VISIBLE);
+
+        // Set text of question in step8.
+        tempText = (TextView) createEventActivity.findViewById(R.id.textview_step8_question);
+        tempString = createEventActivity.getString(R.string.step8_question_left)+
+                createEventActivity.getEventLogStructure().expectedBehavior+
+                createEventActivity.getString(R.string.step8_question_right);
+        tempText.setText(tempString);
+
+
+        // Handle question for reflection steps.
+        setReflectionText();
     }
 
     public void setFocusCoverHeight() {
@@ -484,51 +397,61 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             stepCoverButtons[i].setVisibility(View.GONE);
         }
 
-
-
         /** Load question test of each step on the screen. */
         int coverHeight = 0;
 
         // Step5
         coverHeight = (int)(STEP4_COVER_BASE_DP_HEIGHT*displayDensity) +
-                ((View) createEventActivity.findViewById(R.id.textview_step4_question)).getHeight() +
-                ((View) createEventActivity.findViewById(R.id.editText_behavior_step4)).getHeight();
+                createEventActivity.findViewById(R.id.textview_step4_question).getHeight() +
+                createEventActivity.findViewById(R.id.editText_behavior_step4).getHeight();
 
-        ((View) createEventActivity.findViewById(R.id.create_event_cover_step4)).
+        createEventActivity.findViewById(R.id.create_event_cover_step4).
                 getLayoutParams().height = coverHeight;
 
         Log.d("Ket", "H S Step5 "+coverHeight);
 
         // Step6
         coverHeight = (int)(STEP5_COVER_BASE_DP_HEIGHT*displayDensity) +
-                ((View) createEventActivity.findViewById(R.id.textview_step5_question)).getHeight() +
-                ((View) createEventActivity.findViewById(R.id.editText_emotion_step5)).getHeight();
+                createEventActivity.findViewById(R.id.textview_step5_question).getHeight() +
+                createEventActivity.findViewById(R.id.editText_emotion_step5).getHeight();
 
-        ((View) createEventActivity.findViewById(R.id.create_event_cover_step5)).
+        createEventActivity.findViewById(R.id.create_event_cover_step5).
                 getLayoutParams().height = coverHeight;
 
-        int c = ((View) createEventActivity.findViewById(R.id.textview_step5_question)).getHeight();
-        int d = ((View) createEventActivity.findViewById(R.id.editText_emotion_step5)).getHeight();
+        int c = createEventActivity.findViewById(R.id.textview_step5_question).getHeight();
+        int d = createEventActivity.findViewById(R.id.editText_emotion_step5).getHeight();
         Log.d("Ket", "H S Step6 "+coverHeight+" "+c+" "+d);
 
         // Step7
         coverHeight = (int)(STEP6_COVER_BASE_DP_HEIGHT*displayDensity) +
-                ((View) createEventActivity.findViewById(R.id.textview_step6_question)).getHeight() +
-                ((View) createEventActivity.findViewById(R.id.editText_thought_step6)).getHeight();
+                createEventActivity.findViewById(R.id.textview_step6_question).getHeight() +
+                createEventActivity.findViewById(R.id.editText_thought_step6).getHeight();
 
-        ((View) createEventActivity.findViewById(R.id.create_event_cover_step6)).
+        createEventActivity.findViewById(R.id.create_event_cover_step6).
                 getLayoutParams().height = coverHeight;
 
         Log.d("Ket", "H S Step7 "+coverHeight);
 
         // Step8
         coverHeight = (int)(STEP7_COVER_BASE_DP_HEIGHT*displayDensity) +
-                ((View) createEventActivity.findViewById(R.id.editText_behavior_step7)).getHeight();
+                createEventActivity.findViewById(R.id.textview_step7_question).getHeight() +
+                createEventActivity.findViewById(R.id.editText_behavior_step7).getHeight();
 
-        ((View) createEventActivity.findViewById(R.id.create_event_cover_step7)).
+        createEventActivity.findViewById(R.id.create_event_cover_step7).
                 getLayoutParams().height = coverHeight;
 
         Log.d("Ket", "H S Step8 "+coverHeight);
+
+        // Step9
+        // Adapt cover height.
+        coverHeight = (int)(STEP8_COVER_BASE_DP_HEIGHT*displayDensity) +
+                createEventActivity.findViewById(R.id.textview_step8_question).getHeight() +
+                createEventActivity.findViewById(R.id.editText_emotion_step8).getHeight();
+
+        createEventActivity.findViewById(R.id.create_event_cover_step8).
+                getLayoutParams().height = coverHeight;
+
+        Log.d("Ket", "H S Step9 "+coverHeight);
 
         for(int i=0; i<currentStep; i++) {
             // Enable the button cover of current step.
@@ -547,6 +470,222 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             }
         }, 500);
 
+    }
+
+    /*
+    *  Set specific UI actions for particular steps.
+    * */
+    /*** If no extra specific action for each step, can rewrite this function to be more simple. ***/
+    private void setUiActions() {
+        String tempText = "";
+        int coverHeight = 0;
+        switch (currentStep) {
+            case 0:
+                break;
+            case 3:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep4 = new Handler();
+                handlerStep4.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step4)).requestFocus();
+                    }
+                }, 50);
+
+                // Load scenario on screen.
+                tempText = createEventActivity.getString(R.string.step4_question_left)+
+                        createEventActivity.getEventLogStructure().scenario +
+                        createEventActivity.getString(R.string.step4_question_right);
+                ((TextView) createEventActivity.findViewById(R.id.textview_step4_question))
+                        .setText(tempText);
+                break;
+            case 4:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep5 = new Handler();
+                handlerStep5.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5)).requestFocus();
+                    }
+                }, 50);
+
+                // Load scenario on screen.
+                tempText = createEventActivity.getString(R.string.step5_question_left)+
+                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step4)).getText() +
+                        createEventActivity.getString(R.string.step5_question_right);
+                ((TextView) createEventActivity.findViewById(R.id.textview_step5_question))
+                        .setText(tempText);
+
+                // Adapt cover height.
+                coverHeight = (int)(STEP4_COVER_BASE_DP_HEIGHT*displayDensity) +
+                        createEventActivity.findViewById(R.id.textview_step4_question).getHeight() +
+                        createEventActivity.findViewById(R.id.editText_behavior_step4).getHeight();
+
+                createEventActivity.findViewById(R.id.create_event_cover_step4).
+                        getLayoutParams().height = coverHeight;
+
+                int a = createEventActivity.findViewById(R.id.textview_step4_question).getHeight();
+                int b = createEventActivity.findViewById(R.id.editText_behavior_step4).getHeight();
+                Log.d("Ket", "H Step5 "+coverHeight+" "+a+" "+b);
+                break;
+            case 5:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep6 = new Handler();
+                handlerStep6.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_thought_step6)).requestFocus();
+                    }
+                }, 50);
+
+                // Load scenario on screen.
+                tempText = createEventActivity.getString(R.string.step6_question_left)+
+                        createEventActivity.getEventLogStructure().scenario +
+                        createEventActivity.getString(R.string.step6_question_mid)+
+                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step5)).getText() +
+                        createEventActivity.getString(R.string.step6_question_right);
+                ((TextView) createEventActivity.findViewById(R.id.textview_step6_question))
+                        .setText(tempText);
+
+                // Adapt cover height.
+                coverHeight = (int)(STEP5_COVER_BASE_DP_HEIGHT*displayDensity) +
+                        createEventActivity.findViewById(R.id.textview_step5_question).getHeight() +
+                        createEventActivity.findViewById(R.id.editText_emotion_step5).getHeight();
+
+                createEventActivity.findViewById(R.id.create_event_cover_step5).
+                        getLayoutParams().height = coverHeight;
+
+                int c = createEventActivity.findViewById(R.id.textview_step5_question).getHeight();
+                int d = createEventActivity.findViewById(R.id.editText_emotion_step5).getHeight();
+                Log.d("Ket", "H Step6 "+coverHeight+" "+c+" "+d);
+                break;
+            case 6:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep7 = new Handler();
+                handlerStep7.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_behavior_step7)).requestFocus();
+                    }
+                }, 50);
+
+
+                // Adapt cover height.
+                coverHeight = (int)(STEP6_COVER_BASE_DP_HEIGHT*displayDensity) +
+                        createEventActivity.findViewById(R.id.textview_step6_question).getHeight() +
+                        createEventActivity.findViewById(R.id.editText_thought_step6).getHeight();
+
+                createEventActivity.findViewById(R.id.create_event_cover_step6).
+                        getLayoutParams().height = coverHeight;
+
+                Log.d("Ket", "step 7 "+coverHeight);
+                break;
+            case 7:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep8 = new Handler();
+                handlerStep8.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_emotion_step8)).requestFocus();
+                    }
+                }, 50);
+
+                // Adapt cover height.
+                coverHeight = (int)(STEP7_COVER_BASE_DP_HEIGHT*displayDensity) +
+                        createEventActivity.findViewById(R.id.textview_step7_question).getHeight() +
+                        createEventActivity.findViewById(R.id.editText_behavior_step7).getHeight();
+
+                createEventActivity.findViewById(R.id.create_event_cover_step7).
+                        getLayoutParams().height = coverHeight;
+
+                Log.d("Ket", "step 8 "+coverHeight);
+                break;
+            case 8:
+                // Set focus to EditText after a micro delay.
+                final Handler handlerStep9 = new Handler();
+                handlerStep9.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Scroll screen to button.
+                        ((EditText) createEventActivity.findViewById(R.id.editText_thought_step9)).requestFocus();
+                    }
+                }, 50);
+
+                // Adapt cover height.
+                coverHeight = (int)(STEP8_COVER_BASE_DP_HEIGHT*displayDensity) +
+                        createEventActivity.findViewById(R.id.textview_step8_question).getHeight() +
+                        createEventActivity.findViewById(R.id.editText_emotion_step8).getHeight();
+
+                createEventActivity.findViewById(R.id.create_event_cover_step8).
+                        getLayoutParams().height = coverHeight;
+
+                Log.d("Ket", "step 9 "+coverHeight);
+                break;
+        }
+
+    }
+
+
+    private void setReflectionText() {
+        // Following codes must be performed earlier than setUiActions().
+        String tempString = "";
+        String ifScenarioString = "\n\n"+createEventActivity.getString(R.string.if_scenario_again_left)+
+                createEventActivity.getEventLogStructure().scenario+
+                createEventActivity.getString(R.string.if_scenario_again_right);
+        TextView tempText = null;
+        switch(currentStep) {
+            case 6:
+                // Show text of scenario & original behavior.
+                tempText = (TextView) createEventActivity.findViewById(R.id.textview_step7_scenario);
+                tempString = createEventActivity.getString(R.string.original_behavior_colon) +"\n"+
+                        createEventActivity.getEventLogStructure().originalBehavior + ifScenarioString;
+                tempText.setText(tempString);
+                tempText.setVisibility(View.VISIBLE);
+
+                break;
+            case 7:
+                // Disable text of scenario & original behavior in previous step.
+                createEventActivity.findViewById(R.id.textview_step7_scenario).setVisibility(View.GONE);
+
+                // Show text of scenario & original emotion.
+                tempText = (TextView) createEventActivity.findViewById(R.id.textview_step8_scenario);
+                tempString = createEventActivity.getString(R.string.original_emotion_colon) +"\n"+
+                        createEventActivity.getEventLogStructure().originalEmotion + ifScenarioString;
+                tempText.setText(tempString);
+                tempText.setVisibility(View.VISIBLE);
+
+                // Set text of question in step8.
+                tempText = (TextView) createEventActivity.findViewById(R.id.textview_step8_question);
+                tempString = createEventActivity.getString(R.string.step8_question_left)+
+                        createEventActivity.getEventLogStructure().expectedBehavior+
+                        createEventActivity.getString(R.string.step8_question_right);
+                tempText.setText(tempString);
+                break;
+
+            case 8:
+                // Disable text of scenario & original behavior in previous step.
+                createEventActivity.findViewById(R.id.textview_step8_scenario).setVisibility(View.GONE);
+
+                // Show text of scenario & original thought.
+                tempText = (TextView) createEventActivity.findViewById(R.id.textview_step9_scenario);
+                tempString = createEventActivity.getString(R.string.original_thought_colon) +"\n"+
+                        createEventActivity.getEventLogStructure().originalThought + ifScenarioString;
+                tempText.setText(tempString);
+                tempText.setVisibility(View.VISIBLE);
+
+                // Set text of question in step9.
+                tempText = (TextView) createEventActivity.findViewById(R.id.textview_step9_question);
+                tempString = createEventActivity.getString(R.string.step9_question_left)+
+                        createEventActivity.getEventLogStructure().expectedEmotion+
+                        createEventActivity.getString(R.string.step9_question_right);
+                tempText.setText(tempString);
+                break;
+        }
     }
 
 

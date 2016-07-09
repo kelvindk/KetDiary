@@ -214,12 +214,13 @@
     <string name="very_large">很大</string>
     
     <string name="original_behavior">原始行為</string>
+    <string name="original_behavior_colon">原始行為：</string>
     <string name="step4_question_left">當「</string>
     <string name="step4_question_right">」的時候，我作了什麼?</string>
     <string name="frequent_input_step4">常用行為</string>
 
-
     <string name="original_emotion">原始情緒</string>
+    <string name="original_emotion_colon">原始情緒：</string>
     <string name="step5_question_left">「</string>
     <string name="step5_question_right">」的時候，當時的情緒是?</string>
 
@@ -235,6 +236,7 @@
     </string-array>
 
     <string name="original_thought">原始想法</string>
+    <string name="original_thought_colon">原始想法：</string>
     <string name="step6_question_left">當「</string>
     <string name="step6_question_mid">」時，是什麼原因讓我感到「</string>
     <string name="step6_question_right">」?</string>
@@ -245,11 +247,12 @@
 
     <string name="expected_behavior">期待行為</string>
     <string name="expected_behavior_colon">期待行為：</string>
-    <string name="step7_question">我應該怎麼作比較好?</string>
+    <string name="step7_question">我應該怎麼做比較好?</string>
 
     <string name="expected_emotion">期待情緒</string>
     <string name="expected_emotion_colon">期待情緒：</string>
-    <string name="step8_question">當時的情況是怎麼樣的情緒比較好?</string>
+    <string name="step8_question_left">我應該有什麼樣的情緒來讓我「</string>
+    <string name="step8_question_right">」</string>
 
     <string-array name="expected_emotions">
         <item>冷靜</item>
@@ -265,7 +268,8 @@
 
     <string name="expected_thought">期待想法</string>
     <string name="expected_thought_colon">期待想法：</string>
-    <string name="step9_question">當時的情況怎麼樣的想法比較好?</string>
+    <string name="step9_question_left">什麼樣的想法可以讓我感覺「</string>
+    <string name="step9_question_right">」?</string>
     <string name="frequent_input_step9">常用想法</string>
 
     <string name="confirm_cancel_click">確定要離開本頁面?</string>

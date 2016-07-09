@@ -2,8 +2,8 @@
 <resources>
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
-    <color name="colorPrimary">#2070E0</color>
-    <color name="colorPrimaryDark">#BABABA</color>
+    <color name="colorPrimary">#3FA3D7</color>
+    <color name="colorPrimaryDark">#239ACB</color>
 
     <color name="colorAccent">#FF4081</color>
     <color name="colorSpinnerText">#F4F4F4</color>
