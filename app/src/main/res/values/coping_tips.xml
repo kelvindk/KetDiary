@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="coping_tips">
+    <string-array name="coping_tips_array">
         <item><![CDATA[愷他命屬中樞神經抑制劑，副作用包括<font color=#f2a6a3>心搏過速、血壓上升</font>。]]></item>
         <item><![CDATA[愷他命副作用包括<font color=#f2a6a3>震顫、肌肉緊張</font>而呈強直性、陣攣性運動。]]></item>
         <item><![CDATA[研究顯示濫用愷他命，會罹患慢性間質性<font color=#f2a6a3>膀胱炎</font>。]]></item>

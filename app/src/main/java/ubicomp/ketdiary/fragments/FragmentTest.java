@@ -69,7 +69,7 @@ public class FragmentTest extends Fragment {
         // New SalivaTestAdapter for handling the saliva test process.
         salivaTestAdapter = new SalivaTestAdapter(mainActivity);
 
-        // Set fragment to FRAGMENT_TEST_WAIT_RESULT if saliva test is running.
+        // Set fragment to FRAGMENT_TEST_PENDING if saliva test is running.
         if(PreferenceControl.isResultServiceRunning()) {
             if(fragmentSwitcher.getCurrentFragment() == FragmentSwitcher.FRAGMENT_TEST)
                 fragmentSwitcher.setFragmentTestWaitResult();

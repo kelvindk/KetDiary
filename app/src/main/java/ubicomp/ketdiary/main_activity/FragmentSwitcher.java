@@ -11,7 +11,7 @@ import ubicomp.ketdiary.fragments.FragmentEvent;
 import ubicomp.ketdiary.fragments.FragmentRanking;
 import ubicomp.ketdiary.fragments.FragmentStatistics;
 import ubicomp.ketdiary.fragments.FragmentTest;
-import ubicomp.ketdiary.fragments.FragmentTestWaitResult;
+import ubicomp.ketdiary.fragments.FragmentTestPending;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
@@ -25,7 +25,7 @@ public class FragmentSwitcher {
     public final static int FRAGMENT_STATISTICS = 1;
     public final static int FRAGMENT_EVENT = 2;
     public final static int FRAGMENT_RANKING = 3;
-    public final static int FRAGMENT_TEST_WAIT_RESULT = 4;
+    public final static int FRAGMENT_TEST_PENDING = 4;
 
     private MainActivity mainActivity = null;
     private TabLayoutWrapper tabLayoutWrapper = null;
@@ -55,7 +55,7 @@ public class FragmentSwitcher {
         fragments[1] = new FragmentStatistics(this, mainActivity);
         fragments[2] = new FragmentEvent(this, mainActivity);
         fragments[3] = new FragmentRanking(this, mainActivity);
-        fragments[4] = new FragmentTestWaitResult(this, mainActivity);
+        fragments[4] = new FragmentTestPending(this, mainActivity);
 
         fragmentManager = this.mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -86,7 +86,7 @@ public class FragmentSwitcher {
         toolbarMenuItemWrapper.setSpinnerSelection(fragmentToSwitch);
     }
 
-    // Switch to FragmentTestWaitResult.
+    // Switch to FragmentTestPending.
     public void setFragmentTestWaitResult() {
         Log.d("Ket", "setFragmentTestWaitResult");
         toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
@@ -95,10 +95,10 @@ public class FragmentSwitcher {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.hide(fragments[currentFragment]);
-        fragmentTransaction.show(fragments[FRAGMENT_TEST_WAIT_RESULT]);
+        fragmentTransaction.show(fragments[FRAGMENT_TEST_PENDING]);
         fragmentTransaction.commit();
 
-        currentFragment = FRAGMENT_TEST_WAIT_RESULT;
+        currentFragment = FRAGMENT_TEST_PENDING;
     }
 
 
@@ -142,7 +142,7 @@ public class FragmentSwitcher {
 
         if(PreferenceControl.isResultServiceRunning()) {
             if(fragmentToSwitch == FRAGMENT_TEST) {
-                fragmentToSwitch = FRAGMENT_TEST_WAIT_RESULT;
+                fragmentToSwitch = FRAGMENT_TEST_PENDING;
             }
         }
 

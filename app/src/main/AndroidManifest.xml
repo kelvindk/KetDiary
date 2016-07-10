@@ -89,6 +89,13 @@
         </activity>
 
         <activity
+            android:name=".utility.back_door.SettingActivity"
+            android:label="@string/setting_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
             android:name=".utility.back_door.AboutActivity"
             android:label="@string/about_name"
             android:screenOrientation="portrait"

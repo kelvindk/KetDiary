@@ -363,6 +363,7 @@
             <ImageButton
                 android:layout_width="@dimen/voice_input_width"
                 android:layout_height="@dimen/voice_input_height"
+                android:visibility="gone"
                 android:alpha="0.6"
                 android:background="@drawable/ic_arrow_drop_down_black_48dp"
                 android:id="@+id/scenario_step2"
