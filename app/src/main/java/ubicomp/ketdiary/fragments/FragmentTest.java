@@ -71,7 +71,8 @@ public class FragmentTest extends Fragment {
 
         // Set fragment to FRAGMENT_TEST_WAIT_RESULT if saliva test is running.
         if(PreferenceControl.isResultServiceRunning()) {
-            fragmentSwitcher.setFragmentTestWaitResult();
+            if(fragmentSwitcher.getCurrentFragment() == FragmentSwitcher.FRAGMENT_TEST)
+                fragmentSwitcher.setFragmentTestWaitResult();
         }
 
         super.onStart();

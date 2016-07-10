@@ -173,7 +173,7 @@ public class EventContentActivity extends AppCompatActivity {
                 });
                 dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
-                        /* User clicked "Confirm"*/
+                        /* User clicked "Cancel"*/
                         // no op.
                     }
                 });

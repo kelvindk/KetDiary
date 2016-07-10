@@ -39,6 +39,7 @@ public class FragmentSwitcher {
     // FragmentManager is used to manage fragment.
     private FragmentManager fragmentManager = null;
     private Fragment[] fragments = new Fragment[5];
+
     private int currentFragment = 0;
 
     // Constructor received the references for fragment switch.
@@ -74,6 +75,10 @@ public class FragmentSwitcher {
         fragmentTransaction.commit();
 
 
+    }
+
+    public int getCurrentFragment() {
+        return currentFragment;
     }
 
     public void setFragmentOnlyDowndropTab(int fragmentToSwitch) {

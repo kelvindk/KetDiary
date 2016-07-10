@@ -20,8 +20,12 @@ import ubicomp.ketdiary.utility.system.PreferenceControl;
  */
 public class TestStateWaitResult extends TestStateTransition {
 
+    public static final int SALIVA_TEST_INT_KEY = 980;
+
     public static final int STAGE_FINAL_COUNTDOWN = 6000;
     public static final int STAGE_FINAL_PERIOD = 1000;
+
+
 
     private  CountDownTimer finishCountdown = null;
 
@@ -90,7 +94,8 @@ public class TestStateWaitResult extends TestStateTransition {
                 bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, event);
                 intent.putExtras(bundle);
                 // Start the activity.
-                getSalivaTestAdapter().getMainActivity().startActivity(intent);
+                getSalivaTestAdapter().getMainActivity().startActivityForResult(intent, SALIVA_TEST_INT_KEY);
+
             }
 
             @Override

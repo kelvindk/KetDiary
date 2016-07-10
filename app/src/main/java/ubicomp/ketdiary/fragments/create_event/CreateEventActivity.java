@@ -467,11 +467,14 @@ public class CreateEventActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == ResultService.MSG_CURRENT_COUNTDOWN) {
-                Log.d("Ket", "resultServiceCountdown " + msg.arg1);
+                Log.d("Ket", "create resultServiceCountdown " + msg.arg1);
                 int receivedMsg = msg.arg1;
                 switch (receivedMsg) {
                     case ResultService.MSG_SERVICE_FAIL_NO_PLUG:
                         //
+                        Log.d("Ket", "create resultServiceCountdown MSG_SERVICE_FAIL_NO_PLUG");
+                        doUnbindService();
+                        finish();
                         break;
                     case ResultService.MSG_SERVICE_FAIL_CONNECT_TIMEOUT:
                         //

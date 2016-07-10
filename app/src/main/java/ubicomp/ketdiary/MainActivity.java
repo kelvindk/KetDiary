@@ -1,11 +1,16 @@
 package ubicomp.ketdiary;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,6 +21,7 @@ import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
 import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
@@ -84,6 +90,28 @@ public class MainActivity extends AppCompatActivity {
         downloader.updateCassetteTask();
 
         // For developing
+
+//        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+//        LayoutInflater layoutInflater = LayoutInflater.from(this);
+//        View dialogView = layoutInflater.inflate(R.layout.dialog_reflection_acceptance, null);
+//        dialog.setView(dialogView);
+//        dialog.setTitle("反思認同度");
+//        dialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int item) {
+//                /* User clicked "Confirm"*/
+//                Log.d("Ket", "Dialog OK");
+//
+//            }
+//        });
+//        dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int item) {
+//                /* User clicked "Cancel"*/
+//                Log.d("Ket", "Dialog Cancel");
+//            }
+//        });
+//        dialog.show();
+
+
 //        TestResult testResult = new TestResult(0,
 //                System.currentTimeMillis()-30000,
 //                "1",
@@ -299,5 +327,15 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == TestStateWaitResult.SALIVA_TEST_INT_KEY) {
+            Log.d("Ket", "MainActivity onActivityResult SALIVA_TEST_INT_KEY");
+
+            /** Show dialog to ask reflection acceptance */
+
+
+        }
+    }
 
 }

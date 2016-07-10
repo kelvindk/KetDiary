@@ -61,8 +61,11 @@ public class ResultServiceAdapter {
 
                 switch (receivedMsg) {
                     case ResultService.MSG_SERVICE_FAIL_NO_PLUG:
+                        PreferenceControl.setResultServiceIsRunning(false);
+
                         // Cancel countdown timer of current stage.
-                        salivaTestAdapter.cancelTestStateCountdownTimer();
+                        if(salivaTestAdapter != null)
+                            salivaTestAdapter.cancelTestStateCountdownTimer();
 
                         // Show CustomToast.
                         CustomToast.generateToast(R.string.test_instruction_top4, -1);
@@ -75,6 +78,7 @@ public class ResultServiceAdapter {
                         doUnbindService();
 
                         mainActivity.stopService(intent);
+
                         break;
 
                     case ResultService.MSG_SERVICE_FAIL_CONNECT_TIMEOUT:
