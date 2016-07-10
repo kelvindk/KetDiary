@@ -1504,4 +1504,14 @@ public class PreferenceControl {
 		return sp.getBoolean("ResultServiceIsRunning", false);
 	}
 
+	public static void setLastCopingTip(int tip) {
+		SharedPreferences.Editor edit = sp.edit();
+		edit.putInt("LastCopingTip", tip);
+		edit.commit();
+	}
+
+	public static int getLastCopingTip() {
+		return sp.getInt("LastCopingTip", 0);
+	}
+
 }

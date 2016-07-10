@@ -7,13 +7,39 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="30dp"
+            android:text="@string/coping_tips_title"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView" />
+
+        <View
+            android:id="@+id/fragment_test_pending_title_view"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:background="@drawable/event_log_status_label_bg"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp" />
 
         <android.support.v4.view.ViewPager
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/fragment_test_pending_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/fragment_test_pending_title_view"
+            android:overScrollMode="never"/>
 
 
         <!--<TextView-->
@@ -25,5 +51,38 @@
             <!--android:layout_centerHorizontal="true" />-->
 
     </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:layout_gravity="center_horizontal|bottom">-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/create_even_step_bottom_height"-->
+            <!--android:background="@color/colorLightGray"-->
+            <!--android:layout_alignParentLeft="true"/>-->
+
+        <!--<Button-->
+            <!--android:layout_width="@dimen/create_even_step_bottom_width"-->
+            <!--android:layout_height="@dimen/create_even_step_bottom_height"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:background="@color/colorLightGray"-->
+            <!--android:id="@+id/fragment_test_pending_previous"-->
+            <!--android:text="@string/previous_tip" />-->
+
+        <!--<Button-->
+            <!--android:layout_width="@dimen/create_even_step_bottom_width"-->
+            <!--android:layout_height="@dimen/create_even_step_bottom_height"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:background="@color/colorLightGray"-->
+            <!--android:id="@+id/fragment_test_pending_next"-->
+            <!--android:text="@string/next_tip"-->
+            <!--android:visibility="visible"/>-->
+
+    <!--</RelativeLayout>-->
 
 </FrameLayout>

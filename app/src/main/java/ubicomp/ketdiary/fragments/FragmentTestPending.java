@@ -14,9 +14,11 @@ import java.util.List;
 
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.fragments.test_pending.CircularViewPagerHandler;
 import ubicomp.ketdiary.fragments.test_pending.FragmentTestPendingPage;
 import ubicomp.ketdiary.fragments.test_pending.ScreenSlidePagerAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
  * A placeholder fragment containing a simple view for TestWaitResult fragment.
@@ -70,10 +72,22 @@ public class FragmentTestPending extends Fragment {
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) mainActivity.findViewById(R.id.fragment_test_pending_pager);
+        mPager.setOnPageChangeListener(new CircularViewPagerHandler(mPager));
+
         mPagerAdapter = new ScreenSlidePagerAdapter(mainActivity.getSupportFragmentManager(), fragments);
         mPager.setAdapter(mPagerAdapter);
 
         super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("Ket", "FragmentTestPending onResume ");
+
+        // Resume last coping tip from Preference.
+        mPager.setCurrentItem(PreferenceControl.getLastCopingTip());
+
+        super.onResume();
     }
 
 }
