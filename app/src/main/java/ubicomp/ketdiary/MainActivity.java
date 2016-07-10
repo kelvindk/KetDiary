@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
@@ -90,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
         downloader.updateCassetteTask();
 
         // For developing
+//        Calendar calendar = (Calendar) Calendar.getInstance().clone();
+//        calendar.add(Calendar.DATE, -1);
+//        TestResult testResult = new TestResult(1,
+//                PreferenceControl.getSalivaTestTimestamp(),
+//                "11",
+//                1, 0, 0, 0);
+//
+//        FirstPageDataBase firstPageDataBase = new FirstPageDataBase();
+//        firstPageDataBase.addTestResult(testResult);
 
 //        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 //        LayoutInflater layoutInflater = LayoutInflater.from(this);

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -18,9 +19,10 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
+import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TestResult;
 
 /**
  * A custom adapter for event list.
@@ -77,6 +79,14 @@ public class EventListAdapter extends BaseAdapter {
         TextView fragment_event_list_description = null;
         TextView fragment_event_list_expected_behavior = null;
         RatingBar fragment_event_list_item_drug_use_risk_level = null;
+
+        LinearLayout event_list_incomplete_status_layout = null;
+        LinearLayout event_list_therapy_status_layout = null;
+        ImageView event_list_therapy_status_icon = null;
+        TextView event_list_therapy_status_text = null;
+        ImageView event_list_saliva_status_icon = null;
+        TextView event_list_saliva_status_text = null;
+
     }
 
     @Override
@@ -116,7 +126,72 @@ public class EventListAdapter extends BaseAdapter {
         // Set risk level.
         eventListItemHolder.fragment_event_list_item_drug_use_risk_level
                 = (RatingBar) eventItemView.findViewById(R.id.fragment_event_list_drug_use_risk_level);
-        eventListItemHolder.fragment_event_list_item_drug_use_risk_level.setRating(eventListItems.get(position).drugUseRiskLevel);
+        eventListItemHolder.fragment_event_list_item_drug_use_risk_level.
+                setRating(eventListItems.get(position).drugUseRiskLevel);
+
+        /** Three status of event */
+        //
+        eventListItemHolder.event_list_incomplete_status_layout
+                = (LinearLayout) eventItemView.findViewById(R.id.event_list_incomplete_status_layout);
+        if(eventListItems.get(position).isComplete)
+            eventListItemHolder.event_list_incomplete_status_layout.setVisibility(View.GONE);
+        else
+            eventListItemHolder.event_list_incomplete_status_layout.setVisibility(View.VISIBLE);
+
+        //
+        eventListItemHolder.event_list_therapy_status_layout
+                = (LinearLayout) eventItemView.findViewById(R.id.event_list_therapy_status_layout);
+        eventListItemHolder.event_list_therapy_status_layout.setVisibility(View.VISIBLE);
+        eventListItemHolder.event_list_therapy_status_icon
+                = (ImageView) eventItemView.findViewById(R.id.event_list_therapy_status_icon);
+        eventListItemHolder.event_list_therapy_status_text
+                = (TextView) eventItemView.findViewById(R.id.event_list_therapy_status_text);
+        switch (eventListItems.get(position).therapyStatus) {
+            case NULL:
+            case NOT_YET:
+                eventListItemHolder.event_list_therapy_status_layout.setVisibility(View.GONE);
+                break;
+            case GOOD:
+                eventListItemHolder.event_list_therapy_status_icon.setBackgroundResource(R.drawable.circle3);
+                eventListItemHolder.event_list_therapy_status_text.setText(R.string.therapist_not_yet);
+                break;
+            case BAD:
+                eventListItemHolder.event_list_therapy_status_icon.setBackgroundResource(R.drawable.tri3);
+                eventListItemHolder.event_list_therapy_status_text.setText(R.string.need_revise);
+                break;
+            case DISCUSSED:
+                eventListItemHolder.event_list_therapy_status_icon.setBackgroundResource(R.drawable.star3);
+                eventListItemHolder.event_list_therapy_status_text.setText(R.string.therapist_discussed);
+                break;
+        }
+
+        //
+        // Get saliva test result on event's day.
+        DatabaseControl db = new DatabaseControl();
+        Calendar eventTime = eventListItems.get(position).eventTime;
+        TestResult testResult = db.getDayTestResult(eventTime.get(Calendar.YEAR),
+                eventTime.get(Calendar.MONTH), eventTime.get(Calendar.DAY_OF_MONTH));
+
+        eventListItemHolder.event_list_saliva_status_icon
+                = (ImageView) eventItemView.findViewById(R.id.event_list_saliva_status_icon);
+        eventListItemHolder.event_list_saliva_status_text
+                = (TextView) eventItemView.findViewById(R.id.event_list_saliva_status_text);
+
+
+        switch (testResult.getResult()) {
+            case -1:
+                eventListItemHolder.event_list_saliva_status_icon.setBackgroundResource(R.drawable.notdetect);
+                eventListItemHolder.event_list_saliva_status_text.setText(R.string.no_saliva_test);
+                break;
+            case 0: // Pass
+                eventListItemHolder.event_list_saliva_status_icon.setBackgroundResource(R.drawable.pass);
+                eventListItemHolder.event_list_saliva_status_text.setText(R.string.test_pass);
+                break;
+            case 1: // Fail
+                eventListItemHolder.event_list_saliva_status_icon.setBackgroundResource(R.drawable.notpass);
+                eventListItemHolder.event_list_saliva_status_text.setText(R.string.test_fail);
+                break;
+        }
 
         return eventItemView;
     }

@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
                 android:numStars="5"
                 android:rating="1"
                 android:clickable="false"
@@ -70,35 +70,96 @@
             <!--android:layout_alignStart="@+id/event_content_container_scenario_layout" />-->
 
         <LinearLayout
-            android:layout_marginStart="95dp"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginEnd="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="end"
             android:layout_below="@+id/event_content_container_date_layout">
 
-            <TextView
-                android:id="@+id/event_content_container_incomplete_status"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:id="@+id/event_content_incomplete_status_layout"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:text="心理師驗證"
-                android:textSize="@dimen/abc_text_size_small_material" />
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/event_log_status_label_bg">
 
-            <TextView
-                android:id="@+id/event_content_container_therapy_status"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="心理師驗證"
-                android:textSize="@dimen/abc_text_size_small_material" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/pencil_white"/>
 
-            <TextView
-                android:id="@+id/event_content_container_saliva_status"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:text="未完成"
+                    android:textSize="@dimen/abc_text_size_small_material" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/event_content_therapy_status_layout"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="心理師驗證"
-                android:textSize="@dimen/abc_text_size_small_material" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/event_log_status_label_bg">
+
+                <ImageView
+                    android:id="@+id/event_content_therapy_status_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/circle3"/>
+
+                <TextView
+                    android:id="@+id/event_content_therapy_status_text"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:text="己審核"
+                    android:textSize="@dimen/abc_text_size_small_material" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/event_log_status_label_bg">
+
+                <ImageView
+                    android:id="@+id/event_content_saliva_status_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/pass"/>
+
+                <TextView
+                    android:id="@+id/event_content_saliva_status_text"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:text="通  過"
+                    android:textSize="@dimen/abc_text_size_small_material" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -118,7 +179,7 @@
                 android:id="@+id/event_content_container_scenario_type"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:padding="5dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/type_icon3" />
 
             <TextView

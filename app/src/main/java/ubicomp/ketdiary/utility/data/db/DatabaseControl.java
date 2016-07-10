@@ -279,7 +279,6 @@ public class DatabaseControl {
 	
 	public TestResult getDayTestResult(int Year, int Month, int Day) {
 		synchronized (sqlLock) {
-
 			db = dbHelper.getReadableDatabase();
 			String sql;
 			Cursor cursor;

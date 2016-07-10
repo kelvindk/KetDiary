@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +20,12 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.utility.data.db.DatabaseControl;
+import ubicomp.ketdiary.utility.data.structure.TestResult;
 
 /**
  * Created by kelvindk on 16/6/10.
@@ -46,7 +51,6 @@ public class EventContentActivity extends AppCompatActivity {
     private TextView event_content_container_original_emotion = null;
     private TextView event_content_container_original_behavior = null;
 
-    private TextView event_content_container_therapy_status = null;
     private RatingBar event_content_container_drug_use_risk = null;
 
     private TextView event_content_container_expected_thought_revise = null;
@@ -62,6 +66,13 @@ public class EventContentActivity extends AppCompatActivity {
     private LinearLayout event_content_container_original_thought_layout = null;
     private LinearLayout event_content_container_original_emotion_layout = null;
     private LinearLayout event_content_container_original_behavior_layout = null;
+
+    private LinearLayout event_content_incomplete_status_layout = null;
+    private LinearLayout event_content_therapy_status_layout = null;
+    private ImageView event_content_therapy_status_icon = null;
+    private TextView event_content_therapy_status_text = null;
+    private ImageView event_content_saliva_status_icon = null;
+    private TextView event_content_saliva_status_text = null;
 
     private Drawable expected_thought_original_drawable = null;
     private Drawable expected_emotion_original_drawable = null;
@@ -104,6 +115,7 @@ public class EventContentActivity extends AppCompatActivity {
     }
 
     private void initUiComponents() {
+
         // Get UI components.
         event_content_container_event_date = (TextView) findViewById(R.id.event_content_container_event_date);
         event_content_container_scenario_type = (ImageView) findViewById(R.id.event_content_container_scenario_type);
@@ -117,7 +129,6 @@ public class EventContentActivity extends AppCompatActivity {
         event_content_container_original_emotion = (TextView) findViewById(R.id.event_content_container_original_emotion);
         event_content_container_original_behavior = (TextView) findViewById(R.id.event_content_container_original_behavior);
 
-        event_content_container_therapy_status = (TextView) findViewById(R.id.event_content_container_therapy_status);
         event_content_container_drug_use_risk = (RatingBar) findViewById(R.id.event_content_container_drug_use_risk);
 
         event_content_container_expected_thought_revise = (TextView) findViewById(R.id.event_content_container_expected_thought_revise);
@@ -140,6 +151,13 @@ public class EventContentActivity extends AppCompatActivity {
         original_thought_original_drawable = event_content_container_original_thought_layout.getBackground();
         original_emotion_original_drawable = event_content_container_original_emotion_layout.getBackground();
         original_behavior_original_drawable = event_content_container_original_behavior_layout.getBackground();
+
+        event_content_incomplete_status_layout = (LinearLayout) findViewById(R.id.event_content_incomplete_status_layout);
+        event_content_therapy_status_layout = (LinearLayout) findViewById(R.id.event_content_therapy_status_layout);
+        event_content_therapy_status_icon = (ImageView) findViewById(R.id.event_content_therapy_status_icon);
+        event_content_therapy_status_text = (TextView) findViewById(R.id.event_content_therapy_status_text);
+        event_content_saliva_status_icon = (ImageView) findViewById(R.id.event_content_saliva_status_icon);
+        event_content_saliva_status_text = (TextView) findViewById(R.id.event_content_saliva_status_text);
 
         // Fill content on UI components.
         loadEventLogDataToUi();
@@ -360,6 +378,71 @@ public class EventContentActivity extends AppCompatActivity {
             event_content_container_original_behavior_revise.setVisibility(View.GONE);
             event_content_container_original_behavior_layout.setBackground(original_behavior_original_drawable);
             event_content_container_original_behavior_layout.setOnClickListener(null);
+        }
+
+
+        /** Three status of event */
+        //
+        event_content_incomplete_status_layout
+                = (LinearLayout) findViewById(R.id.event_content_incomplete_status_layout);
+        if(eventLog.isComplete)
+            event_content_incomplete_status_layout.setVisibility(View.GONE);
+        else
+            event_content_incomplete_status_layout.setVisibility(View.VISIBLE);
+
+        //
+        event_content_therapy_status_layout
+                = (LinearLayout) findViewById(R.id.event_content_therapy_status_layout);
+        event_content_therapy_status_layout.setVisibility(View.VISIBLE);
+        event_content_therapy_status_icon
+                = (ImageView) findViewById(R.id.event_content_therapy_status_icon);
+        event_content_therapy_status_text
+                = (TextView) findViewById(R.id.event_content_therapy_status_text);
+        switch (eventLog.therapyStatus) {
+            case NULL:
+            case NOT_YET:
+                event_content_therapy_status_layout.setVisibility(View.GONE);
+                break;
+            case GOOD:
+                event_content_therapy_status_icon.setBackgroundResource(R.drawable.circle3);
+                event_content_therapy_status_text.setText(R.string.therapist_not_yet);
+                break;
+            case BAD:
+                event_content_therapy_status_icon.setBackgroundResource(R.drawable.tri3);
+                event_content_therapy_status_text.setText(R.string.need_revise);
+                break;
+            case DISCUSSED:
+                event_content_therapy_status_icon.setBackgroundResource(R.drawable.star3);
+                event_content_therapy_status_text.setText(R.string.therapist_discussed);
+                break;
+        }
+
+        //
+        // Get saliva test result on event's day.
+        DatabaseControl db = new DatabaseControl();
+        Calendar eventTime = eventLog.eventTime;
+        TestResult testResult = db.getDayTestResult(eventTime.get(Calendar.YEAR),
+                eventTime.get(Calendar.MONTH), eventTime.get(Calendar.DAY_OF_MONTH));
+
+        event_content_saliva_status_icon
+                = (ImageView) findViewById(R.id.event_content_saliva_status_icon);
+        event_content_saliva_status_text
+                = (TextView) findViewById(R.id.event_content_saliva_status_text);
+
+
+        switch (testResult.getResult()) {
+            case -1:
+                event_content_saliva_status_icon.setBackgroundResource(R.drawable.notdetect);
+                event_content_saliva_status_text.setText(R.string.no_saliva_test);
+                break;
+            case 0: // Pass
+                event_content_saliva_status_icon.setBackgroundResource(R.drawable.pass);
+                event_content_saliva_status_text.setText(R.string.test_pass);
+                break;
+            case 1: // Fail
+                event_content_saliva_status_icon.setBackgroundResource(R.drawable.notpass);
+                event_content_saliva_status_text.setText(R.string.test_fail);
+                break;
         }
     }
 
