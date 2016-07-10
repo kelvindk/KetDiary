@@ -99,9 +99,8 @@ public class StepExpectedEmotionWrapper {
                             int selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
                             emotionsString += emotionStrings[selectedPosition];
 
-                            // In edit mode, set clickable to "save" action button when selected if emotionsString is not null.
-                            if((createEventActivity.getInitStep() != 0) && (!emotionsString.toString().equals("")))
-                                createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(true);
+                            // Set clickable to "save" action button when selected if emotionsString is not null.
+                            createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(!emotionsString.toString().equals(""));
 
                             // Set selected emotions on the EditText. Can be multiple select.
                             editText_emotion_step8.setText(emotionsString);

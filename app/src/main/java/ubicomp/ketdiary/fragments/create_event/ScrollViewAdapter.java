@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ubicomp.ketdiary.R;
 
@@ -56,6 +58,9 @@ public class ScrollViewAdapter implements View.OnTouchListener {
     private RatingBar progressBar = null;
     private TextView progressText = null;
 
+    // Toast for warring.
+    private Toast[] toasts = new Toast[NUMBER_OF_TOTAL_STEPS];
+
 
     // Boolean to store action save button state.
     private boolean isActionSaveButtonClickable = false;
@@ -91,6 +96,17 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         stepCoverButtons[7] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step8);
         stepCoverButtons[8] = (Button) createEventActivity.findViewById(R.id.create_event_cover_step9);
 
+        //
+        toasts[0] = Toast.makeText(createEventActivity, "", Toast.LENGTH_SHORT);
+        toasts[1] = Toast.makeText(createEventActivity, R.string.warning_empty_step2, Toast.LENGTH_SHORT);
+        toasts[2] = Toast.makeText(createEventActivity, R.string.warning_empty_step3, Toast.LENGTH_SHORT);
+        toasts[3] = Toast.makeText(createEventActivity, R.string.warning_empty_step4, Toast.LENGTH_SHORT);
+        toasts[4] = Toast.makeText(createEventActivity, R.string.warning_empty_step5, Toast.LENGTH_SHORT);
+        toasts[5] = Toast.makeText(createEventActivity, R.string.warning_empty_step6, Toast.LENGTH_SHORT);
+        toasts[6] = Toast.makeText(createEventActivity, R.string.warning_empty_step7, Toast.LENGTH_SHORT);
+        toasts[7] = Toast.makeText(createEventActivity, R.string.warning_empty_step8, Toast.LENGTH_SHORT);
+        toasts[8] = Toast.makeText(createEventActivity, R.string.warning_empty_step9, Toast.LENGTH_SHORT);
+
         // Progress bar in toolbar.
         progressBar = (RatingBar) createEventActivity.findViewById(R.id.create_event_progress_bar);
         progressText = (TextView) createEventActivity.findViewById(R.id.create_event_progress_text);
@@ -118,8 +134,13 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "PreviousButtonOnclick");
+            if((currentStep < currentMaxStep) && isCurrentStepContentEmpty()) {
 
-            performPreviousStep();
+            }
+            else {
+//                toasts[currentStep].cancel();
+                performPreviousStep();
+            }
         }
     };
 
@@ -131,9 +152,85 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "NextButtonOnclick");
-            performNextStep();
+            if(isCurrentStepContentEmpty()) {
+//                setSaveEventButtonClickable(false);
+            }
+            else {
+//                toasts[currentStep].cancel();
+                performNextStep();
+            }
+
         }
     };
+
+    /*
+    *  Check current step is not empty.
+    * */
+    private boolean isCurrentStepContentEmpty() {
+
+        switch (currentStep) {
+            case 1:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_scenario_step2)).getText().length() == 0) {
+                    toasts[1].show();
+                    return true;
+                }
+                break;
+            case 2:
+                RadioGroup radioGroup = (RadioGroup) createEventActivity.findViewById(R.id.radioGroupStep3);
+                int id = radioGroup.getCheckedRadioButtonId();
+                if(id < 0) {
+                    toasts[2].show();
+                    return true;
+                }
+                break;
+            case 3:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_behavior_step4)).getText().length() == 0) {
+                    toasts[3].show();
+                    return true;
+                }
+                break;
+            case 4:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_emotion_step5)).getText().length() == 0) {
+                    toasts[4].show();
+                    return true;
+                }
+                break;
+            case 5:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_thought_step6)).getText().length() == 0) {
+                    toasts[5].show();
+                    return true;
+                }
+                break;
+            case 6:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_behavior_step7)).getText().length() == 0) {
+                    toasts[6].show();
+                    return true;
+                }
+                break;
+            case 7:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_emotion_step8)).getText().length() == 0) {
+                    toasts[7].show();
+                    return true;
+                }
+                break;
+            case 8:
+                if(((EditText)createEventActivity.
+                        findViewById(R.id.editText_thought_step9)).getText().length() == 0) {
+                    toasts[8].show();
+                    return true;
+                }
+                break;
+
+        }
+
+        return false;
+    }
 
     public void performPreviousStep() {
         // Set Gone to the part of current step.
@@ -202,7 +299,12 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         setUiActions();
     }
 
+
+
     public void performNextStep() {
+
+
+
         if(currentStep == (NUMBER_OF_TOTAL_STEPS-1)) {
             Log.d("Ket", "NextButtonOnclick complete");
             // Trigger action save button to perform save as well as user click.
@@ -258,7 +360,7 @@ public class ScrollViewAdapter implements View.OnTouchListener {
             }
         }, 50);
 
-        // Enable "Save" action button, if currentStep >= 2. And won't enable in save mode.
+        // Enable "Save" action button, if currentStep >= 2. And won't enable in create mode.
         if((currentMaxStep >= STEPS_ALLOW_SAVE) && (createEventActivity.getInitStep() == 0)) {
             setSaveEventButtonClickable(true);
         }
@@ -276,8 +378,8 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         if(clickable) {
             ((LinearLayout) createEventActivity.
                     findViewById(R.id.menu_item_save_event_layout)).setAlpha(1);
-            // Update currentMaxStep.
-            currentMaxStep = STEPS_ALLOW_SAVE;
+//            // Update currentMaxStep.
+//            currentMaxStep = STEPS_ALLOW_SAVE;
 
         }
         else {

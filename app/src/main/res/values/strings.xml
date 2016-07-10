@@ -275,6 +275,16 @@
     <string name="confirm_cancel_click">確定要離開本頁面?</string>
     <string name="create_event_saved">新增的活動己儲存</string>
 
+    <string name="warning_empty_step2">請選擇情境類別</string>
+    <string name="warning_empty_step3">請選擇使用機率</string>
+    <string name="warning_empty_step4">請填入原始行為</string>
+    <string name="warning_empty_step5">請選擇原始情緒</string>
+    <string name="warning_empty_step6">請填入原始想法</string>
+    <string name="warning_empty_step7">請填入期待行為</string>
+    <string name="warning_empty_step8">請選擇期待情緒</string>
+    <string name="warning_empty_step9">請填入期待想法</string>
+
+
     <string name="confirm_delete_event_click">確定要刪除這個事件?\n*刪除後</string>
 
     <string name="help_name">相關設定與資訊</string>

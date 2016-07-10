@@ -120,15 +120,8 @@ public class StepExpectedBehaviorWrapper {
             Log.d("Ket", "afterTextChanged "+input.toString());
             logToEventLogStructure(input.toString());
 
-            // In edit mode, set clickable to "save" action button when selected if input is not null.
-            if(createEventActivity.getInitStep() != 0) {
-                if(!input.toString().equals("")) {
-                    createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(true);
-                }
-                else {
-                    createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(false);
-                }
-            }
+            // Set clickable to "save" action button when selected if input is not null.
+            createEventActivity.getScrollViewAdapter().setSaveEventButtonClickable(!input.toString().equals(""));
 
             // Any editing can set "revise" flag to false.
             eventLogStructure.reviseExpectedBehavior = false;
