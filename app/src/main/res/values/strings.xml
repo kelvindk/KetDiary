@@ -224,6 +224,12 @@
     <string name="original_emotion_colon">原始情緒：</string>
     <string name="step5_question_left">「</string>
     <string name="step5_question_right">」的時候，當時的情緒是?</string>
+    
+    <string name="empty_step4_toast">請先填寫「原始行為」</string>
+    <string name="empty_step5_toast">請先填寫「原始情緒」</string>
+    <string name="empty_step6_toast">請先填寫「原始想法」</string>
+    <string name="empty_step7_toast">請先填寫「期待行為」</string>
+    <string name="empty_step8_toast">請先填寫「期待情緒」</string>
 
     <string-array name="then_emotions">
         <item>生氣</item>

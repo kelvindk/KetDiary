@@ -101,7 +101,7 @@ public class ResultServiceAdapter {
 
                         /** Write test result to database */
                         TestResult testResult = new TestResult(result,
-                                PreferenceControl.getSalivaTestTimestamp(),
+                                PreferenceControl.getUpdateDetectionTimestamp(),
                                 cassetteId,
                                 1, 0, 0, 0);
 

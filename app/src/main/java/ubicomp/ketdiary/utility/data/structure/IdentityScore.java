@@ -7,7 +7,7 @@ public class IdentityScore {
 	public Calendar createTime;
 	public int isReflection;
 	public int score;
-	
+
 	public IdentityScore(Calendar createTime, int score, Calendar eventTime, int isReflection){
 		this.createTime = Calendar.getInstance();
 		this.eventTime = Calendar.getInstance();
@@ -17,7 +17,7 @@ public class IdentityScore {
 		this.eventTime = eventTime;
 		this.isReflection = isReflection;
 	}
-	
+
 	public Calendar getCreateTime() {
 		return createTime;
 	}
@@ -29,10 +29,10 @@ public class IdentityScore {
 	public Calendar getEventTime() {
 		return eventTime;
 	}
-	
+
 	public int getIsReflection() {
 		return isReflection;
 	}
-	
-	
+
+
 }

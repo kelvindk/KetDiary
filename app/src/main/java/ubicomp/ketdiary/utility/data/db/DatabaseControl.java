@@ -3264,7 +3264,7 @@ public class DatabaseControl {
 
 			EventLogStructure[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 ORDER BY eventTime DESC";
+			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 ORDER BY eventTime DESC, createTime DESC";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -3391,6 +3391,8 @@ public class DatabaseControl {
 				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
 				data[i].isAfterTest = (cursor.getInt(14) > 0);
 				data[i].isComplete =  (cursor.getInt(15) > 0);
+
+				Log.d("debug", data[i].toString());
 			}
 			cursor.close();
 			db.close();
@@ -3444,35 +3446,11 @@ public class DatabaseControl {
 	}
 
 	public void updateOldEventLog(EventLogStructure data) {
-		EventLogStructure oldData = getTsEventLog(data.createTime.getTimeInMillis());
-		if(oldData == null)
-			return;
-
 		synchronized (sqlLock) {
 			db = dbHelper.getWritableDatabase();
-			ContentValues content = new ContentValues();
-
-			content.put("editTime", oldData.editTime.getTimeInMillis());
-			content.put("eventTime", oldData.eventTime.getTimeInMillis());
-			content.put("createTime", oldData.createTime.getTimeInMillis());
-			content.put("scenarioType", oldData.scenarioType.ordinal());
-			content.put("scenario", oldData.scenario);
-			content.put("drugUseRiskLevel", oldData.drugUseRiskLevel);
-			content.put("originalBehavior", oldData.originalBehavior);
-			content.put("originalEmotion", oldData.originalEmotion);
-			content.put("originalThought", oldData.originalThought);
-			content.put("expectedBehavior", oldData.expectedBehavior);
-			content.put("expectedEmotion", oldData.expectedEmotion);
-			content.put("expectedThought", oldData.expectedThought);
-			content.put("therapyStatus", oldData.therapyStatus.ordinal());
-			content.put("isAfterTest", oldData.isAfterTest? 1:0);
-			content.put("isLastest", 0);
-
-			String where = "createTime = " + oldData.createTime.getTimeInMillis()
-							+ " AND isLastest = 1";
-			if(db.update("EventLog", content, where, null) > 0)
-				Log.d("GG", "update EventLog success");
-
+			String sql = "UPDATE EventLog SET isLastest = 0 WHERE createTime = "
+					+ data.createTime.getTimeInMillis() + " AND isLastest = 1";
+			db.execSQL(sql);
 			db.close();
 		}
 	}

@@ -50,6 +50,11 @@ public class ScrollViewAdapter implements View.OnTouchListener {
 
     // Current most advanced step had reach. Will only be added.
     private int currentMaxStep = 0;
+
+    public int getCurrentMaxStep() {
+        return currentMaxStep;
+    }
+
     // RelativeLayouts of steps, this array is used to set visibility of step's content.
     private RelativeLayout[] stepRelativeLayouts = new RelativeLayout[NUMBER_OF_TOTAL_STEPS];
     // Buttons of steps as a trick for setting clickable and transparent of of each step

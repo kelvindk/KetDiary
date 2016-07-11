@@ -20,6 +20,7 @@ import android.util.Log;
 
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
+import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.file.MainStorage;
 import ubicomp.ketdiary.utility.data.structure.AddScore;
 import ubicomp.ketdiary.utility.data.structure.Appeal;
@@ -31,6 +32,7 @@ import ubicomp.ketdiary.utility.data.structure.QuestionTest;
 import ubicomp.ketdiary.utility.data.structure.Reflection;
 import ubicomp.ketdiary.utility.data.structure.TestDetail;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
+import ubicomp.ketdiary.utility.data.structure.TriggerItem;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.system.check.WeekNumCheck;
 
@@ -119,7 +121,9 @@ public class HttpPostGenerator {
 		File[] imageFiles;
 		File[] picFiles;
 		File testFile, detectionFile;
-		
+
+		Log.d("GG", "here : "+mainStorageDir.getPath() + File.separator + _ts
+				+ File.separator);
 		int fileNum = new File(mainStorageDir.getPath() + File.separator + _ts
 				+ File.separator).listFiles().length - 1;
 
@@ -539,12 +543,24 @@ public class HttpPostGenerator {
 		String uid = PreferenceControl.getUID();
 		String deviceId = PreferenceControl.getDeviceId();
 
+		DatabaseControl db = new DatabaseControl();
+		TriggerItem[] triggers = db.getAllTriggerItem();
+		int item = 0;
+		if(triggers != null)
+			for (int i = 0; i < triggers.length; i++)
+				if(triggers[i].getContent().equals(data.scenario)) {
+					item = triggers[i].getItem();
+					break;
+				}
+
+
+
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("uid", uid));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.editTime.getTimeInMillis())));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.eventTime.getTimeInMillis())));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.createTime.getTimeInMillis())));
-		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.scenarioType.ordinal())));
+		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.scenarioType.ordinal()+1)));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.scenario)));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.drugUseRiskLevel)));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.originalBehavior)));
@@ -556,6 +572,7 @@ public class HttpPostGenerator {
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.therapyStatus.ordinal())));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.isAfterTest? 1:0)));
 		nvps.add(new BasicNameValuePair("data[]", String.valueOf(data.isComplete? 1:0)));
+		nvps.add(new BasicNameValuePair("data[]", String.valueOf(item)));
 
 		try {
 			httpPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));

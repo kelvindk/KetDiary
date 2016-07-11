@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -80,6 +80,12 @@ public class EventContentActivity extends AppCompatActivity {
     private Drawable original_thought_original_drawable = null;
     private Drawable original_emotion_original_drawable = null;
     private Drawable original_behavior_original_drawable = null;
+
+    private Toast emptyStep4Toast = null;
+    private Toast emptyStep5Toast = null;
+    private Toast emptyStep6Toast = null;
+    private Toast emptyStep7Toast = null;
+    private Toast emptyStep8Toast = null;
 
 
     private EventLogStructure eventLog = null;
@@ -159,6 +165,12 @@ public class EventContentActivity extends AppCompatActivity {
         event_content_saliva_status_icon = (ImageView) findViewById(R.id.event_content_saliva_status_icon);
         event_content_saliva_status_text = (TextView) findViewById(R.id.event_content_saliva_status_text);
 
+        emptyStep4Toast = Toast.makeText(this, R.string.empty_step4_toast, Toast.LENGTH_SHORT);
+        emptyStep5Toast = Toast.makeText(this, R.string.empty_step5_toast, Toast.LENGTH_SHORT);
+        emptyStep6Toast = Toast.makeText(this, R.string.empty_step6_toast, Toast.LENGTH_SHORT);
+        emptyStep7Toast = Toast.makeText(this, R.string.empty_step7_toast, Toast.LENGTH_SHORT);
+        emptyStep8Toast = Toast.makeText(this, R.string.empty_step8_toast, Toast.LENGTH_SHORT);
+
         // Fill content on UI components.
         loadEventLogDataToUi();
 
@@ -219,7 +231,6 @@ public class EventContentActivity extends AppCompatActivity {
     }
 
 
-
     View.OnClickListener eventContentClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -252,10 +263,60 @@ public class EventContentActivity extends AppCompatActivity {
                     break;
             }
 
-            // Start startCreateEventActivity.
-            startCreateEventActivity(step);
+            //
+            int firstEmptyStep = getFirstEmptyFieldStep();
+            if(firstEmptyStep < step) {
+                Log.d("Ket", "firstEmptyStep "+firstEmptyStep+" step"+ step);
+                switch (firstEmptyStep) {
+                    case 4:
+                        emptyStep4Toast.show();
+                        break;
+                    case 5:
+                        emptyStep5Toast.show();
+                        break;
+                    case 6:
+                        emptyStep6Toast.show();
+                        break;
+                    case 7:
+                        emptyStep7Toast.show();
+                        break;
+                    case 8:
+                        emptyStep8Toast.show();
+                        break;
+                }
+            }
+            else {
+                // Start startCreateEventActivity.
+                startCreateEventActivity(step);
+            }
+
         }
     };
+
+
+    private int getFirstEmptyFieldStep() {
+
+        if(eventLog.originalBehavior.equals(""))
+            return 4;
+
+        if(eventLog.originalEmotion.equals(""))
+            return 5;
+
+        if(eventLog.originalThought.equals(""))
+            return 6;
+
+        if(eventLog.expectedBehavior.equals(""))
+            return 7;
+
+        if(eventLog.expectedEmotion.equals(""))
+            return 8;
+
+        if(eventLog.expectedThought.equals(""))
+            return 9;
+
+
+        return -1;
+    }
 
     /*
     *  Start CreateEventActivity and send an existed EventLogStructure with focus step.
@@ -292,6 +353,7 @@ public class EventContentActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
     private void loadEventLogDataToUi() {

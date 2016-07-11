@@ -33,6 +33,7 @@ import ubicomp.ketdiary.fragments.create_event.steps.StepTimeWrapper;
 import ubicomp.ketdiary.fragments.event.EventContentActivity;
 import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
+import ubicomp.ketdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
@@ -218,6 +219,10 @@ public class CreateEventActivity extends AppCompatActivity {
                     return;
 
                 Log.d("Ket", "actionSaveEvent");
+                // Add score for user.
+                AddScoreDataBase addScoreDataBase = new AddScoreDataBase();
+                addScoreDataBase.addScoreEventLog(initStep, scrollViewAdapter.getCurrentMaxStep());
+
                 // Listener of action Save button
 //                Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.create_event_saved,  Snackbar.LENGTH_LONG);
 //                TextView textViewSnackbar = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
@@ -238,13 +243,10 @@ public class CreateEventActivity extends AppCompatActivity {
                 /*** Need save event data to storage ***/
                 // editEventLog() for editing event, addNewEventLog() for add new event.
                 if(initStep > 0) {
-                    thirdPageDataBase.editEventLog(eventLogStructure);
                     isSaved = true;
                 }
-                else {
-                    thirdPageDataBase.addNewEventLog(eventLogStructure);
-                }
 
+                thirdPageDataBase.editEventLog(eventLogStructure);
 
             }
         });

@@ -124,6 +124,9 @@ public class SpinnerTimePeriodListener implements AdapterView.OnItemSelectedList
         timePeriodText.setText(parent.getItemAtPosition(position).toString());
 
         /*** Log hour to eventTime in eventLogStructure. ***/
+        eventLogStructure.eventTime.set(Calendar.MINUTE, 0);
+        eventLogStructure.eventTime.set(Calendar.SECOND, 0);
+        eventLogStructure.eventTime.set(Calendar.MILLISECOND, 0);
         eventLogStructure.eventTime.set(Calendar.HOUR_OF_DAY, getHourBySelect(position));
 
         Log.d("Ket", "spinner_time_period click");
