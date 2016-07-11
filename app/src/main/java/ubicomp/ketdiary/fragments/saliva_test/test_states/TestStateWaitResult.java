@@ -73,16 +73,10 @@ public class TestStateWaitResult extends TestStateTransition {
                 // Reset to Idle state.
                 getSalivaTestAdapter().setToIdleState(R.string.test_null);
 
-                /*** Go to waiting result fragment ***/
                 PreferenceControl.setResultServiceIsRunning(true);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getSalivaTestAdapter().getMainActivity().getFragmentSwitcher().setFragmentTestWaitResult();
-                    }
-                }, 1500);
 
+                /*** Go to waiting result fragment ***/
+                getSalivaTestAdapter().getMainActivity().getFragmentSwitcher().setFragmentTestPending();
 
                 // Enable clickable of UI components.
                 getSalivaTestAdapter().setEnableUiComponents(true);

@@ -87,8 +87,8 @@ public class FragmentSwitcher {
     }
 
     // Switch to FragmentTestPending.
-    public void setFragmentTestWaitResult() {
-        Log.d("Ket", "setFragmentTestWaitResult");
+    public void setFragmentTestPending() {
+        Log.d("Ket", "setFragmentTestPending");
         toolbarMenuItemWrapper.inflate(this.mainActivity, R.menu.menu_test);
 
         // Switch fragment to selected page.

@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -156,8 +157,13 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         @Override
         public void onClick(View v) {
-            currentState = currentState.transit(TestStateTransition.TEST_BUTTON_CLICK);
 
+            // Only can do saliva test twice in 6 hours.
+            if(testDB.checkTestStatus(Calendar.getInstance()))
+                currentState = currentState.transit(TestStateTransition.TEST_BUTTON_CLICK);
+            else {
+                setToIdleState(R.string.test_instruction_top13);
+            }
         }
     };
 
@@ -416,8 +422,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         salivaVoltageQueueSum = 0;
 
         // Close voltage recording and pause cameraRecorder.
-        voltageFileHandler.close();
-        cameraRecorder.pause();
+        if(voltageFileHandler != null)
+            voltageFileHandler.close();
+        if(cameraRecorder != null)
+            cameraRecorder.pause();
 
         // Invisible progress bar.
         getProgressbar().setVisibility(View.GONE);
