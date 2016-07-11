@@ -27,7 +27,7 @@ public class TestStateIdle extends TestStateTransition {
                 // Get device ID from database.
                 String deviceId = getSalivaTestAdapter().getTestDB().getDeviceId();
 
-                BluetoothLE ble = new BluetoothLE(getSalivaTestAdapter(), deviceId, 0);
+                BluetoothLE ble = new BluetoothLE(getSalivaTestAdapter(), deviceId, 1);
                 getSalivaTestAdapter().setBle(ble);
                 // Try to connect saliva device.
                 ble.bleConnect();
