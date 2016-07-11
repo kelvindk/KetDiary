@@ -8,6 +8,8 @@ import android.view.View;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.CustomToastCassette;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
  * Created by kelvindk on 16/6/19.
@@ -20,6 +22,8 @@ public class TestStateSalivaStage1 extends TestStateTransition {
 
     @Override
     public TestStateTransition transit(int trigger) {
+        TestDetail testDetail = null;
+
         TestStateTransition newState = null;
         switch (trigger) {
             case BLE_NO_CASSETTE_PLUGGED:
@@ -61,11 +65,36 @@ public class TestStateSalivaStage1 extends TestStateTransition {
                 // Enable related phone components that can affect saliva test.
                 getSalivaTestAdapter().setEnableUiComponents(true);
 
+                testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_SALIVA_STAGE1,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "NO_PLUG",
+                        "" );
+
+                getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
+
                 break;
             case BLE_DEVICE_DISCONNECTED:
                 Log.d("TestState", "TestStateSalivaStage1 BLE_DEVICE_DISCONNECTED");
                 // Try to reconnect saliva device.
                 getSalivaTestAdapter().getBle().bleConnect();
+
+                testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_SALIVA_STAGE1,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "BLE_DISC_RE",
+                        "" );
+
+                getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
+
                 newState = this;
                 break;
 
@@ -79,11 +108,13 @@ public class TestStateSalivaStage1 extends TestStateTransition {
                 newState = this;
                 break;
             case BLE_UPDATE_SALIVA_VOLTAGE:
-                Log.d("TestState", "TestStateSalivaStage1 BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltageQueueSum());
+                Log.d("TestState", "TestStateSalivaStage1 BLE_UPDATE_SALIVA_VOLTAGE "+getSalivaTestAdapter().getSalivaVoltageAverage());
                 // If first cassette electrode is conducted, transit to TestStateSalivaStage2.
-                if(getSalivaTestAdapter().getSalivaVoltageQueueSum()
+                if(getSalivaTestAdapter().getSalivaVoltageAverage()
                         > SalivaTestAdapter.FIRST_VOLTAGE_THRESHOLD) {
                     Log.d("TestState", "FIRST_VOLTAGE_THRESHOLD");
+
+                    PreferenceControl.setPassVoltage1(getSalivaTestAdapter().getSalivaVoltageAverage());
 
                     // Set corresponding text on test screen.
                     getSalivaTestAdapter().getTextviewTestInstructionTop().setText("");

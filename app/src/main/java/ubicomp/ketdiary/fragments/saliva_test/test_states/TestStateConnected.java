@@ -8,6 +8,8 @@ import android.view.View;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.CustomToastCassette;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
  * Created by kelvindk on 16/6/19.
@@ -84,6 +86,7 @@ public class TestStateConnected extends TestStateTransition {
 
     @Override
     public TestStateTransition transit(int trigger) {
+        TestDetail testDetail = null;
 
         switch (trigger) {
             case BLE_NO_CASSETTE_PLUGGED:
@@ -121,6 +124,18 @@ public class TestStateConnected extends TestStateTransition {
                 // Enable related phone components that can affect saliva test.
                 getSalivaTestAdapter().setEnableUiComponents(true);
 
+                testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_CONNECTED,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "NO_PLUG",
+                        "" );
+
+                getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
+
                 break;
 
             case DEVICE_LOW_BATTERY:
@@ -132,6 +147,18 @@ public class TestStateConnected extends TestStateTransition {
 
                 // Transit to StateIdle and show error message.
                 newState = getSalivaTestAdapter().setToIdleState(R.string.test_instruction_top11);
+
+                testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_CONNECTED,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "LOW_BAT",
+                        "" );
+
+                getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
 
                 break;
 
@@ -169,6 +196,19 @@ public class TestStateConnected extends TestStateTransition {
 
                 // Transit to StateIdle and show error message.
                 newState = getSalivaTestAdapter().setToIdleState(R.string.test_instruction_top12);
+
+                testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_CONNECTED,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "BLE_IMG_FAIL",
+                        "" );
+
+                getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
+
                 break;
             case CANCEL_COUNTDOWN_TIMER:
                 Log.d("TestState", "CANCEL_COUNTDOWN_TIMER ");

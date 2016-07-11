@@ -16,6 +16,7 @@ import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.main_activity.CustomToast;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 
@@ -52,6 +53,8 @@ public class ResultServiceAdapter {
     class IncomingHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
+            TestDetail testDetail = null;
+            FirstPageDataBase firstPageDataBase = new FirstPageDataBase();
 
             if (msg.what == ResultService.MSG_CURRENT_COUNTDOWN) {
                 Log.d("Ket", "resultServiceCountdown " + msg.arg1);
@@ -79,6 +82,18 @@ public class ResultServiceAdapter {
 
                         mainActivity.stopService(intent);
 
+                        testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                                PreferenceControl.getUpdateDetectionTimestamp(),
+                                TestDetail.TEST_WAIT_RESULT_COMPLETE,
+                                PreferenceControl.getPassVoltage1(),
+                                PreferenceControl.getPassVoltage2(),
+                                PreferenceControl.getBatteryLevel(),
+                                0, 0,
+                                "NO_PLUG",
+                                "" );
+
+                        firstPageDataBase.addTestDetail(testDetail);
+
                         break;
 
                     case ResultService.MSG_SERVICE_FAIL_CONNECT_TIMEOUT:
@@ -91,6 +106,18 @@ public class ResultServiceAdapter {
                         mainActivity.getFragmentSwitcher().setFragment(FragmentSwitcher.FRAGMENT_TEST);
 
                         doUnbindService();
+
+                        testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                                PreferenceControl.getUpdateDetectionTimestamp(),
+                                TestDetail.TEST_WAIT_RESULT_COMPLETE,
+                                PreferenceControl.getPassVoltage1(),
+                                PreferenceControl.getPassVoltage2(),
+                                PreferenceControl.getBatteryLevel(),
+                                0, 0,
+                                "CONNECTION_TIMEOUT",
+                                "" );
+
+                        firstPageDataBase.addTestDetail(testDetail);
 
                         mainActivity.stopService(intent);
                         break;
@@ -105,9 +132,19 @@ public class ResultServiceAdapter {
                                 cassetteId,
                                 1, 0, 0, 0);
 
-                        FirstPageDataBase firstPageDataBase = new FirstPageDataBase();
+                        testDetail = new TestDetail(cassetteId,
+                                PreferenceControl.getUpdateDetectionTimestamp(),
+                                TestDetail.TEST_WAIT_RESULT_COMPLETE,
+                                PreferenceControl.getPassVoltage1(),
+                                PreferenceControl.getPassVoltage2(),
+                                PreferenceControl.getBatteryLevel(),
+                                0, 0,
+                                "TEST_COMPLETE",
+                                "" );
+
                         firstPageDataBase.setCassetteUsed(cassetteId);
                         firstPageDataBase.addTestResult(testResult);
+                        firstPageDataBase.addTestDetail(testDetail);
 
 //                        // Show CustomToast.
 //                        if(result == 1) { // Saliva test results positive.

@@ -1525,4 +1525,34 @@ public class PreferenceControl {
 		edit.commit();
 	}
 
+    public static void setPassVoltage1(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("PassVoltage1", v);
+        edit.commit();
+    }
+
+    public static int getPassVoltage1() {
+        return sp.getInt("PassVoltage1", 0);
+    }
+
+    public static void setPassVoltage2(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("PassVoltage2", v);
+        edit.commit();
+    }
+
+    public static int getPassVoltage2() {
+        return sp.getInt("PassVoltage2", 0);
+    }
+
+    public static void setBatteryLevel(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("BatteryLevel", v);
+        edit.commit();
+    }
+
+    public static int getBatteryLevel() {
+        return sp.getInt("BatteryLevel", 0);
+    }
+
 }

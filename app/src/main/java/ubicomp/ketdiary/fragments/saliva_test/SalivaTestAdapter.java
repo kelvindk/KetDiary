@@ -30,6 +30,7 @@ import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.file.ImageFileHandler;
 import ubicomp.ketdiary.utility.data.file.MainStorage;
 import ubicomp.ketdiary.utility.data.file.VoltageFileHandler;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothListener;
@@ -236,7 +237,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     }
 
     // Getter of moving average of salivaVoltage.
-    public int getSalivaVoltageQueueSum() {
+    public int getSalivaVoltageAverage() {
         return salivaVoltageQueueSum/SALIVA_VOLTAGE_QUEUE_SIZE;
     }
 
@@ -295,6 +296,18 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
                 // Take photo!
                 cameraRunHandler.sendEmptyMessage(0);
                 setToIdleState(R.string.test_instruction_top7);
+
+                TestDetail testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_SALIVA_STAGE1,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "NOT_ENOUGH_SALIVA",
+                        "" );
+
+                testDB.addTestDetail(testDetail);
             }
 
             @Override
@@ -415,6 +428,10 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
             ble.bleSelfDisconnection();
             ble = null;
         }
+
+        // Reset two saliva voltages in testing.
+        PreferenceControl.setPassVoltage1(0);
+        PreferenceControl.setPassVoltage2(0);
 
 
         // Clear salivaVoltageQueue & salivaVoltageQueueSum.
@@ -586,6 +603,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void blePlugInserted(int cassetteId) {
         Log.d("BLE", currentState.getClass().getSimpleName()+" blePlugInserted "+cassetteId);
+
         PreferenceControl.setCassetteId(cassetteId);
         pluggedCassetteId = cassetteId;
         currentState = currentState.transit(TestStateTransition.BLE_CASSETTE_PLUGGED);
@@ -594,6 +612,9 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     @Override
     public void bleUpdateBattLevel(int battVolt) {
         Log.d("BLE", "bleUpdateBattLevel "+battVolt);
+
+        PreferenceControl.setBatteryLevel(battVolt);
+
         if(battVolt < DEVICE_LOW_BATTERY_THRESHOLD)
             currentState = currentState.transit(TestStateTransition.DEVICE_LOW_BATTERY);
     }

@@ -1,7 +1,16 @@
 package ubicomp.ketdiary.utility.data.structure;
 
 public class TestDetail {
-	
+
+	public static int TEST_CONNECTED = 0;
+	public static int TEST_CONNECTING = 1;
+	public static int TEST_IDLE = 2;
+	public static int TEST_SALIVA_STAGE1 = 3;
+	public static int TEST_SALIVA_STAGE2 = 4;
+	public static int TEST_SALIVA_STAGE3 = 5;
+	public static int TEST_SALIVA_STAGE3_RESPIT = 6;
+	public static int TEST_WAIT_RESULT_COMPLETE = 8;
+
 	public String cassetteId;
 	public TimeValue tv;
 	public int failedState;

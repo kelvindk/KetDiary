@@ -443,6 +443,7 @@ public class ResultService extends Service implements BluetoothListener{
     @Override
     public void bleUpdateBattLevel(int battVolt) {
         Log.d(TAG, "bleUpdateBattLevel "+battVolt);
+        PreferenceControl.setBatteryLevel(battVolt);
     }
 
     @Override

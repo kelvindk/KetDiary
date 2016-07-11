@@ -6,6 +6,8 @@ import android.view.View;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 
 /**
@@ -19,6 +21,8 @@ public class TestStateConnecting extends TestStateTransition {
 
     @Override
     public TestStateTransition transit(int trigger) {
+        TestDetail testDetail = null;
+
         TestStateTransition newState = null;
         switch (trigger) {
             case BLE_ENABLE_USER_PRESS_CANCEL:
@@ -53,6 +57,19 @@ public class TestStateConnecting extends TestStateTransition {
                 getSalivaTestAdapter().setEnableUiComponents(true);
                 // Transit to TestStateIdle.
                 newState = new TestStateIdle(getSalivaTestAdapter());
+
+                testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
+                        PreferenceControl.getUpdateDetectionTimestamp(),
+                        TestDetail.TEST_CONNECTING,
+                        PreferenceControl.getPassVoltage1(),
+                        PreferenceControl.getPassVoltage2(),
+                        PreferenceControl.getBatteryLevel(),
+                        0, 0,
+                        "CON_TIMEOUT",
+                        "" );
+
+                getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
+
                 break;
             case BLE_DEVICE_CONNECTED:
                 Log.d("TestState", "BLE_DEVICE_CONNECTED");
