@@ -14,8 +14,10 @@ import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
+import ubicomp.ketdiary.utility.data.file.VoltageFileHandler;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
+import ubicomp.ketdiary.utility.test.camera.CameraRecorder;
 
 /**
  * A placeholder fragment containing a simple view for Test fragment.
@@ -24,7 +26,7 @@ public class FragmentTest extends Fragment {
     private MainActivity mainActivity = null;
     private FragmentSwitcher fragmentSwitcher = null;
 
-    private SalivaTestAdapter salivaTestAdapter = null;
+    private static SalivaTestAdapter salivaTestAdapter = null;
 
 
     private TextView textviewToolbar = null;
@@ -104,8 +106,25 @@ public class FragmentTest extends Fragment {
     }
 
     @Override
+    public void onStop() {
+        Log.d("Ket", "FragmentTest onStop");
+
+        // Close voltage recording and pause cameraRecorder.
+        VoltageFileHandler voltageFileHandler = salivaTestAdapter.getVoltageFileHandler();
+        if (voltageFileHandler != null)
+            voltageFileHandler.close();
+        CameraRecorder cameraRecorder = salivaTestAdapter.getCameraRecorder();
+        if (cameraRecorder != null)
+            cameraRecorder.close();
+
+        super.onStop();
+    }
+
+    @Override
     public void onDestroy() {
         Log.d("Ket", "FragmentTest onDestroy");
+
+
 
         // Request disconnect and disable notification to device.
         BluetoothLE ble = salivaTestAdapter.getBle();

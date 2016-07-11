@@ -3,6 +3,7 @@ package ubicomp.ketdiary.fragments.saliva_test.test_states;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -72,12 +73,16 @@ public class TestStateWaitResult extends TestStateTransition {
                 // Reset to Idle state.
                 getSalivaTestAdapter().setToIdleState(R.string.test_null);
 
-                // Write timestamp to preference as ID of this saliva test.
-                PreferenceControl.setUpdateDetectionTimestamp(System.currentTimeMillis());
-
                 /*** Go to waiting result fragment ***/
                 PreferenceControl.setResultServiceIsRunning(true);
-                getSalivaTestAdapter().getMainActivity().getFragmentSwitcher().setFragmentTestWaitResult();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getSalivaTestAdapter().getMainActivity().getFragmentSwitcher().setFragmentTestWaitResult();
+                    }
+                }, 1500);
+
 
                 // Enable clickable of UI components.
                 getSalivaTestAdapter().setEnableUiComponents(true);

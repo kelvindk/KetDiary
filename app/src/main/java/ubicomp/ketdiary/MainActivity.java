@@ -1,25 +1,16 @@
 package ubicomp.ketdiary;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
 import ubicomp.ketdiary.fragments.FragmentTest;
-import ubicomp.ketdiary.fragments.event.EventLogStructure;
 import ubicomp.ketdiary.fragments.saliva_test.ResultService;
 import ubicomp.ketdiary.fragments.saliva_test.ResultServiceAdapter;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
@@ -27,12 +18,12 @@ import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
-import ubicomp.ketdiary.utility.data.db.DatabaseControl;
 import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
-import ubicomp.ketdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.ketdiary.utility.data.download.Downloader;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
+import ubicomp.ketdiary.utility.data.upload.UploadService;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
+import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -91,11 +82,13 @@ public class MainActivity extends AppCompatActivity {
         downloader.updateTrigger();
         downloader.updateCassetteTask();
 
+
+
         // For developing
 //        Calendar calendar = (Calendar) Calendar.getInstance().clone();
 //        calendar.add(Calendar.DATE, -1);
 //        TestResult testResult = new TestResult(1,
-//                PreferenceControl.getSalivaTestTimestamp(),
+//                System.currentTimeMillis(),
 //                "11",
 //                1, 0, 0, 0);
 //
@@ -220,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-//                        fragmentSwitcher.setHideFragment(FragmentSwitcher.FRAGMENT_TEST_PENDING);
+                        fragmentSwitcher.getFragmentStatistics().onResume();
                         fragmentSwitcher.setFragment(FragmentSwitcher.FRAGMENT_STATISTICS);
                     }
                 }, 500);
@@ -335,11 +328,22 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         Log.d("Ket", "MainActivity onDestroy");
 
+        // Upload local data to server.
+        UploadService.startUploadService(this);
+
         super.onDestroy();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        Log.d("Ket", "MainActivity onActivityResult "+requestCode+" "+resultCode);
+
+        // Forward onActivityResult to FragmentTest.
+        if (requestCode == BluetoothLE.REQUEST_ENABLE_BT) {
+            fragmentSwitcher.getFragmentTest().onActivityResult(requestCode, resultCode, intent);
+        }
+
+
         if (requestCode == TestStateWaitResult.SALIVA_TEST_INT_KEY) {
             Log.d("Ket", "MainActivity onActivityResult SALIVA_TEST_INT_KEY");
 

@@ -168,6 +168,8 @@ public class DatabaseControl {
 			return testResult;
 		}
 	}
+
+
 	
 	/**
 	 * This method is used for inserting a result detection
@@ -181,10 +183,31 @@ public class DatabaseControl {
 	 * @see com.ubicomp.ketdiary.data.structure.TestResult
 	 */
 
-	public void insertTestResult(TestResult data) {
+	public int insertTestResult(TestResult data) {
+		int addScore = 0;
 		synchronized (sqlLock) {
+			TestResult prev_data = getLatestTestResult();
 
 			db = dbHelper.getWritableDatabase();
+			boolean sameDay = false;
+			if(data.tv.isSameDay(prev_data.tv)) {
+				sameDay = true;
+
+				String sql = "UPDATE TestResult SET isPrime = 0 WHERE ts ="
+						+ prev_data.getTv().getTimestamp();
+				db.execSQL(sql);
+
+				if(prev_data.result == 1 && data.result == 0)
+					addScore++;
+			}
+			else
+			{
+				addScore++;
+				if(data.result == 0)
+					addScore++;
+			}
+
+			//db = dbHelper.getWritableDatabase();
 			ContentValues content = new ContentValues();
 			content.put("result", data.getResult());
 			content.put("cassetteId", data.getCassette_id());
@@ -202,6 +225,54 @@ public class DatabaseControl {
 			db.insert("TestResult", null, content);
 			db.close();
 		}
+		return addScore;
+	}
+
+	public int insertDummyTestResult(TestResult data) {
+		int addScore = 0;
+		synchronized (sqlLock) {
+			TestResult prev_data = getDayTestResult(data.getTv().getYear(), data.getTv().getMonth(),
+					data.getTv().getDay());
+
+			db = dbHelper.getWritableDatabase();
+			if(prev_data.result == -1)
+			{
+				if(data.result == 0)
+					addScore = 2;
+				else
+					addScore = 1;
+			}
+			else
+			{
+				String sql = "UPDATE TestResult SET isPrime = 0 WHERE ts ="
+						+ prev_data.getTv().getTimestamp();
+				db.execSQL(sql);
+
+				if(prev_data.result == 1)
+					addScore = 0;
+				else
+					addScore = 1;
+			}
+
+			//db = dbHelper.getWritableDatabase();
+			ContentValues content = new ContentValues();
+			content.put("result", data.getResult());
+			content.put("cassetteId", data.getCassette_id());
+			content.put("year", data.getTv().getYear());
+			content.put("month", data.getTv().getMonth());
+			content.put("day", data.getTv().getDay());
+			content.put("ts", data.getTv().getTimestamp());
+			content.put("week", data.getTv().getWeek());
+			content.put("isPrime", 1);
+			content.put("isFilled", data.getIsFilled());
+			content.put("weeklyScore", 0);
+			content.put("score", 0);
+			//content.put("weeklyScore", weeklyScore + addScore);
+			//content.put("score", score + addScore);
+			db.insert("TestResult", null, content);
+			db.close();
+		}
+		return addScore;
 	}
 
 	public int insertTestResult(TestResult data, boolean update) {
@@ -279,6 +350,7 @@ public class DatabaseControl {
 	
 	public TestResult getDayTestResult(int Year, int Month, int Day) {
 		synchronized (sqlLock) {
+
 			db = dbHelper.getReadableDatabase();
 			String sql;
 			Cursor cursor;
@@ -317,7 +389,7 @@ public class DatabaseControl {
 	 * 
 	 * @return result 
 	 */
-	public int getTodayPrimeResult() {
+	public int getTodayPrimeResultInt() {
 		synchronized (sqlLock) {
 			int result;
 			Calendar cal = Calendar.getInstance();
@@ -338,6 +410,45 @@ public class DatabaseControl {
 			cursor.close();
 			db.close();
 			return result;
+		}
+	}
+
+	public TestResult getTodayPrimeResult() {
+		synchronized (sqlLock) {
+			Calendar cal = Calendar.getInstance();
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH);
+			int day = cal.get(Calendar.DATE);
+
+			db = dbHelper.getReadableDatabase();
+
+			String sql = "SELECT result FROM TestResult WHERE year = "
+					+ year + " AND month = " + month + " AND day = " + day
+					+ " AND isPrime = 1";
+
+			//Log.d("GG", sql);
+
+			Cursor cursor = db.rawQuery(sql, null);
+
+			int count = cursor.getCount();
+			if (!cursor.moveToFirst()) {
+				cursor.close();
+				db.close();
+				return new TestResult(-1, 0, "ket_default", 0, 0, 0, 0);
+			}
+
+			int result = cursor.getInt(1);
+			String cassetteId = cursor.getString(2);
+			long ts = cursor.getLong(6);
+			int isPrime = cursor.getInt(8);
+			int isFilled= cursor.getInt(9);
+			int weeklyScore = cursor.getInt(10);
+			int score = cursor.getInt(11);
+			TestResult testResult = new TestResult(result, ts, cassetteId, isPrime, isFilled, weeklyScore, score);
+			cursor.close();
+			db.close();
+
+			return testResult;
 		}
 	}
 	
@@ -2754,9 +2865,9 @@ public class DatabaseControl {
 				db = dbHelper.getWritableDatabase();
 				ContentValues content = new ContentValues();
 				
-				content.put("ts", data.getTv().getTimestamp());
+				content.put("ts", data.getCreateTime().getTimeInMillis());
 				content.put("score", data.getScore());
-				content.put("relationKey", data.getKey());
+				content.put("relationKey", data.getEventTime().getTimeInMillis());
 				content.put("isReflection", data.getIsReflection());
 				db.insert("Identity", null, content);
 				db.close();
@@ -2783,11 +2894,17 @@ public class DatabaseControl {
 
 				for (int i = 0; i < count; ++i) {
 					cursor.moveToPosition(i);
-					long ts = cursor.getLong(1);
+					long create_ts = cursor.getLong(1);
 					int score = cursor.getInt(2);
-					int key = cursor.getInt(3);
+					long event_ts = cursor.getInt(3);
 					int isReflection = cursor.getInt(4);
-					data[i] = new IdentityScore(ts, score, key, isReflection);
+
+					Calendar create_cal = Calendar.getInstance();
+					create_cal.setTimeInMillis(create_ts);
+					Calendar event_cal = Calendar.getInstance();
+					event_cal.setTimeInMillis(event_ts);
+
+					data[i] = new IdentityScore(create_cal, score, event_cal, isReflection);
 				}
 				cursor.close();
 				db.close();
@@ -3085,6 +3202,63 @@ public class DatabaseControl {
 			content.put("isLastest", 1);
 
 			db.insert("EventLog", null, content);
+			db.close();
+		}
+	}
+
+	public EventLogStructure[] getNotUploadedEventLog() {
+		Log.i("GG", "getNotUploadEventLog");
+		synchronized (sqlLock) {
+			EventLogStructure[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql;
+			Cursor cursor;
+			sql = "SELECT * FROM EventLog WHERE upload = 0";
+			cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			data = new EventLogStructure[count];
+
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+				data[i] = new EventLogStructure();
+
+				data[i].editTime = Calendar.getInstance();
+				data[i].eventTime = Calendar.getInstance();
+				data[i].createTime = Calendar.getInstance();
+				data[i].editTime.setTimeInMillis(cursor.getLong(1));
+				data[i].eventTime.setTimeInMillis(cursor.getLong(2));
+				data[i].createTime.setTimeInMillis(cursor.getLong(3));
+				data[i].scenarioType = EventLogStructure.ScenarioTypeEnum.values()[cursor.getInt(4)];
+				data[i].scenario = cursor.getString(5);
+				data[i].drugUseRiskLevel = cursor.getInt(6);
+				data[i].originalBehavior = cursor.getString(7);
+				data[i].originalEmotion = cursor.getString(8);
+				data[i].originalThought = cursor.getString(9);
+				data[i].expectedBehavior = cursor.getString(10);
+				data[i].expectedEmotion = cursor.getString(11);
+				data[i].expectedThought = cursor.getString(12);
+				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
+				data[i].isAfterTest = (cursor.getInt(14) > 0);
+				data[i].isComplete =  (cursor.getInt(15) > 0);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
+	public void setEventLogUploaded(long ts) {
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			String sql = "UPDATE EventLog SET upload = 1 WHERE editTime = "
+					+ ts;
+			db.execSQL(sql);
 			db.close();
 		}
 	}

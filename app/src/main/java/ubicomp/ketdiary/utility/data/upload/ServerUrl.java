@@ -203,6 +203,20 @@ public class ServerUrl {
 		else
 			return SERVER_URL + URL;
 	}
+
+	/**
+	 * URL for inserting table EventLog
+	 *
+	 * @return url
+	 */
+	public static String getEventLogUrl(){
+		final String URL = "test/EventLog.php";
+		boolean develop = PreferenceControl.isDeveloper();
+		if (develop)
+			return SERVER_URL_DEVELOP + URL;
+		else
+			return SERVER_URL + URL;
+	}
 	/**
 	 * URL for uploading clicklog
 	 * 

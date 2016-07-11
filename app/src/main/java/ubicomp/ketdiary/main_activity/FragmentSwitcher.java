@@ -168,4 +168,11 @@ public class FragmentSwitcher {
     public FragmentTest getFragmentTest() {
         return (FragmentTest) fragments[FRAGMENT_TEST];
     }
+
+    /*
+    *  Getter of FragmentTest
+    * */
+    public FragmentStatistics getFragmentStatistics() {
+        return (FragmentStatistics) fragments[FRAGMENT_STATISTICS];
+    }
 }

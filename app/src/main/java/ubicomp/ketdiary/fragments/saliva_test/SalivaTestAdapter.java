@@ -44,11 +44,11 @@ import ubicomp.ketdiary.utility.test.camera.CameraRunHandler;
  */
 public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
-    public static int FIRST_VOLTAGE_THRESHOLD = 200;//PreferenceControl.getVoltag1();
-    public static int SECOND_VOLTAGE_THRESHOLD= 100;//PreferenceControl.getVoltag2();
-    public static int SALIVA_VOLTAGE_QUEUE_SIZE= 3;
+    public static int FIRST_VOLTAGE_THRESHOLD = PreferenceControl.getVoltag1();
+    public static int SECOND_VOLTAGE_THRESHOLD = PreferenceControl.getVoltag2();
+    public static int SALIVA_VOLTAGE_QUEUE_SIZE = 3;
 
-    public static int DEVICE_LOW_BATTERY_THRESHOLD= 102;
+    public static int DEVICE_LOW_BATTERY_THRESHOLD = 103;
 
     public static final int STAGE1_COUNTDOWN = 12000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
@@ -90,8 +90,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     private CameraRunHandler cameraRunHandler = null;
 
     // Storage components, store test results.
-    private ImageFileHandler imgFileHandler;
-    private VoltageFileHandler voltageFileHandler;
+    private ImageFileHandler imgFileHandler = null;
+    private VoltageFileHandler voltageFileHandler = null;
 
     // Cassette saliva voltage, maintain a size tree queue to calculate moving average.
     private Queue salivaVoltageQueue = new LinkedList();
@@ -391,7 +391,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     }
 
     // Transit to Idle state.
-    public void setToIdleState(int failMessage) {
+    public TestStateIdle setToIdleState(int failMessage) {
         // Set corresponding text on test screen.
         getTextviewTestButton().setBackgroundResource(0);
         getTextviewTestButton().setText(R.string.test_start);
@@ -403,7 +403,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         // Disconnect BLE connection with device.
         if(ble != null) {
-//            ble.bleUnlockDevice();
+            ble.bleUnlockDevice();
 //            ble.bleDerequestSalivaVoltage();
 //            ble.bleCancelCassetteInfo();
             ble.bleSelfDisconnection();
@@ -430,6 +430,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         // Enable related phone components that can affect saliva test.
         setEnableUiComponents(true);
+
+        return (TestStateIdle) currentState;
     }
 
     // When start saliva test process, block all related components that can affect testing.
@@ -445,7 +447,6 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
              if(imageFaceAnchor != null)
                 imageFaceAnchor.setVisibility(View.INVISIBLE);
             if(cameraRecorder != null) {
-                cameraRecorder.pause();
                 cameraRecorder.close();
             }
             releaseWakeLock();
@@ -479,6 +480,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public void initTestLogComponents() {
         // This timestamp will be a unique ID as directory name to store test data.
         long timestamp = System.currentTimeMillis();
+        // Write timestamp to preference as ID of this saliva test.
+        PreferenceControl.setUpdateDetectionTimestamp(timestamp);
 
         // Root directory.
         File dir = MainStorage.getMainStorageDirectory();

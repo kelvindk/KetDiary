@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import ubicomp.ketdiary.fragments.FragmentTest;
 import ubicomp.ketdiary.main_activity.KetdiaryApplication;
 import ubicomp.ketdiary.MainActivity;
 
@@ -355,7 +356,7 @@ public class BluetoothLE {
         if (!mBluetoothAdapter.isEnabled()) {
             if (!mBluetoothAdapter.isEnabled()) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                MainActivity.getMainActivity().getFragmentTest().startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                MainActivity.getMainActivity().startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
         }
         else {

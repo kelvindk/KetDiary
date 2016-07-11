@@ -23,16 +23,10 @@ public class TestStateConnecting extends TestStateTransition {
         switch (trigger) {
             case BLE_ENABLE_USER_PRESS_CANCEL:
                 Log.d("TestState", "BLE_ENABLE_USER_PRESS_CANCEL");
-                // Set corresponding text on test screen.
-                getSalivaTestAdapter().getTextviewTestButton().setText(R.string.test_start);
-                getSalivaTestAdapter().getTextviewTestInstructionTop().setText(R.string.test_instruction_top1);
-                getSalivaTestAdapter().getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
-                // Disable progress bar.
-                getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
-                // Enable center button.
-                getSalivaTestAdapter().getImagebuttonTestButton().setClickable(true);
-                // Transit to TestStateIdle.
-                newState = new TestStateIdle(getSalivaTestAdapter());
+
+                // Transit to StateIdle and show error message.
+                newState = getSalivaTestAdapter().setToIdleState(R.string.test_instruction_top1);
+
                 break;
             case BLE_ENABLE_USER_PRESS_CONFIRM:
                 Log.d("TestState", "BLE_ENABLE_USER_PRESS_CONFIRM");

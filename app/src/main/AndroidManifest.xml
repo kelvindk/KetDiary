@@ -143,6 +143,9 @@
         <service android:name=".fragments.saliva_test.ResultService"
             android:enabled="true" />
 
+        <service android:name=".utility.data.upload.UploadService"
+            android:enabled="true" />
+
     </application>
 
 </manifest>

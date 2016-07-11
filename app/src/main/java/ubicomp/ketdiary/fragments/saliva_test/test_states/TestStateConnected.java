@@ -126,29 +126,12 @@ public class TestStateConnected extends TestStateTransition {
             case DEVICE_LOW_BATTERY:
                 Log.d("TestState", "DEVICE_LOW_BATTERY");
 
-                // Set corresponding text on test screen.
-                getSalivaTestAdapter().getTextviewTestButton().setText(R.string.test_start);
-                getSalivaTestAdapter().getTextviewTestInstructionTop().setText(R.string.test_instruction_top11);
-                getSalivaTestAdapter().getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
-
-                // Enable center button.
-                getSalivaTestAdapter().getImagebuttonTestButton().setClickable(true);
-
-                // Disable progress bar.
-                getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
-
-                // Transit to TestStateIdle.
-                newState = new TestStateIdle(getSalivaTestAdapter());
-
                 // Finish the prepareSalivaCountdown.
                 if(prepareSalivaCountdown != null)
                     prepareSalivaCountdown.cancel();
 
-                // Disconnect BLE connection with device.
-                getSalivaTestAdapter().getBle().bleSelfDisconnection();
-
-                // Enable related phone components that can affect saliva test.
-                getSalivaTestAdapter().setEnableUiComponents(true);
+                // Transit to StateIdle and show error message.
+                newState = getSalivaTestAdapter().setToIdleState(R.string.test_instruction_top11);
 
                 break;
 
@@ -179,31 +162,13 @@ public class TestStateConnected extends TestStateTransition {
                 break;
             case BLE_GET_IMAGE_FAILURE:
                 Log.d("TestState", "BLE_GET_IMAGE_FAILURE ");
-                // Set corresponding text on test screen.
-                getSalivaTestAdapter().getTextviewTestButton().setText(R.string.test_start);
-                getSalivaTestAdapter().getTextviewTestInstructionTop().setText(R.string.test_instruction_top12);
-                getSalivaTestAdapter().getTextviewTestInstructionDown().setText(R.string.test_instruction_down1);
-
-                // Disable progress bar.
-                getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
-
-                // Enable center button.
-                getSalivaTestAdapter().getImagebuttonTestButton().setClickable(true);;
-
-                // Transit to TestStateIdle.
-                newState = new TestStateIdle(getSalivaTestAdapter());
 
                 // Finish the prepareSalivaCountdown.
                 if(prepareSalivaCountdown != null)
                     prepareSalivaCountdown.cancel();
 
-                // Disconnect BLE connection with device.
-                getSalivaTestAdapter().getBle().bleSelfDisconnection();
-
-                // Enable related phone components that can affect saliva test.
-                getSalivaTestAdapter().setEnableUiComponents(true);
-
-                newState = this;
+                // Transit to StateIdle and show error message.
+                newState = getSalivaTestAdapter().setToIdleState(R.string.test_instruction_top12);
                 break;
             case CANCEL_COUNTDOWN_TIMER:
                 Log.d("TestState", "CANCEL_COUNTDOWN_TIMER ");
