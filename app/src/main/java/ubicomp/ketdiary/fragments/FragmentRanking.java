@@ -93,4 +93,5 @@ public class FragmentRanking extends Fragment {
             return;
         rankingListAdapter.invisibleList();
     }
+
 }

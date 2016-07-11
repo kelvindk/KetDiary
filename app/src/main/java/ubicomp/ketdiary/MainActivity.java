@@ -2,6 +2,7 @@ package ubicomp.ketdiary;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +19,7 @@ import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
+import ubicomp.ketdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.download.Downloader;
 import ubicomp.ketdiary.utility.data.structure.Cassette;
@@ -29,6 +31,8 @@ import ubicomp.ketdiary.utility.test.bluetoothle.BluetoothLE;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int BROWSING_COUNTDOWN = 10000; // 10000
+
     // The wrapper to handle toolbar.
     private ToolbarMenuItemWrapper toolbarMenuItemWrapper = null;
     // The wrapper to handle tab layout.
@@ -38,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
     private FragmentSwitcher fragmentSwitcher = null;
 
     private static MainActivity mainActivity = null;
+
+    // Countdown timer for checking user's browsing time for event page and ranking page.
+    private CountDownTimer eventBrowsingCountdown = null;
+    private CountDownTimer rankingBrowsingCountdown = null;
 
     public ResultServiceAdapter getResultServiceAdapter(SalivaTestAdapter salivaTestAdapter) {
         resultServiceAdapter = new ResultServiceAdapter(this, salivaTestAdapter);
@@ -270,17 +278,71 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void startBrowsingCountdown(int fragment) {
+        switch (fragment) {
+            case FragmentSwitcher.FRAGMENT_TEST:
+            case FragmentSwitcher.FRAGMENT_STATISTICS:
+            case FragmentSwitcher.FRAGMENT_TEST_PENDING:
+
+                // Cancel browsing countdown when leaving this page.
+                if(eventBrowsingCountdown != null)
+                    eventBrowsingCountdown.cancel();
+                if(rankingBrowsingCountdown != null)
+                    rankingBrowsingCountdown.cancel();
+
+                break;
+            case FragmentSwitcher.FRAGMENT_EVENT:
+                if(rankingBrowsingCountdown != null)
+                    rankingBrowsingCountdown.cancel();
+
+                // Start countdown timer to check whether user's browsing is over 10 sec.
+                eventBrowsingCountdown = new CountDownTimer(BROWSING_COUNTDOWN, BROWSING_COUNTDOWN){
+                    @Override
+                    public void onFinish() {
+                        // Invoke add score.
+                        Log.d("AddScore", "addScoreViewPage3List");
+                        AddScoreDataBase addScoreDataBase = new AddScoreDataBase();
+                        addScoreDataBase.addScoreViewPage3List();
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        // No op.
+//                        Log.d("AddScore", "Page 3 - 1  Tick "+ millisUntilFinished/1000);
+                    }
+                }.start();
+
+                break;
+            case FragmentSwitcher.FRAGMENT_RANKING:
+                if(eventBrowsingCountdown != null)
+                    eventBrowsingCountdown.cancel();
+
+                // Start countdown timer to check whether user's browsing is over 10 sec.
+                rankingBrowsingCountdown = new CountDownTimer(BROWSING_COUNTDOWN, BROWSING_COUNTDOWN){
+                    @Override
+                    public void onFinish() {
+                        // Invoke add score.
+                        Log.d("AddScore", "addScoreViewPage4List");
+                        AddScoreDataBase addScoreDataBase = new AddScoreDataBase();
+                        addScoreDataBase.addScoreViewPage4List();
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        // No op.
+//                        Log.d("AddScore", "Page 4 - 1  Tick "+ millisUntilFinished/1000);
+                    }
+                }.start();
+
+                break;
+        }
+    }
+
     @Override
     public void onResume() {
-        Log.d("Ket", "MainActivity onResume");
-        /*** Not sure following codes for OpenCV, currently work fine ***/
-//        if (!OpenCVLoader.initDebug()) {
-//            Log.d("Ket", "Internal OpenCV library not found. Using OpenCV Manager for initialization");
-//            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this, mLoaderCallback);
-//        } else {
-//            Log.d("Ket", "OpenCV library found inside package. Using it!");
-//            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
-//        }
+        Log.d("Ket", "MainActivity onResume ");
+
+        startBrowsingCountdown(fragmentSwitcher.getCurrentFragment());
 
         // Check ResultService is running or not.
         textviewToolbar = (TextView) findViewById(R.id.textview_toolbar);
@@ -308,6 +370,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         Log.d("Ket", "MainActivity onPause");
+
+        // Cancel browsing countdown when leaving this page.
+        if(eventBrowsingCountdown != null)
+            eventBrowsingCountdown.cancel();
+        if(rankingBrowsingCountdown != null)
+            rankingBrowsingCountdown.cancel();
+
         // Unbind the connection with ResultService.
         // With a trick to stop service.
         if(resultServiceAdapter != null)
