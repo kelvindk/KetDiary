@@ -109,13 +109,13 @@ public class ResultServiceAdapter {
                         firstPageDataBase.setCassetteUsed(cassetteId);
                         firstPageDataBase.addTestResult(testResult);
 
-                        // Show CustomToast.
-                        if(result == 1) { // Saliva test results positive.
-                            CustomToast.generateToast(R.string.salivaResultPositive, -1);
-                        }
-                        else {
-                            CustomToast.generateToast(R.string.salivaResultNegative, 0);
-                        }
+//                        // Show CustomToast.
+//                        if(result == 1) { // Saliva test results positive.
+//                            CustomToast.generateToast(R.string.salivaResultPositive, -1);
+//                        }
+//                        else {
+//                            CustomToast.generateToast(R.string.salivaResultNegative, 0);
+//                        }
 
                         PreferenceControl.setResultServiceIsRunning(false);
 

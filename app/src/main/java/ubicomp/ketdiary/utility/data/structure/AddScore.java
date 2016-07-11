@@ -15,7 +15,8 @@ public class AddScore {
 	public static final int IDENTITY = 		32;
 	public static final int COPYINGSKILL = 	64;
 	public static final int QUESTION = 		128;
-	
+	public static final int VIEW_EVENT =    256;
+
 	public AddScore(long ts, int addScore, int accumulation, String reason, int weeklyAccumulation, int reasonBits){
 		this.tv = TimeValue.generate(ts);
 		this.addScore = addScore;
@@ -24,19 +25,19 @@ public class AddScore {
 		this.weeklyAccumulation = weeklyAccumulation;
 		this.reasonBits = reasonBits;
 	}
-	
+
 	public TimeValue getTv() {
 		return tv;
 	}
-	
+
 	public int getAddScore(){
 		return addScore;
 	}
-	
+
 	public int getAccumulation(){
 		return accumulation;
 	}
-	
+
 	public String getReason(){
 		return reason;
 	}

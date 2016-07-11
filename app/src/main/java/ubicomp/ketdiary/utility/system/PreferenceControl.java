@@ -1514,4 +1514,15 @@ public class PreferenceControl {
 		return sp.getInt("LastCopingTip", 0);
 	}
 
+
+	public static long getLastestViewEventTimestamp() {
+		return sp.getLong("lastestViewEventTimestamp", 0);
+	}
+
+	public static void setLastestViewEventTimestamp(long v) {
+		SharedPreferences.Editor edit = sp.edit();
+		edit.putLong("lastestViewEventTimestamp", v);
+		edit.commit();
+	}
+
 }

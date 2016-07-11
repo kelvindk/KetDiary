@@ -189,19 +189,15 @@ public class DatabaseControl {
 			TestResult prev_data = getLatestTestResult();
 
 			db = dbHelper.getWritableDatabase();
-			boolean sameDay = false;
+			boolean isPrime = true;
 			if(data.tv.isSameDay(prev_data.tv)) {
-				sameDay = true;
-
-				String sql = "UPDATE TestResult SET isPrime = 0 WHERE ts ="
-						+ prev_data.getTv().getTimestamp();
-				db.execSQL(sql);
-
+				isPrime = false;
 				if(prev_data.result == 1 && data.result == 0)
 					addScore++;
 			}
 			else
 			{
+				isPrime = true;
 				addScore++;
 				if(data.result == 0)
 					addScore++;
@@ -216,7 +212,7 @@ public class DatabaseControl {
 			content.put("day", data.getTv().getDay());
 			content.put("ts", data.getTv().getTimestamp());
 			content.put("week", data.getTv().getWeek());
-			content.put("isPrime", 1);
+			content.put("isPrime", isPrime);
 			content.put("isFilled", data.getIsFilled());
 			content.put("weeklyScore", 0);
 			content.put("score", 0);
@@ -234,9 +230,12 @@ public class DatabaseControl {
 			TestResult prev_data = getDayTestResult(data.getTv().getYear(), data.getTv().getMonth(),
 					data.getTv().getDay());
 
+			boolean isPrime = true;
+
 			db = dbHelper.getWritableDatabase();
 			if(prev_data.result == -1)
 			{
+				isPrime = true;
 				if(data.result == 0)
 					addScore = 2;
 				else
@@ -244,10 +243,7 @@ public class DatabaseControl {
 			}
 			else
 			{
-				String sql = "UPDATE TestResult SET isPrime = 0 WHERE ts ="
-						+ prev_data.getTv().getTimestamp();
-				db.execSQL(sql);
-
+				isPrime = false;
 				if(prev_data.result == 1)
 					addScore = 0;
 				else
@@ -263,7 +259,7 @@ public class DatabaseControl {
 			content.put("day", data.getTv().getDay());
 			content.put("ts", data.getTv().getTimestamp());
 			content.put("week", data.getTv().getWeek());
-			content.put("isPrime", 1);
+			content.put("isPrime", isPrime);
 			content.put("isFilled", data.getIsFilled());
 			content.put("weeklyScore", 0);
 			content.put("score", 0);

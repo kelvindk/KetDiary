@@ -373,4 +373,17 @@
     <string name="device_reject_not_digit">請確認輸入字元皆為數字</string>
     <string name="device_reject_range_error">編號範圍(1~999)</string>
 
+    <string name="add_score_event">認出自己的危險情境是成功的基石!</string>
+    <string name="add_score_thinking">記下當時的想法，然後改變</string>
+    <string name="add_score_reflection">向新的自己邁進吧！</string>
+    <string name="add_score_event_thinking_reflection">自己創造的機會，自己把握！</string>
+    <string name="add_score_event_thinking">覺得自己做的到和不做的到，其實只在一念之間</string>
+    <string name="add_score_thinking_reflection">只要不失去方向，就不會失去自己</string>
+    <string name="add_score_view_event">了解自己的危險情境，想像遇到時要如何應對</string>
+
+    <string name="after_test_pass">做得很好！</string>
+    <string name="after_test_fail">好好加油！</string>
+
+    <string name="add_score_identity">藉由認同與否來檢視自己的應對策略</string>
+
 </resources>

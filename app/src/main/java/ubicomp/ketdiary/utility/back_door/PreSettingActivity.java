@@ -26,6 +26,11 @@ import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
+import ubicomp.ketdiary.utility.data.file.MainStorage;
+import ubicomp.ketdiary.utility.data.structure.AddScore;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
+import ubicomp.ketdiary.utility.data.structure.TestResult;
+import ubicomp.ketdiary.utility.statistic.CustomToast;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
 import ubicomp.ketdiary.utility.system.cleaner.Cleaner;
 
@@ -535,8 +540,8 @@ public class PreSettingActivity extends Activity {
 		//TODO
     	
     	//add new result
-    	/*Calendar cal = Calendar.getInstance();
-		cal.set(year, month, day, (intTime + 1)*7, 0, 0);
+    	Calendar cal = Calendar.getInstance();
+		cal.set(year, month, day, intTime * 6, 0, 0);
 		cal.set(Calendar.MILLISECOND, 0);
     	
     	long tv = cal.getTimeInMillis();
@@ -546,21 +551,40 @@ public class PreSettingActivity extends Activity {
 
 
 		TestResult testResult;
-		testResult = new TestResult(result, tv, cassette_id, isFilled, isPrime, 0, 0); 
+		testResult = new TestResult(result, tv, cassette_id, isPrime, isFilled, 0, 0);
 		
 		DatabaseControl db = new DatabaseControl();
 		
-		int addScore = db.insertTestResult(testResult, false);
+		int score = db.insertDummyTestResult(testResult);
 
 		TestDetail testDetail = new TestDetail(cassette_id, tv, 0, 0, 0, 0, 0, 0, "Dummy", "Dummy");
-		
 		db.insertTestDetail(testDetail);
-		
+
+		int reasonBit = 0, toastId = 0;
+		String reason = "";
+		if(result == 0)
+		{
+			reasonBit += AddScore.TEST_PASS;
+			reason = "檢測通過";
+			toastId = R.string.after_test_pass;
+		}
+		if(result == 1) {
+			reasonBit += AddScore.TEST_NO_PASS;
+			reason = "檢測未通過";
+			toastId = R.string.after_test_fail;
+			if(score == 0)
+				score = -1;
+		}
+		CustomToast.generateToast(toastId, score);
+		AddScore addScore = new AddScore(System.currentTimeMillis(), score, 0, reason, 0, reasonBit);
+		db.insertAddScore(addScore);
+
+
 		File dir = MainStorage.getMainStorageDirectory();
 		
 		file = new File(dir + File.separator +String.valueOf(tv));
 		if (!file.exists()) {
-		    success = file.mkdirs();
+			file.mkdirs();
 		}
 		File testFile = new File(file + File.separator + "voltage.txt");
 		File detectionFile = new File(file + File.separator + "color_raw.txt");
@@ -571,62 +595,15 @@ public class PreSettingActivity extends Activity {
 		} catch (Exception e) {
 			Log.d("File",e.toString());
 		}
-		
-		//加分		
-		Log.d(TAG,""+tv+" "+addScore);
-		
-		PreferenceControl.setPoint(addScore);
-		Log.d(TAG, "AddScore:"+addScore);
+		Log.d(TAG, "AddScore:"+score);
 		
 		//
 		long lastTV = PreferenceControl.getLatestTestCompleteTime();
 		
 		if(tv > lastTV)
 			PreferenceControl.setLatestTestCompleteTime(tv);
-		
-		//bar位置
-		int addPos = 0;
-		boolean identity_flag = false;
-		if (addScore == 0 && result == 1){ // TestFail & get no credit 
-			CustomToast.generateToast(R.string.after_test_fail, -1);
-			//addPos = -1;
-			addPos = 0;
-		}
-		if(MainActivity.identityScore)
-		{
-			MainActivity.identityScore = false;
-			identity_flag = true;
-			addScore++;
-		}
-		else if(result == 1){
-			CustomToast.generateToast(R.string.after_test_fail, addScore);
-			//addPos = -1;
-			addPos = 0;
-			AddScore nowScore;
-			if(identity_flag)
-				nowScore = new AddScore(System.currentTimeMillis(), addScore, 0, "檢測陽性, 填寫認同度", 0, AddScore.TEST_NO_PASS + AddScore.IDENTITY);
-			else
-				nowScore = new AddScore(System.currentTimeMillis(), addScore, 0, "檢測陽性", 0, AddScore.TEST_NO_PASS);
-			db.insertAddScore(nowScore);
-		}
-		else{
-			CustomToast.generateToast(R.string.after_test_pass, addScore);
-			//addPos = 1;
-			addPos = 2;
-			AddScore nowScore;
-			if(identity_flag)
-				nowScore = new AddScore(System.currentTimeMillis(), addScore, 0, "檢測陰性, 填寫認同度", 0, AddScore.TEST_PASS + AddScore.IDENTITY);
-			else
-				nowScore = new AddScore(System.currentTimeMillis(), addScore, 0, "檢測陰性", 0, AddScore.TEST_PASS);
-			db.insertAddScore(nowScore);
-		}
-		
-		if(StartDateCheck.afterStartDate())
-			PreferenceControl.setPosition(addPos);
-		
-		
-		//CustomToastSmall.generateToast("新增成功");
-		*/
+
+
 	}
 	
 	private class AddTestResultOnClickListener implements OnClickListener {
@@ -676,11 +653,13 @@ public class PreSettingActivity extends Activity {
 	    	String mesg = "";
 	    	mesg += year + "/" + (month+1) + "/" + day + "/";
 	    	if(intTime == 0)
-	    		mesg += "上午\n";
+	    		mesg += "凌晨\n";
 	    	if(intTime == 1)
-	    		mesg += "下午\n";
+	    		mesg += "上午\n";
 	    	if(intTime == 2)
-	    		mesg += "晚上\n";
+	    		mesg += "下午\n";
+			if(intTime == 3)
+				mesg += "晚上\n";
 	    	if(result == 0)
 	    		mesg += "檢測 : 通過\n";
 	    	if(result == 1)
