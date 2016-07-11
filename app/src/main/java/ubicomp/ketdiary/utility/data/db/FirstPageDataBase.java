@@ -70,6 +70,11 @@ public class FirstPageDataBase {
         return db.getAllCassette();
     }
 
+    // check cassette used
+    public boolean checkCassetteUsed(String cassette_id){
+        return db.checkCassette(cassette_id);
+    }
+
     // set the cassette used
     public void setCassetteUsed(String cassette_id ){
         db.insertCassette(cassette_id );

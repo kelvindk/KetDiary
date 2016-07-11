@@ -105,7 +105,7 @@ public class TestStateSalivaStage2 extends TestStateTransition {
                 newState = this;
                 break;
             case BLE_UPDATE_SALIVA_VOLTAGE:
-//                newState = this;
+                newState = this;
                 break;
             case TEST_TRANSIT_STAGE3:
                 // Set corresponding text on test screen.

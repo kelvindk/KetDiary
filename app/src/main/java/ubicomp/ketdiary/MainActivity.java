@@ -20,6 +20,7 @@ import ubicomp.ketdiary.main_activity.TabLayoutWrapper;
 import ubicomp.ketdiary.main_activity.ToolbarMenuItemWrapper;
 import ubicomp.ketdiary.utility.data.db.FirstPageDataBase;
 import ubicomp.ketdiary.utility.data.download.Downloader;
+import ubicomp.ketdiary.utility.data.structure.Cassette;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
 import ubicomp.ketdiary.utility.data.upload.UploadService;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
@@ -73,15 +74,12 @@ public class MainActivity extends AppCompatActivity {
         // New the object of handling fragment switch.
         fragmentSwitcher = new FragmentSwitcher(this, toolbarMenuItemWrapper, tabLayoutWrapper);
 
-        // Avoid ResultServiceIsRunning stay in true when crash.
-//        PreferenceControl.setResultServiceIsRunning(false);
 
         // Download data from server.
         Downloader downloader = new Downloader();
         downloader.updateSVM();
         downloader.updateTrigger();
         downloader.updateCassetteTask();
-
 
 
         // For developing
@@ -93,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
 //                1, 0, 0, 0);
 //
 //        FirstPageDataBase firstPageDataBase = new FirstPageDataBase();
+//        boolean cs = firstPageDataBase.checkCassetteUsed("CT_99839");
+//        Cassette[] cassettes = firstPageDataBase.getAllCassette();
 //        firstPageDataBase.addTestResult(testResult);
 
 //        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -202,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
                 PreferenceControl.setResultServiceIsRunning(false);
 
 
-                /*** What else need to store? ***/
                 if(result == 1) { // Saliva test results positive.
                     textviewToolbar.setText(R.string.salivaResultPositive);
                 }

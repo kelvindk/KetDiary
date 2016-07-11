@@ -3529,8 +3529,40 @@ public class DatabaseControl {
 			int count = cursor.getCount();
 
 			String[] returnData = new String[n];
-			for (int i = 0; i < n; i++)
-				returnData[i] = "罐頭";
+			String[] canBehavior = {"吸Ｋ",
+					"找Ｋ",
+					"想吸Ｋ",
+					"打電話給藥頭",
+					"找會給我Ｋ的朋友"};
+
+			String[] canThinking = {"好痛苦...吸一點點就好",
+					"吸了會比較快樂",
+					"反正我就是戒不了",
+					"明天再開始戒！",
+					"我開心就好"};
+			String[] canReflectionBehavior = {
+					"避免到有Ｋ的地方",
+					"運動",
+					"吃精神科的藥",
+					"睡覺",
+					"找人聊聊"};
+			String[] canReflectionThinking = {
+					"再吸我會比現在更痛苦，膀胱爛光",
+					"我正在走向我想要的人生，別半途而棄！",
+					"吸了會被醫師知道",
+					"我的親友是我的力量",
+					"我都已經忍了這麼久了，放棄太浪費了"};
+			for (int i = 0; i < Math.min(n, 5); i++)
+			{
+				if(type == 1)
+					returnData[i] = canBehavior[i];
+				if(type == 2)
+					returnData[i] = canThinking[i];
+				if(type == 3)
+					returnData[i] = canReflectionBehavior[i];
+				if(type == 4)
+					returnData[i] = canReflectionThinking[i];
+			}
 
 			int index = 0;
 			String pre = "";

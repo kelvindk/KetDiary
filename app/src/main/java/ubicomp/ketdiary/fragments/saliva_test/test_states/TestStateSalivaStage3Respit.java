@@ -19,12 +19,6 @@ public class TestStateSalivaStage3Respit extends TestStateTransition {
         super(salivaTestAdapter);
     }
 
-    // 請將臉對準畫面中央，並將口水吐進管中 (三水 0)
-    // 吐完足量口水後，取出口水匣後方擋片 + 圖 + 請稍候 60 秒
-    // 請等待 160 秒 + 正在確認口水量 (三水 2)
-    // if電壓沒降下來 => 請在 180 秒內再吐一口口水 + 口水量不足 (三水 2)
-    // 口水量確認中 (三水 3)
-
     @Override
     public TestStateTransition transit(int trigger) {
         TestDetail testDetail = null;

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -86,6 +87,9 @@ public class EventContentActivity extends AppCompatActivity {
     private Toast emptyStep6Toast = null;
     private Toast emptyStep7Toast = null;
     private Toast emptyStep8Toast = null;
+
+    // Countdown timer for checking user's browsing time in this page.
+    private CountDownTimer browsingCountdown = null;
 
 
     private EventLogStructure eventLog = null;

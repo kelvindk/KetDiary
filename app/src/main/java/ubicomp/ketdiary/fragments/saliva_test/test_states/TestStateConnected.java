@@ -16,7 +16,7 @@ import ubicomp.ketdiary.utility.system.PreferenceControl;
  */
 public class TestStateConnected extends TestStateTransition {
 
-    public static final int PREPARE_TO_TEST_COUNTDOWN = 13200; // Should be 13200.
+    public static final int PREPARE_TO_TEST_COUNTDOWN = 13200;
     public static final int PREPARE_TO_TEST_COUNTDOWN_PERIOD = 1200;
 
     // Declare newSate here to allow accessing by CountDownTimer.
@@ -170,7 +170,29 @@ public class TestStateConnected extends TestStateTransition {
                 if(!isCassetteIdValid) {
                     isCassetteIdValid = true;
                     /*** Check cassette ID from database ***/
-                    /* NOT YET IMPLEMENT */
+                    if((!getSalivaTestAdapter().getTestDB().isDeveloper()) &&
+                            (getSalivaTestAdapter().getTestDB().checkCassetteUsed("CT_"+pluggedCassetteId))) {
+                        // Cancel the prepareSalivaCountdown.
+                        if(prepareSalivaCountdown != null)
+                            prepareSalivaCountdown.cancel();
+
+                        // Cassette is used.
+                        newState = getSalivaTestAdapter().setToIdleState(R.string.test_instruction_top14);
+
+                        testDetail = new TestDetail(pluggedCassetteId+"",
+                                PreferenceControl.getUpdateDetectionTimestamp(),
+                                TestDetail.TEST_CONNECTED,
+                                PreferenceControl.getPassVoltage1(),
+                                PreferenceControl.getPassVoltage2(),
+                                PreferenceControl.getBatteryLevel(),
+                                0, 0,
+                                "CT_USED",
+                                "" );
+
+                        getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
+                        Log.d("BLE", "Cassette USED "+pluggedCassetteId);
+                        break;
+                    }
 
                     // Test shotting function of device.
                     Log.d("BLE", "take Pic!");

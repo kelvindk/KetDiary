@@ -124,7 +124,7 @@ public class ResultServiceAdapter {
 
                     case ResultService.MSG_SERVICE_FINISH:
                         int result = PreferenceControl.getTestResult();
-                        String cassetteId = PreferenceControl.getCassetteId()+"";
+                        String cassetteId = "CT_"+PreferenceControl.getCassetteId();
 
                         /** Write test result to database */
                         TestResult testResult = new TestResult(result,
@@ -132,7 +132,7 @@ public class ResultServiceAdapter {
                                 cassetteId,
                                 1, 0, 0, 0);
 
-                        testDetail = new TestDetail(cassetteId,
+                        testDetail = new TestDetail(PreferenceControl.getCassetteId()+"",
                                 PreferenceControl.getUpdateDetectionTimestamp(),
                                 TestDetail.TEST_WAIT_RESULT_COMPLETE,
                                 PreferenceControl.getPassVoltage1(),
@@ -142,7 +142,6 @@ public class ResultServiceAdapter {
                                 "TEST_COMPLETE",
                                 "" );
 
-                        firstPageDataBase.setCassetteUsed(cassetteId);
                         firstPageDataBase.addTestResult(testResult);
                         firstPageDataBase.addTestDetail(testDetail);
 

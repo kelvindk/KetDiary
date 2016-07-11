@@ -129,6 +129,7 @@
     <string name="test_instruction_top11">裝置電量不足!\n請先將裝置充電</string>
     <string name="test_instruction_top12">無法與裝置連線\n請重試</string>
     <string name="test_instruction_top13">己超過可檢測次數\n一日可檢測兩次</string>
+    <string name="test_instruction_top14">試紙夾己使用過\n請換新試紙夾</string>
 
     <string name="test_notification_countdown">檢測完成倒數</string>
 
@@ -391,5 +392,6 @@
     <string name="after_test_fail">好好加油！</string>
 
     <string name="add_score_identity">藉由認同與否來檢視自己的應對策略</string>
+    <string name="saliva_name">口水夾</string>
 
 </resources>

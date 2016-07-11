@@ -138,6 +138,9 @@ public class TestStateSalivaStage1 extends TestStateTransition {
                     getSalivaTestAdapter().startStage2Countdown();
 
                     /*** Should label this cassette ID as used ***/
+                    getSalivaTestAdapter().getTestDB().setCassetteUsed("CT_"+PreferenceControl.getCassetteId());
+
+                    Log.d("TestState", "setCassetteUsed "+"CT_"+PreferenceControl.getCassetteId());
 
                     // Transit to TestStateSalivaStage2 (stage2).
                     newState = new TestStateSalivaStage2(getSalivaTestAdapter());

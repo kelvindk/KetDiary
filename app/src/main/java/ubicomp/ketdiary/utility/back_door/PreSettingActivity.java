@@ -216,9 +216,9 @@ public class PreSettingActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				//TODO
-				/*Intent intent = new Intent();
+				Intent intent = new Intent();
 				intent.setClass(activity, SalivaActivity.class);
-				startActivity(intent);*/
+				startActivity(intent);
 			}
 		
 		});

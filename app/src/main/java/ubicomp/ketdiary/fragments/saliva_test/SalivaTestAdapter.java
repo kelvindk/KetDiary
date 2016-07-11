@@ -160,7 +160,8 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         public void onClick(View v) {
 
             // Only can do saliva test twice in 6 hours.
-            if(testDB.checkTestStatus(Calendar.getInstance()))
+            if((getTestDB().isDeveloper()) ||
+                (testDB.checkTestStatus(Calendar.getInstance())))
                 currentState = currentState.transit(TestStateTransition.TEST_BUTTON_CLICK);
             else {
                 setToIdleState(R.string.test_instruction_top13);
