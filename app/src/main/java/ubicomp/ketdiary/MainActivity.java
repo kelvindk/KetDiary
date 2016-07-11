@@ -47,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer eventBrowsingCountdown = null;
     private CountDownTimer rankingBrowsingCountdown = null;
 
+    // wake lock is set by SalivaTestAdapter to block backpress by user.
+    private boolean wakeLocked = false;
+
+    public void setWakeLocked(boolean wakeLocked) {
+        this.wakeLocked = wakeLocked;
+    }
+
     public ResultServiceAdapter getResultServiceAdapter(SalivaTestAdapter salivaTestAdapter) {
         resultServiceAdapter = new ResultServiceAdapter(this, salivaTestAdapter);
         return resultServiceAdapter;
@@ -161,10 +168,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Ket", "MainActivity onCreate");
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//    }
+    @Override
+    public void onBackPressed() {
+        if(!wakeLocked)
+            super.onBackPressed();
+    }
 
     public static MainActivity getMainActivity() {
         return mainActivity;

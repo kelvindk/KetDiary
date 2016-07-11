@@ -79,7 +79,8 @@ public class TestStateConnecting extends TestStateTransition {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
+                        if(getSalivaTestAdapter().getBle() != null)
+                            getSalivaTestAdapter().getBle().bleRequestCassetteInfo();
                     }
                 }, 200);
 

@@ -21,6 +21,9 @@ public class TestStateIdle extends TestStateTransition {
         TestStateTransition newState = null;
         switch (trigger) {
             case TEST_BUTTON_CLICK:
+                // Disable related phone components that can affect saliva test.
+                getSalivaTestAdapter().setEnableUiComponents(false);
+
                 // Get device ID from database.
                 String deviceId = getSalivaTestAdapter().getTestDB().getDeviceId();
 

@@ -278,6 +278,10 @@ public class ResultService extends Service implements BluetoothListener{
                     Log.d("BLE", "take Pic! " + currentCountdown);
                     ble.bleTakePicture();
                 }
+                else if(currentCountdown%60 == 0) {
+                    Log.d(TAG, "Reconnect " + currentCountdown%60);
+                    ble.bleSelfDisconnection();
+                }
 
             }
         }.start();
@@ -328,7 +332,7 @@ public class ResultService extends Service implements BluetoothListener{
         if(resultServiceCountdown != null)
             resultServiceCountdown.cancel();
 
-        // Disconnect BLE.
+        // Close BLE.
         startBleDisconnect();
 
         // Display a notification about us starting.  We put an icon in the status bar.
@@ -372,16 +376,17 @@ public class ResultService extends Service implements BluetoothListener{
             return;
 
         Log.d(TAG, "ble Reconnected");
+        ble.bleConnect();
 
-        // Auto reconnect to device after 1 sec.
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(ble != null)
-                    ble.bleConnect();
-            }
-        }, 1000);
+//        // Auto reconnect to device after 1 sec.
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if(ble != null)
+//                    ble.bleConnect();
+//            }
+//        }, 1000);
 
     }
 

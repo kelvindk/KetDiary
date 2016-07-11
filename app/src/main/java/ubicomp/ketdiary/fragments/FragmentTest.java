@@ -13,6 +13,7 @@ import android.widget.TextView;
 import ubicomp.ketdiary.MainActivity;
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.saliva_test.SalivaTestAdapter;
+import ubicomp.ketdiary.fragments.saliva_test.test_states.TestStateIdle;
 import ubicomp.ketdiary.main_activity.FragmentSwitcher;
 import ubicomp.ketdiary.utility.data.file.VoltageFileHandler;
 import ubicomp.ketdiary.utility.system.PreferenceControl;
@@ -26,7 +27,7 @@ public class FragmentTest extends Fragment {
     private MainActivity mainActivity = null;
     private FragmentSwitcher fragmentSwitcher = null;
 
-    private static SalivaTestAdapter salivaTestAdapter = null;
+    private SalivaTestAdapter salivaTestAdapter = null;
 
 
     private TextView textviewToolbar = null;
@@ -69,7 +70,12 @@ public class FragmentTest extends Fragment {
         Log.d("Ket", "FragmentTest onStart "+PreferenceControl.isResultServiceRunning());
 
         // New SalivaTestAdapter for handling the saliva test process.
-        salivaTestAdapter = new SalivaTestAdapter(mainActivity);
+        if(salivaTestAdapter == null)
+            salivaTestAdapter = new SalivaTestAdapter(mainActivity);
+        else if(salivaTestAdapter.getCurrentState().getClass().getSimpleName().
+                equals("TestStateIdle") ){
+            salivaTestAdapter.setEnableUiComponents(true);
+        }
 
         // Set fragment to FRAGMENT_TEST_PENDING if saliva test is running.
         if(PreferenceControl.isResultServiceRunning()) {
@@ -80,13 +86,13 @@ public class FragmentTest extends Fragment {
         super.onStart();
     }
 
-    @Override
-    public void onResume() {
-        Log.d("Ket", "FragmentTest onResume");
-
-
-        super.onResume();
-    }
+//    @Override
+//    public void onResume() {
+//        Log.d("Ket", "FragmentTest onResume");
+//
+//
+//        super.onResume();
+//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -105,26 +111,26 @@ public class FragmentTest extends Fragment {
 
     }
 
-    @Override
-    public void onStop() {
-        Log.d("Ket", "FragmentTest onStop");
-
-        // Close voltage recording and pause cameraRecorder.
-        VoltageFileHandler voltageFileHandler = salivaTestAdapter.getVoltageFileHandler();
-        if (voltageFileHandler != null)
-            voltageFileHandler.close();
-        CameraRecorder cameraRecorder = salivaTestAdapter.getCameraRecorder();
-        if (cameraRecorder != null)
-            cameraRecorder.close();
-
-        super.onStop();
-    }
+//    @Override
+//    public void onStop() {
+//        Log.d("Ket", "FragmentTest onStop");
+//
+//
+//
+//        super.onStop();
+//    }
 
     @Override
     public void onDestroy() {
         Log.d("Ket", "FragmentTest onDestroy");
 
-
+//        // Close voltage recording and pause cameraRecorder.
+//        VoltageFileHandler voltageFileHandler = salivaTestAdapter.getVoltageFileHandler();
+//        if (voltageFileHandler != null)
+//            voltageFileHandler.close();
+//        CameraRecorder cameraRecorder = salivaTestAdapter.getCameraRecorder();
+//        if (cameraRecorder != null)
+//            cameraRecorder.close();
 
         // Request disconnect and disable notification to device.
         BluetoothLE ble = salivaTestAdapter.getBle();
@@ -135,9 +141,11 @@ public class FragmentTest extends Fragment {
 //            ble.bleSelfDisconnection();
             ble.bleHardTermination();
         }
+//
+//        // Enable related phone components that can affect saliva test.
+//        salivaTestAdapter.setEnableUiComponents(true);
 
-        // Enable related phone components that can affect saliva test.
-        salivaTestAdapter.setEnableUiComponents(true);
+        salivaTestAdapter.setToIdleState(R.string.test_null);
 
         // Cancel all countdown timer in currentState of TestStateTransition.
         salivaTestAdapter.cancelTestStateCountdownTimer();

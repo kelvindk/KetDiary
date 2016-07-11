@@ -36,8 +36,6 @@ public class TestStateConnected extends TestStateTransition {
         // Disable progress bar.
         getSalivaTestAdapter().getProgressbar().setVisibility(View.GONE);
 
-        // Disable related phone components that can affect saliva test.
-        getSalivaTestAdapter().setEnableUiComponents(false);
 
         /*** Start ten second countdown. The period is slightly longer than 1 second. ***/
         prepareSalivaCountdown = new CountDownTimer(PREPARE_TO_TEST_COUNTDOWN, PREPARE_TO_TEST_COUNTDOWN_PERIOD){

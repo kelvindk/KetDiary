@@ -133,8 +133,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
 
         // Set listener to image button: testButton.
-        if(testButton != null)
-            testButton.setOnClickListener(test_button_click);
+        testButton.setOnClickListener(test_button_click);
 
         // Init the currentState as TestStateIdle.
         currentState = new TestStateIdle(this);
@@ -476,9 +475,11 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
                 cameraRecorder.close();
             }
             releaseWakeLock();
+            mainActivity.setWakeLocked(false);
         }
         else{
             acquireWakeLock();
+            mainActivity.setWakeLocked(true);
         }
     }
 
