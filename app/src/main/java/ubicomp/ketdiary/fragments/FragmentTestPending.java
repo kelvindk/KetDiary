@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -36,6 +37,7 @@ public class FragmentTestPending extends Fragment {
 
     }
 
+    @SuppressLint("ValidFragment")
     public FragmentTestPending(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
         this.mainActivity = mainActivity;

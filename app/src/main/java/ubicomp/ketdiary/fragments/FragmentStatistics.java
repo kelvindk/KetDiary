@@ -60,6 +60,7 @@ public class FragmentStatistics extends Fragment implements QuizCaller {
     public FragmentStatistics() {
     }
 
+    @SuppressLint("ValidFragment")
     public FragmentStatistics(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
         this.mainActivity = mainActivity;

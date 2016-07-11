@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class FragmentTest extends Fragment {
 
     }
 
+    @SuppressLint("ValidFragment")
     public FragmentTest(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         this.fragmentSwitcher = fragmentSwitcher;

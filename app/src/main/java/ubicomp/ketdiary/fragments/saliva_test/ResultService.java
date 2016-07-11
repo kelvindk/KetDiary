@@ -45,7 +45,7 @@ public class ResultService extends Service implements BluetoothListener{
     public static final int MSG_SERVICE_FAIL_NO_PLUG = -3;
     public static final int MSG_SERVICE_FAIL_CONNECT_TIMEOUT = -4;
 
-    public static final int WAIT_RESULT_COUNTDOWN = 720000; // Should be 720000
+    public static final int WAIT_RESULT_COUNTDOWN = 130000; // Should be 720000
     public static final int WAIT_RESULT_PERIOD = 1000;
 
     public static final int LAST_TWO_MINUTES = 120; //120 second

@@ -1,5 +1,6 @@
 package ubicomp.ketdiary.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ public class FragmentEvent extends Fragment {
 
     }
 
+    @SuppressLint("ValidFragment")
     public FragmentEvent(FragmentSwitcher fragmentSwitcher, MainActivity mainActivity) {
         this.fragmentSwitcher = fragmentSwitcher;
         this.mainActivity = mainActivity;

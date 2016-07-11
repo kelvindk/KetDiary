@@ -75,17 +75,17 @@ public class TutorialActivity extends Activity {
 		layout = (RelativeLayout) this.findViewById(R.id.tutorial_layout);
 
 		anim1 = AnimationUtils.loadAnimation(this,
-				R.drawable.animation_tutorial_arrow);
+				R.anim.animation_tutorial_arrow);
 		anim2 = AnimationUtils.loadAnimation(this,
-				R.drawable.animation_tutorial_arrow);
+				R.anim.animation_tutorial_arrow);
 		anim3 = AnimationUtils.loadAnimation(this,
-				R.drawable.animation_tutorial_arrow);
+				R.anim.animation_tutorial_arrow);
 		anim4 = AnimationUtils.loadAnimation(this,
-				R.drawable.animation_tutorial_arrow);
+				R.anim.animation_tutorial_arrow);
 		anim5 = AnimationUtils.loadAnimation(this,
-				R.drawable.animation_tutorial_arrow);
+				R.anim.animation_tutorial_arrow);
 		anim6 = AnimationUtils.loadAnimation(this,
-				R.drawable.animation_tutorial_arrow);
+				R.anim.animation_tutorial_arrow);
 
 	}
 
