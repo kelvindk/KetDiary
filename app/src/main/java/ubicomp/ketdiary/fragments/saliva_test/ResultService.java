@@ -376,7 +376,8 @@ public class ResultService extends Service implements BluetoothListener{
             return;
 
         Log.d(TAG, "ble Reconnected");
-        ble.bleConnect();
+        if(ble != null)
+            ble.bleConnect();
 
 //        // Auto reconnect to device after 1 sec.
 //        Handler handler = new Handler();
