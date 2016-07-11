@@ -1576,7 +1576,7 @@ public class PreferenceControl {
     }
 
     public static int getLastestViewPage4ListTimes() {
-        return sp.getInt("lastestViewPage3ListTimes", 0);
+        return sp.getInt("lastestViewPage4ListTimes", 0);
     }
 
     public static void setLastestViewPage4ListTimes(int v) {
