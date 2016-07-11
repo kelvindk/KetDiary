@@ -86,19 +86,28 @@ public class AddScoreDataBase {
         // lastest time about add score for view event
         Calendar pre_event = Calendar.getInstance();
         pre_event.setTimeInMillis(PreferenceControl.getLastestViewPage3ListTimestamp());
+        // times
+        int times = PreferenceControl.getLastestViewPage3ListTimes();
 
-
-        boolean eventAble = !(cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
-                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR));
+        boolean sameDay = cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
+                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR);
 
         // show toast and insert to database
-        if(eventAble) {
-            CustomToast.generateToast(R.string.add_score_view_event, 1);
-            AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第三頁列表", 0, AddScore.VIEW_EVENT);
-            db.insertAddScore(addScore);
-
-            PreferenceControl.setLastestViewPage3ListTimestamp(ts);
+        if(sameDay && times < 3) {
+            times++;
+            if(times == 3) {
+                CustomToast.generateToast(R.string.add_score_view_event, 1);
+                AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第三頁列表", 0, AddScore.VIEW_EVENT);
+                db.insertAddScore(addScore);
+            }
         }
+        else
+        {
+            times = 1;
+        }
+
+        PreferenceControl.setLastestViewPage3ListTimestamp(ts);
+        PreferenceControl.setLastestViewPage3ListTimes(times);
     }
 
     public void addScoreViewPage3Detail()
@@ -109,19 +118,28 @@ public class AddScoreDataBase {
         // lastest time about add score for view event
         Calendar pre_event = Calendar.getInstance();
         pre_event.setTimeInMillis(PreferenceControl.getLastestViewPage3DetailTimestamp());
+        // times
+        int times = PreferenceControl.getLastestViewPage3DetailTimes();
 
-
-        boolean eventAble = !(cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
-                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR));
+        boolean sameDay = cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
+                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR);
 
         // show toast and insert to database
-        if(eventAble) {
-            CustomToast.generateToast(R.string.add_score_view_event, 1);
-            AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第三頁詳細資料", 0, AddScore.VIEW_EVENT);
-            db.insertAddScore(addScore);
-
-            PreferenceControl.setLastestViewPage3DetailTimestamp(ts);
+        if(sameDay && times < 3) {
+            times++;
+            if(times == 3) {
+                CustomToast.generateToast(R.string.add_score_view_event, 1);
+                AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第三頁詳細資料", 0, AddScore.VIEW_EVENT);
+                db.insertAddScore(addScore);
+            }
         }
+        else
+        {
+            times = 1;
+        }
+
+        PreferenceControl.setLastestViewPage3DetailTimestamp(ts);
+        PreferenceControl.setLastestViewPage3DetailTimes(times);
     }
 
     public void addScoreViewPage4List()
@@ -132,22 +150,31 @@ public class AddScoreDataBase {
         // lastest time about add score for view event
         Calendar pre_event = Calendar.getInstance();
         pre_event.setTimeInMillis(PreferenceControl.getLastestViewPage4ListTimestamp());
+        // times
+        int times = PreferenceControl.getLastestViewPage4ListTimes();
 
-
-        boolean eventAble = !(cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
-                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR));
+        boolean sameDay = cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
+                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR);
 
         // show toast and insert to database
-        if(eventAble) {
-            CustomToast.generateToast(R.string.add_score_view_event, 1);
-            AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第四頁列表", 0, AddScore.VIEW_EVENT);
-            db.insertAddScore(addScore);
-
-            PreferenceControl.setLastestViewPage4ListTimestamp(ts);
+        if(sameDay && times < 3) {
+            times++;
+            if(times == 3) {
+                CustomToast.generateToast(R.string.add_score_view_event, 1);
+                AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第四頁列表", 0, AddScore.VIEW_EVENT);
+                db.insertAddScore(addScore);
+            }
         }
+        else
+        {
+            times = 1;
+        }
+
+        PreferenceControl.setLastestViewPage4ListTimestamp(ts);
+        PreferenceControl.setLastestViewPage4ListTimes(times);
     }
 
-    public void addScoreView4Detail()
+    public void addScoreViewPage4Detail()
     {
         Calendar cal = Calendar.getInstance();
         long ts = cal.getTimeInMillis();
@@ -155,19 +182,28 @@ public class AddScoreDataBase {
         // lastest time about add score for view event
         Calendar pre_event = Calendar.getInstance();
         pre_event.setTimeInMillis(PreferenceControl.getLastestViewPage4DetailTimestamp());
+        // times
+        int times = PreferenceControl.getLastestViewPage4DetailTimes();
 
-
-        boolean eventAble = !(cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
-                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR));
+        boolean sameDay = cal.get(Calendar.YEAR) == pre_event.get(Calendar.YEAR) &&
+                cal.get(Calendar.DAY_OF_YEAR) == pre_event.get(Calendar.DAY_OF_YEAR);
 
         // show toast and insert to database
-        if(eventAble) {
-            CustomToast.generateToast(R.string.add_score_view_event, 1);
-            AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第四頁詳細列表", 0, AddScore.VIEW_EVENT);
-            db.insertAddScore(addScore);
-
-            PreferenceControl.setLastestViewPage4DetailTimestamp(ts);
+        if(sameDay && times < 3) {
+            times++;
+            if(times == 3) {
+                CustomToast.generateToast(R.string.add_score_view_event, 1);
+                AddScore addScore = new AddScore(ts, 1, 0, "瀏覽第四頁詳細列表", 0, AddScore.VIEW_EVENT);
+                db.insertAddScore(addScore);
+            }
         }
+        else
+        {
+            times = 1;
+        }
+
+        PreferenceControl.setLastestViewPage4DetailTimestamp(ts);
+        PreferenceControl.setLastestViewPage4DetailTimes(times);
     }
 
     public void addScoreIdentit()

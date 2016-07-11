@@ -1,6 +1,7 @@
 package ubicomp.ketdiary.fragments.ranking;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.FragmentRanking;
+import ubicomp.ketdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.ketdiary.utility.data.structure.TriggerRanking;
 
 /**
@@ -28,11 +30,16 @@ import ubicomp.ketdiary.utility.data.structure.TriggerRanking;
  */
 public class RankingContentActivity extends AppCompatActivity {
 
+    public static final int BROWSING_COUNTDOWN = 10000; // 10000
+
     private ListView listView = null;
     private RankingContentListAdapter rankingContentListAdapter = null;
 
     private TriggerRanking triggerRanking = null;
     private int triggerRankingPosition = 0;
+
+    // Countdown timer for checking user's browsing time in this page.
+    private CountDownTimer browsingCountdown = null;
 
     public TriggerRanking getTriggerRanking() {
         return triggerRanking;
@@ -128,9 +135,38 @@ public class RankingContentActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         Log.d("Ket", "RankingContentActivity onResume");
+
+        // Start countdown timer to check whether user's browsing is over 10 sec.
+        browsingCountdown = new CountDownTimer(BROWSING_COUNTDOWN, BROWSING_COUNTDOWN){
+            @Override
+            public void onFinish() {
+                // Invoke add score.
+                Log.d("AddScore", "addScoreViewPage4Detail");
+                AddScoreDataBase addScoreDataBase = new AddScoreDataBase();
+                addScoreDataBase.addScoreViewPage4Detail();
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // No op.
+//                Log.d("AddScore", "Page4 - 2  Tick "+ millisUntilFinished/1000);
+            }
+        }.start();
+
         // Load trigger on the page.
         loadTriggerContent();
         rankingContentListAdapter.refreshListViewContent();
         super.onResume();
+    }
+
+
+    @Override
+    public void onPause() {
+        Log.d("Ket", "EventContentActivity onPause");
+
+        // Cancel browsing countdown when leaving this page.
+        browsingCountdown.cancel();
+
+        super.onPause();
     }
 }

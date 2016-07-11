@@ -25,8 +25,11 @@ import java.util.Calendar;
 
 import ubicomp.ketdiary.R;
 import ubicomp.ketdiary.fragments.create_event.CreateEventActivity;
+import ubicomp.ketdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.ketdiary.utility.data.db.DatabaseControl;
+import ubicomp.ketdiary.utility.data.structure.TestDetail;
 import ubicomp.ketdiary.utility.data.structure.TestResult;
+import ubicomp.ketdiary.utility.system.PreferenceControl;
 
 /**
  * Created by kelvindk on 16/6/10.
@@ -37,6 +40,8 @@ public class EventContentActivity extends AppCompatActivity {
     public static final String EVENT_CONTENT_ACTIVITY_KEY = "EventContentActivity";
 
     public static final int EVENT_CONTENT_ACTIVITY_INT_KEY = 46;
+
+    public static final int BROWSING_COUNTDOWN = 10000; // 10000
 
     private EventContentActivity eventContentActivity = null;
 
@@ -177,7 +182,6 @@ public class EventContentActivity extends AppCompatActivity {
 
         // Fill content on UI components.
         loadEventLogDataToUi();
-
 
     }
 
@@ -511,5 +515,42 @@ public class EventContentActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
+    @Override
+    public void onResume() {
+        Log.d("Ket", "EventContentActivity onStart");
+
+        // Start countdown timer to check whether user's browsing is over 10 sec.
+        browsingCountdown = new CountDownTimer(BROWSING_COUNTDOWN, BROWSING_COUNTDOWN){
+            @Override
+            public void onFinish() {
+                // Invoke add score.
+                Log.d("AddScore", "addScoreViewPage3Detail");
+                AddScoreDataBase addScoreDataBase = new AddScoreDataBase();
+                addScoreDataBase.addScoreViewPage3Detail();
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // No op.
+//                Log.d("AddScore", "Page3 - 2  Tick "+ millisUntilFinished/1000);
+            }
+        }.start();
+
+        super.onResume();
+    }
+
+
+    @Override
+    public void onPause() {
+        Log.d("Ket", "EventContentActivity onPause");
+
+        // Cancel browsing countdown when leaving this page.
+        browsingCountdown.cancel();
+
+        super.onPause();
+    }
+
 
 }

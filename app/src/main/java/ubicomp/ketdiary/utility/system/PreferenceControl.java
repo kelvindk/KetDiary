@@ -1524,6 +1524,7 @@ public class PreferenceControl {
         edit.putLong("lastestViewPage3ListTimestamp", v);
         edit.commit();
     }
+
     public static long getLastestViewPage3DetailTimestamp() {
         return sp.getLong("lastestViewPage3DetailTimestamp", 0);
     }
@@ -1553,6 +1554,47 @@ public class PreferenceControl {
         edit.putLong("lastestViewPage4DetailTimestamp", v);
         edit.commit();
     }
+
+    public static int getLastestViewPage3ListTimes() {
+        return sp.getInt("lastestViewPage3ListTimes", 0);
+    }
+
+    public static void setLastestViewPage3ListTimes(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("lastestViewPage3ListTimes", v);
+        edit.commit();
+    }
+
+    public static int getLastestViewPage3DetailTimes() {
+        return sp.getInt("lastestViewPage3DetailTimes", 0);
+    }
+
+    public static void setLastestViewPage3DetailTimes(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("lastestViewPage3DetailTimes", v);
+        edit.commit();
+    }
+
+    public static int getLastestViewPage4ListTimes() {
+        return sp.getInt("lastestViewPage3ListTimes", 0);
+    }
+
+    public static void setLastestViewPage4ListTimes(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("lastestViewPage4ListTimes", v);
+        edit.commit();
+    }
+
+    public static int getLastestViewPage4DetailTimes() {
+        return sp.getInt("lastestViewPage4DetailTimes", 0);
+    }
+
+    public static void setLastestViewPage4DetailTimes(int v) {
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putInt("lastestViewPage4DetailTimes", v);
+        edit.commit();
+    }
+
 
     public static void setPassVoltage1(int v) {
         SharedPreferences.Editor edit = sp.edit();
