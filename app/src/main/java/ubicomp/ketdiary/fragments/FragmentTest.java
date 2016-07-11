@@ -57,7 +57,8 @@ public class FragmentTest extends Fragment {
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_test");
 
-        fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
+        if(fragmentSwitcher != null)
+            fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
 
         View fragmentTestView = inflater.inflate(R.layout.fragment_test, container, false);

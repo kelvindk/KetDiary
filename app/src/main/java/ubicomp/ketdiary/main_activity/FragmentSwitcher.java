@@ -96,7 +96,8 @@ public class FragmentSwitcher {
 
         fragmentTransaction.hide(fragments[currentFragment]);
         fragmentTransaction.show(fragments[FRAGMENT_TEST_PENDING]);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
+//        fragmentTransaction.commit();
 
         currentFragment = FRAGMENT_TEST_PENDING;
     }
