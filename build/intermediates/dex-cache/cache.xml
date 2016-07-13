@@ -2,95 +2,88 @@
 <items version="2" >
 
     <item
-        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.0"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_f883692e5a48b0da3486a8e2e4057cebffdf6514.jar" />
-    </item>
-    <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.4.0_f0a67ab8e80168399e7e4a6f844d0c0d5290a693.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/com.android.support-appcompat-v7-23.4.0_f0a67ab8e80168399e7e4a6f844d0c0d5290a693.jar" />
     </item>
     <item
-        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="false"
         revision="23.0.0"
-        sha1="ba1c798c8d80504c6c949b74da89bc08880781f5">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/instant-run_91c93784999d292cd2f5620251a1127eadc1bf17.jar" />
-    </item>
-    <item
-        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.0"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.4.0_dff9ee9b04111275933ff6a630a0f305c4cca28b.jar" />
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/com.android.support-support-v4-23.4.0_f883692e5a48b0da3486a8e2e4057cebffdf6514.jar" />
     </item>
     <item
         jar="/Users/kelvindk/AndroidSDK/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_f1422bc16e242b4c112fc4de956657875be8b437.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/support-annotations-23.4.0_f1422bc16e242b4c112fc4de956657875be8b437.jar" />
     </item>
     <item
-        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
         revision="23.0.0"
-        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.4.0_7eb7d29f09ce75d142faf36148e44ecba3934cb7.jar" />
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/com.android.support-animated-vector-drawable-23.4.0_dff9ee9b04111275933ff6a630a0f305c4cca28b.jar" />
     </item>
     <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/libs/httpmime-4.3.5.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="1dd0d38df9c6d21e893f2e52403f1cd99e91cd81">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/httpmime-4.3.5_a3a8807510c5d1fb5ef8bffa5cb5c9803c04cf78.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/httpmime-4.3.5_a3a8807510c5d1fb5ef8bffa5cb5c9803c04cf78.jar" />
     </item>
     <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/libs/httpcore-4.3.2.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="31fbbff1ddbf98f3aa7377c94d33b0447c646b6e">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/httpcore-4.3.2_85feeead9754451b96d4ffb1a84add20018ea6bb.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/httpcore-4.3.2_85feeead9754451b96d4ffb1a84add20018ea6bb.jar" />
     </item>
     <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.4.0_403ccefdb55c6807f1582dde285a155be5268048.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/com.android.support-support-vector-drawable-23.4.0_403ccefdb55c6807f1582dde285a155be5268048.jar" />
     </item>
     <item
-        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
         revision="23.0.0"
-        sha1="66e6619ebeee00bddbfe531c6a5c19373ed2011e">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_aea75ad4235355ea116355f694062e0cf32eb566.jar" />
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/com.android.support-recyclerview-v7-23.4.0_7eb7d29f09ce75d142faf36148e44ecba3934cb7.jar" />
+    </item>
+    <item
+        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/KetDiary/openCVLibrary300/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7b0a1ddf0bc02b7d8f261ad0c3a1b90167c1d778">
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/KetDiary-openCVLibrary300-unspecified_a3902b103ea12bee6f4e3a304fd7e2639106d9e0.jar" />
     </item>
     <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.4.0_c7c4cd900819b6d426767ee012ca5ec1b0d2c420.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/com.android.support-design-23.4.0_c7c4cd900819b6d426767ee012ca5ec1b0d2c420.jar" />
     </item>
     <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_23ef6177e8326ae44c1290b0145627fe4c936032.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/internal_impl-23.4.0_23ef6177e8326ae44c1290b0145627fe4c936032.jar" />
     </item>
     <item
         jar="/Users/kelvindk/Documents/Github/KetDiary/app/libs/libsvm.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.0"
         sha1="2013c6a0ecc8a450e15833715ecf34023fee4a56">
-        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/debug/libsvm_d248fd4f5ed4ffda88d5d967ae981e09d772d43d.jar" />
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/pre-dexed/release/libsvm_d248fd4f5ed4ffda88d5d967ae981e09d772d43d.jar" />
     </item>
 
 </items>

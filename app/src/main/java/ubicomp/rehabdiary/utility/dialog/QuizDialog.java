@@ -1,10 +1,11 @@
-package ubicomp.rehabdiary.utility.dialog;
+package ubicomp.ketdiary.utility.dialog;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,17 +17,15 @@ import android.widget.TextView;
 import java.util.Random;
 
 import ubicomp.rehabdiary.R;
-import ubicomp.rehabdiary.main_activity.CustomToast;
 import ubicomp.rehabdiary.main_activity.KetdiaryApplication;
 import ubicomp.rehabdiary.utility.data.db.DatabaseControl;
 import ubicomp.rehabdiary.utility.data.structure.AddScore;
 import ubicomp.rehabdiary.utility.data.structure.QuestionTest;
+import ubicomp.rehabdiary.utility.dialog.QuizCaller;
 import ubicomp.rehabdiary.utility.statistic.AnalysisCounterView;
+import ubicomp.rehabdiary.utility.statistic.CustomToast;
 import ubicomp.rehabdiary.utility.statistic.Typefaces;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
-
-//import ubicomp.ketdiary.system.clicklog.ClickLog;
-//import ubicomp.ketdiary.system.clicklog.ClickLogId;
 
 
 /**
@@ -317,6 +316,21 @@ public class QuizDialog{
 		String[] selectAns = new String[4];
 		for (int i = 0; i < selectAns.length; ++i)
 			selectAns[i] = tempSelection[i];
+
+
+		// swap option with string "以上皆是" "以上皆非" to the last option
+		for (int i = 0; i < selectAns.length; ++i)
+			if (selectAns[i].equals("以上皆是")) {
+				selectAns[i] = selectAns[selectAns.length - 1];
+				selectAns[selectAns.length - 1] = "以上皆是";
+				break;
+			}
+			else if ((selectAns[i]).equals("以上皆非")) {
+				selectAns[i] = selectAns[selectAns.length - 1];
+				selectAns[selectAns.length - 1] = "以上皆非";
+				break;
+			}
+
 		
 		//int ans_id = rand.nextInt(selectAns.length); //把隨機一個選項換成答案
 		//selectAns[ans_id] = answer;
