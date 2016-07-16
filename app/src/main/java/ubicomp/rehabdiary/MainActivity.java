@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ubicomp.rehabdiary.fragments.FragmentTest;
@@ -19,9 +20,11 @@ import ubicomp.rehabdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.rehabdiary.main_activity.FragmentSwitcher;
 import ubicomp.rehabdiary.main_activity.TabLayoutWrapper;
 import ubicomp.rehabdiary.main_activity.ToolbarMenuItemWrapper;
+import ubicomp.rehabdiary.utility.back_door.SettingActivity;
 import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.download.Downloader;
 import ubicomp.rehabdiary.utility.data.upload.UploadService;
+import ubicomp.rehabdiary.utility.dialog.PasswordPage;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
 import ubicomp.rehabdiary.utility.test.bluetoothle.BluetoothLE;
 
@@ -92,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
         downloader.updateSVM();
         downloader.updateTrigger();
         downloader.updateCassetteTask();
+
+        // Password lock.
+//        passwordPage =
+//                new PasswordPage((RelativeLayout) findViewById(R.id.main_activity_layout),
+//                        PasswordPage.LOGIN_APP);
 
 
         // For developing
@@ -361,6 +369,8 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         Log.d("Ket", "MainActivity onStart");
 
+
+
         super.onStart();
     }
 
@@ -393,6 +403,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         Log.d("Ket", "MainActivity onStop");
+
 
         super.onStop();
     }

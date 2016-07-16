@@ -30,4 +30,6 @@
 
     <dimen name="week_circle_width">34.6dp</dimen>
     <dimen name="week_circle_height">32dp</dimen>
+
+    <dimen name="psw_size">50dp</dimen>
 </resources>

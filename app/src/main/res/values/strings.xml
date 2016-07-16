@@ -46,7 +46,7 @@
     <string name="today_test_none">尚未測試</string>
     <string name="week_test">每周測試統計</string>
     <string name="month_test">每月統計測試</string>
-    <string name="test_pass">通過</string>
+    <string name="test_pass">通　過</string>
     <string name="test_fail">不通過</string>
     <string name="test_none">未測試</string>
     <string name="result">檢測結果</string>
@@ -169,6 +169,8 @@
     <string name="get_along">相處</string>
     <string name="social">社交</string>
     <string name="entertain">同樂</string>
+    <string name="all_scenario">全部情境</string>
+
     <string name="step2_question_left">「</string>
     <string name="step2_question_right">」的類型之中\n哪個情境會讓你想用K?</string>
 

@@ -3054,7 +3054,7 @@ public class DatabaseControl {
 
 				TriggerItem[] data = null;
 				db = dbHelper.getReadableDatabase();
-				String sql = "SELECT * FROM Risk";
+				String sql = "SELECT * FROM Risk ORDER BY item";
 				Cursor cursor = db.rawQuery(sql, null);
 				int count = cursor.getCount();
 				if (count == 0) {

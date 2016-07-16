@@ -31,6 +31,7 @@ public class EventLogStructure implements Serializable {
         GET_ALONG, //相處
         SOCIAL, //社交
         ENTERTAIN, //同樂
+        ALL,
         NULL,
     };
 

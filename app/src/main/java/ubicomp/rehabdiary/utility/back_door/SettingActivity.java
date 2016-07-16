@@ -1,6 +1,7 @@
 package ubicomp.rehabdiary.utility.back_door;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,13 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ubicomp.rehabdiary.main_activity.KetdiaryApplication;
+import ubicomp.rehabdiary.utility.dialog.PasswordPage;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
-//import com.ubicomp.ketdiary.system.clicklog.ClickLog;
-//import com.ubicomp.ketdiary.system.clicklog.ClickLogId;
-//import com.ubicomp.ketdiary.ui.BarButtonGenerator;
-//import com.ubicomp.ketdiary.ui.Typefaces;
-//import com.ubicomp.ketdiary.ui.spinnergroup.MultiRadioGroup;
-//import com.ubicomp.ketdiary.ui.spinnergroup.SingleRadioGroup;
 import ubicomp.rehabdiary.R;
 
 /**
@@ -220,14 +216,13 @@ public class SettingActivity extends Activity {
 		deviceIDViews[0].setVisibility(View.GONE);
 		mainLayout.addView(deviceIDViews[0]);
 
-		/*RelativeLayout PasswordView = createListView(
+		final RelativeLayout PasswordView = createListView(
 				R.string.setting_password, new OnClickListener() {
 
 					private boolean visible = false;
 
 					@Override
 					public void onClick(View v) {
-						ClickLog.Log(ClickLogId.SETTING_TITLE_LIST + DEVICE_ID);
 						ImageView list = (ImageView) v
 								.findViewById(R.id.question_list);
 						if (visible) {
@@ -240,6 +235,8 @@ public class SettingActivity extends Activity {
 							list.setVisibility(View.VISIBLE);
 						}
 						visible = !visible;
+
+						updatePasswordView();
 					}
 				});
 		mainLayout.addView(PasswordView);
@@ -265,6 +262,7 @@ public class SettingActivity extends Activity {
 					//todo open password page
 					//PreferenceControl.setAppPasswordAble(1);//open
 					PasswordPage passwordPage = new PasswordPage(mainBase, PasswordPage.INIT_PASSWORD);
+					passwordPage.initialize();
 					passwordPage.show();
 				}
 				else if(able == 1)
@@ -273,7 +271,9 @@ public class SettingActivity extends Activity {
 					//open.setText((String) App.getContext().getResources().getText(R.string.setting_close_password));
 					PreferenceControl.setAppPasswordAble(0);//close
 				}
+
 				updatePasswordView();
+				PasswordView.performClick();
 			}
 		});
 
@@ -287,6 +287,7 @@ public class SettingActivity extends Activity {
 					//todo open password page
 					//PreferenceControl.setAppPasswordAble(1);//open
 					PasswordPage passwordPage = new PasswordPage(mainBase, PasswordPage.SET_PASSWORD);
+					passwordPage.initialize();
 					passwordPage.show();
 				}
 				else if(able == 0)
@@ -297,7 +298,7 @@ public class SettingActivity extends Activity {
 			}
 		});
 
-		updatePasswordView();*/
+		updatePasswordView();
 
 
 		// bluetoothView = BarButtonGenerator.createSettingButtonView(
@@ -367,6 +368,10 @@ public class SettingActivity extends Activity {
 		//BootBoardcastReceiver.setRegularNotification(getBaseContext(),getIntent());
 
 		super.onPause();
+	}
+
+	private void passwordList(){
+
 	}
 
 	private RelativeLayout createListView(int titleStr, OnClickListener listener) {
@@ -534,7 +539,7 @@ public class SettingActivity extends Activity {
 
 	}
 
-	/*private RelativeLayout createPasswordView(int x) {
+	private RelativeLayout createPasswordView(int x) {
 
 		RelativeLayout layout = (RelativeLayout) inflater.inflate(
 				R.layout.bar_edit_password, null);
@@ -547,7 +552,7 @@ public class SettingActivity extends Activity {
 			text.setText("修改密碼");
 
 		return layout;
-	}*/
+	}
 
 	private RelativeLayout createEditDeviceIDView(String defaultText, int id) {
 
@@ -676,7 +681,7 @@ public class SettingActivity extends Activity {
 		return layout;
 	}*/
 
-	/*private void updatePasswordView(){
+	private void updatePasswordView(){
 
 		TextView open = (TextView)passwordViews[0].findViewById(R.id.password_description);
 		TextView change = (TextView)passwordViews[1].findViewById(R.id.password_description);
@@ -684,8 +689,8 @@ public class SettingActivity extends Activity {
 		int able = PreferenceControl.getAppPasswordAble();
 		if(able == 0)
 		{
-			open.setText((String) App.getContext().getResources().getText(R.string.setting_open_password));
-			change.setText((String) App.getContext().getResources().getText(R.string.setting_change_password));
+			open.setText((String) KetdiaryApplication.getContext().getResources().getText(R.string.setting_open_password));
+			change.setText((String) KetdiaryApplication.getContext().getResources().getText(R.string.setting_change_password));
 
 			open.setTextColor(Color.BLUE);
 			change.setTextColor(Color.GRAY);
@@ -693,14 +698,14 @@ public class SettingActivity extends Activity {
 		}
 		else if(able == 1)
 		{
-			open.setText((String) App.getContext().getResources().getText(R.string.setting_close_password));
-			change.setText((String) App.getContext().getResources().getText(R.string.setting_change_password));
+			open.setText((String) KetdiaryApplication.getContext().getResources().getText(R.string.setting_close_password));
+			change.setText((String) KetdiaryApplication.getContext().getResources().getText(R.string.setting_change_password));
 
 			open.setTextColor(Color.BLUE);
 			change.setTextColor(Color.BLUE);
 		}
 
-	}*/
+	}
 
 
 }

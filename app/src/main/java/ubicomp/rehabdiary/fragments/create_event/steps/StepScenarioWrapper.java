@@ -27,10 +27,9 @@ public class StepScenarioWrapper implements View.OnClickListener {
     private CreateEventActivity createEventActivity = null;
     private EventLogStructure eventLogStructure = null;
 
-    Spinner spinner_step2_question = null;
     EditText editText_scenario_step2 = null;
 
-    private ImageButton[] step2Icons = new ImageButton[8];
+    private ImageButton[] step2Icons = new ImageButton[9];
     private int previousSelectedIcon = 0;
 
     private String dialogPrompt = null;
@@ -43,7 +42,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
         this.eventLogStructure = createEventActivity.getEventLogStructure();
 
         // Set listener to image button: recent_emotion.
-        ((ImageButton) createEventActivity.findViewById(R.id.scenario_step2)).setOnClickListener(scenario_step2);
+//        ((ImageButton) createEventActivity.findViewById(R.id.scenario_step2)).setOnClickListener(scenario_step2);
         editText_scenario_step2 = ((EditText) createEventActivity.findViewById(R.id.editText_scenario_step2));
         editText_scenario_step2.setOnClickListener(scenario_step2);
 
@@ -63,6 +62,8 @@ public class StepScenarioWrapper implements View.OnClickListener {
         (step2Icons[6] = (ImageButton) createEventActivity.findViewById(R.id.scenario_button7)).
                 setOnClickListener(this);
         (step2Icons[7] = (ImageButton) createEventActivity.findViewById(R.id.scenario_button8)).
+                setOnClickListener(this);
+        (step2Icons[8] = (ImageButton) createEventActivity.findViewById(R.id.scenario_button9)).
                 setOnClickListener(this);
 
         // Load existed data.
@@ -149,7 +150,10 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 previousSelectedIconId = R.id.scenario_button8;
                 previousSelectedDrawableId = R.drawable.create_event_step2_selector_icon8;
                 break;
-
+            case 8:
+                previousSelectedIconId = R.id.scenario_button9;
+                previousSelectedDrawableId = R.drawable.create_event_step2_selector_icon9;
+                break;
         }
 
         ((ImageButton) createEventActivity.findViewById(previousSelectedIconId)).setBackgroundResource(previousSelectedDrawableId);
@@ -226,6 +230,13 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 previousSelectedIcon = 7;
                 selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.ENTERTAIN;
                 break;
+            case R.id.scenario_button9:
+                Log.d("Ket", "StepScenarioWrapper "+view.getId()+" 9");
+                iconSelectedStringId = R.string.all_scenario;
+                iconSelectedDrawableId = R.drawable.type_icon9_pressed;
+                previousSelectedIcon = 8;
+                selectedScenarioTypeEnum = EventLogStructure.ScenarioTypeEnum.ALL;
+                break;
         }
 
         // Set the prompt of popup dialog along with selected type of scenario.
@@ -234,10 +245,19 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
         // Get content of selected scenario type from database.
         ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
-        TriggerItem[] triggerItems = thirdPageDataBase.getTypeTrigger(previousSelectedIcon+1);
+        TriggerItem[] triggerItems;
+        // If previousSelectedIcon is 8, load all scenarios.
+        if(previousSelectedIcon == 8) {
+            triggerItems = thirdPageDataBase.getAllTrigger();
+        }
+        else {
+            triggerItems = thirdPageDataBase.getTypeTrigger(previousSelectedIcon+1);
+        }
+
         if(triggerItems != null) {
             frequentInputString = new String[triggerItems.length];
-            for(int i=0; i<triggerItems.length; i++) {
+
+            for (int i = 0; i < triggerItems.length; i++) {
                 /** Need to have a condition for determine show or not*/
                 frequentInputString[i] = triggerItems[i].getContent();
             }
@@ -313,6 +333,12 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 previousSelectedIcon = 7;
                 iconSelectedStringId = R.string.entertain;
                 step2Icons[7].setBackgroundResource(R.drawable.type_icon8_pressed);
+                break;
+            case ALL:
+                //
+                previousSelectedIcon = 8;
+                iconSelectedStringId = R.string.all_scenario;
+                step2Icons[8].setBackgroundResource(R.drawable.type_icon9_pressed);
                 break;
         }
 

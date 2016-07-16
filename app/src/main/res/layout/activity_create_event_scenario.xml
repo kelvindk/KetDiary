@@ -37,7 +37,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon1"
+            android:background="@drawable/type_icon1"
             android:id="@+id/scenario_button1" />
 
         <View
@@ -49,7 +49,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon2"
+            android:background="@drawable/type_icon2"
             android:id="@+id/scenario_button2" />
 
         <View
@@ -61,7 +61,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon3"
+            android:background="@drawable/type_icon3"
             android:id="@+id/scenario_button3" />
 
         <View
@@ -73,7 +73,7 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:background="@drawable/create_event_step2_selector_icon4"
+            android:background="@drawable/type_icon4"
             android:id="@+id/scenario_button4" />
 
         <View
@@ -247,7 +247,8 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="@dimen/create_even_scenario_height"
             android:layout_weight="1"
-            android:visibility="invisible"/>
+            android:background="@drawable/type_icon9"
+            android:id="@+id/scenario_button9"/>
 
         <View
             android:layout_width="10dp"
@@ -317,7 +318,8 @@
             android:layout_width="@dimen/create_even_scenario_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="@string/all_scenario"/>
 
         <View
             android:layout_width="10dp"

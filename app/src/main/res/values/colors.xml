@@ -43,4 +43,6 @@
     <color name="text_gray3">#FF9E9E9F</color>
     <color name="toast_point">#FF2dc7b3</color>
     <color name="white_shadow">#99FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
 </resources>
