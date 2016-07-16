@@ -1,4 +1,4 @@
-package ubicomp.ketdiary.utility.dialog;
+package ubicomp.rehabdiary.utility.dialog;
 
 import android.app.Activity;
 import android.content.Context;
