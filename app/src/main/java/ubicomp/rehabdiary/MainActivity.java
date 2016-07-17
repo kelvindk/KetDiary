@@ -20,11 +20,11 @@ import ubicomp.rehabdiary.fragments.saliva_test.test_states.TestStateWaitResult;
 import ubicomp.rehabdiary.main_activity.FragmentSwitcher;
 import ubicomp.rehabdiary.main_activity.TabLayoutWrapper;
 import ubicomp.rehabdiary.main_activity.ToolbarMenuItemWrapper;
-import ubicomp.rehabdiary.utility.back_door.SettingActivity;
 import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.download.Downloader;
 import ubicomp.rehabdiary.utility.data.upload.UploadService;
-import ubicomp.rehabdiary.utility.dialog.PasswordPage;
+import ubicomp.rehabdiary.utility.dialog.PasswordLockDialogActivity;
+import ubicomp.rehabdiary.utility.dialog.QuestionIdentityDialog;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
 import ubicomp.rehabdiary.utility.test.bluetoothle.BluetoothLE;
 
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     // wake lock is set by SalivaTestAdapter to block backpress by user.
     private boolean wakeLocked = false;
+
 
     public void setWakeLocked(boolean wakeLocked) {
         this.wakeLocked = wakeLocked;
@@ -96,10 +97,9 @@ public class MainActivity extends AppCompatActivity {
         downloader.updateTrigger();
         downloader.updateCassetteTask();
 
-        // Password lock.
-//        passwordPage =
-//                new PasswordPage((RelativeLayout) findViewById(R.id.main_activity_layout),
-//                        PasswordPage.LOGIN_APP);
+        // Show password lock.
+        showPasswordLock();
+
 
 
         // For developing
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 //        EventLogStructure event = new EventLogStructure();
 //        // Set one field as example. scenarioType is an enum.
 //        event.scenarioType = EventLogStructure.ScenarioTypeEnum.BODY;
-//        Intent eventContentActivityIntent = new Intent(CreateEventActivity.class);
+//        Intent eventContentActivityIntent = new Intent(this, CreateEventActivity.class);
 //        // Put the serializable object into eventContentActivityIntent through a Bundle.
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, event);
@@ -343,13 +343,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         // No op.
-//                        Log.d("AddScore", "Page 4 - 1  Tick "+ millisUntilFinished/1000);
                     }
                 }.start();
 
                 break;
         }
     }
+
+
+    private void showPasswordLock() {
+        // Show password lock.
+        if(PreferenceControl.getAppPasswordAble() == 1) {
+            Intent password_intent = new Intent(this, PasswordLockDialogActivity.class);
+            startActivityForResult(password_intent, PasswordLockDialogActivity.PASSWORD_LOCK_INT_KEY);
+        }
+    }
+
 
     @Override
     public void onResume() {
@@ -368,8 +377,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         Log.d("Ket", "MainActivity onStart");
-
-
 
         super.onStart();
     }
@@ -432,7 +439,24 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Ket", "MainActivity onActivityResult SALIVA_TEST_INT_KEY");
 
             /** Show dialog to ask reflection acceptance */
+            // Show question identity dialog.
+            QuestionIdentityDialog questionIdentityDialog =
+                    new QuestionIdentityDialog((RelativeLayout)findViewById(R.id.question_identity_dialog_layout));
+            questionIdentityDialog.initialize();
+            questionIdentityDialog.show();
 
+        }
+
+        if (requestCode == PasswordLockDialogActivity.PASSWORD_LOCK_INT_KEY) {
+
+            if(resultCode == RESULT_OK) {
+                Log.d("Ket", "MainActivity onActivityResult PASSWORD_LOCK_INT_KEY OK");
+            }
+
+            if(resultCode == RESULT_CANCELED) {
+                Log.d("Ket", "MainActivity onActivityResult PASSWORD_LOCK_INT_KEY CANCELED");
+                finish();
+            }
 
         }
     }

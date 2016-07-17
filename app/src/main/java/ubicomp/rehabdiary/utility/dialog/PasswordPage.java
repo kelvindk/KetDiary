@@ -1,6 +1,7 @@
 package ubicomp.rehabdiary.utility.dialog;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -17,6 +18,14 @@ import ubicomp.rehabdiary.utility.system.PreferenceControl;
  * Created by yu on 16/6/13.
  */
 public class PasswordPage {
+
+	public void setActivity(PasswordLockDialogActivity activity) {
+		this.activity = activity;
+	}
+
+	// Callback activity.
+	private PasswordLockDialogActivity activity = null;
+
 	private RelativeLayout mainLayout;
 	private Context context;
 	private LayoutInflater inflater;
@@ -372,6 +381,9 @@ public class PasswordPage {
 					if(right_password)
 					{
 						close();
+						if(activity != null) {
+							activity.onPasswordCorrectListener();
+						}
 					}
 					else
 					{
@@ -384,6 +396,9 @@ public class PasswordPage {
 				case ERROR_STATE:
 					if(right_password) {
 						close();
+						if(activity != null) {
+							activity.onPasswordCorrectListener();
+						}
 					}
 					else
 					{

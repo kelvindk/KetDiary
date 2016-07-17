@@ -68,6 +68,13 @@
         </activity>
 
         <activity
+            android:name="ubicomp.rehabdiary.utility.dialog.PasswordLockDialogActivity"
+            android:label="@string/password_lock"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
             android:name="ubicomp.rehabdiary.fragments.ranking.RankingContentActivity"
             android:label="@string/ranking_content_name"
             android:screenOrientation="portrait"

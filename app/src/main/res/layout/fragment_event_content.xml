@@ -156,7 +156,7 @@
                     android:layout_marginRight="5dp"
                     android:textColor="@color/white"
                     android:layout_gravity="center"
-                    android:text="通  過"
+                    android:text="通\u00A0\u00A0\u00A0\u00A0過"
                     android:textSize="@dimen/abc_text_size_small_material" />
 
             </LinearLayout>

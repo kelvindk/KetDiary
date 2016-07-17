@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.0"
+        sha1="8e206643e8feaecc14b0141b13a48526dfe2c3c3">
+        <dex dex="/Users/kelvindk/Documents/Github/KetDiary/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_aea75ad4235355ea116355f694062e0cf32eb566/classes.dex" />
+    </item>
+
+</items>
