@@ -81,7 +81,8 @@ public class FragmentStatistics extends Fragment implements QuizCaller {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_statistics");
-        fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_STATISTICS);
+        if(fragmentSwitcher != null)
+            fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_STATISTICS);
 
         view = inflater.inflate(R.layout.fragment_statistics, container, false);
         allLayout = (RelativeLayout) view.findViewById(R.id.statistic_fragment_layout);

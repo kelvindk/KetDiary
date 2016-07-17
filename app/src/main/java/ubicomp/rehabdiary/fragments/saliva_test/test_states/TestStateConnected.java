@@ -189,7 +189,7 @@ public class TestStateConnected extends TestStateTransition {
 
                         getSalivaTestAdapter().getTestDB().addTestDetail(testDetail);
                         Log.d("BLE", "Cassette USED "+pluggedCassetteId);
-                        break;
+                        return newState;
                     }
 
                     // Test shotting function of device.

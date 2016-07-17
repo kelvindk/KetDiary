@@ -1891,10 +1891,10 @@ public class DatabaseControl {
 			Cursor cursor = db.rawQuery(sql, null);
 			boolean check;
 			if (cursor.getCount() == 0) {
-				check = true;
+				check = false;
 			}
 			else{
-				check = false;
+				check = true;
 			}
 			cursor.close();
 			db.close();

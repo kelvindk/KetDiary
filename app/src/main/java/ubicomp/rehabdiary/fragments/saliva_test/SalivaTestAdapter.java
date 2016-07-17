@@ -52,7 +52,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
     public static int DEVICE_LOW_BATTERY_THRESHOLD = 103;
 
-    public static final int STAGE1_COUNTDOWN = 3000; // Should be 30000
+    public static final int STAGE1_COUNTDOWN = 5000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
     public static final int STAGE2_COUNTDOWN = 3000; // Should be 60000
     public static final int STAGE2_PERIOD = 1000;
