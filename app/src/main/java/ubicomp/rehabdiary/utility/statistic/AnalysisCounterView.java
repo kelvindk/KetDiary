@@ -95,7 +95,8 @@ public class AnalysisCounterView extends StatisticPageView {
 		int total_point = PreferenceControl.getPoint();
 		int curr_coupon_count = PreferenceControl.getCoupon();
 
-		int coupon_level_counter = total_point / (Config.COUPON_CREDITS/10);
+		int coupon_level_counter =
+				(total_point%Config.COUPON_CREDITS) / (Config.COUPON_CREDITS/10);
 
 		PreferenceControl.setShowedCoupon(curr_coupon_count);
 		PreferenceControl.setCouponChange(false);
@@ -123,7 +124,7 @@ public class AnalysisCounterView extends StatisticPageView {
 
 		// update numeric value for coupon and point
 		couponValue.setText(String.valueOf(curr_coupon_count));
-		pointValue.setText(String.valueOf(Config.COUPON_CREDITS - total_point));
+		pointValue.setText(String.valueOf(Config.COUPON_CREDITS - total_point%Config.COUPON_CREDITS));
 		couponValue.invalidate();
 		pointValue.invalidate();
 	}
