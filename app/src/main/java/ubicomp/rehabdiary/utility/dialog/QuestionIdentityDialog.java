@@ -8,7 +8,12 @@ import java.util.Random;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -174,16 +179,21 @@ public class QuestionIdentityDialog {
 		isReflection = ran.nextInt(2) > 0;
 		createTime = data[index].createTime.getTimeInMillis();
 
+		SpannableString scenarior = new SpannableString("當"+data[index].scenario+"時，");
+		int len_scenarior = scenarior.length();
+
+		scenarior.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.question_identity)),
+				1, len_scenarior - 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+		tv_event.setText(scenarior);
 		if(!isReflection)
 		{
-			tv_event.setText(data[index].originalBehavior);
-			tv_feeling.setText(data[index].originalEmotion);
-			tv_thinking.setText(data[index].originalThought);
+			tv_feeling.setText(data[index].originalThought);
+			tv_thinking.setText(data[index].originalBehavior);
 		}
 		else {
-			tv_event.setText(data[index].expectedBehavior);
-			tv_feeling.setText(data[index].expectedEmotion);
-			tv_thinking.setText(data[index].expectedThought);
+			tv_feeling.setText(data[index].expectedThought);
+			tv_thinking.setText(data[index].expectedBehavior);
 		}
 	}
 

@@ -20,15 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal"
-            android:padding="20dp" >
+            android:padding="20dp"
+			android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/question_q"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/question_Q"
-                android:textColor="@color/red"
-                android:textSize="@dimen/large_text_size" />
             
             <ImageView
                 android:id="@+id/question_image"
@@ -41,7 +35,7 @@
                 android:id="@+id/question_question_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="你多同意這個看法?"
+                android:text="請問以下敘述是否恰當?"
                 android:textColor="@color/text_gray3"
                 android:textSize="@dimen/large_text_size"
                 android:layout_marginLeft="10dp" />
@@ -67,22 +61,14 @@
             	android:layout_height="wrap_content"
             	android:orientation="horizontal"
             	android:layout_marginTop="10dp" >
-         
-           
-                <TextView
-               	 	android:layout_width="wrap_content"
-                	android:layout_height="wrap_content"
-                	android:text="情境："
-                	android:textColor="@color/text_gray3"
-                	android:textSize="@dimen/large_text_size"
-                	android:layout_marginLeft="10dp" />
+
             
             	<TextView
             	    android:id="@+id/question_event"
             	    android:layout_width="wrap_content"
             	    android:layout_height="wrap_content"
             	    android:layout_marginLeft="10dp"
-            	    android:text="全部的人都叫我考公職"
+            	    android:text="當與家人相處困難時，"
             	    android:textColor="@color/text_gray3"
             	    android:textSize="@dimen/large_text_size" />
             
@@ -98,7 +84,7 @@
                 <TextView
                	 	android:layout_width="wrap_content"
                 	android:layout_height="wrap_content"
-                	android:text="情緒："
+                	android:text="要這樣想："
                 	android:textColor="@color/text_gray3"
                 	android:textSize="@dimen/large_text_size"
                 	android:layout_marginLeft="10dp" />
@@ -108,8 +94,8 @@
             	    android:layout_width="wrap_content"
             	    android:layout_height="wrap_content"
             	    android:layout_marginLeft="10dp"
-            	    android:text="客觀的"
-            	    android:textColor="@color/text_gray3"
+            	    android:text="我已經停止用藥了，我要冷靜應對才行。"
+            	    android:textColor="@color/question_identity"
             	    android:textSize="@dimen/large_text_size" />
             
         	</LinearLayout>
@@ -125,7 +111,7 @@
                 <TextView
                	 	android:layout_width="wrap_content"
                 	android:layout_height="wrap_content"
-                	android:text="想法："
+                	android:text="要這樣做："
                 	android:textColor="@color/text_gray3"
                 	android:textSize="@dimen/large_text_size"
                 	android:layout_marginLeft="10dp" />
@@ -135,8 +121,8 @@
             	    android:layout_width="wrap_content"
             	    android:layout_height="wrap_content"
             	    android:layout_marginLeft="10dp"
-            	    android:text="我已經停止用藥了，我要冷靜應對才行。"
-            	    android:textColor="@color/text_gray3"
+            	    android:text="出去散步"
+            	    android:textColor="@color/question_identity"
             	    android:textSize="@dimen/large_text_size" />
             
         	</LinearLayout>
@@ -199,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:gravity="center|left"
-                    android:text=" 非常 \n不同意"
+                    android:text=" 非常 \n不適當"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/sn_text_size"
                     android:layout_weight="1"/>
@@ -208,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:gravity="center|left"
-                    android:text="不同意"
+                    android:text="不適當"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/sn_text_size"
                     android:layout_weight="1" />
@@ -228,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:gravity="center|right"
-                    android:text="同意"
+                    android:text="適當"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/sn_text_size"
                     android:layout_weight="1" />
@@ -238,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:gravity="center|right"
-                    android:text="非常\n同意"
+                    android:text="非常\n適當"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/sn_text_size"
                     android:layout_weight="1" />
