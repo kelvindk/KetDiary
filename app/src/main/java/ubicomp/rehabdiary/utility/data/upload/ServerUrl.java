@@ -98,7 +98,7 @@ public class ServerUrl {
 	 * @return url
 	 */
 	public static String SERVER_URL_RANK_ALL() {
-		final String URL = "rank/rankAll.php";
+		final String URL = "rank/scoreAll.php";
 		boolean develop = PreferenceControl.isDeveloper();
 		if (develop)
 			return SERVER_URL_DEVELOP + URL;
@@ -111,7 +111,7 @@ public class ServerUrl {
 	 * @return url
 	 */
 	public static String SERVER_URL_RANK_WEEK() {
-		final String URL = "rank/rankWeek.php";
+		final String URL = "rank/scoreWeek.php";
 		boolean develop = PreferenceControl.isDeveloper();
 		if (develop)
 			return SERVER_URL_DEVELOP + URL;

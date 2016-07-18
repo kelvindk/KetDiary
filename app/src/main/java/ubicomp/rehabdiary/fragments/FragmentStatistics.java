@@ -26,6 +26,7 @@ import ubicomp.rehabdiary.main_activity.FragmentSwitcher;
 import ubicomp.rehabdiary.utility.dialog.QuizCaller;
 import ubicomp.rehabdiary.utility.dialog.QuizDialog;
 import ubicomp.rehabdiary.utility.statistic.AnalysisCounterView;
+import ubicomp.rehabdiary.utility.statistic.AnalysisRankView;
 import ubicomp.rehabdiary.utility.statistic.StatisticPageView;
 import ubicomp.rehabdiary.utility.statistic.StatisticPagerAdapter;
 
@@ -120,9 +121,9 @@ public class FragmentStatistics extends Fragment implements QuizCaller {
 
         /** [LILY] Remove something related to Time and testFail **/
 
-        analysisViews = new StatisticPageView[1];
+        analysisViews = new StatisticPageView[2];
         analysisViews[0] = new AnalysisCounterView();
-//        analysisViews[1] = new AnalysisRankView();
+        analysisViews[1] = new AnalysisRankView();
 
         statisticViewAdapter = new StatisticPagerAdapter();
         msgBox = new QuizDialog((RelativeLayout) view, fragmentStatistics);
