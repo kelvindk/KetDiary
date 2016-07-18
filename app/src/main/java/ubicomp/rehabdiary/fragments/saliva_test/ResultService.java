@@ -45,7 +45,7 @@ public class ResultService extends Service implements BluetoothListener{
     public static final int MSG_SERVICE_FAIL_NO_PLUG = -3;
     public static final int MSG_SERVICE_FAIL_CONNECT_TIMEOUT = -4;
 
-    public static final int WAIT_RESULT_COUNTDOWN = 125000; // Should be 720000
+    public static final int WAIT_RESULT_COUNTDOWN = 720000; // Should be 720000
     public static final int WAIT_RESULT_PERIOD = 1000;
 
     public static final int LAST_TWO_MINUTES = 120; //120 second
@@ -378,16 +378,6 @@ public class ResultService extends Service implements BluetoothListener{
         Log.d(TAG, "ble Reconnected");
         if(ble != null)
             ble.bleConnect();
-
-//        // Auto reconnect to device after 1 sec.
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if(ble != null)
-//                    ble.bleConnect();
-//            }
-//        }, 1000);
 
     }
 

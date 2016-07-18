@@ -334,7 +334,7 @@ public class AnalysisRankView extends StatisticPageView {
 
 			for (int i = 0; i < ranks.length; ++i) {
 				if (ranks[i].getScore() < prev_score) {
-					//debug : same score
+					//debug : sa
 					tmp_rank = i;
 				}
 				if (ranks[i].getUid().equals(uid)) {
@@ -363,8 +363,7 @@ public class AnalysisRankView extends StatisticPageView {
 
 			for (int i = 0; i < ranks.length; ++i) {
 				if (ranks[i].getScore() < prev_score) {
-					//debug : same score
-					tmp_rank = i;
+					tmp_rank = count;
 				}
 				if (ranks[i].getUid().equals(uid)) {
 					rank = tmp_rank;
