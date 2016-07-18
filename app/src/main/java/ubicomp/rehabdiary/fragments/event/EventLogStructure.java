@@ -143,6 +143,28 @@ public class EventLogStructure implements Serializable {
 
     }
 
+    public static ScenarioTypeEnum scenarioTypeIntToEnum(int type) {
+        switch (type) {
+            case 1:
+                return ScenarioTypeEnum.SLACKNESS;
+            case 2:
+                return ScenarioTypeEnum.BODY;
+            case 3:
+                return ScenarioTypeEnum.CONTROL;
+            case 4:
+                return ScenarioTypeEnum.IMPULSE;
+            case 5:
+                return ScenarioTypeEnum.EMOTION;
+            case 6:
+                return ScenarioTypeEnum.GET_ALONG;
+            case 7:
+                return ScenarioTypeEnum.SOCIAL;
+            case 8:
+                return ScenarioTypeEnum.ENTERTAIN;
+        }
+        return ScenarioTypeEnum.NULL;
+    }
+
     public int scenarioTypeToIconId() {
         int iconId = 0;
         switch (scenarioType) {

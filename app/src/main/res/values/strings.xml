@@ -173,6 +173,7 @@
 
     <string name="step2_question_left">「</string>
     <string name="step2_question_right">」的類型之中\n哪個情境會讓你想用K?</string>
+    <string name="step2_all_scenario_question">以下哪個情境會讓你想用K?</string>
 
     <string name="event_content_name">詳細事件</string>
     <string name="event_incomplete_name">未填寫完成</string>

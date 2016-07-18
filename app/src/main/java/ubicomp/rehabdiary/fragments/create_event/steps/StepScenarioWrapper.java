@@ -34,6 +34,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
     private String dialogPrompt = null;
 
+    TriggerItem[] triggerItems = null;
     String[] frequentInputString = null;
 
 
@@ -68,7 +69,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
 
         // Load existed data.
         if(createEventActivity.getInitStep() != 0) {
-            setScenarioSelection();
+            setScenarioSelection(eventLogStructure.scenarioType);
         }
 
     }
@@ -86,10 +87,19 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 @Override
                 public void onClick(DialogInterface dialog, int pos) {
                     // TODO Auto-generated method stub
-                    Log.d("Ket", "scenario_step2 onClick");
+                    Log.d("Ket", "scenario_step2 onClick "+pos+" "+triggerItems[pos].getItem());
                     // Store selected scenario to EventLogStructure and show on the screen.
                     logToEventLogStructure(frequentInputString[pos]);
                     editText_scenario_step2.setText(frequentInputString[pos]);
+
+                    if(previousSelectedIcon == 8) {
+                        // Unselected previous icon.
+                        setIconToUnselected();
+                        // Select icon according to type of scenario.
+                        setScenarioSelection(EventLogStructure.
+                                scenarioTypeIntToEnum(triggerItems[pos].getItem()/100));
+                    }
+
 
                     // In edit mode, set clickable to "save" action button when selected.
                     if(createEventActivity.getInitStep() != 0)
@@ -239,20 +249,23 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 break;
         }
 
-        // Set the prompt of popup dialog along with selected type of scenario.
-        dialogPrompt = createEventActivity.getResources().getString(R.string.step2_question_right);
-        dialogPrompt = "「"+createEventActivity.getResources().getString(iconSelectedStringId)+dialogPrompt;
+
 
         // Get content of selected scenario type from database.
         ThirdPageDataBase thirdPageDataBase = new ThirdPageDataBase();
-        TriggerItem[] triggerItems;
+
         // If previousSelectedIcon is 8, load all scenarios.
+        // Ans also set the prompt of popup dialog along with selected type of scenario.
         if(previousSelectedIcon == 8) {
             triggerItems = thirdPageDataBase.getAllTrigger();
+            dialogPrompt = createEventActivity.getResources().getString(R.string.step2_all_scenario_question);
         }
         else {
             triggerItems = thirdPageDataBase.getTypeTrigger(previousSelectedIcon+1);
+            dialogPrompt = createEventActivity.getResources().getString(R.string.step2_question_right);
+            dialogPrompt = "「"+createEventActivity.getResources().getString(iconSelectedStringId)+dialogPrompt;
         }
+
 
         if(triggerItems != null) {
             frequentInputString = new String[triggerItems.length];
@@ -283,9 +296,9 @@ public class StepScenarioWrapper implements View.OnClickListener {
     /*
     *  Method to load data from eventLogStructure.
     * */
-    private void setScenarioSelection() {
+    private void setScenarioSelection(EventLogStructure.ScenarioTypeEnum scenarioType) {
         int iconSelectedStringId = 0;
-        switch (eventLogStructure.scenarioType) {
+        switch (scenarioType) {
             case SLACKNESS:
                 //
                 previousSelectedIcon = 0;
