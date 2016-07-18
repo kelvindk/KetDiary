@@ -32,6 +32,8 @@ import ubicomp.rehabdiary.utility.data.file.MainStorage;
 import ubicomp.rehabdiary.utility.data.file.VoltageFileHandler;
 import ubicomp.rehabdiary.utility.data.structure.TestDetail;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 import ubicomp.rehabdiary.utility.test.bluetoothle.BluetoothLE;
 import ubicomp.rehabdiary.utility.test.bluetoothle.BluetoothListener;
 import ubicomp.rehabdiary.utility.test.camera.CameraCaller;
@@ -157,6 +159,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
 
         @Override
         public void onClick(View v) {
+            ClickLog.Log(ClickLogId.PAGE1_START_BUTTON);
 
             // Only can do saliva test twice in 6 hours.
             if((getTestDB().isDeveloper()) ||

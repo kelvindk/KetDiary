@@ -17,6 +17,8 @@ import ubicomp.rehabdiary.main_activity.KetdiaryApplication;
 import ubicomp.rehabdiary.utility.dialog.PasswordPage;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
 import ubicomp.rehabdiary.R;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * Activity for normal user setting
@@ -83,7 +85,7 @@ public class SettingActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
-						//ClickLog.Log(ClickLogId.SETTING_TITLE_LIST + RECREATION);
+						ClickLog.Log(ClickLogId.SETTING_RECREATION);
 						ImageView list = (ImageView) v
 								.findViewById(R.id.question_list);
 						if (visible) {
@@ -114,7 +116,7 @@ public class SettingActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
-						//ClickLog.Log(ClickLogId.SETTING_TITLE_LIST + CONTACT);
+						ClickLog.Log(ClickLogId.SETTING_CONTACT);
 						ImageView list = (ImageView) v
 								.findViewById(R.id.question_list);
 						if (visible) {
@@ -182,7 +184,7 @@ public class SettingActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
-						//ClickLog.Log(ClickLogId.SETTING_TITLE_LIST + DEVICE_ID);
+						ClickLog.Log(ClickLogId.SETTING_DEVICE_ID);
 						ImageView list = (ImageView) v
 								.findViewById(R.id.question_list);
 						if (visible) {
@@ -223,6 +225,7 @@ public class SettingActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
+						ClickLog.Log(ClickLogId.SETTING_PASSWORD);
 						ImageView list = (ImageView) v
 								.findViewById(R.id.question_list);
 						if (visible) {
@@ -259,6 +262,7 @@ public class SettingActivity extends Activity {
 				int able = PreferenceControl.getAppPasswordAble();
 				if(able == 0)
 				{
+					ClickLog.Log(ClickLogId.SETTING_PASSWORD_ABLE);
 					//todo open password page
 					//PreferenceControl.setAppPasswordAble(1);//open
 					PasswordPage passwordPage = new PasswordPage(mainBase, PasswordPage.INIT_PASSWORD);
@@ -267,7 +271,7 @@ public class SettingActivity extends Activity {
 				}
 				else if(able == 1)
 				{
-
+					ClickLog.Log(ClickLogId.SETTING_PASSWORD_ENABLE);
 					//open.setText((String) App.getContext().getResources().getText(R.string.setting_close_password));
 					PreferenceControl.setAppPasswordAble(0);//close
 				}
@@ -284,6 +288,7 @@ public class SettingActivity extends Activity {
 				int able = PreferenceControl.getAppPasswordAble();
 				if(able == 1)
 				{
+					ClickLog.Log(ClickLogId.SETTING_PASSWORD_CHANGE);
 					//todo open password page
 					//PreferenceControl.setAppPasswordAble(1);//open
 					PasswordPage passwordPage = new PasswordPage(mainBase, PasswordPage.SET_PASSWORD);
@@ -434,7 +439,7 @@ public class SettingActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			//ClickLog.Log(ClickLogId.SETTING_EDIT + RECREATION);
+			ClickLog.Log(ClickLogId.SETTING_EDIT_RECREATION);
 			if (editable) {
 				String recreation = editText.getText().toString();
 				text.setText(recreation);
@@ -511,7 +516,7 @@ public class SettingActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			//ClickLog.Log(ClickLogId.SETTING_EDIT + CONTACT);
+			ClickLog.Log(ClickLogId.SETTING_EDIT_CONTACT);
 			if (editable) {
 				String name_text = name.getText().toString();
 				nt.setText(name_text);
@@ -602,7 +607,7 @@ public class SettingActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			//ClickLog.Log(ClickLogId.SETTING_EDIT + DEVICE_ID);
+			ClickLog.Log(ClickLogId.SETTING_EDIT_DEVICE_ID);
 			if (editable) {
 				String deviceid = editText.getText().toString();
 				text.setText(deviceid);

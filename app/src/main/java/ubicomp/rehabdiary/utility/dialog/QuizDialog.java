@@ -26,6 +26,8 @@ import ubicomp.rehabdiary.utility.statistic.AnalysisCounterView;
 import ubicomp.rehabdiary.utility.statistic.CustomToast;
 import ubicomp.rehabdiary.utility.statistic.Typefaces;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 
 /**
@@ -164,6 +166,7 @@ public class QuizDialog{
 	
 	/** show the dialog */
 	public void show(int type) {
+		ClickLog.Log(ClickLogId.PAGE2_QUESTION);
 			if(System.currentTimeMillis() - last_visit > 10*60*1000){
 				change = true;
 			}
@@ -353,7 +356,7 @@ public class QuizDialog{
 		@Override
 		/**Cancel and dismiss the check check dialog*/
 		public void onClick(View v) {
-//			ClickLog.Log(ClickLogId.STATISTIC_QUESTIONTEST_CONFIRM);
+			ClickLog.Log(ClickLogId.PAGE2_QUESTION_CONFIRM);
 			
 			long ts = System.currentTimeMillis();
 			int isCorrect = 0;
@@ -407,7 +410,7 @@ public class QuizDialog{
 		@Override
 		/**Calling out*/
 		public void onClick(View v) {
-//			ClickLog.Log(ClickLogId.STATISTIC_QUESTIONTEST_CANCEL);
+			ClickLog.Log(ClickLogId.PAGE2_QUESTION_CANCEL);
 
 			/** [LILY] disable enable tab and click **/
 //			MainActivity.getMainActivity().enableTabAndClick(true);

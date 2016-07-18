@@ -36,6 +36,8 @@ import ubicomp.rehabdiary.fragments.saliva_test.ResultService;
 import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * A standalone activity for create(add) new event.
@@ -214,6 +216,8 @@ public class CreateEventActivity extends AppCompatActivity {
         MenuItemCompat.getActionView(actionSaveEvent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ClickLog.Log(ClickLogId.NEW_EVENT_SAVE_BUTTON);
+
                 // Return if the button is not clickable due to current steps.
                 if(!scrollViewAdapter.isActionSaveButtonClickable())
                     return;
@@ -321,6 +325,8 @@ public class CreateEventActivity extends AppCompatActivity {
         dialog.setTitle(R.string.confirm_cancel_click);
         dialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
+                ClickLog.Log(ClickLogId.NEW_EVENT_CANCEL_CONFIRM_BUTTON);
+
                 /* User clicked "Confirm"*/
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();

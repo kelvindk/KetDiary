@@ -32,6 +32,8 @@ import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.db.DatabaseControl;
 import ubicomp.rehabdiary.utility.data.structure.AddScore;
 import ubicomp.rehabdiary.utility.data.structure.IdentityScore;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 public class QuestionIdentityDialog {
 	private Activity activity;
@@ -143,6 +145,8 @@ public class QuestionIdentityDialog {
 		@Override
 		/**Cancel and dismiss the check check dialog*/
 		public void onClick(View v) {
+			ClickLog.Log(ClickLogId.PAGE1_IDENTITY_QUESTION_CONFIRM);
+
 			close();
 			sendAnswer();
 			addScoreDataBase.addScoreIdentit();
@@ -156,6 +160,7 @@ public class QuestionIdentityDialog {
 		@Override
 		/**Calling out*/
 		public void onClick(View v) {
+			ClickLog.Log(ClickLogId.PAGE1_IDENTITY_QUESTION_CANCEL);
 			close();
 		}
 	}

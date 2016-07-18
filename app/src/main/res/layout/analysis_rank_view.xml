@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="1dp"
             android:src="@drawable/analysis_rank_pointer"
             android:visibility="visible" />
 
@@ -185,7 +185,8 @@
             android:layout_marginLeft="2dp"
             android:layout_toRightOf="@+id/analysis_rank_pointer_month"
             android:src="@drawable/analysis_rank_increase" />
-        <ImageView
+
+        <ImageView
             android:id="@+id/analysis_rank_decrease_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

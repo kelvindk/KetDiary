@@ -28,6 +28,8 @@ import ubicomp.rehabdiary.fragments.create_event.CreateEventActivity;
 import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.db.DatabaseControl;
 import ubicomp.rehabdiary.utility.data.structure.TestResult;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * Created by kelvindk on 16/6/10.
@@ -227,6 +229,7 @@ public class EventContentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Ket", "actionEditEvent");
+                ClickLog.Log(ClickLogId.PAGE3_EVENT_CONTENT_EDIT_BUTTON);
 
                 // Start CreateEventActivity to edit event.
                 startCreateEventActivity(2);
@@ -240,6 +243,7 @@ public class EventContentActivity extends AppCompatActivity {
     View.OnClickListener eventContentClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            ClickLog.Log(ClickLogId.PAGE3_EVENT_CONTENT_ITEM_BUTTON);
 
             int step = 0;
             switch (view.getId()) {

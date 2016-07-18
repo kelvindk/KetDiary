@@ -29,6 +29,8 @@ import ubicomp.rehabdiary.utility.statistic.AnalysisCounterView;
 import ubicomp.rehabdiary.utility.statistic.AnalysisRankView;
 import ubicomp.rehabdiary.utility.statistic.StatisticPageView;
 import ubicomp.rehabdiary.utility.statistic.StatisticPagerAdapter;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 
 /**
@@ -168,6 +170,13 @@ public class FragmentStatistics extends Fragment implements QuizCaller {
             for (int i = 0; i < 3; ++i)
                 dots[i].setImageDrawable(dot_off);
             dots[idx].setImageDrawable(dot_on);
+
+            if(idx == 0)
+                ClickLog.Log(ClickLogId.PAGE2_DAY_VIEW);
+            if(idx == 1)
+                ClickLog.Log(ClickLogId.PAGE2_WEEK_VIEW);
+            if(idx == 2)
+                ClickLog.Log(ClickLogId.PAGE2_MONTH_VIEW);
         }
     }
 

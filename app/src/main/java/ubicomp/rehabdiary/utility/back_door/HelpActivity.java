@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ubicomp.rehabdiary.R;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * Activity for Help Button
@@ -56,6 +58,7 @@ public class HelpActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
+						ClickLog.Log(ClickLogId.HELP_ABOUT);
 						Intent intent = new Intent();
 						intent.setClass(activity, AboutActivity.class);
 						startActivity(intent);
@@ -68,6 +71,7 @@ public class HelpActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
+						ClickLog.Log(ClickLogId.HELP_SETTING);
 						Intent intent = new Intent();
 						intent.setClass(activity, SettingActivity.class);
 						startActivity(intent);
@@ -75,7 +79,7 @@ public class HelpActivity extends Activity {
 				});
 		mainLayout.addView(settingView);
 
-		RelativeLayout manualView = createListView(R.string.manual_title,
+		/*RelativeLayout manualView = createListView(R.string.manual_title,
 				new OnClickListener() {
 
 					@Override
@@ -85,7 +89,7 @@ public class HelpActivity extends Activity {
 						 startActivity(intent);
 					}
 				});
-		mainLayout.addView(manualView);
+		mainLayout.addView(manualView);*/
 
 	}
 

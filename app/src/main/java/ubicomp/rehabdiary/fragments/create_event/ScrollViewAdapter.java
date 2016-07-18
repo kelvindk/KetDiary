@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ubicomp.rehabdiary.R;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * This class handle ScrollView's access in create event pgg.
@@ -139,11 +141,13 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "PreviousButtonOnclick");
+            ClickLog.Log(ClickLogId.NEW_EVENT_PREVIOUS_BUTTON);
+
             if((currentStep < currentMaxStep) && isCurrentStepContentEmpty()) {
 
             }
             else {
-//                toasts[currentStep].cancel();
+
                 performPreviousStep();
             }
         }
@@ -157,6 +161,8 @@ public class ScrollViewAdapter implements View.OnTouchListener {
         @Override
         public void onClick(View v) {
             Log.d("Ket", "NextButtonOnclick");
+            ClickLog.Log(ClickLogId.NEW_EVENT_NEXT_BUTTON);
+
             if(isCurrentStepContentEmpty()) {
 //                setSaveEventButtonClickable(false);
             }

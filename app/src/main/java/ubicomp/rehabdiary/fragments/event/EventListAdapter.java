@@ -22,6 +22,8 @@ import ubicomp.rehabdiary.R;
 import ubicomp.rehabdiary.utility.data.db.DatabaseControl;
 import ubicomp.rehabdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.rehabdiary.utility.data.structure.TestResult;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * A custom adapter for event list.
@@ -90,7 +92,7 @@ public class EventListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        ClickLog.Log(ClickLogId.PAGE3_EVENT_LIST_CLICK);
 
         View eventItemView = layoutInflater.inflate(R.layout.fragment_event_list_item, null);
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import ubicomp.rehabdiary.MainActivity;
 import ubicomp.rehabdiary.R;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * This class is used to process the creation, manipulation of Tablayout.
@@ -52,6 +54,8 @@ public class TabLayoutWrapper implements TabLayout.OnTabSelectedListener {
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         Log.d("Ket", "onTabSelected " + tab.getPosition());
+        ClickLog.Log(tab.getPosition()+1);
+
         mainActivity.startBrowsingCountdown(tab.getPosition());
         mainActivity.getFragmentSwitcher().setFragment(tab.getPosition());
     }

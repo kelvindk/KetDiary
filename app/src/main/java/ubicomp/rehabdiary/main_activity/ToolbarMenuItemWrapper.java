@@ -19,6 +19,8 @@ import ubicomp.rehabdiary.fragments.event.EventIIncompleteActivity;
 import ubicomp.rehabdiary.utility.back_door.HelpActivity;
 import ubicomp.rehabdiary.utility.data.db.ThirdPageDataBase;
 import ubicomp.rehabdiary.utility.statistic.CopingActivity;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  *  ToolbarMenuItemAdapter is used to handle the page switching between test, result, event and
@@ -136,6 +138,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     @Override
                     public void onClick(View v) {
                         Log.d("Ket", "action_settings");
+                        ClickLog.Log(ClickLogId.PAGE2_COPING_BUTTON);
+
 //                         Listener of action Settings button
                         Intent createEventIntent = new Intent (mainActivity, HelpActivity.class);
                         mainActivity.startActivity(createEventIntent);
@@ -151,7 +155,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                 MenuItemCompat.getActionView(copingSkill).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.d("Ket", "comping_skill");
+                        Log.d("Ket", "coping_skill");
+                        ClickLog.Log(ClickLogId.PAGE2_COPING_BUTTON);
 
                         Intent intent = new Intent();
                         intent.setClass(mainActivity, CopingActivity.class);
@@ -168,6 +173,8 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     @Override
                     public void onClick(View v) {
                         Log.d("Ket", "action_add_event");
+                        ClickLog.Log(ClickLogId.PAGE3_NEW_BUTTON);
+
                         // Listener of action Add button
                         Intent createEventIntent = new Intent (mainActivity, CreateEventActivity.class);
                         mainActivity.startActivity(createEventIntent);
@@ -179,9 +186,11 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                 MenuItemCompat.getActionView(actionRemind).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.d("Ket", "action_remind "+remindBadgeCount);
+                        ClickLog.Log(ClickLogId.PAGE3_ALARM_BUTTON);
+
                         // Listener of action Remind button
                         refreshRemindBadgeCount();
-                        Log.d("Ket", "action_remind "+remindBadgeCount);
                         Intent eventIncompleteIntent = new Intent (mainActivity, EventIIncompleteActivity.class);
                         mainActivity.startActivity(eventIncompleteIntent);
 

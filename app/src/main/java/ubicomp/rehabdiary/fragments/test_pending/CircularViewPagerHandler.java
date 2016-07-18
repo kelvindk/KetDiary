@@ -3,6 +3,8 @@ package ubicomp.rehabdiary.fragments.test_pending;
 import android.support.v4.view.ViewPager;
 
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * Created by kelvindk on 16/7/11.
@@ -19,6 +21,7 @@ public class CircularViewPagerHandler implements ViewPager.OnPageChangeListener 
 
     @Override
     public void onPageSelected(final int position) {
+        ClickLog.Log(ClickLogId.PAGE1_COPING_TOPS_SWEEP);
         mCurrentPosition = position;
 
         // Store last coping tip on view page.

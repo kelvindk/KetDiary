@@ -22,6 +22,8 @@ import ubicomp.rehabdiary.fragments.event.EventContentActivity;
 import ubicomp.rehabdiary.fragments.event.EventLogStructure;
 import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.structure.TriggerRanking;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 
 /**
  * Created by kelvindk on 16/7/4.
@@ -73,6 +75,7 @@ public class RankingContentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("Ket", "rankingListView onItemClick " + i);
+                ClickLog.Log(ClickLogId.PAGE4_RANKING_LIST_CLICK);
 
                 // Invoke EventContentActivity.
                 Intent eventContentIntent = new Intent (activity, ubicomp.rehabdiary.fragments.event.EventContentActivity.class);
@@ -95,6 +98,8 @@ public class RankingContentActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void loadTriggerContent() {
         // Set ranking number.
