@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -346,6 +347,22 @@ public class SettingActivity extends Activity {
 		mainLayout.addView(bluetoothView);
 		*/
 
+	}
+
+	@Override
+	public void onStart() {
+		Log.d("Ket", "SettingActivity onStart");
+		ClickLog.Log(ClickLogId.SETTING_ACTIVITY_ON_START);
+
+		super.onStart();
+	}
+
+	@Override
+	public void onStop() {
+		Log.d("Ket", "SettingActivity onStop");
+		ClickLog.Log(ClickLogId.SETTING_ACTIVITY_ON_STOP);
+
+		super.onStop();
 	}
 
 	@Override

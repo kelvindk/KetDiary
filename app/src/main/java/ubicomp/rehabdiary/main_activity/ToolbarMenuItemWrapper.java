@@ -138,7 +138,7 @@ public class ToolbarMenuItemWrapper implements AdapterView.OnItemSelectedListene
                     @Override
                     public void onClick(View v) {
                         Log.d("Ket", "action_settings");
-                        ClickLog.Log(ClickLogId.PAGE2_COPING_BUTTON);
+                        ClickLog.Log(ClickLogId.PAGE1_CONFIG_BUTTON);
 
 //                         Listener of action Settings button
                         Intent createEventIntent = new Intent (mainActivity, HelpActivity.class);

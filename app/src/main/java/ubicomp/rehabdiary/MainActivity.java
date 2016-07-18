@@ -26,6 +26,7 @@ import ubicomp.rehabdiary.utility.data.upload.UploadService;
 import ubicomp.rehabdiary.utility.dialog.PasswordLockDialogActivity;
 import ubicomp.rehabdiary.utility.dialog.QuestionIdentityDialog;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
+import ubicomp.rehabdiary.utility.system.clicklog.ClickLog;
 import ubicomp.rehabdiary.utility.system.clicklog.ClickLogId;
 import ubicomp.rehabdiary.utility.test.bluetoothle.BluetoothLE;
 
@@ -378,6 +379,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         Log.d("Ket", "MainActivity onStart");
+        ClickLog.Log(ClickLogId.MAIN_ACTIVITY_ON_START);
 
         super.onStart();
     }
@@ -411,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         Log.d("Ket", "MainActivity onStop");
-
+        ClickLog.Log(ClickLogId.MAIN_ACTIVITY_ON_STOP);
 
         super.onStop();
     }

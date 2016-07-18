@@ -308,8 +308,17 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onStart() {
+        Log.d(TAG, "CreateEventActivity onStart");
+        ClickLog.Log(ClickLogId.CREATE_EVENT_ACTIVITY_ON_START);
+
+        super.onStart();
+    }
+
+    @Override
     public void onStop() {
-        Log.d(TAG, "onStop");
+        Log.d(TAG, "CreateEventActivity onStop");
+        ClickLog.Log(ClickLogId.CREATE_EVENT_ACTIVITY_ON_STOP);
 
         doUnbindService();
         super.onStop();

@@ -545,6 +545,23 @@ public class EventContentActivity extends AppCompatActivity {
 
 
     @Override
+    public void onStart() {
+        Log.d("Ket", "EventContentActivity onStart");
+        ClickLog.Log(ClickLogId.EVENT_CONTENT_ACTIVITY_ON_START);
+
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        Log.d("Ket", "EventContentActivity onStop");
+        ClickLog.Log(ClickLogId.EVENT_CONTENT_ACTIVITY_ON_STOP);
+
+        super.onStop();
+    }
+
+
+    @Override
     public void onPause() {
         Log.d("Ket", "EventContentActivity onPause");
 

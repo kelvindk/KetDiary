@@ -88,16 +88,19 @@ public class StepScenarioWrapper implements View.OnClickListener {
                 public void onClick(DialogInterface dialog, int pos) {
                     // TODO Auto-generated method stub
                     Log.d("Ket", "scenario_step2 onClick "+pos+" "+triggerItems[pos].getItem());
+                    // Lookup scenario type by selected scenario.
+                    EventLogStructure.ScenarioTypeEnum type =
+                            EventLogStructure.scenarioTypeIntToEnum(triggerItems[pos].getItem()/100);
+
                     // Store selected scenario to EventLogStructure and show on the screen.
-                    logToEventLogStructure(frequentInputString[pos]);
+                    logToEventLogStructure(type, frequentInputString[pos]);
                     editText_scenario_step2.setText(frequentInputString[pos]);
 
                     if(previousSelectedIcon == 8) {
                         // Unselected previous icon.
                         setIconToUnselected();
                         // Select icon according to type of scenario.
-                        setScenarioSelection(EventLogStructure.
-                                scenarioTypeIntToEnum(triggerItems[pos].getItem()/100));
+                        setScenarioSelection(type);
                     }
 
 
@@ -114,8 +117,9 @@ public class StepScenarioWrapper implements View.OnClickListener {
         }
     };
 
-    /*** Log event originalBehavior. ***/
-    private void logToEventLogStructure(String input) {
+    /*** Log event scenario type and scenario. ***/
+    private void logToEventLogStructure(EventLogStructure.ScenarioTypeEnum type, String input) {
+        eventLogStructure.scenarioType = type;
         eventLogStructure.scenario = input;
     }
 
@@ -289,8 +293,7 @@ public class StepScenarioWrapper implements View.OnClickListener {
         // Switch clicked icon to "selected" icon.
         view.setBackgroundResource(iconSelectedDrawableId);
 
-        /*** Log event scenario type inputted by user. ***/
-        eventLogStructure.scenarioType = selectedScenarioTypeEnum;
+
     }
 
     /*

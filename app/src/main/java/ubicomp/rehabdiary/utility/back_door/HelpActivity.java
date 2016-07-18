@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -91,6 +92,23 @@ public class HelpActivity extends Activity {
 				});
 		mainLayout.addView(manualView);*/
 
+	}
+
+
+	@Override
+	public void onStart() {
+		Log.d("Ket", "HelpActivity onStart");
+		ClickLog.Log(ClickLogId.HELP_ACTIVITY_ON_START);
+
+		super.onStart();
+	}
+
+	@Override
+	public void onStop() {
+		Log.d("Ket", "HelpActivity onStop");
+		ClickLog.Log(ClickLogId.HELP_ACTIVITY_ON_STOP);
+
+		super.onStop();
 	}
 
 	@Override

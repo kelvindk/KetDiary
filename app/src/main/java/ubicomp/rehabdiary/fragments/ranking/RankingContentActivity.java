@@ -183,6 +183,22 @@ public class RankingContentActivity extends AppCompatActivity {
 
 
     @Override
+    public void onStart() {
+        Log.d("Ket", "RankingContentActivity onStart");
+        ClickLog.Log(ClickLogId.RANKING_CONTENT_ACTIVITY_ON_START);
+
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        Log.d("Ket", "RankingContentActivity onStop");
+        ClickLog.Log(ClickLogId.RANKING_CONTENT_ACTIVITY_ON_STOP);
+
+        super.onStop();
+    }
+
+    @Override
     public void onPause() {
         Log.d("Ket", "EventContentActivity onPause");
 
