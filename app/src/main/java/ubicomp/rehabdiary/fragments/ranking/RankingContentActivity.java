@@ -1,5 +1,6 @@
 package ubicomp.rehabdiary.fragments.ranking;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -16,6 +18,8 @@ import android.widget.TextView;
 
 import ubicomp.rehabdiary.R;
 import ubicomp.rehabdiary.fragments.FragmentRanking;
+import ubicomp.rehabdiary.fragments.event.EventContentActivity;
+import ubicomp.rehabdiary.fragments.event.EventLogStructure;
 import ubicomp.rehabdiary.utility.data.db.AddScoreDataBase;
 import ubicomp.rehabdiary.utility.data.structure.TriggerRanking;
 
@@ -25,6 +29,8 @@ import ubicomp.rehabdiary.utility.data.structure.TriggerRanking;
 public class RankingContentActivity extends AppCompatActivity {
 
     public static final int BROWSING_COUNTDOWN = 10000; // 10000
+
+    private RankingContentActivity activity = null;
 
     private ListView listView = null;
     private RankingContentListAdapter rankingContentListAdapter = null;
@@ -44,6 +50,8 @@ public class RankingContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking_content);
 
+        activity = this;
+
         // Set full screen.
         getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN );
@@ -60,6 +68,21 @@ public class RankingContentActivity extends AppCompatActivity {
         rankingContentListAdapter = new RankingContentListAdapter(this, listView);
 
         listView.setAdapter(rankingContentListAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("Ket", "rankingListView onItemClick " + i);
+
+                // Invoke EventContentActivity.
+                Intent eventContentIntent = new Intent (activity, ubicomp.rehabdiary.fragments.event.EventContentActivity.class);
+                // Put the serializable object into eventContentActivityIntent through a Bundle.
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(EventLogStructure.EVENT_LOG_STRUCUTRE_KEY, rankingContentListAdapter.getEventListItem(i));
+                eventContentIntent.putExtras(bundle);
+                startActivity(eventContentIntent);
+            }
+        });
 
         // Enable toolbar on create event activity with back button on the top left.
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_ranking_content_toolbar);

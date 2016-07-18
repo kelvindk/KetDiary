@@ -42,6 +42,9 @@ public class RankingContentListAdapter extends BaseAdapter {
         refreshListViewContent();
     }
 
+    public EventLogStructure getEventListItem(int pos) {
+        return rankingListItems.get(pos);
+    }
 
     @Override
     public int getCount() {
