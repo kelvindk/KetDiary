@@ -177,8 +177,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(!wakeLocked)
+        if(!wakeLocked) {
+            if(PreferenceControl.isResultServiceRunning()) {
+
+            }
             super.onBackPressed();
+        }
     }
 
     public static MainActivity getMainActivity() {
@@ -413,7 +417,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         Log.d("Ket", "MainActivity onStop");
-        ClickLog.Log(ClickLogId.MAIN_ACTIVITY_ON_STOP);
+//        ClickLog.Log(ClickLogId.MAIN_ACTIVITY_ON_STOP);
 
         super.onStop();
     }

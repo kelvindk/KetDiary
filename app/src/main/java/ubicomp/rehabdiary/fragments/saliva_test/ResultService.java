@@ -93,6 +93,13 @@ public class ResultService extends Service implements BluetoothListener{
 
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // We want this service to continue running until it is explicitly
+        // stopped, so return sticky.
+        return START_REDELIVER_INTENT;
+    }
+
 
     @Override
     public void onDestroy() {
@@ -101,7 +108,9 @@ public class ResultService extends Service implements BluetoothListener{
         PreferenceControl.setResultServiceIsRunning(false);
 
         // Cancel the persistent notification.
-        mNM.cancel(R.string.remote_service_started);
+//        mNM.cancel(R.string.remote_service_started);
+
+        stopForeground(true);
 
         if(resultServiceCountdown != null)
             resultServiceCountdown.cancel();
@@ -147,7 +156,7 @@ public class ResultService extends Service implements BluetoothListener{
 
                     enableNotification = false;
                     mainClient = msg.replyTo;
-                    mNM.cancel(R.string.remote_service_started);
+//                    mNM.cancel(R.string.remote_service_started);
                     break;
                 case MSG_UNREGISTER_CLIENT:
                     mainClient = null;
@@ -311,7 +320,9 @@ public class ResultService extends Service implements BluetoothListener{
 
         // Send the notification.
         // We use a string id because it is a unique number.  We use it later to cancel.
-        mNM.notify(R.string.remote_service_started, notification);
+//        mNM.notify(R.string.remote_service_started, notification);
+
+        startForeground( 22035 , notification);
     }
 
 
@@ -486,10 +497,13 @@ public class ResultService extends Service implements BluetoothListener{
 
     public void startBleDisconnect()
     {
+        if(ble != null) {
 //        ble.bleUnlockDevice();
 //        ble.bleCancelCassetteInfo();
 //        ble.bleSelfDisconnection();
-        ble.bleHardTermination();
-        ble = null;
+            ble.bleHardTermination();
+            ble = null;
+        }
+
     }
 }

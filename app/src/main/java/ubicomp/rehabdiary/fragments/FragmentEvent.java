@@ -52,7 +52,9 @@ public class FragmentEvent extends Fragment {
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_event");
 
-        fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_EVENT);
+
+        if(fragmentSwitcher != null)
+            fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_EVENT);
 
         View fragmentEventView = inflater.inflate(R.layout.fragment_event, container, false);
 

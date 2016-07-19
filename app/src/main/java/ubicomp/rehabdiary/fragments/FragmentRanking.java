@@ -53,7 +53,8 @@ public class FragmentRanking extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView fragment_ranking");
-        fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_RANKING);
+        if(fragmentSwitcher != null)
+            fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_RANKING);
 
         View fragmentRankingView = inflater.inflate(R.layout.fragment_ranking, container, false);
 

@@ -54,7 +54,8 @@ public class FragmentTestPending extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("Ket", "onCreateView FragmentTestPending");
-        fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
+        if(fragmentSwitcher != null)
+            fragmentSwitcher.setFragmentOnlyDowndropTab(FragmentSwitcher.FRAGMENT_TEST);
 
         View fragmentWaitResultView = inflater.inflate(R.layout.fragment_test_pending, container, false);
 
