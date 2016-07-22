@@ -52,7 +52,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
     public static int SECOND_VOLTAGE_THRESHOLD = PreferenceControl.getVoltag2();
     public static int SALIVA_VOLTAGE_QUEUE_SIZE = 3;
 
-    public static int DEVICE_LOW_BATTERY_THRESHOLD = 98;
+    public static int DEVICE_LOW_BATTERY_THRESHOLD = 101;
 
     public static final int STAGE1_COUNTDOWN = 30000; // Should be 30000
     public static final int STAGE1_PERIOD = 3000;
