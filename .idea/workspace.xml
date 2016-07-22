@@ -226,30 +226,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#3804#3805#0" expanded="false" />
-                <element signature="e#3849#3850#0" expanded="false" />
-                <element signature="e#12594#12595#0" expanded="false" />
-                <element signature="e#12621#12622#0" expanded="false" />
-                <element signature="e#14461#14462#0" expanded="false" />
-                <element signature="e#14521#14522#0" expanded="false" />
-                <element signature="e#14574#14575#0" expanded="false" />
-                <element signature="e#14621#14622#0" expanded="false" />
-                <element signature="e#15985#15986#0" expanded="false" />
-                <element signature="e#16042#16043#0" expanded="false" />
-                <element signature="e#16285#16286#0" expanded="false" />
-                <element signature="e#16343#16344#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageDetectionValidate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/test/color/ImageDetectionValidate.java">
+      <file leaf-file-name="SalivaTestAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/SalivaTestAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.5696649">
+              <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -259,27 +245,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39468303">
-              <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.375">
-              <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -289,24 +255,8 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/data/db/ThirdPageDataBase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#330#331#0" expanded="false" />
-                <element signature="e#372#373#0" expanded="false" />
-                <element signature="e#467#468#0" expanded="false" />
-                <element signature="e#506#507#0" expanded="false" />
-                <element signature="e#742#743#0" expanded="false" />
-                <element signature="e#784#785#0" expanded="false" />
-                <element signature="e#885#886#0" expanded="false" />
-                <element signature="e#932#933#0" expanded="false" />
-                <element signature="e#1040#1041#0" expanded="false" />
-                <element signature="e#1090#1091#0" expanded="false" />
-                <element signature="e#1161#1162#0" expanded="false" />
-                <element signature="e#1206#1207#0" expanded="false" />
-                <element signature="e#1296#1297#0" expanded="false" />
-                <element signature="e#1346#1347#0" expanded="false" />
-              </folding>
+              <caret line="14" column="32" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2808,11 +2758,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/FragmentEvent.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/FragmentRanking.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/FragmentTestPending.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/SalivaTestAdapter.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/SalivaTestAdapter.java" />
       </list>
     </option>
   </component>
@@ -2983,15 +2933,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="color" />
+              <option name="myItemId" value="fragments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3017,11 +2959,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
+              <option name="myItemId" value="fragments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="saliva_test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3047,7 +2989,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utility" />
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saliva_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_states" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3734,6 +3684,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21164021">
           <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3741,6 +3692,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.71428573">
           <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3770,42 +3724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/data/db/ThirdPageDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#330#331#0" expanded="false" />
-            <element signature="e#372#373#0" expanded="false" />
-            <element signature="e#467#468#0" expanded="false" />
-            <element signature="e#506#507#0" expanded="false" />
-            <element signature="e#742#743#0" expanded="false" />
-            <element signature="e#784#785#0" expanded="false" />
-            <element signature="e#885#886#0" expanded="false" />
-            <element signature="e#932#933#0" expanded="false" />
-            <element signature="e#1040#1041#0" expanded="false" />
-            <element signature="e#1090#1091#0" expanded="false" />
-            <element signature="e#1161#1162#0" expanded="false" />
-            <element signature="e#1206#1207#0" expanded="false" />
-            <element signature="e#1296#1297#0" expanded="false" />
-            <element signature="e#1346#1347#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/data/db/DatabaseControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3185" column="59" selection-start-line="3185" selection-start-column="59" selection-end-line="3185" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2110#2111#0" expanded="false" />
-            <element signature="e#2174#2175#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/test/color/ColorDetectListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3818,6 +3736,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7740741">
           <caret line="635" column="52" selection-start-line="635" selection-start-column="52" selection-end-line="635" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3835,13 +3754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/SalivaTestAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58201057">
-          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7407407">
@@ -3849,32 +3761,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.4907975">
+          <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41436464">
+          <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/data/db/DatabaseControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+          <caret line="3185" column="59" selection-start-line="3185" selection-start-column="59" selection-end-line="3185" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#3804#3805#0" expanded="false" />
-            <element signature="e#3849#3850#0" expanded="false" />
-            <element signature="e#12594#12595#0" expanded="false" />
-            <element signature="e#12621#12622#0" expanded="false" />
-            <element signature="e#14461#14462#0" expanded="false" />
-            <element signature="e#14521#14522#0" expanded="false" />
-            <element signature="e#14574#14575#0" expanded="false" />
-            <element signature="e#14621#14622#0" expanded="false" />
-            <element signature="e#15985#15986#0" expanded="false" />
-            <element signature="e#16042#16043#0" expanded="false" />
-            <element signature="e#16285#16286#0" expanded="false" />
-            <element signature="e#16343#16344#0" expanded="false" />
+            <element signature="e#2110#2111#0" expanded="false" />
+            <element signature="e#2174#2175#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/test/color/ImageDetectionValidate.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/data/db/ThirdPageDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -3882,23 +3800,31 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/test/color/ImageDetectionValidate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.375">
-          <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+        <state vertical-scroll-proportion="2.313933">
+          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39468303">
-          <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/SalivaTestAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5696649">
+          <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
           <folding />
         </state>
       </provider>
