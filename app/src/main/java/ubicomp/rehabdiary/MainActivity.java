@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
         downloader.updateTrigger();
         downloader.updateCassetteTask();
 
+        // Upload local data to server.
+        UploadService.startUploadService(this);
+
         // Show password lock.
         showPasswordLock();
 
@@ -426,8 +429,6 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         Log.d("Ket", "MainActivity onDestroy");
 
-        // Upload local data to server.
-        UploadService.startUploadService(this);
 
         super.onDestroy();
     }
