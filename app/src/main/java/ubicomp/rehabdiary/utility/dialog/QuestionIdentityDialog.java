@@ -191,8 +191,9 @@ public class QuestionIdentityDialog {
 				1, len_scenarior - 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 		tv_event.setText(scenarior);
-		if(!isReflection)
+		if(!isReflection || data[index].expectedThought.equals("") || data[index].expectedBehavior.equals(""))
 		{
+			isReflection = false;
 			tv_feeling.setText(data[index].originalThought);
 			tv_thinking.setText(data[index].originalBehavior);
 		}

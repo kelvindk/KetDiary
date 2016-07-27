@@ -24,6 +24,7 @@ import java.util.Calendar;
 
 import ubicomp.rehabdiary.R;
 import ubicomp.rehabdiary.utility.data.db.DatabaseControl;
+import ubicomp.rehabdiary.utility.data.download.Downloader;
 import ubicomp.rehabdiary.utility.data.file.MainStorage;
 import ubicomp.rehabdiary.utility.data.structure.AddScore;
 import ubicomp.rehabdiary.utility.data.structure.TestDetail;
@@ -48,7 +49,8 @@ public class PreSettingActivity extends Activity {
 	
 	private Button saveButton, exchangeButton, restoreButton, debugButton,
 			restoreVer1Button, dummyDataButton, changeButton, cleanButton, cassetteButton,
-			addTestResultButton, triggerResetButton, testDetailResetButton, testResultResetButton, eventLogResetButton;
+			addTestResultButton, triggerResetButton, testDetailResetButton, testResultResetButton, eventLogResetButton,
+			addOneScore, syncTherapyStatusButton;
 	
 	private boolean debug;
 	private Activity activity;
@@ -369,6 +371,38 @@ public class PreSettingActivity extends Activity {
 				//TODO
 				DatabaseControl db = new DatabaseControl();
 				db.clearEventLog();
+			}
+
+
+		});
+
+		addOneScore = (Button) this.findViewById(R.id.add_one_score);
+		addOneScore.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				//TODO
+				DatabaseControl db = new DatabaseControl();
+
+				Calendar cal = Calendar.getInstance();
+				long ts = cal.getTimeInMillis();
+				CustomToast.generateToast(R.string.add_score_view_event, 1);
+				AddScore addScore = new AddScore(ts, 1, 0, "Dummy", 0, 0);
+				db.insertAddScore(addScore);
+			}
+
+
+		});
+
+		syncTherapyStatusButton = (Button) this.findViewById(R.id.sync_therapy_status);
+		syncTherapyStatusButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				//TODO
+				Log.d("GG", "clicked");
+				Downloader downloader = new Downloader();
+				downloader.updateTherapyStatus();
 			}
 
 
@@ -711,7 +745,7 @@ public class PreSettingActivity extends Activity {
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 			//TODO
-			//PreferenceControl.exchangeCoupon();
+			PreferenceControl.exchangeCoupon();
 		}
 	}
 

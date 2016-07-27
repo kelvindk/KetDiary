@@ -101,7 +101,7 @@ public class AddScoreDataBase {
                 db.insertAddScore(addScore);
             }
         }
-        else
+        else if(!sameDay)
         {
             times = 1;
         }
@@ -133,7 +133,7 @@ public class AddScoreDataBase {
                 db.insertAddScore(addScore);
             }
         }
-        else
+        else if(!sameDay)
         {
             times = 1;
         }
@@ -165,7 +165,7 @@ public class AddScoreDataBase {
                 db.insertAddScore(addScore);
             }
         }
-        else
+        else if(!sameDay)
         {
             times = 1;
         }
@@ -197,7 +197,7 @@ public class AddScoreDataBase {
                 db.insertAddScore(addScore);
             }
         }
-        else
+        else if(!sameDay)
         {
             times = 1;
         }

@@ -225,7 +225,13 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " isAfterTest INTEGER NOT NULL DEFAULT 0, "
 				+ " isComplete INTEGER NOT NULL DEFAULT 0, "
 				+ " isLastest INTEGER NOT NULL DEFAULT 0, "
-				+ " upload INTEGER NOT NULL DEFAULT 0 "
+				+ " upload INTEGER NOT NULL DEFAULT 0, "
+				+ " checkOriginalBehavior INTEGER NOT NULL DEFAULT 0, "
+				+ " checkOriginalEmotion INTEGER NOT NULL DEFAULT 0, "
+				+ " checkOriginalThought INTEGER NOT NULL DEFAULT 0, "
+				+ " checkExpectedBehavior INTEGER NOT NULL DEFAULT 0, "
+				+ " checkExpectedEmotion INTEGER NOT NULL DEFAULT 0, "
+				+ " checkExpectedThought INTEGER NOT NULL DEFAULT 0 "
 				+ ")");
 	}
 

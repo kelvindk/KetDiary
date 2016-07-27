@@ -281,6 +281,14 @@ public class ServerUrl {
 		else
 			return SERVER_URL + URL;
 	}
-	
+
+	public static String SERVER_URL_THERAPY_STATUS(){
+		final String URL = "test/therapy_status.php";
+		boolean develop = PreferenceControl.isDeveloper();
+		if (develop)
+			return SERVER_URL_DEVELOP + URL;
+		else
+			return SERVER_URL + URL;
+	}
 	
 }

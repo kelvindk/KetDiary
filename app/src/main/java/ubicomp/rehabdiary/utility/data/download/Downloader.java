@@ -16,6 +16,7 @@ public class Downloader {
     private SvmModelDownloader svmModelDownloader = null;
     private Cassette[] cassettes;
     private CassetteIDCollector cassetteCollector = null;
+    private SyncTherapyStatus syncTherapyStatus = null;
 
 
     public Downloader(){
@@ -38,6 +39,11 @@ public class Downloader {
     public void updateCassetteTask(){
         UpdateCassetteTask updateCassetteTask = new UpdateCassetteTask();
         updateCassetteTask.execute();
+    }
+
+    public void updateTherapyStatus(){
+        SyncTherapyStatusTask syncTherapyStatusTask = new SyncTherapyStatusTask();
+        syncTherapyStatusTask.execute();
     }
 
 
@@ -79,6 +85,17 @@ public class Downloader {
         protected Void doInBackground(Void... arg0) {
             triggerListCollect = new TriggerListCollect(MainActivity.getMainActivity());
             triggerListCollect.update();
+            return null;
+        }
+
+    }
+
+    private class SyncTherapyStatusTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            syncTherapyStatus = new SyncTherapyStatus(MainActivity.getMainActivity());
+            syncTherapyStatus.update();
             return null;
         }
 

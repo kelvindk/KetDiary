@@ -3296,6 +3296,12 @@ public class DatabaseControl {
 				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
 				data[i].isAfterTest = (cursor.getInt(14) > 0);
 				data[i].isComplete =  (cursor.getInt(15) > 0);
+				data[i].reviseOriginalBehavior = (cursor.getInt(18) > 0);
+				data[i].reviseOriginalEmotion = (cursor.getInt(19) > 0);
+				data[i].reviseOriginalThought = (cursor.getInt(20) > 0);
+				data[i].reviseExpectedBehavior = (cursor.getInt(21) > 0);
+				data[i].reviseExpectedEmotion = (cursor.getInt(22) > 0);
+				data[i].reviseExpectedThought = (cursor.getInt(23) > 0);
 			}
 			cursor.close();
 			db.close();
@@ -3308,7 +3314,10 @@ public class DatabaseControl {
 
 			EventLogStructure[] data = null;
 			db = dbHelper.getReadableDatabase();
-			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 AND isComplete = 0 ORDER BY eventTime DESC";
+			String sql = "SELECT * FROM EventLog WHERE isLastest = 1 AND " + "(isComplete = 0 " +
+					"OR checkOriginalBehavior = 1 OR  checkOriginalEmotion = 1 OR checkOriginalThought = 1 " +
+					"OR checkExpectedBehavior = 1 OR  checkExpectedEmotion = 1 OR checkExpectedThought = 1 ) " +
+					"ORDER BY eventTime DESC";
 			Cursor cursor = db.rawQuery(sql, null);
 			int count = cursor.getCount();
 			if (count == 0) {
@@ -3342,6 +3351,12 @@ public class DatabaseControl {
 				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
 				data[i].isAfterTest = (cursor.getInt(14) > 0);
 				data[i].isComplete =  (cursor.getInt(15) > 0);
+				data[i].reviseOriginalBehavior = (cursor.getInt(18) > 0);
+				data[i].reviseOriginalEmotion = (cursor.getInt(19) > 0);
+				data[i].reviseOriginalThought = (cursor.getInt(20) > 0);
+				data[i].reviseExpectedBehavior = (cursor.getInt(21) > 0);
+				data[i].reviseExpectedEmotion = (cursor.getInt(22) > 0);
+				data[i].reviseExpectedThought = (cursor.getInt(23) > 0);
 			}
 			cursor.close();
 			db.close();
@@ -3389,6 +3404,12 @@ public class DatabaseControl {
 				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
 				data[i].isAfterTest = (cursor.getInt(14) > 0);
 				data[i].isComplete =  (cursor.getInt(15) > 0);
+				data[i].reviseOriginalBehavior = (cursor.getInt(18) > 0);
+				data[i].reviseOriginalEmotion = (cursor.getInt(19) > 0);
+				data[i].reviseOriginalThought = (cursor.getInt(20) > 0);
+				data[i].reviseExpectedBehavior = (cursor.getInt(21) > 0);
+				data[i].reviseExpectedEmotion = (cursor.getInt(22) > 0);
+				data[i].reviseExpectedThought = (cursor.getInt(23) > 0);
 
 				Log.d("debug", data[i].toString());
 			}
@@ -3436,6 +3457,12 @@ public class DatabaseControl {
 				data.therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
 				data.isAfterTest = (cursor.getInt(14) > 0);
 				data.isComplete =  (cursor.getInt(15) > 0);
+				data.reviseOriginalBehavior = (cursor.getInt(18) > 0);
+				data.reviseOriginalEmotion = (cursor.getInt(19) > 0);
+				data.reviseOriginalThought = (cursor.getInt(20) > 0);
+				data.reviseExpectedBehavior = (cursor.getInt(21) > 0);
+				data.reviseExpectedEmotion = (cursor.getInt(22) > 0);
+				data.reviseExpectedThought = (cursor.getInt(23) > 0);
 			}
 			cursor.close();
 			db.close();
@@ -3448,6 +3475,23 @@ public class DatabaseControl {
 			db = dbHelper.getWritableDatabase();
 			String sql = "UPDATE EventLog SET isLastest = 0 WHERE createTime = "
 					+ data.createTime.getTimeInMillis() + " AND isLastest = 1";
+			db.execSQL(sql);
+			db.close();
+		}
+	}
+
+	public void updateEventLogTherapyStatus(EventLogStructure data) {
+		synchronized (sqlLock) {
+			db = dbHelper.getWritableDatabase();
+			String sql = "UPDATE EventLog SET "
+					+ " checkOriginalBehavior = " + (data.reviseOriginalBehavior? 1:0)
+					+ " ,checkOriginalEmotion = " + (data.reviseOriginalEmotion? 1:0)
+					+ " ,checkOriginalThought = " + (data.reviseOriginalThought? 1:0)
+					+ " ,checkExpectedBehavior = " + (data.reviseExpectedBehavior? 1:0)
+					+ " ,checkExpectedEmotion = " + (data.reviseExpectedEmotion? 1:0)
+					+ " ,checkExpectedThought = " + (data.reviseExpectedThought? 1:0)
+					+ " WHERE createTime = " + data.createTime.getTimeInMillis()
+					+ " AND isLastest = 1";
 			db.execSQL(sql);
 			db.close();
 		}
@@ -3511,6 +3555,12 @@ public class DatabaseControl {
 				data[i].therapyStatus = EventLogStructure.TherapyStatusEnum.values()[cursor.getInt(13)];
 				data[i].isAfterTest = (cursor.getInt(14) > 0);
 				data[i].isComplete =  (cursor.getInt(15) > 0);
+				data[i].reviseOriginalBehavior = (cursor.getInt(18) > 0);
+				data[i].reviseOriginalEmotion = (cursor.getInt(19) > 0);
+				data[i].reviseOriginalThought = (cursor.getInt(20) > 0);
+				data[i].reviseExpectedBehavior = (cursor.getInt(21) > 0);
+				data[i].reviseExpectedEmotion = (cursor.getInt(22) > 0);
+				data[i].reviseExpectedThought = (cursor.getInt(23) > 0);
 			}
 			cursor.close();
 			db.close();
