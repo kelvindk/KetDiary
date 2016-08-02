@@ -138,43 +138,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa52c80b-e41d-43e5-9f3d-445e00a65928" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepBehaviorWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepBehaviorWrapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/ToolbarMenuItemWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/CreateEventActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/CreateEventActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentEvent.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedEmotionWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedEmotionWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepTimeWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepTimeWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepThoughtWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepThoughtWrapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/TabLayoutWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/TabLayoutWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedThoughtWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedThoughtWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseProbabilityWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseProbabilityWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseTempWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseTempWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/SpinnerTimePeriodListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/SpinnerTimePeriodListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepScenarioWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepScenarioWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/SpinnerDayListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/SpinnerDayListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/EventContentActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/EventContentActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/ScrollViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/ScrollViewAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedBehaviorWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedBehaviorWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_content.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/TabLayoutWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/TabLayoutWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedEmotionWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedEmotionWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepEmotionWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepEmotionWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepTimeWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepTimeWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentRanking.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentRanking.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseTempWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseTempWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/CreateEventActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/CreateEventActivity.java" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/FragmentSwitcher.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/FragmentSwitcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepThoughtWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepThoughtWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/EventContentActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/EventContentActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentResult.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepScenarioWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepScenarioWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedBehaviorWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepExpectedBehaviorWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseProbabilityWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepRelapseProbabilityWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentEvent.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/fragments/FragmentEvent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/ui/ToolbarMenuItemWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/main_activity/ToolbarMenuItemWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/SpinnerDayListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/SpinnerDayListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepBehaviorWrapper.java" afterPath="$PROJECT_DIR$/app/src/main/java/ubicomp/ketdiary/create_event/steps/StepBehaviorWrapper.java" />
     </list>
     <ignored path="KetDiary.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -221,11 +221,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="FragmentTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/FragmentTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59380376">
-              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="229" column="38" selection-start-line="229" selection-start-column="38" selection-end-line="229" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.31171787">
+              <caret line="485" column="0" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2278,7 +2298,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5869588681000" />
+        <entry key="$PROJECT_DIR$" value="5869591114000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2693,8 +2713,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/SalivaTestAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java" />
       </list>
     </option>
   </component>
@@ -2747,22 +2767,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KetDiary" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="KetDiary" />
@@ -2779,8 +2787,24 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KetDiary" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3157,7 +3181,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3439912" sideWeight="0.50793654" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.497558" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3508,19 +3532,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26455027">
-          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/utility/data/db/ThirdPageDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34391534">
           <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3528,7 +3543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026455026">
           <caret line="3185" column="59" selection-start-line="3185" selection-start-column="59" selection-end-line="3185" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3536,7 +3550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07936508">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3544,7 +3557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026455026">
           <caret line="230" column="52" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3552,7 +3564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5608466">
           <caret line="161" column="45" selection-start-line="161" selection-start-column="45" selection-end-line="161" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3560,23 +3571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5026455">
           <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71428573">
-          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/FragmentTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71428573">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3584,14 +3578,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8888889">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59380376">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.15845071">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/FragmentTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="229" column="38" selection-start-line="229" selection-start-column="38" selection-end-line="229" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ubicomp/rehabdiary/fragments/saliva_test/ResultService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31171787">
+          <caret line="485" column="0" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
           <folding />
         </state>
       </provider>

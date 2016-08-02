@@ -479,13 +479,27 @@ public class ResultService extends Service implements BluetoothListener{
         // pictureCount++ to memory how many pictures were taken.
         pictureCount++;
 
-        // Copy from legacy codes, need confirm.
-        if(score == 1) // Positive
-            testResult = 1;
-        else if(score == -1)  // Negative
-            testResult = 0;
+        //0 0 = 0
+        //0 1 = 0
+        //1 0 = 0
+        //1 1 = 1
 
-        PreferenceControl.setTestResult(testResult);
+        if(pictureCount == 1) { // 1st picture.
+            if(score == 1) // Positive
+                testResult = 1;
+            else if(score == -1)  // Negative
+                testResult = 0;
+        }
+        else if(pictureCount == 2) { // 2ed picture.
+            if((testResult == 1) && (score == 1)) {
+                // Report "positive" only if the scores are "positive" twice.
+                PreferenceControl.setTestResult(1);
+            }
+            else {
+                PreferenceControl.setTestResult(0);
+            }
+        }
+
 
         Log.d(TAG, "bleNotifyDetectionResult "+score+ " pictureCount "+pictureCount);
     }
