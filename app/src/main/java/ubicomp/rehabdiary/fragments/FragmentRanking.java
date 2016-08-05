@@ -61,7 +61,7 @@ public class FragmentRanking extends Fragment {
         // Set adapter of custom ListView to this fragment
         rankingListView = (ListView) fragmentRankingView.findViewById(R.id.fragment_ranking_list_view);
 
-        rankingListAdapter = new RankingListAdapter(mainActivity, rankingListView);
+        rankingListAdapter = new RankingListAdapter(this, rankingListView);
         rankingListView.setAdapter(rankingListAdapter);
 
         rankingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

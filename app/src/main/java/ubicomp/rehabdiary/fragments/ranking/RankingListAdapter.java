@@ -1,6 +1,8 @@
 package ubicomp.rehabdiary.fragments.ranking;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,7 @@ import ubicomp.rehabdiary.utility.data.structure.TriggerRanking;
  */
 public class RankingListAdapter extends BaseAdapter {
 
-    private MainActivity mainActivity = null;
+    private Activity mainActivity = null;
     private ListView rankingListView = null;
     private LayoutInflater layoutInflater = null;
 
@@ -34,8 +36,8 @@ public class RankingListAdapter extends BaseAdapter {
     // the list of items' object.
     List<TriggerRanking> rankingListItems = new ArrayList<>();
 
-    public RankingListAdapter(MainActivity mainActivity, ListView rankingListView) {
-        this.mainActivity = mainActivity;
+    public RankingListAdapter(Fragment fragment, ListView rankingListView) {
+        this.mainActivity = fragment.getActivity();
         this.rankingListView = rankingListView;
         Context context = mainActivity;
 

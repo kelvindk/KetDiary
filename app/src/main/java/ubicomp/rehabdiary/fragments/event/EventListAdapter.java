@@ -3,6 +3,7 @@ package ubicomp.rehabdiary.fragments.event;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,17 @@ public class EventListAdapter extends BaseAdapter {
 
     // the list of items' object.
     List<EventLogStructure> eventListItems = new ArrayList<>();
+
+    public EventListAdapter(Fragment fragment, ListView eventListView) {
+        this.mainActivity = fragment.getActivity();
+        this.eventListView = eventListView;
+        Context context = mainActivity;
+
+        thirdPageDataBase = new ThirdPageDataBase();
+
+        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+    }
 
     public EventListAdapter(Activity mainActivity, ListView eventListView) {
         this.mainActivity = mainActivity;
