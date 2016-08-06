@@ -286,6 +286,11 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
         return cameraRecorder;
     }
 
+    // Getter of cameraInitHandler.
+    public CameraInitHandler getCameraInitHandler() {
+        return cameraInitHandler;
+    }
+
     // Getter of getStage1TestCountdown.
     public CountDownTimer getStage1TestCountdown() {
         return stage1TestCountdown;
@@ -316,6 +321,7 @@ public class SalivaTestAdapter implements BluetoothListener, CameraCaller {
             @Override
             public void onTick(long millisUntilFinished) {
                 // Take photo!
+                Log.d("Ket", "Take photo!");
                 cameraRunHandler.sendEmptyMessage(0);
             }
         }.start();

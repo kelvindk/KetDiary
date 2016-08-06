@@ -24,6 +24,7 @@ import java.util.Calendar;
 
 import ubicomp.rehabdiary.R;
 import ubicomp.rehabdiary.utility.data.db.DatabaseControl;
+import ubicomp.rehabdiary.utility.data.db.DatabaseRestore;
 import ubicomp.rehabdiary.utility.data.download.Downloader;
 import ubicomp.rehabdiary.utility.data.file.MainStorage;
 import ubicomp.rehabdiary.utility.data.structure.AddScore;
@@ -414,9 +415,9 @@ public class PreSettingActivity extends Activity {
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 			//TODO
-			/*DatabaseRestore rd = new DatabaseRestore(uid.getText().toString(),
+			DatabaseRestore rd = new DatabaseRestore(uid.getText().toString(),
 					activity);
-			rd.execute();*/
+			rd.execute();
 		}
 	}
 

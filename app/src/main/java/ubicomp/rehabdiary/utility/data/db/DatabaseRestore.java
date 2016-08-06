@@ -6,7 +6,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 //import ubicomp.ketdiary.PreSettingActivity;
+import ubicomp.rehabdiary.fragments.event.EventLogStructure;
 import ubicomp.rehabdiary.utility.data.file.MainStorage;
+import ubicomp.rehabdiary.utility.data.structure.AddScore;
 import ubicomp.rehabdiary.utility.data.structure.CopingSkill;
 import ubicomp.rehabdiary.utility.data.structure.NoteAdd;
 import ubicomp.rehabdiary.utility.data.structure.QuestionTest;
@@ -21,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Calendar;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -77,7 +80,9 @@ public class DatabaseRestore extends AsyncTask<Void, Void, Void> {
 			
 			restorePatient();
 			restoreTestResult();
-			restoreNoteAdd();
+			//restoreNoteAdd();
+			restoreEventLog();
+			restoreScore();
 			restoreQuestionTest();
 			restoreCopingSkill();
 
@@ -258,6 +263,128 @@ public class DatabaseRestore extends AsyncTask<Void, Void, Void> {
 				reader.close();
 			} catch (FileNotFoundException e) {
 				Log.d(TAG, "NO " + filename);
+			} catch (IOException e) {
+				Log.d(TAG, "READ FAIL " + filename);
+			}
+		}
+	}
+
+	private void restoreEventLog() {
+		long now_time = 0;
+		String filename = "eventLog";
+		File f = new File(dir + "/" + uid + "/" + filename + ".restore");
+		if (f.exists()) {
+			try {
+				BufferedReader reader = new BufferedReader(
+						new InputStreamReader(new DataInputStream(
+								new FileInputStream(f))));
+				String str = reader.readLine();
+				if (str == null)
+					Log.d(TAG, "No " + filename);
+				else {
+					while ((str = reader.readLine()) != null) {
+						EventLogStructure eventLog = new EventLogStructure();
+						eventLog.editTime = Calendar.getInstance();
+						eventLog.eventTime = Calendar.getInstance();
+						eventLog.createTime = Calendar.getInstance();
+
+						String[] data = str.split(",");
+						eventLog.editTime.setTimeInMillis(Long.valueOf(data[0]));
+						eventLog.eventTime.setTimeInMillis(Long.valueOf(data[1]));
+						eventLog.createTime.setTimeInMillis(Long.valueOf(data[2]));
+
+						eventLog.scenarioType = EventLogStructure.ScenarioTypeEnum.values()[Integer.valueOf(data[3])];
+
+						StringBuilder sb = null;
+						sb = new StringBuilder();
+						sb.append(data[4]);
+						eventLog.scenario = sb.toString();
+
+						eventLog.drugUseRiskLevel = Integer.valueOf(data[5]);
+
+						if(data.length > 6) {
+							sb = new StringBuilder();
+							sb.append(data[6]);
+							eventLog.originalBehavior = sb.toString();
+						}
+						if(data.length > 7) {
+							sb = new StringBuilder();
+							sb.append(data[7]);
+							eventLog.originalEmotion = sb.toString();
+						}
+						if(data.length > 8) {
+							sb = new StringBuilder();
+							sb.append(data[8]);
+							eventLog.originalThought = sb.toString();
+						}
+						if(data.length > 9) {
+							sb = new StringBuilder();
+							sb.append(data[9]);
+							eventLog.expectedBehavior = sb.toString();
+						}
+						if(data.length > 10) {
+							sb = new StringBuilder();
+							sb.append(data[10]);
+							eventLog.expectedEmotion = sb.toString();
+						}
+						if(data.length > 11) {
+							sb = new StringBuilder();
+							sb.append(data[11]);
+							eventLog.expectedThought = sb.toString();
+						}
+
+						if(eventLog.createTime.getTimeInMillis() > now_time) {
+							db.restoreEventLog(eventLog);
+							now_time = eventLog.createTime.getTimeInMillis();
+						}
+					}
+				}
+				reader.close();
+			} catch (FileNotFoundException e) {
+				Log.d(TAG, "NO " + filename);
+
+			} catch (IOException e) {
+				Log.d(TAG, "READ FAIL " + filename);
+			}
+		}
+	}
+
+	private void restoreScore() {
+		String filename = "score";
+		File f = new File(dir + "/" + uid + "/" + filename + ".restore");
+		if (f.exists()) {
+			try {
+				BufferedReader reader = new BufferedReader(
+						new InputStreamReader(new DataInputStream(
+								new FileInputStream(f))));
+				String str = reader.readLine();
+				if (str == null)
+					Log.d(TAG, "No " + filename);
+				else {
+					while ((str = reader.readLine()) != null) {
+						String[] data = str.split(",");
+
+						int addScore = Integer.valueOf(data[0]);
+						int accumulation = Integer.valueOf(data[1]);
+						long timestamp = Long.valueOf(data[2]);
+
+						StringBuilder sb = null;
+						sb = new StringBuilder();
+						sb.append(data[3]);
+						String reason= sb.toString();
+
+						int weeklyAccumulation = Integer.valueOf(data[4]);
+						int reasonBits = Integer.valueOf(data[5]);
+
+						AddScore insertScore = new AddScore(timestamp, addScore, accumulation, reason, weeklyAccumulation, reasonBits);
+
+						db.restoreScore(insertScore);
+					}
+				}
+				reader.close();
+			} catch (FileNotFoundException e) {
+				Log.d(TAG, "NO " + filename);
+
 			} catch (IOException e) {
 				Log.d(TAG, "READ FAIL " + filename);
 			}

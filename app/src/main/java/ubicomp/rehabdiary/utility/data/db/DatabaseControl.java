@@ -3490,6 +3490,7 @@ public class DatabaseControl {
 					+ " ,checkExpectedBehavior = " + (data.reviseExpectedBehavior? 1:0)
 					+ " ,checkExpectedEmotion = " + (data.reviseExpectedEmotion? 1:0)
 					+ " ,checkExpectedThought = " + (data.reviseExpectedThought? 1:0)
+					+ " ,therapyStatus = " + (data.therapyStatus.ordinal())
 					+ " WHERE createTime = " + data.createTime.getTimeInMillis()
 					+ " AND isLastest = 1";
 			db.execSQL(sql);

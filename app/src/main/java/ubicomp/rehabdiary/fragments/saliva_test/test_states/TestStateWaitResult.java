@@ -50,7 +50,7 @@ public class TestStateWaitResult extends TestStateTransition {
 
         // Close voltage recording and pause cameraRecorder.
         salivaTestAdapter.getVoltageFileHandler().close();
-        salivaTestAdapter.getCameraRecorder().pause();
+        salivaTestAdapter.getCameraRecorder().close();
 
         // Invisible progress bar.
         salivaTestAdapter.getProgressbar().setVisibility(View.GONE);

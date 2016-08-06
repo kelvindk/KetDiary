@@ -94,7 +94,7 @@ public class SyncTherapyStatus {
             int reviseExpectedBehavior = 0;
             int reviseExpectedEmotion = 0;
             int reviseExpectedThought = 0;
-
+            int therapyStatus = 0;
             if (responseString != null && httpStatusCode == HttpStatus.SC_OK) {
 
                 StringTokenizer st = new StringTokenizer(responseString,"[],\"");
@@ -135,9 +135,14 @@ public class SyncTherapyStatus {
                         reviseExpectedThought = Integer.parseInt(st.nextToken());
                         Log.d(TAG, "reviseExpectedThought : "+ reviseExpectedThought);
                     }
+                    else if(t == 8)
+                    {
+                        therapyStatus = Integer.parseInt(st.nextToken());
+                        Log.d(TAG, "TherapyStatus : "+ therapyStatus);
+                    }
                     t++;
 
-                    if(t == 8)
+                    if(t == 9)
                     {
                         t = 0;
 
@@ -151,7 +156,7 @@ public class SyncTherapyStatus {
                             data.reviseExpectedBehavior = (reviseExpectedBehavior > 0);
                             data.reviseExpectedEmotion = (reviseExpectedEmotion > 0);
                             data.reviseExpectedThought = (reviseExpectedThought > 0);
-
+                            data.therapyStatus = EventLogStructure.TherapyStatusEnum.values()[therapyStatus];
                             list.add(data);
                         }
                     }
@@ -171,8 +176,9 @@ public class SyncTherapyStatus {
 
         for (int i = 0; i < len; i++)
         {
-            if(i == 0 || (list.get(i).createTime != list.get(i - 1).createTime ))
+            if(i == 0 || (list.get(i).createTime.getTimeInMillis() != list.get(i - 1).createTime.getTimeInMillis() ))
             {
+                Log.d(TAG, "insert");
                 db.updateEventLogTherapyStatus(list.get(i));
             }
         }

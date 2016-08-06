@@ -15,8 +15,11 @@ import ubicomp.rehabdiary.MainActivity;
 import ubicomp.rehabdiary.R;
 import ubicomp.rehabdiary.fragments.saliva_test.SalivaTestAdapter;
 import ubicomp.rehabdiary.main_activity.FragmentSwitcher;
+import ubicomp.rehabdiary.utility.data.file.VoltageFileHandler;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
 import ubicomp.rehabdiary.utility.test.bluetoothle.BluetoothLE;
+import ubicomp.rehabdiary.utility.test.camera.CameraInitHandler;
+import ubicomp.rehabdiary.utility.test.camera.CameraRecorder;
 
 /**
  * A placeholder fragment containing a simple view for Test fragment.
@@ -76,6 +79,13 @@ public class FragmentTest extends Fragment {
                 equals("TestStateIdle") ){
             salivaTestAdapter.setEnableUiComponents(true);
         }
+        else {
+            CameraRecorder cameraRecorder = salivaTestAdapter.getCameraRecorder();
+            if (cameraRecorder != null) {
+                cameraRecorder.initialize();
+                cameraRecorder.start();
+            }
+        }
 
         // Set fragment to FRAGMENT_TEST_PENDING if saliva test is running.
         if(PreferenceControl.isResultServiceRunning()) {
@@ -86,51 +96,44 @@ public class FragmentTest extends Fragment {
         super.onStart();
     }
 
-//    @Override
-//    public void onResume() {
-//        Log.d("Ket", "FragmentTest onResume");
-//
-//
-//        super.onResume();
-//    }
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onResume() {
+        Log.d("Ket", "FragmentTest onResume");
 
-        switch (requestCode) {
-            case BluetoothLE.REQUEST_ENABLE_BT:
-                if (resultCode == Activity.RESULT_OK) {
-                    Log.d("Ket", "FragmentTest onActivityResult RESULT_OK "+requestCode+" "+resultCode);
-                    salivaTestAdapter.bleEnableUserPressConfirm();
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Log.d("Ket", "FragmentTest onActivityResult RESULT_CANCELED "+requestCode+" "+resultCode);
-                    // Forward the result of BLE enabling.
-                    salivaTestAdapter.bleEnableUserPressCancel();
-                }
-        }
 
+        super.onResume();
     }
 
-//    @Override
-//    public void onStop() {
-//        Log.d("Ket", "FragmentTest onStop");
-//
-//
-//
-//        super.onStop();
-//    }
+
+    @Override
+    public void onPause() {
+        Log.d("Ket", "FragmentTest onPause");
+        // Close cameraRecorder.
+//        VoltageFileHandler voltageFileHandler = salivaTestAdapter.getVoltageFileHandler();
+//        if (voltageFileHandler != null)
+//            voltageFileHandler.close();
+        CameraRecorder cameraRecorder = salivaTestAdapter.getCameraRecorder();
+        if (cameraRecorder != null) {
+            cameraRecorder.pause();
+            cameraRecorder.close();
+        }
+
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        Log.d("Ket", "FragmentTest onStop");
+
+
+        super.onStop();
+    }
 
     @Override
     public void onDestroy() {
         Log.d("Ket", "FragmentTest onDestroy");
 
-//        // Close voltage recording and pause cameraRecorder.
-//        VoltageFileHandler voltageFileHandler = salivaTestAdapter.getVoltageFileHandler();
-//        if (voltageFileHandler != null)
-//            voltageFileHandler.close();
-//        CameraRecorder cameraRecorder = salivaTestAdapter.getCameraRecorder();
-//        if (cameraRecorder != null)
-//            cameraRecorder.close();
+
 
         // Request disconnect and disable notification to device.
         BluetoothLE ble = salivaTestAdapter.getBle();
@@ -154,6 +157,22 @@ public class FragmentTest extends Fragment {
         super.onDestroy();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {
+            case BluetoothLE.REQUEST_ENABLE_BT:
+                if (resultCode == Activity.RESULT_OK) {
+                    Log.d("Ket", "FragmentTest onActivityResult RESULT_OK "+requestCode+" "+resultCode);
+                    salivaTestAdapter.bleEnableUserPressConfirm();
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    Log.d("Ket", "FragmentTest onActivityResult RESULT_CANCELED "+requestCode+" "+resultCode);
+                    // Forward the result of BLE enabling.
+                    salivaTestAdapter.bleEnableUserPressCancel();
+                }
+        }
+
+    }
 
 
 }
