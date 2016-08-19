@@ -227,13 +227,6 @@ public class CreateEventActivity extends AppCompatActivity {
                 AddScoreDataBase addScoreDataBase = new AddScoreDataBase();
                 addScoreDataBase.addScoreEventLog(initStep, scrollViewAdapter.getCurrentMaxStep());
 
-                // Listener of action Save button
-//                Snackbar snackbar = Snackbar.make(coordinatorLayout, R.string.create_event_saved,  Snackbar.LENGTH_LONG);
-//                TextView textViewSnackbar = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
-//                textViewSnackbar.setTextColor(getResources().getColor(R.color.colorAccent));
-//                snackbar.setAction("Action", null);
-//                snackbar.show();
-
                 // Show toast of "event saved".
                 Toast toast = Toast.makeText(CreateEventActivity.this, R.string.create_event_saved, Toast.LENGTH_LONG);
                 toast.show();
@@ -243,6 +236,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
                 checkEventLogComplete();
                 checkEventLogReflection();
+                checkEventLogRevised();
 
                 /*** Need save event data to storage ***/
                 // editEventLog() for editing event, addNewEventLog() for add new event.
@@ -422,6 +416,24 @@ public class CreateEventActivity extends AppCompatActivity {
         }
 
         eventLogStructure.isReflected = false;
+        return false;
+    }
+
+    public boolean checkEventLogRevised() {
+
+        // If the therapyStatus is not BAD, then no need to check.
+        if(eventLogStructure.therapyStatus != EventLogStructure.TherapyStatusEnum.BAD) {
+            return true;
+        }
+
+        // All "revise-" should be false then change therapyStatus to Not_yet.
+        if(eventLogStructure.reviseOriginalBehavior || eventLogStructure.reviseOriginalEmotion ||
+            eventLogStructure.reviseOriginalThought || eventLogStructure.reviseExpectedBehavior ||
+            eventLogStructure.reviseExpectedEmotion || eventLogStructure.reviseExpectedThought ) {
+            return true;
+        }
+
+        eventLogStructure.therapyStatus = EventLogStructure.TherapyStatusEnum.NOT_YET;
         return false;
     }
 
