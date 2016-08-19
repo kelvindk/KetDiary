@@ -275,7 +275,7 @@ public class EventContentActivity extends AppCompatActivity {
 
             //
             int firstEmptyStep = getFirstEmptyFieldStep();
-            if(firstEmptyStep < step) {
+            if((firstEmptyStep > 0) && (firstEmptyStep < step)) {
                 Log.d("Ket", "firstEmptyStep "+firstEmptyStep+" step"+ step);
                 switch (firstEmptyStep) {
                     case 4:
@@ -477,7 +477,7 @@ public class EventContentActivity extends AppCompatActivity {
                 break;
             case GOOD:
                 event_content_therapy_status_icon.setBackgroundResource(R.drawable.circle3);
-                event_content_therapy_status_text.setText(R.string.therapist_not_yet);
+                event_content_therapy_status_text.setText(R.string.therapist_valid);
                 break;
             case BAD:
                 event_content_therapy_status_icon.setBackgroundResource(R.drawable.tri3);

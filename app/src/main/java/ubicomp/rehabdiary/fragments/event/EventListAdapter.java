@@ -166,7 +166,7 @@ public class EventListAdapter extends BaseAdapter {
                 break;
             case GOOD:
                 eventListItemHolder.event_list_therapy_status_icon.setBackgroundResource(R.drawable.circle3);
-                eventListItemHolder.event_list_therapy_status_text.setText(R.string.therapist_not_yet);
+                eventListItemHolder.event_list_therapy_status_text.setText(R.string.therapist_valid);
                 break;
             case BAD:
                 eventListItemHolder.event_list_therapy_status_icon.setBackgroundResource(R.drawable.tri3);
