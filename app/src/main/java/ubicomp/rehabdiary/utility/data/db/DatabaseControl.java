@@ -2890,7 +2890,7 @@ public class DatabaseControl {
 					cursor.moveToPosition(i);
 					long create_ts = cursor.getLong(1);
 					int score = cursor.getInt(2);
-					long event_ts = cursor.getInt(3);
+					long event_ts = cursor.getLong(3);
 					int isReflection = cursor.getInt(4);
 
 					Calendar create_cal = Calendar.getInstance();
