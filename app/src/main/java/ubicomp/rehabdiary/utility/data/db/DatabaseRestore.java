@@ -333,6 +333,15 @@ public class DatabaseRestore extends AsyncTask<Void, Void, Void> {
 							eventLog.expectedThought = sb.toString();
 						}
 
+						if(!eventLog.originalBehavior.equals("") && !eventLog.originalEmotion.equals("") &&
+								!eventLog.originalThought.equals("") && !eventLog.expectedBehavior.equals("") &&
+								!eventLog.expectedEmotion.equals("") && !eventLog.expectedThought.equals(""))
+							eventLog.isComplete = true;
+
+						if(!eventLog.expectedBehavior.equals("") && !eventLog.expectedEmotion.equals("") && !eventLog.expectedThought.equals(""))
+							eventLog.isReflected = true;
+
+
 						if(eventLog.createTime.getTimeInMillis() > now_time) {
 							db.restoreEventLog(eventLog);
 							now_time = eventLog.createTime.getTimeInMillis();
