@@ -2867,7 +2867,44 @@ public class DatabaseControl {
 				db.close();
 			}
 		}
-		
+
+	public IdentityScore[] getAllUploadedIdentityScore() {
+		synchronized (sqlLock) {
+			IdentityScore[] data = null;
+			db = dbHelper.getReadableDatabase();
+			String sql;
+			Cursor cursor;
+			sql = "SELECT * FROM Identity";
+			cursor = db.rawQuery(sql, null);
+			int count = cursor.getCount();
+			if (count == 0) {
+				cursor.close();
+				db.close();
+				return null;
+			}
+
+			data = new IdentityScore[count];
+
+			for (int i = 0; i < count; ++i) {
+				cursor.moveToPosition(i);
+				long create_ts = cursor.getLong(1);
+				int score = cursor.getInt(2);
+				long event_ts = cursor.getLong(3);
+				int isReflection = cursor.getInt(4);
+
+				Calendar create_cal = Calendar.getInstance();
+				create_cal.setTimeInMillis(create_ts);
+				Calendar event_cal = Calendar.getInstance();
+				event_cal.setTimeInMillis(event_ts);
+
+				data[i] = new IdentityScore(create_cal, score, event_cal, isReflection);
+			}
+			cursor.close();
+			db.close();
+			return data;
+		}
+	}
+
 		public IdentityScore[] getNotUploadedIdentityScore() {
 			Log.i("GG", "getNotUploadScoreSQL");
 			synchronized (sqlLock) {

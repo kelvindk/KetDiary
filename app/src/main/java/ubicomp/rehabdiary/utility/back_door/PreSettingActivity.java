@@ -30,6 +30,7 @@ import ubicomp.rehabdiary.utility.data.file.MainStorage;
 import ubicomp.rehabdiary.utility.data.structure.AddScore;
 import ubicomp.rehabdiary.utility.data.structure.TestDetail;
 import ubicomp.rehabdiary.utility.data.structure.TestResult;
+import ubicomp.rehabdiary.utility.data.upload.IdentityUploader;
 import ubicomp.rehabdiary.utility.statistic.CustomToast;
 import ubicomp.rehabdiary.utility.system.PreferenceControl;
 import ubicomp.rehabdiary.utility.system.cleaner.Cleaner;
@@ -51,7 +52,7 @@ public class PreSettingActivity extends Activity {
 	private Button saveButton, exchangeButton, restoreButton, debugButton,
 			restoreVer1Button, dummyDataButton, changeButton, cleanButton, cassetteButton,
 			addTestResultButton, triggerResetButton, testDetailResetButton, testResultResetButton, eventLogResetButton,
-			addOneScore, syncTherapyStatusButton;
+			addOneScore, syncTherapyStatusButton, uploadIdentityScoreButton;
 	
 	private boolean debug;
 	private Activity activity;
@@ -401,13 +402,25 @@ public class PreSettingActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				//TODO
-				Log.d("GG", "clicked");
 				Downloader downloader = new Downloader();
 				downloader.updateTherapyStatus();
 			}
 
 
 		});
+
+		uploadIdentityScoreButton = (Button) this.findViewById(R.id.upload_identity_score);
+		uploadIdentityScoreButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				//TODO;
+				IdentityUploader.upload();
+			}
+
+
+		});
+
 	}
 
 	private class RestoreOnClickListener implements
